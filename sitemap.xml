@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/index.html</loc>
-    <lastmod>2024-07-09T14:25:59.688Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/home.html</loc>
+    <lastmod>2024-07-09T16:09:03.201Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/about.html</loc>
-    <lastmod>2024-07-09T14:25:59.688Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/jupyter/e00_2.html</loc>
+    <lastmod>2024-07-09T16:17:28.796Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/e00_3.html</loc>
+    <lastmod>2024-06-27T22:01:22.951Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/e00_1.html</loc>
+    <lastmod>2024-07-09T16:17:21.885Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/e00_2.html</loc>
+    <lastmod>2024-07-09T16:17:19.684Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/jupyter/e00_1.html</loc>
+    <lastmod>2024-07-09T16:03:34.081Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/intro.html</loc>
+    <lastmod>2024-07-09T16:09:06.808Z</lastmod>
   </url>
 </urlset>
