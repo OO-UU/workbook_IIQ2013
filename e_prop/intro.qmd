@@ -1,0 +1,6 @@
+---
+title: "Ejercicios propuestos"
+author: "Ignacio Tabilo"
+---
+
+Aquí podrán encontrar ejercicios sobre la mayoría de los tópicos del curso. El propósito de estos ejercicios es ayudarlos con sus estudios y fomentar el uso de herramientas de programación como medio para la resolución de problemas. Los ejercicios se encuentran ordenados en secciones según la materia que corresponda. Si bien los ejercicios cuentan con solución, ojalá que puedan aprovechar estos ejercicios para comparar los resultados que ustedes obtengan al resolverlos.
