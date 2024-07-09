@@ -4,11 +4,11 @@ format:
     html: 
       code-copy: true
       code-fold: true
+      notebook-view: false
       notebook-view: 
         - notebook: ./jupyter/e00_2.ipynb
-          notebook-view: false
           title: "Descargar (.ipynb)"
-          url: https://raw.githubusercontent.com/OO-UU/workbook_IIQ2013/main/e_prop/00_bernoulli/jupyter/e00_2.ipynb
+          download-url: https://raw.githubusercontent.com/OO-UU/workbook_IIQ2013/main/e_prop/00_bernoulli/jupyter/e00_2.ipynb
 
 execute: 
   echo: true
