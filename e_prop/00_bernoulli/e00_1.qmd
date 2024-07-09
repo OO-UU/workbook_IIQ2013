@@ -56,7 +56,7 @@ Y luego despejando para la velocidad en el punto inferior (B), nos queda como:
 
 $$
 u_B = \sqrt{2gH_A}
-$$ (part1:cap2:ex1:eq1)
+$$ {#eq-1}
 
 Finalmente resolviendo:
 
@@ -72,7 +72,7 @@ Luego, el caudal será
 
 $$
 Q = u_BA
-$$ (part1:cap2:ex1:eq2)
+$$ {#eq-2}
 
 ```{python}
 %%render long
@@ -95,7 +95,7 @@ $$
 Q = -\pi\left(\frac{d_e}{2}\right)^2\frac{dH_A}{dt}
 $$
 
-Al reemplazar la ecuación {eq}`part1:cap2:ex1:eq1` en {eq}`part1:cap2:ex1:eq2` e igualando,
+Al reemplazar la ecuación [-@eq-1] en [-@eq-2] e igualando,
 
 $$
 \sqrt{2gH_A}\left(\pi\left(\frac{d_t}{2}\right)^2\right) = -\pi\left(\frac{d_e}{2}\right)^2\frac{dH_A}{dt}
