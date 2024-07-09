@@ -239,7 +239,7 @@ window.Quarto = {
   <li><a href="#información-sobre-la-figura" id="toc-información-sobre-la-figura" class="nav-link" data-scroll-target="#información-sobre-la-figura">Información sobre la figura</a></li>
   <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
   </ul>
-<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="./jupyter/e00_2.ipynb"><i class="bi bi-code-square"></i></a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -288,7 +288,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e00_2-sol" class="collapse multi-collapse">
-<div id="79a8fb42" class="cell" data-execution_count="1">
+<div id="fab4b4f7" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquetes utilizados</span></span>
@@ -299,21 +299,21 @@ Mostrar solución
 <section id="inciso-1" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
 <p>Sea <span class="math inline">\(P_I\)</span> la presión en la intercepción, adicionalmente, sabemos que todas las presiones de los estanques son atmosféricas. Luego, creamos un sistema de ecuaciones para los puntos importantes.</p>
-<p><span class="math display">\[
+<p><span id="eq-1"><span class="math display">\[
 A-I: \hspace{10mm} (z_I-z_A) + \frac{P_I}{g\rho} + \left(K_{in} + K_{codo} + 4f\frac{L_{A-I}}{d_A} + 1\right)\frac{u_A^2}{2g} = 0
-\]</span> (part1:cap2:ex2:eq1)</p>
-<p><span class="math display">\[
+\tag{1}\]</span></span></p>
+<p><span id="eq-2"><span class="math display">\[
 B-I: \hspace{10mm} (z_I-z_B) + \frac{P_I}{g\rho} + \left(K_{in} + 4f\frac{L_{B-I}}{d_B} + 1\right)\frac{u_B^2}{2g} = 0
-\]</span> (part1:cap2:ex2:eq2)</p>
-<p><span class="math display">\[
+\tag{2}\]</span></span></p>
+<p><span id="eq-3"><span class="math display">\[
 I-C: \hspace{10mm} (-z_I) - \frac{P_I}{g\rho} + \left(K_{out} + 4f\frac{L_{C-I}}{d_C} + 1\right)\frac{u_C^2}{2g} = 0
-\]</span> (part1:cap2:ex2:eq3)</p>
+\tag{3}\]</span></span></p>
 <p>En donde <span class="math inline">\(L\)</span> es el largo que recorre el fluido entre los puntos.</p>
-<p>Igualando {eq}<code>part1:cap2:ex2:eq1</code> y {eq}<code>part1:cap2:ex2:eq2</code>.</p>
+<p>Igualando <a href="#eq-1" class="quarto-xref">Ec.&nbsp;1</a> y <a href="#eq-2" class="quarto-xref">Ec.&nbsp;2</a>.</p>
 <p><span class="math display">\[
 \left(K_{in} + K_{codo} + 4f\frac{L_{A-I}}{d_A} + 1\right)\frac{u_A^2}{2g} - \left(K_{in} + 4f\frac{L_{B-I}}{d_B} + 1\right)\frac{u_B^2}{2g} = (z_A - z_B)
 \]</span></p>
-<p>E igualando {eq}<code>part1:cap2:ex2:eq2</code> y -{eq}<code>part1:cap2:ex2:eq3</code></p>
+<p>E igualando <a href="#eq-2" class="quarto-xref">Ec.&nbsp;2</a> y <a href="#eq-3" class="quarto-xref">Ec.&nbsp;3</a>.</p>
 <p><span class="math display">\[
 \left(K_{in} + 4f\frac{L_{B-I}}{d_B} + 1\right)\frac{u_B^2}{2g} +  \left(K_{out} + 4f\frac{L_{C-I}}{d_C} + 1\right)\frac{u_C^2}{2g} = z_B
 \]</span></p>
@@ -325,7 +325,7 @@ Q_A + Q_B = Q_C
 \frac{\pi}{4}d_A^2u_A + \frac{\pi}{4}d_B^2u_B = \frac{\pi}{4}d_C^2u_C
 \]</span></p>
 <p>Al formar un sistema de 3 incógnitas y tres ecuaciones despejamos para los valores de las velocidades.</p>
-<div id="c410964a" class="cell" data-execution_count="2">
+<div id="46aa6b4f" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constantes de enunciado</span></span>
@@ -384,7 +384,7 @@ Q_A + Q_B = Q_C
 f = 0.001375\left(1 + \left(2\times10^4\frac{\epsilon}{D} + \frac{10^6}{Re}\right)^{\frac{1}{3}}\right)
 \]</span></p>
 <p>Vemos los valores de Reynolds.</p>
-<div id="453aa8d0" class="cell" data-execution_count="3">
+<div id="709cda14" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Recordar que, del inciso anterior obtuvimos...</span></span>
@@ -404,7 +404,7 @@ f = 0.001375\left(1 + \left(2\times10^4\frac{\epsilon}{D} + \frac{10^6}{Re}\righ
 </div>
 </div>
 <p>Notamos que para esta iteración, los valores de Reynolds son turbulentos. Procedemos a utilizar la ecuación de Nevers.</p>
-<div id="a5da4c71" class="cell" data-execution_count="4">
+<div id="64a11cea" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="fl">0.0046</span></span>
