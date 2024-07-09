@@ -7,6 +7,7 @@ format:
       notebook-view: 
         - notebook: ./jupyter/e00_2.ipynb
           title: "Descargar (.ipynb)"
+          url: https://raw.githubusercontent.com/OO-UU/workbook_IIQ2013/main/e_prop/00_bernoulli/jupyter/e00_2.ipynb
           download-url: https://raw.githubusercontent.com/OO-UU/workbook_IIQ2013/main/e_prop/00_bernoulli/jupyter/e00_2.ipynb
 
 execute: 
