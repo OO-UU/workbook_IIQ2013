@@ -1,79 +1,167 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="generator" content="quarto-1.5.53">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.53">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>Ejercicio 2: Pérdidas por singularidades y fricción – IIQ2013</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+    <title>Solución – IIQ2013</title>
+    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.columns{display: flex; gap: min(4vw, 1.5em);}
+      div.column{flex: auto; overflow-x: auto;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      ul.task-list li input[type="checkbox"] {
+        width: 0.8em;
+        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+        vertical-align: middle;
+      }
+      /* CSS for syntax highlighting */
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+        }
+      pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+      div.sourceCode
+        {   }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+    </style>
+
+    <style>
+      body.hypothesis-enabled #quarto-embed-header {
+        padding-right: 36px;
+      }
+
+      #quarto-embed-header {
+        height: 3em;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px;
+      }
+
+      #quarto-embed-header h6 {
+        font-size: 1.1em;
+        padding-top: 0.6em;
+        margin-left: 1em;
+        margin-right: 1em;
+        font-weight: 400;
+      }
+
+      #quarto-embed-header a.quarto-back-link,
+      #quarto-embed-header a.quarto-download-embed {
+        font-size: 0.8em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+
+      .quarto-back-container {
+        padding-left: 0.5em;
+        display: flex;
+      }
+
+      .headroom {
+          will-change: transform;
+          transition: transform 200ms linear;
+      }
+
+      .headroom--pinned {
+          transform: translateY(0%);
+      }
+
+      .headroom--unpinned {
+          transform: translateY(-100%);
+      }      
+    </style>
+
+    <script>
+    window.document.addEventListener("DOMContentLoaded", function () {
+
+      var header = window.document.querySelector("#quarto-embed-header");
+      const titleBannerEl = window.document.querySelector("body > #title-block-header");
+      if (titleBannerEl) {
+        titleBannerEl.style.paddingTop = header.clientHeight + "px";
+      }
+      const contentEl = window.document.getElementById('quarto-content');
+      for (const child of contentEl.children) {
+        child.style.paddingTop = header.clientHeight + "px";
+        child.style.marginTop = "1em";
+      }
+
+      // Use the article root if the `back` call doesn't work. This isn't perfect
+      // but should typically work
+      window.quartoBackToArticle = () => {
+        var currentUrl = window.location.href;
+        window.history.back();
+        setTimeout(() => {
+            // if location was not changed in 100 ms, then there is no history back
+            if(currentUrl === window.location.href){              
+                // redirect to site root
+                window.location.href = '/';
+            }
+        }, 100);
+      }
+
+      const headroom = new window.Headroom(header, {
+        tolerance: 5,
+        onPin: function () {
+        },
+        onUnpin: function () {
+        },
+      });
+      headroom.init();
+    });
+    </script>
+
+    
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+     <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -98,49 +186,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
+}</script>   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script> 
+        <link rel="stylesheet" href="../../../styles.css">
+      </head>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <body class="floating nav-fixed quarto-notebook">
+    <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
+      
+      <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link"><i class="bi bi-caret-left"></i> Back to Article</a>
+      <h6><i class="bi bi-journal-code"></i> Descargar (.ipynb)</h6>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+            <a href="../../../e_prop/00_bernoulli/jupyter/e00_2.ipynb" class="btn btn-primary quarto-download-embed" download="e00_2.ipynb">Download Notebook</a>
+          </div>
 
-<link rel="stylesheet" href="../../styles.css">
-</head>
-
-<body class="nav-sidebar floating nav-fixed">
-
-<div id="quarto-search-results"></div>
+     <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">IIQ2013</span>
     </a>
   </div>
@@ -150,11 +214,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../home.html"> 
+    <a class="nav-link" href="../../../home.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../e_prop/intro.html" aria-current="page"> 
+    <a class="nav-link" href="../../../e_prop/intro.html"> 
 <span class="menu-text">Ejercicios propuestos</span></a>
   </li>  
 </ul>
@@ -168,85 +232,28 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Tuberías y bombas</a></li><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_2.html">Ejercicio 2: Pérdidas por singularidades y fricción</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/OO-UU/workbook_IIQ2013" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-    <div id="quarto-search" class="quarto-navigation-tool px-1" title="Search"></div>
-</div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicios propuestos</span></a>
-  </div>
-</li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item">
- <span class="menu-text">Transporte de fluidos</span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Tuberías y bombas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/00_bernoulli/e00_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 1: Bernoulli</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/00_bernoulli/e00_2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Ejercicio 2: Pérdidas por singularidades y fricción</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#enunciado" id="toc-enunciado" class="nav-link active" data-scroll-target="#enunciado">Enunciado</a></li>
-  <li><a href="#información-sobre-la-figura" id="toc-información-sobre-la-figura" class="nav-link" data-scroll-target="#información-sobre-la-figura">Información sobre la figura</a></li>
-  <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
+  <li><a href="#inciso-1" id="toc-inciso-1" class="nav-link active" data-scroll-target="#inciso-1">Inciso 1</a></li>
+  <li><a href="#inciso-2" id="toc-inciso-2" class="nav-link" data-scroll-target="#inciso-2">Inciso 2</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="jupyter\e00_2-preview.html"><i class="bi bi-journal-code"></i>Descargar (.ipynb)</a></li></ul></div></nav>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Tuberías y bombas</a></li><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_2.html">Ejercicio 2: Pérdidas por singularidades y fricción</a></li></ol></nav>
+<main class="content" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ejercicio 2: Pérdidas por singularidades y fricción</h1>
+<h1 class="title">Solución</h1>
 </div>
 
 
@@ -260,74 +267,69 @@ window.Quarto = {
   
 
 
-</header>
+</header>     <div id="5a06a72c-a9ce-4cf9-b8ad-5db743c45568" class="cell markdown">
 
-
-<section id="enunciado" class="level2">
-<h2 class="anchored" data-anchor-id="enunciado">Enunciado</h2>
-<p>Luego del proceso final de refinación de petróleo, se obtiene un fluido en fase líquida cuya viscosidad cinemática es de <span class="math inline">\(\nu=0.691\hspace{1mm}(mm^2/s \hspace{1mm}o\hspace{1mm}cSt)\)</span> y su densidad es de <span class="math inline">\(\rho=876\hspace{1mm}(kg/m^3)\)</span>. En un principio, este fluido es almacenado en dos estanques distintos, para luego terminar en un último estanque de almacenamiento mediante un sistema de tuberías. Considere que la presión en la superficie de los estanques es atmosférica.</p>
-<ol type="1">
-<li>Determine la velocidad del fluido justo después de entrar en el estanque <strong>C</strong>. Para sus cálculos asuma un factor de fricción <span class="math inline">\(f_{Fanning}=0.0045\)</span>.</li>
-<li>Compruebe si el factor de fricción utilizado representa correctamente al sistema. Utilice la ecuación de Nevers.</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/img00_2.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Sistema de tuberías y estanques</figcaption>
-</figure>
 </div>
-</section>
-<section id="información-sobre-la-figura" class="level2 callaout-note">
-<h2 class="anchored" data-anchor-id="información-sobre-la-figura">Información sobre la figura</h2>
-<p>Las entradas a las tuberías desde los estanques son afiladas. La tubería que sale del estanque A baja hasta llegar a un codo recto. Finalmente, asuma que las pérdidas asociadas a la intersección son despreciables.</p>
-<p>Considere que todas las tuberías son de acero comercial (<span class="math inline">\(\epsilon=0.046\hspace{1mm}(mm)\)</span>). Además la tubería entre el estanque <strong>A</strong> y la intersección es de diámetro <span class="math inline">\(d_A=25\hspace{1mm}(cm)\)</span>, la tubería entre <strong>B</strong> y la intersección tiene <span class="math inline">\(d_B=27\hspace{1mm}(cm)\)</span> y, por último, la tubería entre la intersección y <strong>C</strong> es de <span class="math inline">\(d_C=40\hspace{1mm}(cm)\)</span>.</p>
-</section>
-<section id="solución" class="level2">
-<h2 class="anchored" data-anchor-id="solución">Solución</h2>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#e00_2-sol" aria-expanded="false">
-Mostrar solución
-</button>
-<div id="e00_2-sol" class="collapse multi-collapse">
-<div id="029bc68a" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
+<div class="cell-container"><div class="cell-decorator"><pre>In [34]:</pre></div><div id="14e711cf-d7ff-46cc-970e-f91e7d49103a" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquetes utilizados</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> symbols, Eq, solve</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+</div></div>
+<div id="32057e12-d6e3-45ac-a814-85583257b109" class="cell markdown">
 <section id="inciso-1" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
+</section>
+</div>
+<div id="b2727e0e-abab-42a3-8895-0ff14a4bac37" class="cell markdown">
 <p>Sea <span class="math inline">\(P_I\)</span> la presión en la intercepción, adicionalmente, sabemos que todas las presiones de los estanques son atmosféricas. Luego, creamos un sistema de ecuaciones para los puntos importantes.</p>
-<p><span id="eq-1"><span class="math display">\[
+</div>
+<div id="22b2aeb3" class="cell markdown">
+<p><span class="math display">\[
 A-I: \hspace{10mm} (z_I-z_A) + \frac{P_I}{g\rho} + \left(K_{in} + K_{codo} + 4f\frac{L_{A-I}}{d_A} + 1\right)\frac{u_A^2}{2g} = 0
-\tag{1}\]</span></span></p>
-<p><span id="eq-2"><span class="math display">\[
+\]</span> (part1:cap2:ex2:eq1)</p>
+</div>
+<div id="2a067ed1-4aa1-4aa4-acf2-c16970bb0020" class="cell markdown">
+<p><span class="math display">\[
 B-I: \hspace{10mm} (z_I-z_B) + \frac{P_I}{g\rho} + \left(K_{in} + 4f\frac{L_{B-I}}{d_B} + 1\right)\frac{u_B^2}{2g} = 0
-\tag{2}\]</span></span></p>
-<p><span id="eq-3"><span class="math display">\[
+\]</span> (part1:cap2:ex2:eq2)</p>
+</div>
+<div id="25a4c540-ffd1-43bd-885d-0d410169ea60" class="cell markdown">
+<p><span class="math display">\[
 I-C: \hspace{10mm} (-z_I) - \frac{P_I}{g\rho} + \left(K_{out} + 4f\frac{L_{C-I}}{d_C} + 1\right)\frac{u_C^2}{2g} = 0
-\tag{3}\]</span></span></p>
+\]</span> (part1:cap2:ex2:eq3)</p>
+</div>
+<div id="661de405-5390-4d29-bc72-b3593c1d6ca7" class="cell markdown">
 <p>En donde <span class="math inline">\(L\)</span> es el largo que recorre el fluido entre los puntos.</p>
-<p>Igualando <a href="#eq-1" class="quarto-xref">Ec.&nbsp;1</a> y <a href="#eq-2" class="quarto-xref">Ec.&nbsp;2</a>.</p>
+<p>Igualando {eq}<code>part1:cap2:ex2:eq1</code> y {eq}<code>part1:cap2:ex2:eq2</code>.</p>
 <p><span class="math display">\[
 \left(K_{in} + K_{codo} + 4f\frac{L_{A-I}}{d_A} + 1\right)\frac{u_A^2}{2g} - \left(K_{in} + 4f\frac{L_{B-I}}{d_B} + 1\right)\frac{u_B^2}{2g} = (z_A - z_B)
 \]</span></p>
-<p>E igualando <a href="#eq-2" class="quarto-xref">Ec.&nbsp;2</a> y <a href="#eq-3" class="quarto-xref">Ec.&nbsp;3</a>.</p>
+</div>
+<div id="b138c947-1b29-4766-acf7-42fb429b2e7e" class="cell markdown">
+<p>E igualando {eq}<code>part1:cap2:ex2:eq2</code> y -{eq}<code>part1:cap2:ex2:eq3</code></p>
+</div>
+<div id="28059cf5-6cad-48e0-b844-998f24b370c7" class="cell markdown">
 <p><span class="math display">\[
 \left(K_{in} + 4f\frac{L_{B-I}}{d_B} + 1\right)\frac{u_B^2}{2g} +  \left(K_{out} + 4f\frac{L_{C-I}}{d_C} + 1\right)\frac{u_C^2}{2g} = z_B
 \]</span></p>
+</div>
+<div id="073bb282-8142-4d68-90a1-bcb6b6c11631" class="cell markdown">
 <p>Además, sabemos que la ecuación de continuidad nos dice que:</p>
+</div>
+<div id="7eff9b07-21bc-4c28-8c06-96794cdb9221" class="cell markdown">
 <p><span class="math display">\[
 Q_A + Q_B = Q_C
 \]</span></p>
+</div>
+<div id="439081da-63e9-47e2-ad47-bbc5833f9feb" class="cell markdown">
 <p><span class="math display">\[
 \frac{\pi}{4}d_A^2u_A + \frac{\pi}{4}d_B^2u_B = \frac{\pi}{4}d_C^2u_C
 \]</span></p>
+</div>
+<div id="500b7e20-aa0d-45e9-ae1a-56056f624bd4" class="cell markdown">
 <p>Al formar un sistema de 3 incógnitas y tres ecuaciones despejamos para los valores de las velocidades.</p>
-<div id="94764ed1" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Code</summary>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [47]:</pre></div><div id="5303bf92-8f46-46e2-b5ec-77f200dcc0ee" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constantes de enunciado</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.8</span> <span class="co">#m/s2</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="dv">876</span> <span class="co">#kg/m3</span></span>
@@ -369,24 +371,29 @@ Q_A + Q_B = Q_C
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        solution_vector <span class="op">=</span> solution</span>
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"u_A es"</span>, solution_vector[<span class="dv">0</span>],<span class="st">"m/s, u_B es"</span>, solution_vector[<span class="dv">1</span>],<span class="st">"m/s y u_C es"</span>, solution_vector[<span class="dv">2</span>],<span class="st">"m/s."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>u_A es 5.01661842550508 m/s, u_B es 6.05885232038120 m/s y u_C es 4.72018116093660 m/s.</code></pre>
 </div>
-</div>
+</div></div>
+<div id="8775c218-8fbe-4330-81e9-1d2af29895a8" class="cell markdown">
 <p>La velocidad justo después de entrar al estanque C es de <span class="math inline">\(u_C = 4.72\hspace{1mm}(m/s)\)</span>.</p>
-</section>
+</div>
+<div id="844fb070-b4bc-43e4-937c-5234eeef42b1" class="cell markdown">
 <section id="inciso-2" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-2">Inciso 2</h3>
+</section>
+</div>
+<div id="ff616dbe-5ee2-4ff3-8bf7-93992e098d8d" class="cell markdown">
 <p>Para comprobar si el supuesto de fricción es acertado, podemos calcular el factor de fricción con la ecuación de Nevers, utilizando las velocidades encontradas. A este procedimiento se le conoce como <em>iteración</em>. Donde tomamos una suposición inicial para poder resolver nuestro sistema inicial, y luego comprobamos la exactitud de dicha suposición.</p>
 <p>Recordar que <span class="math inline">\(\epsilon = 0.0.046\)</span>.</p>
 <p><span class="math display">\[
 f = 0.001375\left(1 + \left(2\times10^4\frac{\epsilon}{D} + \frac{10^6}{Re}\right)^{\frac{1}{3}}\right)
 \]</span></p>
+</div>
+<div id="73e70c8f-6019-4afc-a1aa-e93830b9fdc3" class="cell markdown">
 <p>Vemos los valores de Reynolds.</p>
-<div id="04a9fa7d" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [45]:</pre></div><div id="523b7021-8245-4ac4-aba6-79bd4aa6cec4" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Recordar que, del inciso anterior obtuvimos...</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>u_A <span class="op">=</span> solution_vector[<span class="dv">0</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>u_B <span class="op">=</span> solution_vector[<span class="dv">1</span>]</span>
@@ -398,15 +405,14 @@ f = 0.001375\left(1 + \left(2\times10^4\frac{\epsilon}{D} + \frac{10^6}{Re}\righ
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(solution_vector)):</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    reynolds_vector.append(solution_vector[i]<span class="op">*</span>diameter_vector[i]<span class="op">/</span>nu)</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Re_A es"</span>, reynolds_vector[<span class="dv">0</span>],<span class="st">", Re_B es"</span>, reynolds_vector[<span class="dv">1</span>],<span class="st">"y Re_C es"</span>, reynolds_vector[<span class="dv">2</span>],<span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Re_A es 1814984.95857637 , Re_B es 2367424.20622710 y Re_C es 2732376.93831352 .</code></pre>
+<pre><code>Re_A es 1741637.73901182 , Re_B es 2196882.69595985 y Re_C es 2571419.40665528 .</code></pre>
 </div>
-</div>
+</div></div>
+<div id="82d4267e-1722-4c30-9704-485d177c37cd" class="cell markdown">
 <p>Notamos que para esta iteración, los valores de Reynolds son turbulentos. Procedemos a utilizar la ecuación de Nevers.</p>
-<div id="109cda57" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Code</summary>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [46]:</pre></div><div id="3884b596-89ea-4dbd-baf6-83587af22ed7" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="fl">0.0046</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>friction_vector <span class="op">=</span> []</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(reynolds_vector)):</span>
@@ -415,22 +421,18 @@ f = 0.001375\left(1 + \left(2\times10^4\frac{\epsilon}{D} + \frac{10^6}{Re}\righ
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"f_A ="</span>,friction_vector[<span class="dv">0</span>])</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"f_B ="</span>,friction_vector[<span class="dv">1</span>])</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"f_C ="</span>,friction_vector[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>f_A = 0.0112332966799599
-f_B = 0.0109827877312439
-f_C = 0.00980398887211753</code></pre>
+<pre><code>f_A = 0.0112335035638894
+f_B = 0.0109830955345500
+f_C = 0.00980426826752187</code></pre>
 </div>
-</div>
+</div></div>
+<div id="59ffb2ac-dfd4-4032-8b29-1ffffd2dca36" class="cell markdown">
 <p>Notamos que la diferencia entre los factores de fricción obtenidos y el supuesto es notoria. Se recomienda iterar reemplazando <span class="math inline">\(f\)</span> por un promedio de estos valores, y observar cómo varían las velocidades (Descarge el código y compruebe). ¿Observa alguna diferencia entre el resultado de velocidad incial?</p>
-</section>
 </div>
 
 
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+     <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->  <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -522,7 +524,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/OO-UU\.github\.io\/workbook_IIQ2013\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -849,10 +851,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-</div> <!-- /content -->
-
-
-
-
+</script>  </div> <!-- /content --> 
+  
 </body></html>
