@@ -4,7 +4,6 @@ format:
     html: 
       code-copy: true
       code-fold: true
-      notebook-view: false
       notebook-view: 
         - notebook: ./jupyter/e00_2.ipynb
           title: "Descargar (.ipynb)"
