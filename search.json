@@ -7,6 +7,49 @@
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   },
   {
+    "objectID": "e_prop/02_agitacion/jupyter/e02_2.html",
+    "href": "e_prop/02_agitacion/jupyter/e02_2.html",
+    "title": "Solución",
+    "section": "",
+    "text": "# Paquetes utilizados\nimport handcalcs.render\nfrom handcalcs import handcalc\nfrom math import pi\n\n\nInciso 1\nDel gráfico obtenemos que a \\(20\\hspace{1mm}°C\\) la viscosidad es \\(\\mu\\approx 280\\hspace{1mm}(cP)\\). Ya que nos encontramos en regimen laminar, tenemos que:\n\\[\n\\mu_1N_1^2 = \\mu_2N_2^2\n\\]\nEntonces despejando para \\(\\mu_2\\).\n\n%%render long\nmu_1 = 280 #cP\nN_1 = 400 #RPM\nN_2 = 230 #RPM\nmu_2 = mu_1*(N_1/N_2)**2 #cP\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nDel gráfico de viscosidades, notamos que para \\(\\mu=846.9\\hspace{1mm}(cP)\\) la temperatura debe ser \\(T\\approx 6\\hspace{1mm}°C\\).\n\n\nInciso 2\nSi el escalamiento se basa en una velocidad de punta constante:\n\\[\nD_{a,1}N_1=D_{a,2}N_2\n\\]\nEntonces,\n\n%%render long\nD_a1 = 0.15 # m\nD_a2 = D_a1*N_1/N_2 #m\nD_t2 = 3*D_a2 #m\nH_2 = 3/2*D_t2 #m\nV_2 = pi*(D_t2/2)**2*H_2 #m$^3$\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n\nInciso 3\nSe debe cumplir que el número de potencia es equivalente.\n\\[\nN_{p,1} = N_{p,2} \\Rightarrow \\frac{P_1}{\\rho_1N_1^3D_{a,1}^5} = \\frac{P_2}{\\rho_2N_2^3D_{a,2}^5}\n\\]\nRecordar que la temperatura del agitador industrial se encuentra aproximadamente a \\(6\\hspace{1mm}°C\\), a esa temperatura la densidad del aceite será \\(\\rho_2\\approx 887.5\\hspace{1mm}(kg/m^3)\\). Y en las condiciones iniciales a \\(20\\hspace{1mm}°C\\) la densidad \\(\\rho_1\\approx 878\\hspace{1mm}(kg/m^3)\\).\n\n%%render long\nP_1 = 3 #kW\nrho_1 = 878 #kg/m$^3$\nrho_2 = 887.5 #kg/m$^3$\nP_2 = P_1*(rho_2*(N_2/60)**3*D_a2**5)/(rho_1*(N_1/60)**3*D_a1**5) #kW\n\n&lt;IPython.core.display.Latex object&gt;"
+  },
+  {
+    "objectID": "e_prop/02_agitacion/e02_2.html",
+    "href": "e_prop/02_agitacion/e02_2.html",
+    "title": "Ejercicio 2: Escalamiento de estanques agitados",
+    "section": "",
+    "text": "Usted trabaja en un centro de investigación de aceites para uso industrial llamado Uncle Oil®. Recientemente, su jefe le ha pedido escalar su agitador piloto a uno industrial para masificar la producción de aceite de motor (ambos estanques cilíndricos). Considere que su agitador a escala piloto funciona a \\(400\\hspace{1mm}RPM\\), y que el motor con el que cuenta el centro de investigación para escala industrial alcanza los \\(230\\hspace{1mm}RPM\\). Usted sabe que el diámetro del agitador piloto es \\(D_{a,1}=15\\hspace{1mm}(cm)\\), y que las proporciones \\(S_i\\) se mantienen constantes e iguales a \\(S_1=1/3\\) y \\(S_6=3/2\\). El equipo de investigación reológica, le hace entrega de la figura a continuación. Determine lo siguiente: 1. Encuentre la temperatura a la cual deberá operar el estanque industrial para que este funcione a su máxima capacidad de revoluciones. Considerando que el estanque piloto se encontraba a \\(20\\hspace{1mm}°C\\). Asuma que se encuentra en régimen laminar. 2. Calcule el volumen del estanque industrial. Considere que el escalamiento es de velocidad de punta constante. 3. Calcule la potencia que utilizará este estanque si a escala industrial se utilizaban \\(3kW\\). Hint: el número de potencia se mantendrá constante.\n\n\n\n\n\n\n\n\n\nViscocidad dinámica vs temperatura\n\n\n\n\n\n\n\nDensidad vs temperatura",
+    "crumbs": [
+      "Ejercicios propuestos",
+      "Agitación y mezclado",
+      "Ejercicio 2: Escalamiento de estanques agitados"
+    ]
+  },
+  {
+    "objectID": "e_prop/02_agitacion/e02_2.html#enunciado",
+    "href": "e_prop/02_agitacion/e02_2.html#enunciado",
+    "title": "Ejercicio 2: Escalamiento de estanques agitados",
+    "section": "",
+    "text": "Usted trabaja en un centro de investigación de aceites para uso industrial llamado Uncle Oil®. Recientemente, su jefe le ha pedido escalar su agitador piloto a uno industrial para masificar la producción de aceite de motor (ambos estanques cilíndricos). Considere que su agitador a escala piloto funciona a \\(400\\hspace{1mm}RPM\\), y que el motor con el que cuenta el centro de investigación para escala industrial alcanza los \\(230\\hspace{1mm}RPM\\). Usted sabe que el diámetro del agitador piloto es \\(D_{a,1}=15\\hspace{1mm}(cm)\\), y que las proporciones \\(S_i\\) se mantienen constantes e iguales a \\(S_1=1/3\\) y \\(S_6=3/2\\). El equipo de investigación reológica, le hace entrega de la figura a continuación. Determine lo siguiente: 1. Encuentre la temperatura a la cual deberá operar el estanque industrial para que este funcione a su máxima capacidad de revoluciones. Considerando que el estanque piloto se encontraba a \\(20\\hspace{1mm}°C\\). Asuma que se encuentra en régimen laminar. 2. Calcule el volumen del estanque industrial. Considere que el escalamiento es de velocidad de punta constante. 3. Calcule la potencia que utilizará este estanque si a escala industrial se utilizaban \\(3kW\\). Hint: el número de potencia se mantendrá constante.\n\n\n\n\n\n\n\n\n\nViscocidad dinámica vs temperatura\n\n\n\n\n\n\n\nDensidad vs temperatura",
+    "crumbs": [
+      "Ejercicios propuestos",
+      "Agitación y mezclado",
+      "Ejercicio 2: Escalamiento de estanques agitados"
+    ]
+  },
+  {
+    "objectID": "e_prop/02_agitacion/e02_2.html#solución",
+    "href": "e_prop/02_agitacion/e02_2.html#solución",
+    "title": "Ejercicio 2: Escalamiento de estanques agitados",
+    "section": "Solución",
+    "text": "Solución\n\nMostrar solución\n\n\n\n\nCode\n# Paquetes utilizados\nimport handcalcs.render\nfrom handcalcs import handcalc\nfrom math import pi\n\n\n\nInciso 1\nDel gráfico obtenemos que a \\(20\\hspace{1mm}°C\\) la viscosidad es \\(\\mu\\approx 280\\hspace{1mm}(cP)\\). Ya que nos encontramos en regimen laminar, tenemos que:\n\\[\n\\mu_1N_1^2 = \\mu_2N_2^2\n\\]\nEntonces despejando para \\(\\mu_2\\).\n\n\nCode\n%%render long\nmu_1 = 280 #cP\nN_1 = 400 #RPM\nN_2 = 230 #RPM\nmu_2 = mu_1*(N_1/N_2)**2 #cP\n\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nDel gráfico de viscosidades, notamos que para \\(\\mu=846.9\\hspace{1mm}(cP)\\) la temperatura debe ser \\(T\\approx 6\\hspace{1mm}°C\\).\n\n\nInciso 2\nSi el escalamiento se basa en una velocidad de punta constante:\n\\[\nD_{a,1}N_1=D_{a,2}N_2\n\\]\nEntonces,\n\n\nCode\n%%render long\nD_a1 = 0.15 # m\nD_a2 = D_a1*N_1/N_2 #m\nD_t2 = 3*D_a2 #m\nH_2 = 3/2*D_t2 #m\nV_2 = pi*(D_t2/2)**2*H_2 #m$^3$\n\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n\nInciso 3\nSe debe cumplir que el número de potencia es equivalente.\n\\[\nN_{p,1} = N_{p,2} \\Rightarrow \\frac{P_1}{\\rho_1N_1^3D_{a,1}^5} = \\frac{P_2}{\\rho_2N_2^3D_{a,2}^5}\n\\]\nRecordar que la temperatura del agitador industrial se encuentra aproximadamente a \\(6\\hspace{1mm}°C\\), a esa temperatura la densidad del aceite será \\(\\rho_2\\approx 887.5\\hspace{1mm}(kg/m^3)\\). Y en las condiciones iniciales a \\(20\\hspace{1mm}°C\\) la densidad \\(\\rho_1\\approx 878\\hspace{1mm}(kg/m^3)\\).\n\n\nCode\n%%render long\nP_1 = 3 #kW\nrho_1 = 878 #kg/m$^3$\nrho_2 = 887.5 #kg/m$^3$\nP_2 = P_1*(rho_2*(N_2/60)**3*D_a2**5)/(rho_1*(N_1/60)**3*D_a1**5) #kW\n\n\n&lt;IPython.core.display.Latex object&gt;",
+    "crumbs": [
+      "Ejercicios propuestos",
+      "Agitación y mezclado",
+      "Ejercicio 2: Escalamiento de estanques agitados"
+    ]
+  },
+  {
     "objectID": "e_prop/01_FNN/jupyter/e01_1.html",
     "href": "e_prop/01_FNN/jupyter/e01_1.html",
     "title": "Solución",
@@ -177,6 +220,49 @@
       "Fluidos no Newtonianos",
       "Ejercicio 1: Fluidos pseudoplásticos y dilatantes"
     ]
+  },
+  {
+    "objectID": "e_prop/02_agitacion/e02_1.html",
+    "href": "e_prop/02_agitacion/e02_1.html",
+    "title": "Ejercicio 1: Estanques agitados",
+    "section": "",
+    "text": "Lo contrataron en una empresa de apicultores como ingeniero químico encargado de procesos. Su primer trabajo, será estudiar el comportamiento de la miel en un estanque agitado. Los investigadores hicieron un análisis reológico de la miel que se produce, y obtuvieron experimentalmente que la densidad de esta miel es de \\(\\rho = 1360\\hspace{1mm}(kg/m^3)\\) y su viscocidad es de \\(\\mu = 5647\\hspace{1mm}(cP)\\). La empresa cuenta con un estanque con configuración estándar (\\(S_6 = 1\\)), cuya altura es de \\(H = 2.5\\hspace{1mm}(m)\\), considere que el estanque se llena a su máxima capacidad. Por útlimo, la empresa cuenta un un motor para el agitador con consumo de potencia de hasta 35 kW.\nResponda lo siguiente: 1. Elija el agitador que la empresa debería comprar para la miel. Discuta la opción de agregar deflectores. 2. La única configuración geométrica con la que cuenta el proveedor de agitadores es axial. En específico, este tiene disponible agitadores tipo A-2. Determine si el motor es adecuado para operar a \\(300 RPM\\). Asuma que \\(S_1 = 1/3\\). 3. Encuentre la velocidad de agitación máxima a la que puede operar este motor en las condiciones descritas. Asuma que la potencia es independiente del número de Reynolds. Compuebe si este supuesto es válido una vez obtenga el resultado. 4. Utilizando la velocidad de agitación máxima, obtenga el tiempo de mezclado considerando que se agregaron deflectores.",
+    "crumbs": [
+      "Ejercicios propuestos",
+      "Agitación y mezclado",
+      "Ejercicio 1: Estanques agitados"
+    ]
+  },
+  {
+    "objectID": "e_prop/02_agitacion/e02_1.html#enunciado",
+    "href": "e_prop/02_agitacion/e02_1.html#enunciado",
+    "title": "Ejercicio 1: Estanques agitados",
+    "section": "",
+    "text": "Lo contrataron en una empresa de apicultores como ingeniero químico encargado de procesos. Su primer trabajo, será estudiar el comportamiento de la miel en un estanque agitado. Los investigadores hicieron un análisis reológico de la miel que se produce, y obtuvieron experimentalmente que la densidad de esta miel es de \\(\\rho = 1360\\hspace{1mm}(kg/m^3)\\) y su viscocidad es de \\(\\mu = 5647\\hspace{1mm}(cP)\\). La empresa cuenta con un estanque con configuración estándar (\\(S_6 = 1\\)), cuya altura es de \\(H = 2.5\\hspace{1mm}(m)\\), considere que el estanque se llena a su máxima capacidad. Por útlimo, la empresa cuenta un un motor para el agitador con consumo de potencia de hasta 35 kW.\nResponda lo siguiente: 1. Elija el agitador que la empresa debería comprar para la miel. Discuta la opción de agregar deflectores. 2. La única configuración geométrica con la que cuenta el proveedor de agitadores es axial. En específico, este tiene disponible agitadores tipo A-2. Determine si el motor es adecuado para operar a \\(300 RPM\\). Asuma que \\(S_1 = 1/3\\). 3. Encuentre la velocidad de agitación máxima a la que puede operar este motor en las condiciones descritas. Asuma que la potencia es independiente del número de Reynolds. Compuebe si este supuesto es válido una vez obtenga el resultado. 4. Utilizando la velocidad de agitación máxima, obtenga el tiempo de mezclado considerando que se agregaron deflectores.",
+    "crumbs": [
+      "Ejercicios propuestos",
+      "Agitación y mezclado",
+      "Ejercicio 1: Estanques agitados"
+    ]
+  },
+  {
+    "objectID": "e_prop/02_agitacion/e02_1.html#solución",
+    "href": "e_prop/02_agitacion/e02_1.html#solución",
+    "title": "Ejercicio 1: Estanques agitados",
+    "section": "Solución",
+    "text": "Solución\n\nMostrar solución\n\n\n\n\nCode\n# Paquetes utilizados\nimport handcalcs.render\nfrom handcalcs import handcalc\nhandcalcs.set_option(\"latex_block_start\", \"$$\")\nhandcalcs.set_option(\"latex_block_end\", \"$$\")\nfrom math import pi\n\n\n\nInciso 1\nPara saber qué agitador utilizar, debemos saber el volumen del estanque y la viscosidad del fluido.\n\n\nCode\n%%render long\nS_6 = 1\nH = 2.5 #m\nD_t = H/S_6 #m\nV_t = pi*(D_t/2)**2*H #m$^3$\n\n\n\\[\n\\begin{aligned}\nS_{6} &= 1 \\;\n\\\\[10pt]\nH &= 2.500 \\; \\;\\textrm{(m)}\n\\\\[10pt]\nD_{t} &= \\frac{ H }{ S_{6} } \\\\&= \\frac{ 2.500 }{ 1 } \\\\&= 2.500 \\; \\;\\textrm{(m)}\\\\[10pt]\n\\\\[10pt]\nV_{t} &= \\pi \\cdot \\left( \\frac{ D_{t} }{ 2 } \\right) ^{ 2 } \\cdot H \\\\&= 3.142 \\cdot \\left( \\frac{ 2.500 }{ 2 } \\right) ^{ 2 } \\cdot 2.500 \\\\&= 12.272 \\; \\;\\textrm{(m$^3$)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nA continuación nos ubicamos en el gráfico.\n\n\n\nGráfico de turbinas\n\n\nObservamos que nos encontramos aproximadamente en un área donde es recomendable utilizar turbinas.\nEn cuanto a la utilización de deflectores, esta sí es combeniente ya que los agitadores de turbina no pasan cerca de la pared del estanque.\n\n\nInciso 2\nPara saber si el motor disponible es adecuado, debemos saber el consumo de potencia teórico que este tendría si opera a las condiciones descritas. Ya que tenemos el modelo, podemos utilizar el gráfico para recuperar el número de potencia. Calculamos el número de Reynolds\n\n\nCode\n%%render long\nmu = 5.647 #Pa$\\cdot$s\nrho = 1360 #kg/m$^3$\nN = 300/60 #RPS\nS_1 = 1/3\nD_a = S_1*D_t #m\nRe = (rho*N*D_a**2)/mu\n\n\n\\[\n\\begin{aligned}\n\\mu &= 5.647 \\; \\;\\textrm{(Pa$\\cdot$s)}\n\\\\[10pt]\n\\rho &= 1360 \\; \\;\\textrm{(kg/m$^3$)}\n\\\\[10pt]\nN &= \\frac{ 300 }{ 60 } &= 5.000 \\; \\;\\textrm{(RPS)}\n\\\\[10pt]\nS_{1} &= \\frac{ 1 }{ 3 } &= 0.333  \n\\\\[10pt]\nD_{a} &= S_{1} \\cdot D_{t} \\\\&= 0.333 \\cdot 2.500 \\\\&= 0.833 \\; \\;\\textrm{(m)}\\\\[10pt]\n\\\\[10pt]\n\\mathrm{Re} &= \\frac{ \\rho \\cdot N \\cdot \\left( D_{a} \\right) ^{ 2 } }{ \\mu } \\\\&= \\frac{ 1360 \\cdot 5.000 \\cdot \\left( 0.833 \\right) ^{ 2 } }{ 5.647 } \\\\&= 836.236  \\\\[10pt]\n\\end{aligned}\n\\]\n\n\nObtenemos el número de potencia utilizando el gráfico.\nA continuación nos ubicamos en el gráfico.\n\n\n\nNúmero de potencia vs número de Reynolds\n\n\nNotamos que para este valor de Reynolds y para el agitador seleccionado, el valor de \\(K\\) se encuentra en la zona de independencia de Reynolds, en donde \\(K=K_T\\approx 1.3\\). Sabemos que para esta sección, el consume de potencia es:\n\\[\nP = K_T\\rho N^3D_a^5\n\\]\n\n\nCode\n%%render long\nK_T = 1.3\nP = K_T*rho*N**3*D_a**5 #W\n\n\n\\[\n\\begin{aligned}\nK_{T} &= 1.300 \\;\n\\\\[10pt]\nP &= K_{T} \\cdot \\rho \\cdot \\left( N \\right) ^{ 3 } \\cdot \\left( D_{a} \\right) ^{ 5 } \\\\&= 1.300 \\cdot 1360 \\cdot \\left( 5.000 \\right) ^{ 3 } \\cdot \\left( 0.833 \\right) ^{ 5 } \\\\&= 88814.943 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nPodemos observar que \\(35\\hspace{1mm}kW&lt;88.8\\hspace{1mm}kW\\). Por la tanto el motor no esta apto para trabajar en dichas condiciones.\n\n\nInciso 3\nNos dicen que asumamos que el número de potencia es independiente del número de Reynolds. Luego \\(n=0\\) en:\n\\[\nNp = K\\cdot Re^n\n\\]\nA partir de esto trabajamos en el supuesto de que \\(K\\) es constante e igual a \\(K_T\\). Entonces podemos despejar \\(N\\).\n\\[\nN = \\sqrt[3]{\\frac{P}{K_T\\rho D_a^5}}\n\\]\n\n\nCode\n%%render long\nP_max = 35000 #W\nN_max = (P_max/(K_T*rho*D_a**5))**(1/3) #RPS\n\n\n\\[\n\\begin{aligned}\nP_{max} &= 35000 \\; \\;\\textrm{(W)}\n\\\\[10pt]\nN_{max} &= \\left( \\frac{ P_{max} }{ K_{T} \\cdot \\rho \\cdot \\left( D_{a} \\right) ^{ 5 } } \\right) ^{ \\left( \\frac{ 1 }{ 3 } \\right) } \\\\&= \\left( \\frac{ 35000 }{ 1.300 \\cdot 1360 \\cdot \\left( 0.833 \\right) ^{ 5 } } \\right) ^{ \\left( \\frac{ 1 }{ 3 } \\right) } \\\\&= 3.666 \\; \\;\\textrm{(RPS)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nCode\nprint(f\"La velocidad máxima de agitación es de {N_max*60:g} RPM\")\n\n\nLa velocidad máxima de agitación es de 219.946 RPM\n\n\nComprobamos si nuestro supuesto para \\(K_T\\) es correcto mediante el número de Reynolds.\n\n\nCode\n%%render long\nRe = (rho*N_max*D_a**2)/mu\n\n\n\\[\n\\begin{aligned}\n\\mathrm{Re} &= \\frac{ \\rho \\cdot N_{max} \\cdot \\left( D_{a} \\right) ^{ 2 } }{ \\mu } \\\\&= \\frac{ 1360 \\cdot 3.666 \\cdot \\left( 0.833 \\right) ^{ 2 } }{ 5.647 } \\\\&= 613.088  \\\\[10pt]\n\\end{aligned}\n\\]\n\n\nA partir del gráfico comprobamos que, para un agitador con geometría A-2, el supuesto es válido para el cambio de las revoluciones por minuto.\n\n\nInciso 4\nTenemos el siguiente gráfico que relciona el factor de tiempo de mezclado \\((N\\times t_M)\\) con el número de Reynolds.\nA continuación nos ubicamos en el gráfico.\n\n\n\nFactor de tiempo vs número de Reynolds\n\n\nObtenemos que \\(N\\times t_M \\approx 80\\). Luego calculamos el tiempo de mezclado.\n\n\nCode\n%%render long\nt_m = 80/N_max #s\n\n\n\\[\n\\begin{aligned}\nt_{m} &= \\frac{ 80 }{ N_{max} } \\\\&= \\frac{ 80 }{ 3.666 } \\\\&= 21.824 \\; \\;\\textrm{(s)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nEl tiempo de mezclado será de 21.8 segundos.",
+    "crumbs": [
+      "Ejercicios propuestos",
+      "Agitación y mezclado",
+      "Ejercicio 1: Estanques agitados"
+    ]
+  },
+  {
+    "objectID": "e_prop/02_agitacion/jupyter/e02_1.html",
+    "href": "e_prop/02_agitacion/jupyter/e02_1.html",
+    "title": "Solución",
+    "section": "",
+    "text": "# Paquetes utilizados\nimport handcalcs.render\nfrom handcalcs import handcalc\nfrom math import pi\n\n\nInciso 1\nPara saber qué agitador utilizar, debemos saber el volumen del estanque y la viscosidad del fluido.\n\n%%render long\nS_6 = 1\nH = 2.5 #m\nD_t = H/S_6 #m\nV_t = pi*(D_t/2)**2*H #m$^3$\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nObservamos que nos encontramos aproximadamente en un área donde es recomendable utilizar turbinas.\nEn cuanto a la utilización de deflectores, esta sí es combeniente ya que los agitadores de turbina no pasan cerca de la pared del estanque.\n\n\nInciso 2\nPara saber si el motor disponible es adecuado, debemos saber el consumo de potencia teórico que este tendría si opera a las condiciones descritas. Ya que tenemos el modelo, podemos utilizar el gráfico para recuperar el número de potencia. Calculamos el número de Reynolds\n\n%%render long\nmu = 5.647 #Pa$\\cdot$s\nrho = 1360 #kg/m$^3$\nN = 300/60 #RPS\nS_1 = 1/3\nD_a = S_1*D_t #m\nRe = (rho*N*D_a**2)/mu\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nNotamos que para este valor de Reynolds y para el agitador seleccionado, el valor de \\(K\\) se encuentra en la zona de independencia de Reynolds, en donde \\(K=K_T\\approx 1.3\\). Sabemos que para esta sección, el consume de potencia es:\n\\[\nP = K_T\\rho N^3D_a^5\n\\]\n\n%%render long\nK_T = 1.3\nP = K_T*rho*N**3*D_a**5 #W\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPodemos observar que \\(35\\hspace{1mm}kW&lt;88.8\\hspace{1mm}kW\\). Por la tanto el motor no esta apto para trabajar en dichas condiciones.\n\n\nInciso 3\nNos dicen que asumamos que el número de potencia es independiente del número de Reynolds. Luego \\(n=0\\) en:\n\\[\nNp = K\\cdot Re^n\n\\]\nA partir de esto trabajamos en el supuesto de que \\(K\\) es constante e igual a \\(K_T\\). Entonces podemos despejar \\(N\\).\n\\[\nN = \\sqrt[3]{\\frac{P}{K_T\\rho D_a^5}}\n\\]\n\n%%render long\nP_max = 35000 #W\nN_max = (P_max/(K_T*rho*D_a**5))**(1/3) #RPS\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\nprint(f\"La velocidad máxima de agitación es de {N_max*60:g} RPM\")\n\nLa velocidad máxima de agitación es de 219.946 RPM\n\n\nComprobamos si nuestro supuesto para \\(K_T\\) es correcto mediante el número de Reynolds.\n\n%%render long\nRe = (rho*N_max*D_a**2)/mu\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nA partir del gráfico comprobamos que, para un agitador con geometría A-2, el supuesto es válido para el cambio de las revoluciones por minuto.\n\n\nInciso 4\nObtenemos que \\(N\\times t_M \\approx 80\\). Luego calculamos el tiempo de mezclado.\n\n%%render long\nt_m = 80/N_max #s\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nEl tiempo de mezclado será de 21.8 segundos."
   },
   {
     "objectID": "e_prop/intro.html",
