@@ -319,7 +319,13 @@ window.Quarto = {
 
 <section id="enunciado" class="level2">
 <h2 class="anchored" data-anchor-id="enunciado">Enunciado</h2>
-<p>Usted trabaja en un centro de investigación de aceites para uso industrial llamado Uncle Oil®. Recientemente, su jefe le ha pedido escalar su agitador piloto a uno industrial para masificar la producción de aceite de motor (ambos estanques cilíndricos). Considere que su agitador a escala piloto funciona a <span class="math inline">\(400\hspace{1mm}RPM\)</span>, y que el motor con el que cuenta el centro de investigación para escala industrial alcanza los <span class="math inline">\(230\hspace{1mm}RPM\)</span>. Usted sabe que el diámetro del agitador piloto es <span class="math inline">\(D_{a,1}=15\hspace{1mm}(cm)\)</span>, y que las proporciones <span class="math inline">\(S_i\)</span> se mantienen constantes e iguales a <span class="math inline">\(S_1=1/3\)</span> y <span class="math inline">\(S_6=3/2\)</span>. El equipo de investigación reológica, le hace entrega de la figura a continuación. Determine lo siguiente: 1. Encuentre la temperatura a la cual deberá operar el estanque industrial para que este funcione a su máxima capacidad de revoluciones. Considerando que el estanque piloto se encontraba a <span class="math inline">\(20\hspace{1mm}°C\)</span>. Asuma que se encuentra en régimen laminar. 2. Calcule el volumen del estanque industrial. Considere que el escalamiento es de velocidad de punta constante. 3. Calcule la potencia que utilizará este estanque si a escala industrial se utilizaban <span class="math inline">\(3kW\)</span>. <em>Hint: el número de potencia se mantendrá constante.</em></p>
+<p>Usted trabaja en un centro de investigación de aceites para uso industrial llamado Uncle Oil®. Recientemente, su jefe le ha pedido escalar su agitador piloto a uno industrial para masificar la producción de aceite de motor (ambos estanques cilíndricos). Considere que su agitador a escala piloto funciona a <span class="math inline">\(400\hspace{1mm}RPM\)</span>, y que el motor con el que cuenta el centro de investigación para escala industrial alcanza los <span class="math inline">\(230\hspace{1mm}RPM\)</span>. Usted sabe que el diámetro del agitador piloto es <span class="math inline">\(D_{a,1}=15\hspace{1mm}(cm)\)</span>, y que las proporciones <span class="math inline">\(S_i\)</span> se mantienen constantes e iguales a <span class="math inline">\(S_1=1/3\)</span> y <span class="math inline">\(S_6=3/2\)</span>. El equipo de investigación reológica, le hace entrega de la figura a continuación.</p>
+<p>Determine lo siguiente:</p>
+<ol type="1">
+<li>Encuentre la temperatura a la cual deberá operar el estanque industrial para que este funcione a su máxima capacidad de revoluciones. Considerando que el estanque piloto se encontraba a <span class="math inline">\(20\hspace{1mm}°C\)</span>. Asuma que se encuentra en régimen laminar.</li>
+<li>Calcule el volumen del estanque industrial. Considere que el escalamiento es de velocidad de punta constante.</li>
+<li>Calcule la potencia que utilizará este estanque si a escala industrial se utilizaban <span class="math inline">\(3kW\)</span>. <em>Hint: el número de potencia se mantendrá constante.</em></li>
+</ol>
 <div>
 
 </div>
@@ -328,7 +334,7 @@ window.Quarto = {
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/img02_2-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="./images/img02_2-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
 <figcaption>Viscocidad dinámica vs temperatura</figcaption>
 </figure>
 </div>
@@ -336,7 +342,7 @@ window.Quarto = {
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/img02_2-2.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="./images/img02_2-2.png" class="img-fluid figure-img" style="width:95.0%"></p>
 <figcaption>Densidad vs temperatura</figcaption>
 </figure>
 </div>
@@ -350,13 +356,15 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e02_2-sol" class="collapse multi-collapse">
-<div id="ead01f48" class="cell" data-execution_count="1">
+<div id="ee1e0955" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquetes utilizados</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="inciso-1" class="level3">
@@ -366,7 +374,7 @@ Mostrar solución
 \mu_1N_1^2 = \mu_2N_2^2
 \]</span></p>
 <p>Entonces despejando para <span class="math inline">\(\mu_2\)</span>.</p>
-<div id="8dc59fc4" class="cell" data-execution_count="2">
+<div id="857a6a20" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -375,8 +383,18 @@ Mostrar solución
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>N_2 <span class="op">=</span> <span class="dv">230</span> <span class="co">#RPM</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>mu_2 <span class="op">=</span> mu_1<span class="op">*</span>(N_1<span class="op">/</span>N_2)<span class="op">**</span><span class="dv">2</span> <span class="co">#cP</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mu_{1} &amp;= 280 \; \;\textrm{(cP)}
+\\[10pt]
+N_{1} &amp;= 400 \; \;\textrm{(RPM)}
+\\[10pt]
+N_{2} &amp;= 230 \; \;\textrm{(RPM)}
+\\[10pt]
+\mu_{2} &amp;= \mu_{1} \cdot \left( \frac{ N_{1} }{ N_{2} } \right) ^{ 2 } \\&amp;= 280 \cdot \left( \frac{ 400 }{ 230 } \right) ^{ 2 } \\&amp;= 846.881 \; \;\textrm{(cP)}\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Del gráfico de viscosidades, notamos que para <span class="math inline">\(\mu=846.9\hspace{1mm}(cP)\)</span> la temperatura debe ser <span class="math inline">\(T\approx 6\hspace{1mm}°C\)</span>.</p>
@@ -388,18 +406,30 @@ Mostrar solución
 D_{a,1}N_1=D_{a,2}N_2
 \]</span></p>
 <p>Entonces,</p>
-<div id="db519532" class="cell" data-execution_count="3">
+<div id="baf0546f" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>D_a1 <span class="op">=</span> <span class="fl">0.15</span> <span class="co"># m</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>D_a2 <span class="op">=</span> D_a1<span class="op">*</span>N_1<span class="op">/</span>N_2 <span class="co">#m</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>D_t2 <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>D_a2 <span class="co">#m</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>H_2 <span class="op">=</span> <span class="dv">3</span><span class="op">/</span><span class="dv">2</span><span class="op">*</span>D_t2 <span class="co">#m</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>V_2 <span class="op">=</span> pi<span class="op">*</span>(D_t2<span class="op">/</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span><span class="op">*</span>H_2 <span class="co">#m$^3$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D_a1 <span class="op">=</span> <span class="fl">0.15</span> <span class="co"># m</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>D_a2 <span class="op">=</span> D_a1<span class="op">*</span>N_1<span class="op">/</span>N_2 <span class="co">#m</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>D_t2 <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>D_a2 <span class="co">#m</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>H_2 <span class="op">=</span> <span class="dv">3</span><span class="op">/</span><span class="dv">2</span><span class="op">*</span>D_t2 <span class="co">#m</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>V_2 <span class="op">=</span> pi<span class="op">*</span>(D_t2<span class="op">/</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span><span class="op">*</span>H_2 <span class="co">#m$^3$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+D_{a1} &amp;= 0.150 \; \;\textrm{(m)}
+\\[10pt]
+D_{a2} &amp;= D_{a1} \cdot \frac{ N_{1} }{ N_{2} } \\&amp;= 0.150 \cdot \frac{ 400 }{ 230 } \\&amp;= 0.261 \; \;\textrm{(m)}\\[10pt]
+\\[10pt]
+D_{t2} &amp;= 3 \cdot D_{a2} \\&amp;= 3 \cdot 0.261 \\&amp;= 0.783 \; \;\textrm{(m)}\\[10pt]
+\\[10pt]
+H_{2} &amp;= \frac{ 3 }{ 2 } \cdot D_{t2} \\&amp;= \frac{ 3 }{ 2 } \cdot 0.783 \\&amp;= 1.174 \; \;\textrm{(m)}\\[10pt]
+\\[10pt]
+V_{2} &amp;= \pi \cdot \left( \frac{ D_{t2} }{ 2 } \right) ^{ 2 } \cdot H_{2} \\&amp;= 3.142 \cdot \left( \frac{ 0.783 }{ 2 } \right) ^{ 2 } \cdot 1.174 \\&amp;= 0.565 \; \;\textrm{(m$^3$)}\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 </section>
@@ -410,17 +440,27 @@ D_{a,1}N_1=D_{a,2}N_2
 N_{p,1} = N_{p,2} \Rightarrow \frac{P_1}{\rho_1N_1^3D_{a,1}^5} = \frac{P_2}{\rho_2N_2^3D_{a,2}^5}
 \]</span></p>
 <p>Recordar que la temperatura del agitador industrial se encuentra aproximadamente a <span class="math inline">\(6\hspace{1mm}°C\)</span>, a esa temperatura la densidad del aceite será <span class="math inline">\(\rho_2\approx 887.5\hspace{1mm}(kg/m^3)\)</span>. Y en las condiciones iniciales a <span class="math inline">\(20\hspace{1mm}°C\)</span> la densidad <span class="math inline">\(\rho_1\approx 878\hspace{1mm}(kg/m^3)\)</span>.</p>
-<div id="9ce4a1e6" class="cell" data-execution_count="4">
+<div id="2aad4abb" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>P_1 <span class="op">=</span> <span class="dv">3</span> <span class="co">#kW</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>rho_1 <span class="op">=</span> <span class="dv">878</span> <span class="co">#kg/m$^3$</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>rho_2 <span class="op">=</span> <span class="fl">887.5</span> <span class="co">#kg/m$^3$</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>P_2 <span class="op">=</span> P_1<span class="op">*</span>(rho_2<span class="op">*</span>(N_2<span class="op">/</span><span class="dv">60</span>)<span class="op">**</span><span class="dv">3</span><span class="op">*</span>D_a2<span class="op">**</span><span class="dv">5</span>)<span class="op">/</span>(rho_1<span class="op">*</span>(N_1<span class="op">/</span><span class="dv">60</span>)<span class="op">**</span><span class="dv">3</span><span class="op">*</span>D_a1<span class="op">**</span><span class="dv">5</span>) <span class="co">#kW</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>P_1 <span class="op">=</span> <span class="dv">3</span> <span class="co">#kW</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>rho_1 <span class="op">=</span> <span class="dv">878</span> <span class="co">#kg/m$^3$</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>rho_2 <span class="op">=</span> <span class="fl">887.5</span> <span class="co">#kg/m$^3$</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>P_2 <span class="op">=</span> P_1<span class="op">*</span>(rho_2<span class="op">*</span>(N_2<span class="op">/</span><span class="dv">60</span>)<span class="op">**</span><span class="dv">3</span><span class="op">*</span>D_a2<span class="op">**</span><span class="dv">5</span>)<span class="op">/</span>(rho_1<span class="op">*</span>(N_1<span class="op">/</span><span class="dv">60</span>)<span class="op">**</span><span class="dv">3</span><span class="op">*</span>D_a1<span class="op">**</span><span class="dv">5</span>) <span class="co">#kW</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+P_{1} &amp;= 3 \; \;\textrm{(kW)}
+\\[10pt]
+\rho_{1} &amp;= 878 \; \;\textrm{(kg/m$^3$)}
+\\[10pt]
+\rho_{2} &amp;= 887.500 \; \;\textrm{(kg/m$^3$)}
+\\[10pt]
+P_{2} &amp;= P_{1} \cdot \frac{ \rho_{2} \cdot \left( \frac{ N_{2} }{ 60 } \right) ^{ 3 } \cdot \left( D_{a2} \right) ^{ 5 } }{ \rho_{1} \cdot \left( \frac{ N_{1} }{ 60 } \right) ^{ 3 } \cdot \left( D_{a1} \right) ^{ 5 } } \\&amp;= 3 \cdot \frac{ 887.500 \cdot \left( \frac{ 230 }{ 60 } \right) ^{ 3 } \cdot \left( 0.261 \right) ^{ 5 } }{ 878 \cdot \left( \frac{ 400 }{ 60 } \right) ^{ 3 } \cdot \left( 0.150 \right) ^{ 5 } } \\&amp;= 9.172 \; \;\textrm{(kW)}\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 </section>
