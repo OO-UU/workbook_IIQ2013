@@ -5,7 +5,8 @@ format:
       code-copy: true
       code-fold: true
       code-links: 
-        - text: "Repositorio"
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
           href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/00_bernoulli/jupyter/e00_2.ipynb
 
 execute: 
@@ -24,6 +25,7 @@ Luego del proceso final de refinación de petróleo, se obtiene un fluido en fas
 ![Sistema de tuberías y estanques](./images/img00_2.png){width="60%"}
 
 ::: {.callaout-note}
+
 ## Información sobre la figura
 
 Las entradas a las tuberías desde los estanques son afiladas. La tubería que sale del estanque A baja hasta llegar a un codo recto. Finalmente, asuma que las pérdidas asociadas a la intersección son despreciables.

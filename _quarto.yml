@@ -7,7 +7,7 @@ website:
   repo-url: https://github.com/OO-UU/workbook_IIQ2013
   search: 
     location: sidebar
-    type: overlay
+    type: textbox
   back-to-top-navigation: false
   
   navbar:
@@ -20,9 +20,6 @@ website:
   sidebar: 
     - title: "Ejercicios propuestos"
       logo: logo.png
-      tools: 
-        - icon: github
-          href: https://github.com/OO-UU/workbook_IIQ2013
       contents:
         - ./e_prop/intro.qmd
         - text: "---"
@@ -34,7 +31,9 @@ website:
 
 format:
   html:
-    theme: flatly
+    theme:
+      light: flatly
+      dark: darkly
     css: styles.css
     toc: true
     grid: 
@@ -42,5 +41,3 @@ format:
       sidebar-width: 300px
       margin-width: 200px
       gutter-width: 1em
-
-
