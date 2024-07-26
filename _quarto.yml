@@ -38,8 +38,8 @@ format:
     css: styles.css
     toc: true
     grid: 
-      body-width: 950px
-      sidebar-width: 350px
+      body-width: 1000px
+      sidebar-width: 300px
       margin-width: 200px
       gutter-width: 0.5em
 
