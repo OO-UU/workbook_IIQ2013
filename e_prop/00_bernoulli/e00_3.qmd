@@ -1,0 +1,171 @@
+---
+title: 'Ejercicio 3: Bombas y eficiencia'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/00_bernoulli/jupyter/e00_3.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+
+
+## Enunciado
+
+Entra benceno a $37.8~\text{°C}$ el cual debe ser bombeado a caudal $11~\text{m}^3\text{/h}$. El modelo de la bomba es tipo $3656/3756~\text{Grupo-S}$, con un rodete $\text{B}$ de diámetro $7.75~\text{in}$. El benceno se transporta desde un estanque hasta otro tal y como muestra la figura. Ambos estanques se encuentran a $3~\text{atm}$. La altura entre los puntos $\text{a'}$ y $\text{a}$ es $10~\text{m}$ y la altura entre los puntos $\text{b}$ y $\text{b'}$ es de $2~\text{m}$. Las tuberías tienen un diámetro de $12~\text{cm}$. La densidad del benceno a la temperatura de operación es de $865~\text{kg/m}^3$ y su presión de vapor es $26.2~\text{kPa}$. Si la altura asociada a las perdidas por fricción es $h_f = 3~\text{m}$ y los codos son codos cuadrados.
+
+![Sistema de tuberías y bomba](./images/img00_3.png){width="60%"}
+
+Responda lo siguiente:
+
+1. Demuestre la ecuación que describe el trabajo de la bomba ($\eta W_p$) a partir de las ecuaciones de bernoulli para los puntos $\text{a'-a}$, $\text{a-b}$ y $\text{b-b'}$.
+2. Encuentre la altura de la bomba ($h_B$) en $\text{m}$.
+3. Calcule la potencia requerida por la bomba ($P_m$) en $\text{W}$.
+4. Determine si la bomba cavita considerando que la altura asociada a las perdidas por fricción entre $\text{a'}$ y $\text{a}$ contribuyen $2/3$ de las pérdidas totales por fricción.
+
+
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e00_3-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e00_3-sol .collapse .multi-collapse}
+
+```{python}
+import handcalcs.render
+handcalcs.set_option("custom_symbols",{"ap": "a'", "bp": "b'", "eta": "\eta ", "dotm": "\dot m"})
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+from numpy import pi
+```
+
+### Inciso 1
+
+Para el primer tramo ($\text{a'-a}$), la ecuación de bernoulli será:
+
+$$
+\left(\frac{P_{a'}}{\rho} + g\cdot Z_{a'} + \frac{V_{a'}^2}{2}\right) = \left(\frac{P_a}{\rho} + g\cdot Z_a + \frac{V_a^2}{2}\right) + \left(\phi_s+\phi_f\right)_{a'-a}
+$$
+
+Para el tramo $\text{a-b}$:
+
+$$
+\left(\frac{P_{a}}{\rho} + g\cdot Z_{a} + \frac{V_{a}^2}{2}\right) = \left(\frac{P_b}{\rho} + g\cdot Z_b + \frac{V_b^2}{2}\right) - \eta W_p
+$$
+
+Por último, para el tramo $\text{b-b'}$:
+
+$$
+\left(\frac{P_{b}}{\rho} + g\cdot Z_{b} + \frac{V_{b}^2}{2}\right) = \left(\frac{P_{b'}}{\rho} + g\cdot Z_{b'} + \frac{V_{b'}^2}{2}\right) + \left(\phi_s+\phi_f\right)_{b-b'}
+$$
+
+Despejando en la ecuación de bernoulli entre los puntos $\text{a-b}$.
+
+$$
+\left(\frac{P_{a'}}{\rho} + g\cdot Z_{a'} + \frac{V_{a'}^2}{2}\right) - \left(\phi_s+\phi_f\right)_{a'-a} = \left(\frac{P_{b'}}{\rho} + g\cdot Z_{b'} + \frac{V_{b'}^2}{2}\right) + \left(\phi_s+\phi_f\right)_{b-b'} - \eta W_p
+$$
+
+Luego, podemos entender la suma de las pérdidas de carga por fricción y singularidades entre $\text{a'-a}$ y $\text{b-b'}$ como las pérdidas de cargas en todo el sistema.
+
+$$
+\left(\phi_s+\phi_f\right)_{a'-b'} = \left(\phi_s+\phi_f\right)_{a'-a} + \left(\phi_s+\phi_f\right)_{b-b'}
+$$
+
+Finalmente llegamos a la última ecuación:
+
+$$
+\left(\frac{P_{a'}}{\rho} + g\cdot Z_{a'} + \frac{V_{a'}^2}{2}\right) = \left(\frac{P_{b'}}{\rho} + g\cdot Z_{b'} + \frac{V_{b'}^2}{2}\right) + \left(\phi_s+\phi_f\right)_{a'-b'} - \eta W_p
+$$
+
+Para que la ecuación sea consistente con la figura, consideremos que $Z_{a'}=0$ y que ambos estanques se encuentran a la misma presión ($3~\text{atm}$), la cual será la referencia $P_{a'}=P_{b'}=0$. Además, el punto $\text{a'}$ se considera sin movimiento ($V_{a'}=0$) por el supuesto de estanque muy grande. Reordenando:
+
+$$
+\eta W_p = \left(g\cdot Z_{b'} + \frac{V_{b'}^2}{2}\right) + \left(\phi_s+\phi_f\right)_{a'-b'}
+$$
+
+Luego, reemplazando las pérdidas de carga y asumiendo que la velocidad el todo el sistema (excluyendo el estanque) es constante:
+
+$$
+\eta W_p = g\cdot Z_{b'} + \left(1 + 4f\left(\frac{L}{D_e}\right) + K \right)\frac{V^2}{2}
+$$
+
+### Inciso 2
+
+Ya que en el enunciado nos entregan las pérdidas de carga por fricción en $\text{m}$, escribmos la función para $\eta W_p$ de la siguiente manera:
+
+$$
+\eta W_p = g\cdot Z_{b'} + \left(1 + K \right)\frac{8Q^2}{\pi^2D^4} + g\cdot h_f
+$$
+
+```{python}
+%%render params
+g = 9.81 #m/s$^2$
+Z_bp = 10-2 #m
+D = 12/100 #m
+K_codo = 1.2
+K_salida = 0.5
+K_entrada = 1.0
+Q = 11/3600 #m$^3$/s
+h_f = 3 #m
+rho = 865  #kg/m$^3$
+```
+
+```{python}
+%%render long
+etaW_p = g*Z_bp + (1 + (K_salida + 4*K_codo + K_entrada))*(8*Q**2)/(pi**2*D**4) + g*h_f #J/kg
+```
+
+```{python}
+%%render long
+h_B = etaW_p/g #m
+```
+
+### Inciso 3
+
+Del gráfico para la bomba tipo $3656/3756~\text{Grupo-S}$ con rodete $\text{B}$ de diámetro $7.75~\text{in}$, vemos que para un caudal de $11~\text{m}^3\text{/h}$ la eficiencia es aproximadamente de un $\eta = 65~\%$.
+
+La fórmula para la potencia requerida puede ser escrita como:
+
+$$
+P_B = \dot{m}W_p
+$$
+
+```{python}
+%%render long
+eta = 0.65
+dotm = Q*rho #kg/s
+P_B = dotm*etaW_p/eta #W
+```
+
+### Inciso 4
+
+Debemos compara $\text{NPSH}_d$ con $\text{NPSH}_r$. Del gráfico, $\text{NPSH}_r \approx 17.5~\text{m}$.
+
+Para la $\text{NPSH}_d$ sabemos que:
+
+$$
+\text{NPSH}_d = \frac{P_{a'}-P_v}{\rho g} - z_a - \left(1 + K \right)\frac{8Q^2}{g\pi^2D^4} - h_{f,a'-a}
+$$
+
+```{python}
+%%render params
+P_v = 26.2*1000 #Pa
+P_ap = 3*101325 #Pa
+z_a = 10 #m
+h_f = 2 #m
+```
+
+```{python}
+%%render long
+NPSH_d = (P_ap-P_v)/(rho*g) - z_a - (1+(K_salida+4*K_codo+K_entrada))*(8*Q**2)/(g*pi**2*D**4) - h_f #m
+```
+
+Ya que $\text{NPSH}_d>\text{NPSH}_r$, la bomba no cavita.
+
+:::
