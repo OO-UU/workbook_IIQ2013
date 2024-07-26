@@ -135,7 +135,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -156,7 +156,7 @@ window.Quarto = {
 <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../e_prop/intro.html"> 
+    <a class="nav-link active" href="../../e_prop/intro.html" aria-current="page"> 
 <span class="menu-text">Ejercicios propuestos</span></a>
   </li>  
 </ul>
@@ -171,10 +171,79 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Tuberías y bombas</a></li><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_3.html">Ejercicio 3: Bombas y eficiencia</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_prop/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicios propuestos</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+ <span class="menu-text">Transporte de fluidos</span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Tuberías y bombas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_prop/00_bernoulli/e00_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio 1: Bernoulli</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_prop/00_bernoulli/e00_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio 2: Pérdidas por singularidades y fricción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_prop/00_bernoulli/e00_3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Ejercicio 3: Bombas y eficiencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -189,7 +258,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Tuberías y bombas</a></li><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_3.html">Ejercicio 3: Bombas y eficiencia</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Ejercicio 3: Bombas y eficiencia</h1>
 </div>
@@ -231,7 +300,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e00_3-sol" class="collapse multi-collapse">
-<div id="b4b58460" class="cell" data-execution_count="1">
+<div id="5d34b851" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
@@ -282,7 +351,7 @@ Mostrar solución
 <p><span class="math display">\[
 \eta W_p = g\cdot Z_{b'} + \left(1 + K \right)\frac{8Q^2}{\pi^2D^4} + g\cdot h_f
 \]</span></p>
-<div id="63173763" class="cell" data-execution_count="2">
+<div id="ac4fea18" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -315,7 +384,7 @@ Q &amp;= 0.003 \; \;\textrm{(m$^3$/s)}
 \]</span></p>
 </div>
 </div>
-<div id="4fa0e3e4" class="cell" data-execution_count="3">
+<div id="53efc139" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -329,7 +398,7 @@ Q &amp;= 0.003 \; \;\textrm{(m$^3$/s)}
 \]</span></p>
 </div>
 </div>
-<div id="6774abf0" class="cell" data-execution_count="4">
+<div id="698fd3b6" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -351,7 +420,7 @@ h_{B} &amp;= \frac{ \eta W_{p} }{ g } \\&amp;= \frac{ 108.176 }{ 9.810 } \\&amp;
 <p><span class="math display">\[
 P_B = \dot{m}W_p
 \]</span></p>
-<div id="6b69ee71" class="cell" data-execution_count="5">
+<div id="4361dee1" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -379,7 +448,7 @@ P_{B} &amp;= \dot m \cdot \frac{ \eta W_{p} }{ \eta  } \\&amp;= 2.643 \cdot \fra
 <p><span class="math display">\[
 \text{NPSH}_d = \frac{P_{a'}-P_v}{\rho g} - z_a - \left(1 + K \right)\frac{8Q^2}{g\pi^2D^4} - h_{f,a'-a}
 \]</span></p>
-<div id="a8e46091" class="cell" data-execution_count="6">
+<div id="c90d69d9" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -400,7 +469,7 @@ h_{f} &amp;= 2 \; \;\textrm{(m)}
 \]</span></p>
 </div>
 </div>
-<div id="c40d7df8" class="cell" data-execution_count="7">
+<div id="a52ac721" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
