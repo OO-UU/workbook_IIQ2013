@@ -28,6 +28,7 @@ website:
           contents: 
             - ./e_prop/00_bernoulli/e00_1.qmd
             - ./e_prop/00_bernoulli/e00_2.qmd
+            - ./e_prop/00_bernoulli/e00_3.qmd
 
 format:
   html:
