@@ -38,9 +38,9 @@ format:
     css: styles.css
     toc: true
     grid: 
-      body-width: 900px
+      body-width: 850px
       sidebar-width: 300px
       margin-width: 200px
-      gutter-width: 1em
+      gutter-width: 1.5em
 
 
