@@ -245,7 +245,6 @@ window.Quarto = {
    
   <ul>
   <li><a href="#enunciado" id="toc-enunciado" class="nav-link active" data-scroll-target="#enunciado">Enunciado</a></li>
-  <li><a href="#información-sobre-la-figura" id="toc-información-sobre-la-figura" class="nav-link" data-scroll-target="#información-sobre-la-figura">Información sobre la figura</a></li>
   <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/00_bernoulli/jupyter/e00_2.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
@@ -285,11 +284,20 @@ window.Quarto = {
 <figcaption>Sistema de tuberías y estanques</figcaption>
 </figure>
 </div>
-</section>
-<section id="información-sobre-la-figura" class="level2 callaout-note">
-<h2 class="anchored" data-anchor-id="información-sobre-la-figura">Información sobre la figura</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Información sobre la figura
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Las entradas a las tuberías desde los estanques son afiladas. La tubería que sale del estanque A baja hasta llegar a un codo recto. Finalmente, asuma que las pérdidas asociadas a la intersección son despreciables.</p>
 <p>Considere que todas las tuberías son de acero comercial (<span class="math inline">\(\epsilon=0.046\hspace{1mm}(mm)\)</span>). Además la tubería entre el estanque <strong>A</strong> y la intersección es de diámetro <span class="math inline">\(d_A=25\hspace{1mm}(cm)\)</span>, la tubería entre <strong>B</strong> y la intersección tiene <span class="math inline">\(d_B=27\hspace{1mm}(cm)\)</span> y, por último, la tubería entre la intersección y <strong>C</strong> es de <span class="math inline">\(d_C=40\hspace{1mm}(cm)\)</span>.</p>
+</div>
+</div>
 </section>
 <section id="solución" class="level2">
 <h2 class="anchored" data-anchor-id="solución">Solución</h2>
@@ -297,7 +305,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e00_2-sol" class="collapse multi-collapse">
-<div id="132e67c9" class="cell" data-execution_count="1">
+<div id="f328ad1e" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquetes utilizados</span></span>
@@ -334,7 +342,7 @@ Q_A + Q_B = Q_C
 \frac{\pi}{4}d_A^2u_A + \frac{\pi}{4}d_B^2u_B = \frac{\pi}{4}d_C^2u_C
 \]</span></p>
 <p>Al formar un sistema de 3 incógnitas y tres ecuaciones despejamos para los valores de las velocidades.</p>
-<div id="078f47f3" class="cell" data-execution_count="2">
+<div id="0866b4b5" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constantes de enunciado</span></span>
@@ -393,7 +401,7 @@ Q_A + Q_B = Q_C
 f = 0.001375\left(1 + \left(2\times10^4\frac{\epsilon}{D} + \frac{10^6}{Re}\right)^{\frac{1}{3}}\right)
 \]</span></p>
 <p>Vemos los valores de Reynolds.</p>
-<div id="503ed32a" class="cell" data-execution_count="3">
+<div id="3b4d0ee6" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Recordar que, del inciso anterior obtuvimos...</span></span>
@@ -413,7 +421,7 @@ f = 0.001375\left(1 + \left(2\times10^4\frac{\epsilon}{D} + \frac{10^6}{Re}\righ
 </div>
 </div>
 <p>Notamos que para esta iteración, los valores de Reynolds son turbulentos. Procedemos a utilizar la ecuación de Nevers.</p>
-<div id="995058d0" class="cell" data-execution_count="4">
+<div id="c10a622c" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="fl">0.0046</span></span>
