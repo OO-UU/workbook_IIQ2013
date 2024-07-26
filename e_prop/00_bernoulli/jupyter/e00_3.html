@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ejercicio 3: Bombas y eficiencia – IIQ2013</title>
+<title>Solución – IIQ2013</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,24 +57,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -132,7 +132,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -142,7 +142,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">IIQ2013</span>
     </a>
   </div>
@@ -152,11 +152,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../home.html"> 
+    <a class="nav-link" href="../../../home.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../e_prop/intro.html"> 
+    <a class="nav-link" href="../../../e_prop/intro.html"> 
 <span class="menu-text">Ejercicios propuestos</span></a>
   </li>  
 </ul>
@@ -181,17 +181,19 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#enunciado" id="toc-enunciado" class="nav-link active" data-scroll-target="#enunciado">Enunciado</a></li>
-  <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
+  <li><a href="#inciso-1" id="toc-inciso-1" class="nav-link active" data-scroll-target="#inciso-1">Inciso 1</a></li>
+  <li><a href="#inciso-2" id="toc-inciso-2" class="nav-link" data-scroll-target="#inciso-2">Inciso 2</a></li>
+  <li><a href="#inciso-3" id="toc-inciso-3" class="nav-link" data-scroll-target="#inciso-3">Inciso 3</a></li>
+  <li><a href="#inciso-4" id="toc-inciso-4" class="nav-link" data-scroll-target="#inciso-4">Inciso 4</a></li>
   </ul>
-<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/00_bernoulli/jupyter/e00_3.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ejercicio 3: Bombas y eficiencia</h1>
+<h1 class="title">Solución</h1>
 </div>
 
 
@@ -208,38 +210,10 @@ window.Quarto = {
 </header>
 
 
-<section id="enunciado" class="level2">
-<h2 class="anchored" data-anchor-id="enunciado">Enunciado</h2>
-<p>Entra benceno a <span class="math inline">\(37.8~\text{°C}\)</span> el cual debe ser bombeado a caudal <span class="math inline">\(11~\text{m}^3\text{/h}\)</span>. El modelo de la bomba es tipo <span class="math inline">\(3656/3756~\text{Grupo-S}\)</span>, con un rodete <span class="math inline">\(\text{B}\)</span> de diámetro <span class="math inline">\(7.75~\text{in}\)</span>. El benceno se transporta desde un estanque hasta otro tal y como muestra la figura. Ambos estanques se encuentran a <span class="math inline">\(3~\text{atm}\)</span>. La altura entre los puntos <span class="math inline">\(\text{a'}\)</span> y <span class="math inline">\(\text{a}\)</span> es <span class="math inline">\(10~\text{m}\)</span> y la altura entre los puntos <span class="math inline">\(\text{b}\)</span> y <span class="math inline">\(\text{b'}\)</span> es de <span class="math inline">\(2~\text{m}\)</span>. Las tuberías tienen un diámetro de <span class="math inline">\(12~\text{cm}\)</span>. La densidad del benceno a la temperatura de operación es de <span class="math inline">\(865~\text{kg/m}^3\)</span> y su presión de vapor es <span class="math inline">\(26.2~\text{kPa}\)</span>. Si la altura asociada a las perdidas por fricción es <span class="math inline">\(h_f = 3~\text{m}\)</span> y los codos son codos cuadrados.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/img00_3.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Sistema de tuberías y bomba</figcaption>
-</figure>
-</div>
-<p>Responda lo siguiente:</p>
-<ol type="1">
-<li>Demuestre la ecuación que describe el trabajo de la bomba (<span class="math inline">\(\eta W_p\)</span>) a partir de las ecuaciones de bernoulli para los puntos <span class="math inline">\(\text{a'-a}\)</span>, <span class="math inline">\(\text{a-b}\)</span> y <span class="math inline">\(\text{b-b'}\)</span>.</li>
-<li>Encuentre la altura de la bomba (<span class="math inline">\(h_B\)</span>) en <span class="math inline">\(\text{m}\)</span>.</li>
-<li>Calcule la potencia requerida por la bomba (<span class="math inline">\(P_m\)</span>) en <span class="math inline">\(\text{W}\)</span>.</li>
-<li>Determine si la bomba cavita considerando que la altura asociada a las perdidas por fricción entre <span class="math inline">\(\text{a'}\)</span> y <span class="math inline">\(\text{a}\)</span> contribuyen <span class="math inline">\(2/3\)</span> de las pérdidas totales por fricción.</li>
-</ol>
-</section>
-<section id="solución" class="level2">
-<h2 class="anchored" data-anchor-id="solución">Solución</h2>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#e00_3-sol" aria-expanded="false">
-Mostrar solución
-</button>
-<div id="e00_3-sol" class="collapse multi-collapse">
-<div id="b4b58460" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="c9a34481-477e-462f-8cea-f100ac6fc5a8" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"custom_symbols"</span>,{<span class="st">"ap"</span>: <span class="st">"a'"</span>, <span class="st">"bp"</span>: <span class="st">"b'"</span>, <span class="st">"eta"</span>: <span class="st">"\eta "</span>, <span class="st">"dotm"</span>: <span class="st">"\dot m"</span>})</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="inciso-1" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
@@ -282,9 +256,7 @@ Mostrar solución
 <p><span class="math display">\[
 \eta W_p = g\cdot Z_{b'} + \left(1 + K \right)\frac{8Q^2}{\pi^2D^4} + g\cdot h_f
 \]</span></p>
-<div id="63173763" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="4bd212a3-401e-4be7-a5fc-a564104b61c0" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span> <span class="co">#m/s$^2$</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Z_bp <span class="op">=</span> <span class="dv">10</span><span class="op">-</span><span class="dv">2</span> <span class="co">#m</span></span>
@@ -295,52 +267,22 @@ Mostrar solución
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> <span class="dv">11</span><span class="op">/</span><span class="dv">3600</span> <span class="co">#m$^3$/s</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>h_f <span class="op">=</span> <span class="dv">3</span> <span class="co">#m</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="dv">865</span>  <span class="co">#kg/m$^3$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-g &amp;= 9.810 \; \;\textrm{(m/s$^2$)}
-&amp;Z_{b'} &amp;= 8 \; \;\textrm{(m)}
-&amp;D &amp;= 0.120 \; \;\textrm{(m)}
-\\[10pt]
-K_{codo} &amp;= 1.200 \;
-&amp;K_{salida} &amp;= 0.500 \;
-&amp;K_{entrada} &amp;= 1.000 \;
-\\[10pt]
-Q &amp;= 0.003 \; \;\textrm{(m$^3$/s)}
-&amp;h_{f} &amp;= 3 \; \;\textrm{(m)}
-&amp;\rho &amp;= 865 \; \;\textrm{(kg/m$^3$)}
-\\[10pt]
-\end{aligned}
-\]</span></p>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
-<div id="4fa0e3e4" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>etaW_p <span class="op">=</span> g<span class="op">*</span>Z_bp <span class="op">+</span> (<span class="dv">1</span> <span class="op">+</span> (K_salida <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>K_codo <span class="op">+</span> K_entrada))<span class="op">*</span>(<span class="dv">8</span><span class="op">*</span>Q<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(pi<span class="op">**</span><span class="dv">2</span><span class="op">*</span>D<span class="op">**</span><span class="dv">4</span>) <span class="op">+</span> g<span class="op">*</span>h_f <span class="co">#J/kg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-\eta W_{p} &amp;= g \cdot Z_{b'} + \left( 1 + \left( K_{salida} + 4 \cdot K_{codo} + K_{entrada} \right) \right) \cdot \frac{ 8 \cdot \left( Q \right) ^{ 2 } }{ \left( \pi \right) ^{ 2 } \cdot \left( D \right) ^{ 4 } } + g \cdot h_{f} \\&amp;= 9.810 \cdot 8 + \left( 1 + \left( 0.500 + 4 \cdot 1.200 + 1.000 \right) \right) \cdot \frac{ 8 \cdot \left( 0.003 \right) ^{ 2 } }{ \left( 3.142 \right) ^{ 2 } \cdot \left( 0.120 \right) ^{ 4 } } + 9.810 \cdot 3 \\&amp;= 108.176 \; \;\textrm{(J/kg)}\\[10pt]
-\end{aligned}
-\]</span></p>
-</div>
-</div>
-<div id="6774abf0" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="2e389ba7-0205-430f-8a2a-7f9dfd9e1f54" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>h_B <span class="op">=</span> etaW_p<span class="op">/</span>g <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-h_{B} &amp;= \frac{ \eta W_{p} }{ g } \\&amp;= \frac{ 108.176 }{ 9.810 } \\&amp;= 11.027 \; \;\textrm{(m)}\\[10pt]
-\end{aligned}
-\]</span></p>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>etaW_p <span class="op">=</span> g<span class="op">*</span>Z_bp <span class="op">+</span> (<span class="dv">1</span> <span class="op">+</span> (K_salida <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>K_codo <span class="op">+</span> K_entrada))<span class="op">*</span>(<span class="dv">8</span><span class="op">*</span>Q<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(pi<span class="op">**</span><span class="dv">2</span><span class="op">*</span>D<span class="op">**</span><span class="dv">4</span>) <span class="op">+</span> g<span class="op">*</span>h_f <span class="co">#J/kg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+</div>
+</div>
+<div id="7585f708-4f07-430b-9820-9526e927daef" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>h_B <span class="op">=</span> etaW_p<span class="op">/</span>g <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -351,24 +293,13 @@ h_{B} &amp;= \frac{ \eta W_{p} }{ g } \\&amp;= \frac{ 108.176 }{ 9.810 } \\&amp;
 <p><span class="math display">\[
 P_B = \dot{m}W_p
 \]</span></p>
-<div id="6b69ee71" class="cell" data-execution_count="5">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>eta <span class="op">=</span> <span class="fl">0.65</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>dotm <span class="op">=</span> Q<span class="op">*</span>rho <span class="co">#kg/s</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>P_B <span class="op">=</span> dotm<span class="op">*</span>etaW_p<span class="op">/</span>eta <span class="co">#W</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-\eta  &amp;= 0.650 \;
-\\[10pt]
-\dot m &amp;= Q \cdot \rho \\&amp;= 0.003 \cdot 865 \\&amp;= 2.643 \; \;\textrm{(kg/s)}\\[10pt]
-\\[10pt]
-P_{B} &amp;= \dot m \cdot \frac{ \eta W_{p} }{ \eta  } \\&amp;= 2.643 \cdot \frac{ 108.176 }{ 0.650 } \\&amp;= 439.871 \; \;\textrm{(W)}\\[10pt]
-\end{aligned}
-\]</span></p>
+<div id="12ff90f3-f25b-4573-8e4b-dca1fea9e65c" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>eta <span class="op">=</span> <span class="fl">0.65</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>dotm <span class="op">=</span> Q<span class="op">*</span>rho <span class="co">#kg/s</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>P_B <span class="op">=</span> dotm<span class="op">*</span>etaW_p<span class="op">/</span>eta <span class="co">#W</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -379,44 +310,24 @@ P_{B} &amp;= \dot m \cdot \frac{ \eta W_{p} }{ \eta  } \\&amp;= 2.643 \cdot \fra
 <p><span class="math display">\[
 \text{NPSH}_d = \frac{P_{a'}-P_v}{\rho g} - z_a - \left(1 + K \right)\frac{8Q^2}{g\pi^2D^4} - h_{f,a'-a}
 \]</span></p>
-<div id="a8e46091" class="cell" data-execution_count="6">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>P_v <span class="op">=</span> <span class="fl">26.2</span><span class="op">*</span><span class="dv">1000</span> <span class="co">#Pa</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>P_ap <span class="op">=</span> <span class="dv">3</span><span class="op">*</span><span class="dv">101325</span> <span class="co">#Pa</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>z_a <span class="op">=</span> <span class="dv">10</span> <span class="co">#m</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>h_f <span class="op">=</span> <span class="dv">2</span> <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-P_{v} &amp;= 26200.000 \; \;\textrm{(Pa)}
-&amp;P_{a'} &amp;= 303975 \; \;\textrm{(Pa)}
-&amp;z_{a} &amp;= 10 \; \;\textrm{(m)}
-\\[10pt]
-h_{f} &amp;= 2 \; \;\textrm{(m)}
-\end{aligned}
-\]</span></p>
+<div id="65c2df93-52ff-40e8-a2e6-1dd270585421" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>P_v <span class="op">=</span> <span class="fl">26.2</span><span class="op">*</span><span class="dv">1000</span> <span class="co">#Pa</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>P_ap <span class="op">=</span> <span class="dv">3</span><span class="op">*</span><span class="dv">101325</span> <span class="co">#Pa</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>z_a <span class="op">=</span> <span class="dv">10</span> <span class="co">#m</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>h_f <span class="op">=</span> <span class="dv">2</span> <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
-<div id="c40d7df8" class="cell" data-execution_count="7">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>NPSH_d <span class="op">=</span> (P_ap<span class="op">-</span>P_v)<span class="op">/</span>(rho<span class="op">*</span>g) <span class="op">-</span> z_a <span class="op">-</span> (<span class="dv">1</span><span class="op">+</span>(K_salida<span class="op">+</span><span class="dv">4</span><span class="op">*</span>K_codo<span class="op">+</span>K_entrada))<span class="op">*</span>(<span class="dv">8</span><span class="op">*</span>Q<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(g<span class="op">*</span>pi<span class="op">**</span><span class="dv">2</span><span class="op">*</span>D<span class="op">**</span><span class="dv">4</span>) <span class="op">-</span> h_f <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-\mathrm{NPSH}_{d} &amp;= \frac{ P_{a'} - P_{v} }{ \rho \cdot g } - z_{a} - \left( 1 + \left( K_{salida} + 4 \cdot K_{codo} + K_{entrada} \right) \right) \cdot \frac{ 8 \cdot \left( Q \right) ^{ 2 } }{ g \cdot \left( \pi \right) ^{ 2 } \cdot \left( D \right) ^{ 4 } } - h_{f} \\&amp;= \frac{ 303975 - 26200.000 }{ 865 \cdot 9.810 } - 10 - \left( 1 + \left( 0.500 + 4 \cdot 1.200 + 1.000 \right) \right) \cdot \frac{ 8 \cdot \left( 0.003 \right) ^{ 2 } }{ 9.810 \cdot \left( 3.142 \right) ^{ 2 } \cdot \left( 0.120 \right) ^{ 4 } } - 2 \\&amp;= 20.708 \; \;\textrm{(m)}\\[10pt]
-\end{aligned}
-\]</span></p>
+<div id="5cf2c092-109c-4dc9-82b4-b748660dc909" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>NPSH_d <span class="op">=</span> (P_ap<span class="op">-</span>P_v)<span class="op">/</span>(rho<span class="op">*</span>g) <span class="op">-</span> z_a <span class="op">-</span> (<span class="dv">1</span><span class="op">+</span>(K_salida<span class="op">+</span><span class="dv">4</span><span class="op">*</span>K_codo<span class="op">+</span>K_entrada))<span class="op">*</span>(<span class="dv">8</span><span class="op">*</span>Q<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(g<span class="op">*</span>pi<span class="op">**</span><span class="dv">2</span><span class="op">*</span>D<span class="op">**</span><span class="dv">4</span>) <span class="op">-</span> h_f <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
 <p>Ya que <span class="math inline">\(\text{NPSH}_d&gt;\text{NPSH}_r\)</span>, la bomba no cavita.</p>
-</section>
-</div>
 
 
 </section>
