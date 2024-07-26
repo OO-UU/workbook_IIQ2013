@@ -209,7 +209,7 @@ window.Quarto = {
 </header>
 
 
-<div id="f955c899-4d58-4687-b48d-37e4bc5a268b" class="cell" data-execution_count="17">
+<div id="f955c899-4d58-4687-b48d-37e4bc5a268b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquetes utilizados</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> curve_fit</span>
@@ -244,7 +244,7 @@ v = \left(\frac{\tau_w}{k}\right)^{\frac{1}{n}}\frac{nR}{1+n}\left(1-\left(\frac
 \]</span></p>
 <p>Donde <span class="math inline">\(R\)</span> representa el radio de la tubería y <span class="math inline">\(r\)</span> el radio para un punto específico. Notar que <span class="math inline">\(R=r\)</span> en la pared.</p>
 <p>Ya que contamos con datos experimentales, podemos realizar una curva de ajuste que encuentre los parámetros de <span class="math inline">\(n\)</span> y de <span class="math inline">\(k\)</span> que mejor representan al fluido.</p>
-<div id="c237802c-8fb2-467d-b5ea-4c52fd3f3c66" class="cell" data-execution_count="38">
+<div id="c237802c-8fb2-467d-b5ea-4c52fd3f3c66" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definimos nuestra función</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> funcion_de_velocidad(r, n, k):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Del enunciado y del inciso anterior sabemos:</span></span>
@@ -262,7 +262,7 @@ v = \left(\frac{\tau_w}{k}\right)^{\frac{1}{n}}\frac{nR}{1+n}\left(1-\left(\frac
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>parametros_iniciales <span class="op">=</span> [<span class="dv">1</span>,<span class="fl">0.1</span>]  <span class="co"># (n,k)</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">## Ajuste</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>params, covarianza <span class="op">=</span> curve_fit(funcion_de_velocidad, r_exp, v_exp, p0<span class="op">=</span>parametros_iniciales)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>params, covarianza <span class="op">=</span> curve_fit(funcion_de_velocidad, r_exp, v_exp, p0<span class="op">=</span>parametros_iniciales, bounds<span class="op">=</span>(<span class="dv">0</span>,np.inf))</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">## Extraer los parámetros</span></span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>n_ajus, k_ajus <span class="op">=</span> params</span>
@@ -284,14 +284,10 @@ v = \left(\frac{\tau_w}{k}\right)^{\frac{1}{n}}\frac{nR}{1+n}\left(1-\left(\frac
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Parámetros ajustados"</span>)</span>
 <span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n:"</span>, <span class="ss">f'</span><span class="sc">{</span>n_ajus<span class="sc">:6f}</span><span class="ss">'</span>)</span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"k:"</span>, <span class="ss">f'</span><span class="sc">{</span>k_ajus<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">"(Pa*s^n)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\igtab\AppData\Local\Temp\ipykernel_20084\1857015476.py:7: RuntimeWarning: invalid value encountered in scalar power
-  return (tau_w/k)**(1/n)*(n*R/(1+n))*(1-(r/R)**(1/n+1))</code></pre>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="e01_1_files/figure-html/cell-3-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="e01_1_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -317,27 +313,27 @@ Re' = \frac{\rho\bar{V}D}{\mu_a}
 <p><span class="math display">\[
 \bar{V} = \frac{nR}{3n+1}\left(\frac{\tau_w}{k}\right)^{\frac{1}{n}}
 \]</span></p>
-<div id="6e901e73-bc1c-4895-97ec-101e1cd841ab" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="fl">1234.3</span> <span class="co">#kg/m3</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tau_w <span class="op">=</span> <span class="fl">1.9916</span> <span class="co">#Pa</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">0.1</span> <span class="co">#m</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>v_prom <span class="op">=</span> (n_ajus<span class="op">*</span>R)<span class="op">/</span>(<span class="dv">3</span><span class="op">*</span>n_ajus<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>(tau_w<span class="op">/</span>k_ajus)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span>n_ajus) <span class="co">#m/s</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>mu_a <span class="op">=</span> k_ajus<span class="op">*</span>((<span class="dv">3</span><span class="op">*</span>n_ajus<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">4</span><span class="op">*</span>n_ajus))<span class="op">**</span>n_ajus<span class="op">*</span>((<span class="dv">8</span><span class="op">*</span>v_prom)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>R))<span class="op">**</span>(n_ajus<span class="op">-</span><span class="dv">1</span>) <span class="co">#Pa*s</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>Re <span class="op">=</span> (rho<span class="op">*</span>v_prom<span class="op">*</span><span class="dv">2</span><span class="op">*</span>R)<span class="op">/</span>mu_a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6e901e73-bc1c-4895-97ec-101e1cd841ab" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="fl">1234.3</span> <span class="co">#kg/m3</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>tau_w <span class="op">=</span> <span class="fl">1.9916</span> <span class="co">#Pa</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">0.1</span> <span class="co">#m</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>v_prom <span class="op">=</span> (n_ajus<span class="op">*</span>R)<span class="op">/</span>(<span class="dv">3</span><span class="op">*</span>n_ajus<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>(tau_w<span class="op">/</span>k_ajus)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span>n_ajus) <span class="co">#m/s</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>mu_a <span class="op">=</span> k_ajus<span class="op">*</span>((<span class="dv">3</span><span class="op">*</span>n_ajus<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">4</span><span class="op">*</span>n_ajus))<span class="op">**</span>n_ajus<span class="op">*</span>((<span class="dv">8</span><span class="op">*</span>v_prom)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>R))<span class="op">**</span>(n_ajus<span class="op">-</span><span class="dv">1</span>) <span class="co">#Pa*s</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>Re <span class="op">=</span> (rho<span class="op">*</span>v_prom<span class="op">*</span><span class="dv">2</span><span class="op">*</span>R)<span class="op">/</span>mu_a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
 <p>Para fluidos no Newtonianos, el flujo es turbulento si se cumple <span class="math inline">\(Re'&gt;2100+875(1-n)\)</span>. De lo contrario el flujo es laminar.</p>
 <p>Calculamos el límite del intervalo y comparamos.</p>
-<div id="8dda51ae-a86c-43b0-a7fb-1e7261f15a20" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> Re <span class="op">&gt;</span> <span class="dv">2100</span><span class="op">+</span><span class="dv">875</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>n_ajus):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Re' ("</span>,<span class="ss">f'</span><span class="sc">{</span>Re<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">") es mayor que"</span>,<span class="ss">f'</span><span class="sc">{</span>(<span class="dv">2100</span><span class="op">+</span><span class="dv">875</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>n_ajus))<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">", por lo tanto el flujo es turbulento."</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Re' ("</span>,<span class="ss">f'</span><span class="sc">{</span>Re<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">") es menor que"</span>,<span class="ss">f'</span><span class="sc">{</span>(<span class="dv">2100</span><span class="op">+</span><span class="dv">875</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>n_ajus))<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">", por lo tanto el flujo es laminar."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8dda51ae-a86c-43b0-a7fb-1e7261f15a20" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> Re <span class="op">&gt;</span> <span class="dv">2100</span><span class="op">+</span><span class="dv">875</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>n_ajus):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Re' ("</span>,<span class="ss">f'</span><span class="sc">{</span>Re<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">") es mayor que"</span>,<span class="ss">f'</span><span class="sc">{</span>(<span class="dv">2100</span><span class="op">+</span><span class="dv">875</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>n_ajus))<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">", por lo tanto el flujo es turbulento."</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Re' ("</span>,<span class="ss">f'</span><span class="sc">{</span>Re<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">") es menor que"</span>,<span class="ss">f'</span><span class="sc">{</span>(<span class="dv">2100</span><span class="op">+</span><span class="dv">875</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>n_ajus))<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">", por lo tanto el flujo es laminar."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Re' ( 6545.352909 ) es mayor que 789.351492 , por lo tanto el flujo es turbulento.</code></pre>
+<pre><code>Re' ( 6545.352910 ) es mayor que 789.351493 , por lo tanto el flujo es turbulento.</code></pre>
 </div>
 </div>
 
