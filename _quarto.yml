@@ -8,7 +8,7 @@ website:
   search: 
     location: sidebar
     type: overlay
-  back-to-top-navigation: true
+  back-to-top-navigation: false
   
   navbar:
     left:
@@ -37,6 +37,10 @@ format:
     theme: flatly
     css: styles.css
     toc: true
+    grid: 
+      body-width: 1000px
+      sidebar-width: 150px
+      margin-width: 150px
 
 
 
