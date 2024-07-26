@@ -32,6 +32,10 @@ website:
         - section: "Fluidos no Newtonianos"
           contents:
             - ./e_prop/01_FNN/e01_1.qmd
+        - section: "Agitación y mezclado"
+          contents:
+            - ./e_prop/02_agitacion/e02_1.qmd
+            - ./e_prop/02_agitacion/e02_2.qmd
 
 format:
   html:

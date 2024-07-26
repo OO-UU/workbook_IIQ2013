@@ -1,0 +1,105 @@
+---
+title: 'Ejercicio 2: Escalamiento de estanques agitados'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/02_agitacion/jupyter/e02_2.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+
+
+## Enunciado
+
+Usted trabaja en un centro de investigación de aceites para uso industrial llamado Uncle Oil®. Recientemente, su jefe le ha pedido escalar su agitador piloto a uno industrial para masificar la producción de aceite de motor (ambos estanques cilíndricos). Considere que su agitador a escala piloto funciona a $400\hspace{1mm}RPM$, y que el motor con el que cuenta el centro de investigación para escala industrial alcanza los $230\hspace{1mm}RPM$. Usted sabe que el diámetro del agitador piloto es $D_{a,1}=15\hspace{1mm}(cm)$, y que las proporciones $S_i$ se mantienen constantes e iguales a $S_1=1/3$ y $S_6=3/2$. El equipo de investigación reológica, le hace entrega de la figura a continuación. Determine lo siguiente:
+1. Encuentre la temperatura a la cual deberá operar el estanque industrial para que este funcione a su máxima capacidad de revoluciones. Considerando que el estanque piloto se encontraba a $20\hspace{1mm}°C$. Asuma que se encuentra en régimen laminar.
+2. Calcule el volumen del estanque industrial. Considere que el escalamiento es de velocidad de punta constante.
+3. Calcule la potencia que utilizará este estanque si a escala industrial se utilizaban $3kW$. *Hint: el número de potencia se mantendrá constante.*
+
+::: {#imgs02_2 layout-ncol=2 layout-align="center"}
+
+![Viscocidad dinámica vs temperatura](./images/img02_2-1.png){width="80%"}
+
+![Densidad vs temperatura](./images/img02_2-2.png){width="80%"}
+
+:::
+
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e02_2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e02_2-sol .collapse .multi-collapse}
+
+```{python}
+# Paquetes utilizados
+import handcalcs.render
+from handcalcs import handcalc
+from math import pi
+```
+
+### Inciso 1
+
+Del gráfico obtenemos que a $20\hspace{1mm}°C$ la viscosidad es $\mu\approx 280\hspace{1mm}(cP)$. Ya que nos encontramos en regimen laminar, tenemos que:
+
+$$
+\mu_1N_1^2 = \mu_2N_2^2
+$$
+
+Entonces despejando para $\mu_2$.
+
+```{python}
+%%render long
+mu_1 = 280 #cP
+N_1 = 400 #RPM
+N_2 = 230 #RPM
+mu_2 = mu_1*(N_1/N_2)**2 #cP
+```
+
+Del gráfico de viscosidades, notamos que para $\mu=846.9\hspace{1mm}(cP)$ la temperatura debe ser $T\approx 6\hspace{1mm}°C$.
+
+### Inciso 2
+
+Si el escalamiento se basa en una velocidad de punta constante:
+
+$$
+D_{a,1}N_1=D_{a,2}N_2
+$$
+
+Entonces,
+
+```{python}
+%%render long
+D_a1 = 0.15 # m
+D_a2 = D_a1*N_1/N_2 #m
+D_t2 = 3*D_a2 #m
+H_2 = 3/2*D_t2 #m
+V_2 = pi*(D_t2/2)**2*H_2 #m$^3$
+```
+
+### Inciso 3
+
+Se debe cumplir que el número de potencia es equivalente.
+
+$$
+N_{p,1} = N_{p,2} \Rightarrow \frac{P_1}{\rho_1N_1^3D_{a,1}^5} = \frac{P_2}{\rho_2N_2^3D_{a,2}^5}
+$$
+
+Recordar que la temperatura del agitador industrial se encuentra aproximadamente a $6\hspace{1mm}°C$, a esa temperatura la densidad del aceite será $\rho_2\approx 887.5\hspace{1mm}(kg/m^3)$. Y en las condiciones iniciales a $20\hspace{1mm}°C$ la densidad $\rho_1\approx 878\hspace{1mm}(kg/m^3)$.
+
+```{python}
+%%render long
+P_1 = 3 #kW
+rho_1 = 878 #kg/m$^3$
+rho_2 = 887.5 #kg/m$^3$
+P_2 = P_1*(rho_2*(N_2/60)**3*D_a2**5)/(rho_1*(N_1/60)**3*D_a1**5) #kW
+```
+
+:::
