@@ -42,6 +42,9 @@ Se tiene una mezcla líquida de dos fluidos desconocidos. Esta mezcla es un flui
 ![Perfil de velocidades](./images/img01_1.png)
 :::
 
+
+Responda lo siguiente:
+
 1. Encuentre el esfuerzo de corte cerca de la pared $t_w$.
 2. Mediante un ajuste (Puede usar Excel o python), encuentre los valores de $n$ y $k$ para el fluido y compruebe si es pseudoplástico o dilatante. Ya que usted no sabe el tipo de fluido, asuma inicialmente para su ajuste que $n=1$ y $k=0.1$.
 3. Calcule si durante el experimento el flujo era turbulento o laminar.
