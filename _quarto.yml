@@ -29,6 +29,9 @@ website:
             - ./e_prop/00_bernoulli/e00_1.qmd
             - ./e_prop/00_bernoulli/e00_2.qmd
             - ./e_prop/00_bernoulli/e00_3.qmd
+        - section: "Fluidos no Newtonianos"
+          contents:
+            - ./e_prop/01_FNN/e01_1.qmd
 
 format:
   html:
