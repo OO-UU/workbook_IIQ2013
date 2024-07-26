@@ -5,10 +5,8 @@ format:
       code-copy: true
       code-fold: true
       code-links: 
-        - text: "ejemplo"
-          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/00_bernoulli/jupyter/e00_1.ipynb
-        - text: "otro ejemplo"
-          href: ./jupyter/e00_2.ipynb
+        - text: "Repositorio"
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/00_bernoulli/jupyter/e00_2.ipynb
 
 execute: 
   echo: true

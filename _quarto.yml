@@ -19,6 +19,7 @@ website:
 
   sidebar: 
     - title: "Ejercicios propuestos"
+      logo: logo.png
       tools: 
         - icon: github
           href: https://github.com/OO-UU/workbook_IIQ2013
