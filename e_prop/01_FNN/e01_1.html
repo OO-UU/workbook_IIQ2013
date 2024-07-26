@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ejercicio 3: Bombas y eficiencia – IIQ2013</title>
+<title>Ejercicio 1: Fluidos pseudoplásticos y dilatantes – IIQ2013</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -176,7 +176,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Tuberías y bombas</a></li><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_3.html">Ejercicio 3: Bombas y eficiencia</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/01_FNN/e01_1.html">Fluidos no Newtonianos</a></li><li class="breadcrumb-item"><a href="../../e_prop/01_FNN/e01_1.html">Ejercicio 1: Fluidos pseudoplásticos y dilatantes</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -234,7 +234,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/00_bernoulli/e00_3.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../e_prop/00_bernoulli/e00_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 3: Bombas y eficiencia</span></a>
   </div>
 </li>
@@ -251,7 +251,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/01_FNN/e01_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../e_prop/01_FNN/e01_1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Ejercicio 1: Fluidos pseudoplásticos y dilatantes</span></a>
   </div>
 </li>
@@ -270,14 +270,14 @@ window.Quarto = {
   <li><a href="#enunciado" id="toc-enunciado" class="nav-link active" data-scroll-target="#enunciado">Enunciado</a></li>
   <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
   </ul>
-<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/00_bernoulli/jupyter/e00_3.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/01_FNN/jupyter/e01_1.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Tuberías y bombas</a></li><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_3.html">Ejercicio 3: Bombas y eficiencia</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/01_FNN/e01_1.html">Fluidos no Newtonianos</a></li><li class="breadcrumb-item"><a href="../../e_prop/01_FNN/e01_1.html">Ejercicio 1: Fluidos pseudoplásticos y dilatantes</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Ejercicio 3: Bombas y eficiencia</h1>
+<h1 class="title">Ejercicio 1: Fluidos pseudoplásticos y dilatantes</h1>
 </div>
 
 
@@ -296,211 +296,252 @@ window.Quarto = {
 
 <section id="enunciado" class="level2">
 <h2 class="anchored" data-anchor-id="enunciado">Enunciado</h2>
-<p>Entra benceno a <span class="math inline">\(37.8~\text{°C}\)</span> el cual debe ser bombeado a caudal <span class="math inline">\(11~\text{m}^3\text{/h}\)</span>. El modelo de la bomba es tipo <span class="math inline">\(3656/3756~\text{Grupo-S}\)</span>, con un rodete <span class="math inline">\(\text{B}\)</span> de diámetro <span class="math inline">\(7.75~\text{in}\)</span>. El benceno se transporta desde un estanque hasta otro tal y como muestra la figura. Ambos estanques se encuentran a <span class="math inline">\(3~\text{atm}\)</span>. La altura entre los puntos <span class="math inline">\(\text{a'}\)</span> y <span class="math inline">\(\text{a}\)</span> es <span class="math inline">\(10~\text{m}\)</span> y la altura entre los puntos <span class="math inline">\(\text{b}\)</span> y <span class="math inline">\(\text{b'}\)</span> es de <span class="math inline">\(2~\text{m}\)</span>. Las tuberías tienen un diámetro de <span class="math inline">\(12~\text{cm}\)</span>. La densidad del benceno a la temperatura de operación es de <span class="math inline">\(865~\text{kg/m}^3\)</span> y su presión de vapor es <span class="math inline">\(26.2~\text{kPa}\)</span>. Si la altura asociada a las perdidas por fricción es <span class="math inline">\(h_f = 3~\text{m}\)</span> y los codos son codos cuadrados.</p>
+<p>Se tiene una mezcla líquida de dos fluidos desconocidos. Esta mezcla es un fluido no Newtoniano que sigue la <strong>ley de potencia</strong>. Se sabe que la densidad de este fluido es de <span class="math inline">\(\rho=1234.3\hspace{1mm}(kg/m^3)\)</span> y que su viscosidad aparente cerca de la pared de la tubería es <span class="math inline">\(\mu_{a,w}=52\hspace{1mm}(cP)\)</span>. Además, se obtuvo experimentalmente un perfil de velocidades de dicho fluido en una tubería.</p>
+<div>
+
+</div>
+<div id="tlb-img" class="quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<table class="table-striped table-hover table">
+<caption>Perfil numérico</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(r~\text{(m)}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(v~\text{(m/s)}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.09</td>
+<td style="text-align: center;">0.383</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.08</td>
+<td style="text-align: center;">0.749</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.07</td>
+<td style="text-align: center;">1.097</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.06</td>
+<td style="text-align: center;">1.425</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.05</td>
+<td style="text-align: center;">1.733</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.04</td>
+<td style="text-align: center;">2.017</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.03</td>
+<td style="text-align: center;">2.273</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.02</td>
+<td style="text-align: center;">2.497</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.01</td>
+<td style="text-align: center;">2.679</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">2.790</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/img00_3.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Sistema de tuberías y bomba</figcaption>
+<p><img src="./images/img01_1.png" class="img-fluid figure-img"></p>
+<figcaption>Perfil de velocidades</figcaption>
 </figure>
 </div>
-<p>Responda lo siguiente:</p>
+</div>
+</div>
+</div>
 <ol type="1">
-<li>Demuestre la ecuación que describe el trabajo de la bomba (<span class="math inline">\(\eta W_p\)</span>) a partir de las ecuaciones de bernoulli para los puntos <span class="math inline">\(\text{a'-a}\)</span>, <span class="math inline">\(\text{a-b}\)</span> y <span class="math inline">\(\text{b-b'}\)</span>.</li>
-<li>Encuentre la altura de la bomba (<span class="math inline">\(h_B\)</span>) en <span class="math inline">\(\text{m}\)</span>.</li>
-<li>Calcule la potencia requerida por la bomba (<span class="math inline">\(P_m\)</span>) en <span class="math inline">\(\text{W}\)</span>.</li>
-<li>Determine si la bomba cavita considerando que la altura asociada a las perdidas por fricción entre <span class="math inline">\(\text{a'}\)</span> y <span class="math inline">\(\text{a}\)</span> contribuyen <span class="math inline">\(2/3\)</span> de las pérdidas totales por fricción.</li>
+<li>Encuentre el esfuerzo de corte cerca de la pared <span class="math inline">\(t_w\)</span>.</li>
+<li>Mediante un ajuste (Puede usar Excel o python), encuentre los valores de <span class="math inline">\(n\)</span> y <span class="math inline">\(k\)</span> para el fluido y compruebe si es pseudoplástico o dilatante. Ya que usted no sabe el tipo de fluido, asuma inicialmente para su ajuste que <span class="math inline">\(n=1\)</span> y <span class="math inline">\(k=0.1\)</span>.</li>
+<li>Calcule si durante el experimento el flujo era turbulento o laminar.</li>
 </ol>
 </section>
 <section id="solución" class="level2">
 <h2 class="anchored" data-anchor-id="solución">Solución</h2>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#e00_3-sol" aria-expanded="false">
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e01_1-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="e00_3-sol" class="collapse multi-collapse">
-<div id="16f9b06b" class="cell" data-execution_count="1">
+<div id="e01_1-sol" class="collapse multi-collapse">
+<div id="46890475" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"custom_symbols"</span>,{<span class="st">"ap"</span>: <span class="st">"a'"</span>, <span class="st">"bp"</span>: <span class="st">"b'"</span>, <span class="st">"eta"</span>: <span class="st">"\eta "</span>, <span class="st">"dotm"</span>: <span class="st">"\dot m"</span>})</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquetes utilizados</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> curve_fit</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="inciso-1" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
-<p>Para el primer tramo (<span class="math inline">\(\text{a'-a}\)</span>), la ecuación de bernoulli será:</p>
+<p>Sabemos que para fluidos no Newtonianos la relación entre esfuerzo de corte <span class="math inline">\((\tau)\)</span> y tasa de corte <span class="math inline">\((\dot{\gamma})\)</span> es la siguiente.</p>
 <p><span class="math display">\[
-\left(\frac{P_{a'}}{\rho} + g\cdot Z_{a'} + \frac{V_{a'}^2}{2}\right) = \left(\frac{P_a}{\rho} + g\cdot Z_a + \frac{V_a^2}{2}\right) + \left(\phi_s+\phi_f\right)_{a'-a}
+\tau = -k\left(\dot{\gamma}\right)^{n}
 \]</span></p>
-<p>Para el tramo <span class="math inline">\(\text{a-b}\)</span>:</p>
+<p>A esta ecuación se le conoce como la <strong>ley de potencia</strong>. En donde <span class="math inline">\(k\)</span> representa el índice de consistencia y <span class="math inline">\(n\)</span> el índice de la ley de potencia. Sin embargo, al no tener información del fluido, carecemos de los valores para dichos parámetros. En el enunciado, en cambio, nos entregan el valor para la viscosidad aparente.</p>
 <p><span class="math display">\[
-\left(\frac{P_{a}}{\rho} + g\cdot Z_{a} + \frac{V_{a}^2}{2}\right) = \left(\frac{P_b}{\rho} + g\cdot Z_b + \frac{V_b^2}{2}\right) - \eta W_p
+\mu_a = k\left(\dot{\gamma}\right)^{n-1}
 \]</span></p>
-<p>Por último, para el tramo <span class="math inline">\(\text{b-b'}\)</span>:</p>
+<p>Si unimos esta ecuación con la ley de potencia, y la aplicamos en la pared, se obtiene lo siguiente.</p>
 <p><span class="math display">\[
-\left(\frac{P_{b}}{\rho} + g\cdot Z_{b} + \frac{V_{b}^2}{2}\right) = \left(\frac{P_{b'}}{\rho} + g\cdot Z_{b'} + \frac{V_{b'}^2}{2}\right) + \left(\phi_s+\phi_f\right)_{b-b'}
+\tau_w = \mu_{a,w}\left(\dot{\gamma}\right) = \mu_{a,w}\left(\frac{dv}{dr}\right)
 \]</span></p>
-<p>Despejando en la ecuación de bernoulli entre los puntos <span class="math inline">\(\text{a-b}\)</span>.</p>
+<p>En la pared la velocidad del fluido es 0. Entonces, de la tabla se pueden elegir el primer y segundo valor para una aproximación de la tasa de corte (<em>shear rate</em>). Luego nos queda lo siguiente.</p>
 <p><span class="math display">\[
-\left(\frac{P_{a'}}{\rho} + g\cdot Z_{a'} + \frac{V_{a'}^2}{2}\right) - \left(\phi_s+\phi_f\right)_{a'-a} = \left(\frac{P_{b'}}{\rho} + g\cdot Z_{b'} + \frac{V_{b'}^2}{2}\right) + \left(\phi_s+\phi_f\right)_{b-b'} - \eta W_p
+\tau_w = \frac{52}{1000}\left(\frac{0.383-0}{0.01}\right)
 \]</span></p>
-<p>Luego, podemos entender la suma de las pérdidas de carga por fricción y singularidades entre <span class="math inline">\(\text{a'-a}\)</span> y <span class="math inline">\(\text{b-b'}\)</span> como las pérdidas de cargas en todo el sistema.</p>
-<p><span class="math display">\[
-\left(\phi_s+\phi_f\right)_{a'-b'} = \left(\phi_s+\phi_f\right)_{a'-a} + \left(\phi_s+\phi_f\right)_{b-b'}
-\]</span></p>
-<p>Finalmente llegamos a la última ecuación:</p>
-<p><span class="math display">\[
-\left(\frac{P_{a'}}{\rho} + g\cdot Z_{a'} + \frac{V_{a'}^2}{2}\right) = \left(\frac{P_{b'}}{\rho} + g\cdot Z_{b'} + \frac{V_{b'}^2}{2}\right) + \left(\phi_s+\phi_f\right)_{a'-b'} - \eta W_p
-\]</span></p>
-<p>Para que la ecuación sea consistente con la figura, consideremos que <span class="math inline">\(Z_{a'}=0\)</span> y que ambos estanques se encuentran a la misma presión (<span class="math inline">\(3~\text{atm}\)</span>), la cual será la referencia <span class="math inline">\(P_{a'}=P_{b'}=0\)</span>. Además, el punto <span class="math inline">\(\text{a'}\)</span> se considera sin movimiento (<span class="math inline">\(V_{a'}=0\)</span>) por el supuesto de estanque muy grande. Reordenando:</p>
-<p><span class="math display">\[
-\eta W_p = \left(g\cdot Z_{b'} + \frac{V_{b'}^2}{2}\right) + \left(\phi_s+\phi_f\right)_{a'-b'}
-\]</span></p>
-<p>Luego, reemplazando las pérdidas de carga y asumiendo que la velocidad el todo el sistema (excluyendo el estanque) es constante:</p>
-<p><span class="math display">\[
-\eta W_p = g\cdot Z_{b'} + \left(1 + 4f\left(\frac{L}{D_e}\right) + K \right)\frac{V^2}{2}
-\]</span></p>
+<p>Obtenemos que el esfuerzo de corte (<em>shear stress</em>) cerca de la pared es aproximadamente <span class="math inline">\(\tau_w=1.9916\hspace{1mm}(Pa)\)</span>.</p>
 </section>
 <section id="inciso-2" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-2">Inciso 2</h3>
-<p>Ya que en el enunciado nos entregan las pérdidas de carga por fricción en <span class="math inline">\(\text{m}\)</span>, escribmos la función para <span class="math inline">\(\eta W_p\)</span> de la siguiente manera:</p>
+<p>Para aquellos fluidos que cumplen con la <strong>ley de potencia</strong>, el perfil de velocidad a lo largo de una tubería puede obtenerse en función del radio.</p>
 <p><span class="math display">\[
-\eta W_p = g\cdot Z_{b'} + \left(1 + K \right)\frac{8Q^2}{\pi^2D^4} + g\cdot h_f
+v = \left(\frac{\tau_w}{k}\right)^{\frac{1}{n}}\frac{nR}{1+n}\left(1-\left(\frac{r}{R}\right)^{\frac{1}{n}+1}\right)
 \]</span></p>
-<div id="8c300b9e" class="cell" data-execution_count="2">
+<p>Donde <span class="math inline">\(R\)</span> representa el radio de la tubería y <span class="math inline">\(r\)</span> el radio para un punto específico. Notar que <span class="math inline">\(R=r\)</span> en la pared.</p>
+<p>Ya que contamos con datos experimentales, podemos realizar una curva de ajuste que encuentre los parámetros de <span class="math inline">\(n\)</span> y de <span class="math inline">\(k\)</span> que mejor representan al fluido.</p>
+<div id="2681b184" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span> <span class="co">#m/s$^2$</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Z_bp <span class="op">=</span> <span class="dv">10</span><span class="op">-</span><span class="dv">2</span> <span class="co">#m</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="dv">12</span><span class="op">/</span><span class="dv">100</span> <span class="co">#m</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>K_codo <span class="op">=</span> <span class="fl">1.2</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>K_salida <span class="op">=</span> <span class="fl">0.5</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>K_entrada <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> <span class="dv">11</span><span class="op">/</span><span class="dv">3600</span> <span class="co">#m$^3$/s</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>h_f <span class="op">=</span> <span class="dv">3</span> <span class="co">#m</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="dv">865</span>  <span class="co">#kg/m$^3$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definimos nuestra función</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> funcion_de_velocidad(r, n, k):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Del enunciado y del inciso anterior sabemos:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    R <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    tau_w <span class="op">=</span> <span class="fl">1.9916</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ecuación de perfil de velocidad</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (tau_w<span class="op">/</span>k)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span>n)<span class="op">*</span>(n<span class="op">*</span>R<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>n))<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>(r<span class="op">/</span>R)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span>n<span class="op">+</span><span class="dv">1</span>))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># De la tabla recuperamos los datos experimentales</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>r_exp <span class="op">=</span> np.array([<span class="fl">0.1</span>,<span class="fl">0.09</span>,<span class="fl">0.08</span>,<span class="fl">0.07</span>,<span class="fl">0.06</span>,<span class="fl">0.05</span>,<span class="fl">0.04</span>,<span class="fl">0.03</span>,<span class="fl">0.02</span>,<span class="fl">0.01</span>,<span class="dv">0</span>]) <span class="co">#m</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>v_exp <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="fl">0.383</span>,<span class="fl">0.749</span>,<span class="fl">1.097</span>,<span class="fl">1.425</span>,<span class="fl">1.733</span>,<span class="fl">2.017</span>,<span class="fl">2.273</span>,<span class="fl">2.497</span>,<span class="fl">2.679</span>,<span class="fl">2.790</span>]) <span class="co">#m/s</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustar los parámetros a los datos experimentares</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">## Supuesto inicial</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>parametros_iniciales <span class="op">=</span> [<span class="dv">1</span>,<span class="fl">0.1</span>]  <span class="co"># (n,k)</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">## Ajuste</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>params, covarianza <span class="op">=</span> curve_fit(funcion_de_velocidad, r_exp, v_exp, p0<span class="op">=</span>parametros_iniciales)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">## Extraer los parámetros</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>n_ajus, k_ajus <span class="op">=</span> params</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Análisis de resultados</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Evalua</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>v_teorica <span class="op">=</span> funcion_de_velocidad(r_exp, n_ajus, k_ajus)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico comparativo para evaluar la calidad del ajuste</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>plt.scatter(v_exp, r_exp, label<span class="op">=</span><span class="st">'Datos experimentales'</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>plt.plot(v_teorica, r_exp, label<span class="op">=</span><span class="st">'Curva ajustada'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Velocidad (m/s)'</span>)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Radio de la tubería (m)'</span>)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Ajuste de la curva'</span>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver los parámetros ajustados</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Parámetros ajustados"</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n:"</span>, <span class="ss">f'</span><span class="sc">{</span>n_ajus<span class="sc">:6f}</span><span class="ss">'</span>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"k:"</span>, <span class="ss">f'</span><span class="sc">{</span>k_ajus<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">"(Pa*s^n)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-g &amp;= 9.810 \; \;\textrm{(m/s$^2$)}
-&amp;Z_{b'} &amp;= 8 \; \;\textrm{(m)}
-&amp;D &amp;= 0.120 \; \;\textrm{(m)}
-\\[10pt]
-K_{codo} &amp;= 1.200 \;
-&amp;K_{salida} &amp;= 0.500 \;
-&amp;K_{entrada} &amp;= 1.000 \;
-\\[10pt]
-Q &amp;= 0.003 \; \;\textrm{(m$^3$/s)}
-&amp;h_{f} &amp;= 3 \; \;\textrm{(m)}
-&amp;\rho &amp;= 865 \; \;\textrm{(kg/m$^3$)}
-\\[10pt]
-\end{aligned}
-\]</span></p>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\igtab\AppData\Local\Temp\ipykernel_664\4259331340.py:7: RuntimeWarning:
+
+invalid value encountered in scalar power
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="e01_1_files/figure-html/cell-3-output-2.png" width="597" height="449" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<div id="d0167e61" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>etaW_p <span class="op">=</span> g<span class="op">*</span>Z_bp <span class="op">+</span> (<span class="dv">1</span> <span class="op">+</span> (K_salida <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>K_codo <span class="op">+</span> K_entrada))<span class="op">*</span>(<span class="dv">8</span><span class="op">*</span>Q<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(pi<span class="op">**</span><span class="dv">2</span><span class="op">*</span>D<span class="op">**</span><span class="dv">4</span>) <span class="op">+</span> g<span class="op">*</span>h_f <span class="co">#J/kg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-\eta W_{p} &amp;= g \cdot Z_{b'} + \left( 1 + \left( K_{salida} + 4 \cdot K_{codo} + K_{entrada} \right) \right) \cdot \frac{ 8 \cdot \left( Q \right) ^{ 2 } }{ \left( \pi \right) ^{ 2 } \cdot \left( D \right) ^{ 4 } } + g \cdot h_{f} \\&amp;= 9.810 \cdot 8 + \left( 1 + \left( 0.500 + 4 \cdot 1.200 + 1.000 \right) \right) \cdot \frac{ 8 \cdot \left( 0.003 \right) ^{ 2 } }{ \left( 3.142 \right) ^{ 2 } \cdot \left( 0.120 \right) ^{ 4 } } + 9.810 \cdot 3 \\&amp;= 108.176 \; \;\textrm{(J/kg)}\\[10pt]
-\end{aligned}
-\]</span></p>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parámetros ajustados
+n: 2.497884
+k: 0.000210 (Pa*s^n)</code></pre>
 </div>
 </div>
-<div id="a0c442e6" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>h_B <span class="op">=</span> etaW_p<span class="op">/</span>g <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-h_{B} &amp;= \frac{ \eta W_{p} }{ g } \\&amp;= \frac{ 108.176 }{ 9.810 } \\&amp;= 11.027 \; \;\textrm{(m)}\\[10pt]
-\end{aligned}
-\]</span></p>
-</div>
-</div>
+<p>Si <span class="math inline">\(n&lt;1\)</span> el fluido es pseudoplástico, por el contrario, si <span class="math inline">\(n&gt;1\)</span> el fluido es dilatante. En este caso <span class="math inline">\(2.498&gt;1\)</span>, por lo tanto es dilatante.</p>
 </section>
 <section id="inciso-3" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-3">Inciso 3</h3>
-<p>Del gráfico para la bomba tipo <span class="math inline">\(3656/3756~\text{Grupo-S}\)</span> con rodete <span class="math inline">\(\text{B}\)</span> de diámetro <span class="math inline">\(7.75~\text{in}\)</span>, vemos que para un caudal de <span class="math inline">\(11~\text{m}^3\text{/h}\)</span> la eficiencia es aproximadamente de un <span class="math inline">\(\eta = 65~\%\)</span>.</p>
-<p>La fórmula para la potencia requerida puede ser escrita como:</p>
+<p>Para fluidos que cumplen con la ley de potencia tenemos que el número de Reynolds se generaliza en función de la viscosidad aparente. Esta viscosidad aparente no es equivalente a la que nos entrega el enunciado, ya que para Reynolds generalizado, ocupamos la velocidad promedio.</p>
 <p><span class="math display">\[
-P_B = \dot{m}W_p
+Re' = \frac{\rho\bar{V}D}{\mu_a}
 \]</span></p>
-<div id="efa7f4b3" class="cell" data-execution_count="5">
+<p>Entonces, <span class="math inline">\(\mu_a\)</span> también se calcula a partir de la velocidad promedio.</p>
+<p><span class="math display">\[
+\mu_a = k\left(\frac{3n+1}{4n}\right)^n\left(\frac{8\bar{V}}{D}\right)^{n-1}
+\]</span></p>
+<p>En donde la velocidad promedio se conoce a través de las propiedades del fluido y el esfuerzo de corte en la pared.</p>
+<p><span class="math display">\[
+\bar{V} = \frac{nR}{3n+1}\left(\frac{\tau_w}{k}\right)^{\frac{1}{n}}
+\]</span></p>
+<div id="122c5e49" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>eta <span class="op">=</span> <span class="fl">0.65</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>dotm <span class="op">=</span> Q<span class="op">*</span>rho <span class="co">#kg/s</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>P_B <span class="op">=</span> dotm<span class="op">*</span>etaW_p<span class="op">/</span>eta <span class="co">#W</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="fl">1234.3</span> <span class="co">#kg/m3</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tau_w <span class="op">=</span> <span class="fl">1.9916</span> <span class="co">#Pa</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">0.1</span> <span class="co">#m</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>v_prom <span class="op">=</span> (n_ajus<span class="op">*</span>R)<span class="op">/</span>(<span class="dv">3</span><span class="op">*</span>n_ajus<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>(tau_w<span class="op">/</span>k_ajus)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span>n_ajus) <span class="co">#m/s</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>mu_a <span class="op">=</span> k_ajus<span class="op">*</span>((<span class="dv">3</span><span class="op">*</span>n_ajus<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">4</span><span class="op">*</span>n_ajus))<span class="op">**</span>n_ajus<span class="op">*</span>((<span class="dv">8</span><span class="op">*</span>v_prom)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>R))<span class="op">**</span>(n_ajus<span class="op">-</span><span class="dv">1</span>) <span class="co">#Pa*s</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>Re <span class="op">=</span> (rho<span class="op">*</span>v_prom<span class="op">*</span><span class="dv">2</span><span class="op">*</span>R)<span class="op">/</span>mu_a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-\eta  &amp;= 0.650 \;
+\rho &amp;= 1234.300 \; \;\textrm{(kg/m3)}
 \\[10pt]
-\dot m &amp;= Q \cdot \rho \\&amp;= 0.003 \cdot 865 \\&amp;= 2.643 \; \;\textrm{(kg/s)}\\[10pt]
+\tau_{w} &amp;= 1.992 \; \;\textrm{(Pa)}
 \\[10pt]
-P_{B} &amp;= \dot m \cdot \frac{ \eta W_{p} }{ \eta  } \\&amp;= 2.643 \cdot \frac{ 108.176 }{ 0.650 } \\&amp;= 439.871 \; \;\textrm{(W)}\\[10pt]
+R &amp;= 0.100 \; \;\textrm{(m)}
+\\[10pt]
+v_{prom} &amp;= \frac{ n_{ajus} \cdot R }{ 3 \cdot n_{ajus} + 1 } \cdot \left( \frac{ \tau_{w} }{ k_{ajus} } \right) ^{ \left( \frac{ 1 }{ n_{ajus} } \right) } \\&amp;= \frac{ 2.498 \cdot 0.100 }{ 3 \cdot 2.498 + 1 } \cdot \left( \frac{ 1.992 }{ 0.000 } \right) ^{ \left( \frac{ 1 }{ 2.498 } \right) } \\&amp;= 1.149 \; \;\textrm{(m/s)}\\[10pt]
+\\[10pt]
+\mu_{a} &amp;= k_{ajus} \cdot \left( \frac{ 3 \cdot n_{ajus} + 1 }{ 4 \cdot n_{ajus} } \right) ^{ n_{ajus} } \cdot \left( \frac{ 8 \cdot v_{prom} }{ 2 \cdot R } \right) ^{ \left( n_{ajus} - 1 \right) } \\&amp;= 0.000 \cdot \left( \frac{ 3 \cdot 2.498 + 1 }{ 4 \cdot 2.498 } \right) ^{ 2.498 } \cdot \left( \frac{ 8 \cdot 1.149 }{ 2 \cdot 0.100 } \right) ^{ \left( 2.498 - 1 \right) } \\&amp;= 0.043 \; \;\textrm{(Pa*s)}\\[10pt]
+\\[10pt]
+\mathrm{Re} &amp;= \frac{ \rho \cdot v_{prom} \cdot 2 \cdot R }{ \mu_{a} } \\&amp;= \frac{ 1234.300 \cdot 1.149 \cdot 2 \cdot 0.100 }{ 0.043 } \\&amp;= 6545.353  \\[10pt]
 \end{aligned}
 \]</span></p>
 </div>
 </div>
-</section>
-<section id="inciso-4" class="level3">
-<h3 class="anchored" data-anchor-id="inciso-4">Inciso 4</h3>
-<p>Debemos compara <span class="math inline">\(\text{NPSH}_d\)</span> con <span class="math inline">\(\text{NPSH}_r\)</span>. Del gráfico, <span class="math inline">\(\text{NPSH}_r \approx 17.5~\text{m}\)</span>.</p>
-<p>Para la <span class="math inline">\(\text{NPSH}_d\)</span> sabemos que:</p>
-<p><span class="math display">\[
-\text{NPSH}_d = \frac{P_{a'}-P_v}{\rho g} - z_a - \left(1 + K \right)\frac{8Q^2}{g\pi^2D^4} - h_{f,a'-a}
-\]</span></p>
-<div id="87106721" class="cell" data-execution_count="6">
+<p>Para fluidos no Newtonianos, el flujo es turbulento si se cumple <span class="math inline">\(Re'&gt;2100+875(1-n)\)</span>. De lo contrario el flujo es laminar.</p>
+<p>Calculamos el límite del intervalo y comparamos.</p>
+<div id="4aa58bae" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>P_v <span class="op">=</span> <span class="fl">26.2</span><span class="op">*</span><span class="dv">1000</span> <span class="co">#Pa</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>P_ap <span class="op">=</span> <span class="dv">3</span><span class="op">*</span><span class="dv">101325</span> <span class="co">#Pa</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>z_a <span class="op">=</span> <span class="dv">10</span> <span class="co">#m</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>h_f <span class="op">=</span> <span class="dv">2</span> <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> Re <span class="op">&gt;</span> <span class="dv">2100</span><span class="op">+</span><span class="dv">875</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>n_ajus):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Re' ("</span>,<span class="ss">f'</span><span class="sc">{</span>Re<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">") es mayor que"</span>,<span class="ss">f'</span><span class="sc">{</span>(<span class="dv">2100</span><span class="op">+</span><span class="dv">875</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>n_ajus))<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">", por lo tanto el flujo es turbulento."</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Re' ("</span>,<span class="ss">f'</span><span class="sc">{</span>Re<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">") es menor que"</span>,<span class="ss">f'</span><span class="sc">{</span>(<span class="dv">2100</span><span class="op">+</span><span class="dv">875</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>n_ajus))<span class="sc">:6f}</span><span class="ss">'</span>,<span class="st">", por lo tanto el flujo es laminar."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-P_{v} &amp;= 26200.000 \; \;\textrm{(Pa)}
-&amp;P_{a'} &amp;= 303975 \; \;\textrm{(Pa)}
-&amp;z_{a} &amp;= 10 \; \;\textrm{(m)}
-\\[10pt]
-h_{f} &amp;= 2 \; \;\textrm{(m)}
-\end{aligned}
-\]</span></p>
+<div class="cell-output cell-output-stdout">
+<pre><code>Re' ( 6545.352909 ) es mayor que 789.351492 , por lo tanto el flujo es turbulento.</code></pre>
 </div>
 </div>
-<div id="abf58ee3" class="cell" data-execution_count="7">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>NPSH_d <span class="op">=</span> (P_ap<span class="op">-</span>P_v)<span class="op">/</span>(rho<span class="op">*</span>g) <span class="op">-</span> z_a <span class="op">-</span> (<span class="dv">1</span><span class="op">+</span>(K_salida<span class="op">+</span><span class="dv">4</span><span class="op">*</span>K_codo<span class="op">+</span>K_entrada))<span class="op">*</span>(<span class="dv">8</span><span class="op">*</span>Q<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(g<span class="op">*</span>pi<span class="op">**</span><span class="dv">2</span><span class="op">*</span>D<span class="op">**</span><span class="dv">4</span>) <span class="op">-</span> h_f <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-\mathrm{NPSH}_{d} &amp;= \frac{ P_{a'} - P_{v} }{ \rho \cdot g } - z_{a} - \left( 1 + \left( K_{salida} + 4 \cdot K_{codo} + K_{entrada} \right) \right) \cdot \frac{ 8 \cdot \left( Q \right) ^{ 2 } }{ g \cdot \left( \pi \right) ^{ 2 } \cdot \left( D \right) ^{ 4 } } - h_{f} \\&amp;= \frac{ 303975 - 26200.000 }{ 865 \cdot 9.810 } - 10 - \left( 1 + \left( 0.500 + 4 \cdot 1.200 + 1.000 \right) \right) \cdot \frac{ 8 \cdot \left( 0.003 \right) ^{ 2 } }{ 9.810 \cdot \left( 3.142 \right) ^{ 2 } \cdot \left( 0.120 \right) ^{ 4 } } - 2 \\&amp;= 20.708 \; \;\textrm{(m)}\\[10pt]
-\end{aligned}
-\]</span></p>
-</div>
-</div>
-<p>Ya que <span class="math inline">\(\text{NPSH}_d&gt;\text{NPSH}_r\)</span>, la bomba no cavita.</p>
 </section>
 </div>
 
