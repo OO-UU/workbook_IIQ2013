@@ -24,7 +24,7 @@ Luego del proceso final de refinación de petróleo, se obtiene un fluido en fas
 
 ![Sistema de tuberías y estanques](./images/img00_2.png){width="60%"}
 
-::: {.callaout-note}
+::: {.callout-note}
 
 ## Información sobre la figura
 
