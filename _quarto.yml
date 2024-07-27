@@ -11,11 +11,16 @@ website:
   back-to-top-navigation: false
   
   navbar:
+    toggle-position: left
     left:
       - href: home.qmd
         text: "Inicio"
       - href: ./e_prop/intro.qmd
         text: "Ejercicios propuestos"
+    right:
+      - icon: github
+        href: https://github.com/OO-UU/workbook_IIQ2013
+        aria-label: GitHub
 
   sidebar: 
     - title: "Ejercicios propuestos"
