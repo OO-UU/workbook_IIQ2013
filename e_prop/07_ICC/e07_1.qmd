@@ -1,0 +1,93 @@
+---
+title: 'Ejercicio 1: Aletas'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/07_ICC/jupyter/e07_1.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+## Enunciado
+
+Se cuenta con una turbina utilizada para impulsar un gas a $1200~^\circ\text{C}$. Sin embargo, un ingeniero mecánico le advierte que el material de la turbina aguanta hasta un máximo de $1060~^\circ\text{C}$. Por este motivo, decide armar un sistema de enfriamiento que deja la base de la turbina constantemente a $300~^\circ\text{C}$. Lo que aún no sabe es si las aspas (de largo $L=0.05~\text{m}$) de la turbina se mantendrán a una temperatura bajo la máxima. Usted sabe que la turbina mantiene un coeficiente de convección $h=250~\text{W/m}^2\cdot\text{K}$ en sus aspas. Además, el área trasversal de la aspa es de $A_c = 6\times 10^{-4}~\text{m}^2$ y su perímetro es de $P=110~\text{mm}$. Si el material de la turbina tiene una conductividad térmica de $20~\text{W/m}\cdot\text{K}$.
+
+1. Encuentre la temperatura que alcanza la punta del asta y compruebe si se encuentra en un rango aceptable de funcionamiento.
+2. Encuentre el calor tranfsferido al refrigerante.
+
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e07_1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e07_1-sol .collapse .multi-collapse}
+
+### Inciso 1
+
+```{python}
+from numpy import cosh, sqrt, tanh
+import handcalcs.render
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+```
+
+Sabemos que un supuesto válido para aletas es el de punta de aleta adiabática. Para estas condiciones sabemos que la *temperatura de exceso* a lo largo de la aleta viene dado por:
+
+$$
+\frac{\theta(x)}{\theta_b} = \frac{\cosh{m(L-x)}}{\cosh mL}
+$$
+
+Donde $m$ será:
+
+$$
+m = \sqrt{\frac{hP}{kA_c}}
+$$
+
+Para derterminar la temperatura en la punta del asta podemos utilizar la primera ecuación:
+
+$$
+T(L) = \frac{(T_b-T_{\infty})(1)}{\cosh{mL}}+T_{\infty}
+$$
+
+```{python}
+%%render params
+T_inf = 1200 #C
+T_b = 300 #C
+A_c = 6e-4 #m$^2$
+P = 110/1000 #m
+k = 20 #W/m$\cdot$K
+L = 0.05 #m
+h = 250 #W/m$^2\cdot$K
+```
+
+```{python}
+%%render long
+m = sqrt((h*P)/(A_c*k))
+T_L = (T_b-T_inf)/(cosh(m*L))+T_inf #$^\circ$C
+```
+
+Ya que nos encontramos bajo $1060~\text{°C}$ es aceptable.
+
+### Inciso 2
+
+Para aletas que cumplan las ecuaciones descritas anterioremente para $\theta(x)$, se puede derivar a partir de la ley de Fourier la siguiente ecuación:
+
+$$
+q_f = \sqrt{hPkA_c}\theta_b\tanh{mL}
+$$
+
+```{python}
+%%render long
+theta_b = T_b-T_inf #$^\circ$C~o~K
+q_f = sqrt(h*P*k*A_c)*theta_b*tanh(m*L) #W
+```
+
+Luego la aleta libera calor y la base lo percibe tal que $-q_f = q_{refrig}$. Entonces el refrigerante recibe calor a $508.46~\text{W}$.
+
+:::

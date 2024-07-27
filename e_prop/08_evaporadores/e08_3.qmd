@@ -1,0 +1,297 @@
+---
+title: 'Ejercicio 3: Evaporador de 2 efectos *backward*'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/08_evaporadores/jupyter/e08_3.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+## Enunciado
+
+Un evaporador de dos efectos verticales es utilizado para concentrar un flujo de una solución de sólidos disueltos al $19~\%$. El flujo entra al sistema a $80000~\text{L/h}$ con una temperatura de $25~\text{°C}$. Se quiere alcanzar una concentración de sólidos del $40~\%$. Al entrar, el flujo pasa por dos intercambiadores de tubo y carcasa a contra-corrientes $a$ y $b$ que actuan como calentadores. Luego, pasa a través del segundo y primer efecto como muestra la figura. El vapor que se utiliza en el calentador $a$ proviene de la linea de vapor entre el segundo efecto y el condensador $C$. Mientras que para el calentador $b$ se utiliza el vapor proveniente de la linea de vapor entre el primer y segundo efecto. La diferencia de temperaturas $\Delta T_h$ para ambos calentadores es de $10~\text{°C}$. Por último, la temperatura de entrada del vapor saturado de la corriente $\text{S}$ es de $110~\text{°C}$.
+
+![Evaporador doble backward](./images/img08_3.png){width="60%"}
+
+Además, su mejor amigo le asegura que las diferencias de temperatura para cada intercambiador son $\Delta T_1 = 22~\text{°C}$ y$\Delta T_2 = 15~\text{°C}$. Para corroborar, le entrega la siguiente información.
+
+* La gravedad específica para sólidos disueltos al $19\%$ es $1.0632$ y la densidad del agua es $0.995~\text{kg/L}$.
+* Las elevaciones del punto de ebullición (EPE) son $7~\text{°C}$ y $4~\text{°C}$ para el primer y segundo efecto respectivamente.
+* Los coeficientes de transferencia global de calor corregidos son $25555.12~\text{W/m}^2\cdot\text{K}$ para $\text{E}1$ y $39974.8~\text{W/m}^2\cdot\text{K}$ para $\text{E}2$.
+* Considere que el calor latente del vapor será $\lambda_{s}=2183~\text{kJ/kg}$, $\lambda_{1}=2341~\text{kJ/kg}$ y $\lambda_{2}=2678~\text{kJ/kg}$.
+* La ecuación para el calor específico a presión constante en función de la temperatura (en °C) es:
+
+$$
+c_p (\text{J/kg}\cdot\text{°C}) = 6.5684 T + 3499
+$$
+
+Encuentre:
+
+1. La fracción másica de sólidos disueltos luego del segundo efecto.
+2. El flujo másico de vapor requerido en la corriente $\text{S}$ en $\text{kg/h}$.
+3. El área de transferecia de calor para cada efecto en $\text{m}^2$.
+4. La economía del intercambiador.
+5. El calor a ser removido del condensdor en $\text{MW}$.
+
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e08_3-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e08_3-sol .collapse .multi-collapse}
+
+```{python}
+import handcalcs
+import handcalcs.render
+handcalcs.set_option("custom_symbols",{"dT": "\Delta T", "dEPE": "\Delta EPE", "dotm": "\dot{m", "lambda": "\lambda"})
+from sympy import *
+from sympy.solvers.solveset import linsolve
+```
+
+### Inciso 1
+
+```{python}
+%%render params
+w_f = 0.19
+w_p = 0.4
+rho_w = 0.995 #kg/L
+```
+
+Asumiendo $1~\text{hora}$ de opración.
+
+```{python}
+%%render short 2
+F = 80000*1.0632*rho_w #kg
+P = F*(w_f/w_p) #kg
+V = F-P #kg
+```
+
+Podemos asumir que la evaporación es equitativa en ambos efectos, luego para el segundo efecto:
+
+$$
+w_f\cdot F = w_{E2}\cdot L =  w_{E2}\cdot (F-V_{E2})
+$$
+
+```{python}
+%%render short
+V_E2 = V/2 #kg
+w_E2 = (w_f*F)/(F-V_E2)
+```
+
+### Inciso 2 y 3
+
+Del enunciado sabemos lo siguiente:
+
+```{python}
+%%render params
+dT_1 = 22
+dEPE_1 = 7
+dT_2 = 15
+dEPE_2 = 4
+dT_h = 10
+lambda_s = 2183e3 #J/kg
+lambda_1 = 2341e3 #J/kg
+lambda_2 = 2678e3 #J/kg
+```
+
+Además definiremos una función que calcule el calor específico promedio entre dos temperaturas.
+
+```{python}
+def c_p(T_1,T_2):
+    c_p1 = 6.5684*T_1+3499
+    c_p2 = 6.5684*T_2+3499
+    return (c_p1+c_p2)/2
+```
+
+A partir del enunciado podemos despejar las tempraturas de los flujos.
+
+```{python}
+%%render short
+## Temperaturas en $^\circ$C
+T_s = 110 #Vapor que entra a E1
+T_1 = T_s-dT_1 #Líquido en E1 o producto
+T_s2 = T_1-dEPE_1 #Vapor hacia E2
+T_2 = T_s2-dT_2 #Líquido en E2
+T_c = T_2-dEPE_2 #Vapor hacia el condensador
+T_b = T_s2-dT_h #Líquido que entra a E2 después de b
+T_a = T_c-dT_h #líquido que entra a b después de a
+T_F = 25 #Líquido que entra a a
+```
+
+Los balances de calor entonces serán:
+
+```{python}
+m_1 = P
+m_F = F
+m_s, m_2 = symbols('\dot{m}_s, \dot{m}_2')
+```
+
+Para el primer efecto.
+
+$$
+\dot{m}_s\lambda_s = (\dot{m}_2-\dot{m}_1)\lambda_1 + \dot{m}_2\left(\frac{c_p(T_1)\cdot c_p(T_2)}{2}\right)\left(T_1-T_2\right)
+$$
+
+```{python}
+E1 = Eq(m_s*lambda_s, (m_2-m_1)*lambda_1+m_2*c_p(T_1,T_2)*(T_1-T_2))
+E1
+```
+
+Para el segundo efecto más el calentador $b$.
+
+$$
+(\dot{m}_2-\dot{m}_1)\lambda_1 = (\dot{m}_F-\dot{m}_2)\lambda_2 + \dot{m}_F\left(\frac{c_p(T_2)\cdot c_p(T_b)}{2}\right)\left(T_2-T_b\right) + \dot{m}_F\left(\frac{c_p(T_b)\cdot c_p(T_a)}{2}\right)\left(T_b-T_a\right)
+$$
+
+```{python}
+E2 = Eq((m_2-m_1)*lambda_1, (m_F-m_2)*lambda_2 + m_F*c_p(T_2,T_b)*(T_2-T_b)+ m_F*c_p(T_b,T_a)*(T_b-T_a))
+E2
+```
+
+```{python}
+sol = linsolve((E1,E2), (m_s, m_2))
+for sol1, sol2 in sol:
+    dotm_s = sol1
+    dotm_2 = sol2
+```
+
+Luego de resolver el sistema de ecuaciones llegamos a los siguientes flujos.
+
+```{python}
+%%render 0
+dotm_s = dotm_s #kg/h
+dotm_1 = m_1 #kg/h
+dotm_2 = dotm_2 #kg/h
+dotm_F = m_F #kg/h
+```
+
+A partir de esta información podemos depejar la áreas en función de la ecuación característica.
+
+$$
+q = UA\Delta T
+$$
+
+```{python}
+%%render long
+U_1 = 25555.12 #W/m$^2\cdot$K
+U_2 = 39974.8 #W/m$^2\cdot$K
+q_1 = (dotm_s/3600)*lambda_s #W
+A_1 = q_1/(U_1*dT_1) #m$^2$
+q_b = (dotm_F/3600)*c_p(T_b,T_a)*(T_b-T_a) #W
+q_2 = ((dotm_2-dotm_1)/3600)*lambda_2 - q_b #W
+A_2 = q_2/(U_2*dT_2) #m$^2$
+```
+
+Se debe cumplir que $A_1 = A_2$, por lo tanto los $\Delta T_1$ y $\Delta T_2$ no son los correspondientes a los efectos. Se debe hacer una corrección a las temperaturas.
+
+```{python}
+%%render
+A_prom = (A_1+A_2)/2
+dT_c1 = dT_1 * (A_1/A_prom)
+dT_c2 = dT_2 * (A_2/A_prom)
+```
+
+Con estas nuevas diferencias de temperaturas iteramos.
+
+```{python}
+%%render short
+## Temperaturas en $^\circ$C
+T_s = 110 #Vapor que entra a E1
+T_1 = T_s-dT_c1 #Líquido en E1 o producto
+T_s2 = T_1-dEPE_1 #Vapor hacia E2
+T_2 = T_s2-dT_c2 #Líquido en E2
+T_c = T_2-dEPE_2 #Vapor hacia el condensador
+T_b = T_s2-dT_h #Líquido que entra a E2 después de b
+T_a = T_c-dT_h #líquido que entra a b después de a
+T_F = 25 #Líquido que entra a a
+```
+
+El sistema de ecuaciones es el mismo, pero ahora cambian las temperaturas.
+
+```{python}
+m_1 = P
+m_F = F
+m_s, m_2 = symbols('\dot{m}_s, \dot{m}_2')
+E1 = Eq(m_s*lambda_s, (m_2-m_1)*lambda_1+m_2*c_p(T_1,T_2)*(T_1-T_2))
+E1
+```
+
+```{python}
+E2 = Eq((m_2-m_1)*lambda_1, (m_F-m_2)*lambda_2 + m_F*c_p(T_2,T_b)*(T_2-T_b)+ m_F*c_p(T_b,T_a)*(T_b-T_a))
+E2
+```
+
+```{python}
+sol = linsolve((E1,E2), (m_s, m_2))
+for sol1, sol2 in sol:
+    dotm_s = sol1
+    dotm_2 = sol2
+```
+
+Los nuevos flujos serán:
+
+```{python}
+%%render 2
+dotm_s = dotm_s #kg/h
+dotm_1 = m_1 #kg/h
+dotm_2 = dotm_2 #kg/h
+dotm_F = m_F #kg/h
+```
+
+Por último comprobamos que las áreas sean las mismas.
+
+```{python}
+%%render long 1
+U_1 = 25555.12 #W/m$^2\cdot$K
+U_2 = 39974.8 #W/m$^2\cdot$K
+q_1 = (dotm_s/3600)*lambda_s #W
+A_1 = q_1/(U_1*dT_c1) #m$^2$
+q_b = (dotm_F/3600)*c_p(T_b,T_a)*(T_b-T_a) #W
+q_2 = ((dotm_2-dotm_1)/3600)*lambda_2 - q_b #W
+A_2 = q_2/(U_2*dT_c2) #m$^2$
+```
+
+Las áreas son lo suficientemente parecidas. Por lo que podemos asumir que el área de los efectos será un promedio entre ambas.
+
+```{python}
+%%render 1
+A_prom = (A_1+A_2)/2
+```
+
+El flujo de vapor en la corriente $\text{S}$ será $28908~\text{kg/h}$. El área de los efectos será $29.5~\text{m}^2$.
+
+### Inciso 4
+
+La economía del sistema completo viene dado por la división entre la cantidad evaporada $\text{V}$ calculada en el inciso 1 y el flujo de vapor $\text{S}$.
+
+```{python}
+%%render 2
+E = V/dotm_s #kg/kg
+```
+
+### Inciso 5
+
+El calor removido en el condensador final será.
+
+$$
+q_C = \left(\dot{m}_F-\dot{m}_2\right)\lambda_2 - \dot{m}_F\left(\frac{c_p(T_a)\cdot c_p(T_F)}{2}\right)\left(T_a-T_F\right)
+$$
+
+```{python}
+%%render long
+q_C = ((dotm_F - dotm_2)/3600)*lambda_2 - (dotm_F/3600)*c_p(T_a,T_F)*(T_a-T_F) #W
+```
+
+```{python}
+%%render params 1
+R = q_C/10**6 #MW
+```
+
+:::

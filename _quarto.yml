@@ -41,6 +41,26 @@ website:
            - ./e_prop/03_compresibles/e03_1.qmd
            - ./e_prop/03_compresibles/e03_2.qmd
         - text: "Transferencia de calor"
+        - section: "ICDT"
+          contents:
+           - ./e_prop/04_ICDT/e04_1.qmd
+        - section: "Transferencia de calor en estanques agitados"
+          contents:
+           - ./e_prop/05_tc-agitacion/e05_1.qmd
+        - section: "ICTC"
+          contents: 
+           - ./e_prop/06_ICTC/e06_1.qmd
+           - ./e_prop/06_ICTC/e06_2.qmd
+        - section: "Superficies extendidas"
+          contents: 
+           - ./e_prop/07_ICC/e07_1.qmd
+           - ./e_prop/07_ICC/e07_2.qmd
+           - ./e_prop/07_ICC/e07_3.qmd
+        - section: "Evaporadores"
+          contents: 
+           - ./e_prop/08_evaporadores/e08_1.qmd
+           - ./e_prop/08_evaporadores/e08_2.qmd
+           - ./e_prop/08_evaporadores/e08_3.qmd
 
 format:
   html:

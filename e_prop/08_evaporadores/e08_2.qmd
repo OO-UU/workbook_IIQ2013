@@ -1,0 +1,151 @@
+---
+title: 'Ejercicio 2: Evaporador considerando entalpía de dilución'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/08_evaporadores/jupyter/e08_2.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+## Enunciado
+
+Un evaporador de un efecto es utilizado para concentrar $9070~\text{kg/h}$ de una solución al $20~\%$ de hidróxido de sodio hasta alcanzar un $50~\%$ de concentración másica. La presión de manométrica del vapor saturado que entra al evaporador ($\text{S}$) es de $1.37~\text{atm}$; la presión en el evaporador es $100~\text{mmHg}$. Asuma que el coeficiente global de transferencia de masa es de $1400~\text{W/m}^2\cdot\text{°C}$, y que la temperatura del flujo de alimentación es de $37.8~\text{°C}$.
+
+Encuentre lo siguiente:
+
+1. El flujo másico de vapor saturado que sale del evaporador en la corriente $\text{V}$.
+2. El flujo másico de vapor saturado necesario en la corriente $\text{S}$.
+3. La economía del evaporador.
+4. El área de evaporador requerido si la temperatura de condensación del vapor a $1.37~\text{atm}$ es $126.1~\text{°C}$.
+
+![Evaporador simple](./images/img08_2-1.png){width="60%"}
+
+Para sus cálculos utilice la siguiente información:\
+Temperatura de ebullición del agua a $100~\text{mmHg}$: $51.11~\text{°C}$\
+Punto de ebullición de la solución a una concentración del $20~\%$ de NaOH: $91.67~\text{°C}$\
+El calor latente de vapor saturado a $1.37~\text{atm}$ es: $2184.11~\text{kJ/kg}$\
+La entalpía de agua sobrecalentada a $91.67~\text{°C}$ puede ser calculada como:
+
+$$
+H_v \text{(Btu/lb)} = 1116+0.45\cdot\Delta\text{EPE}\text{(°F)}
+$$
+
+Donde $\Delta\text{EPE}$ es la elevación del punto de ebullición.\
+Ya que tenemos una solución salina, debemos considerar la entalpía de dilución. Para esto, utilice el siguiente gráfico.
+
+![Evaporador simple](./images/img08_2-2.png){width="60%"}
+
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e08_2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e08_2-sol .collapse .multi-collapse}
+
+### Inciso 1
+
+```{python}
+import handcalcs.render
+handcalcs.set_option("custom_symbols",{"dEPE": "\Delta EPE", "dotm": "\dot m", "lambda": "\lambda", "Tebs": "T^eb", "dT": "\Delta T"})
+```
+
+Se debe cumplir la conservación de masa, tal que
+
+$$
+w_F\cdot F = w_L\cdot L
+$$
+
+```{python}
+%%render params
+dotm_F = 9070 #kg/h
+w_F = 0.2 
+w_L = 0.5
+```
+
+```{python}
+%%render short
+dotm_L = dotm_F*(w_F/w_L) #kg/h
+```
+
+Por balance de masa se despeja $\dot{m}_V$.
+
+```{python}
+%%render short 0
+dotm_V = dotm_F-dotm_L #kg/h
+```
+
+### Inciso 2
+
+Se debe despejar $\dot{m}_s$ a partir del balance de energía.
+
+$$
+\dot{m}_s\cdot\lambda_s = \dot{m}_v\cdot H_v + \dot{m}_L\cdot H_L - \dot{m}_F\cdot H_F
+$$
+
+```{python}
+%%render params
+Tebs_sol = 91.67 #$^\circ$C
+Tebs_w = 51.11 #$^\circ$C
+lambda_s = 2184.11 #kJ/kg
+```
+
+Por definición, el $\Delta\text{EPE}$ es la diferencia entre las temperaturas de ebullición de la solución y el agua pura. Ya que la fórmula para $H_v$ se encuentra en función de la temperatura en Farenheit, hacemos el cambio de unidades.
+
+```{python}
+%%render short 0
+Tebs_solF = Tebs_sol*9/5 +32 #$^\circ$F
+Tebs_wF = Tebs_w*9/5 +32 #$^\circ$F
+dEPE = Tebs_solF-Tebs_wF #$^\circ$F
+H_V = 1116+0.45*dEPE #Btu/lb
+```
+
+Las otras entalpías las encontramos de forma gráfica:\
+$H_F:~20~\%~\text{sólidos a}~100~\text{°F}$ $\rightarrow$ $55~\text{Btu/lb}$ \
+$H_L:~50~\%~\text{sólidos a}~197~\text{°F}$ $\rightarrow$ $221~\text{Btu/lb}$
+
+```{python}
+%%render short
+H_V = 1149*2.326 # kJ/kg
+H_F = 55*2.326 # kJ/kg
+H_L = 221*2.326 # kJ/kg
+```
+
+```{python}
+%%render long
+q = dotm_V*H_V + dotm_L*H_L - dotm_F*H_F # kJ/h
+dotm_s = q/lambda_s #kg/h
+```
+
+### Inciso 3
+
+```{python}
+%%render 2
+E = dotm_V/dotm_s #kg/kg
+```
+
+### Inciso 4
+
+La ecuación de diseño de un evaporador será:
+
+$$
+q = U\cdot A\cdot\Delta T
+$$
+
+Donde la diferencia de temperaturas $\Delta T$ será la temperatura en el flujo de vapor $\text{S}$ y la temperatura de ebullición de la solución en el evaporador.
+
+```{python}
+%%render long
+U = 1400 #W/m$^2\cdot^\circ$C
+q = q*(1000/3600) #W
+dT = 126.1-91.67
+A = q/(U*dT) #m$^2$
+```
+
+:::

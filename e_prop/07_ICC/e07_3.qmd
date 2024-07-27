@@ -1,0 +1,144 @@
+---
+title: 'Ejercicio 3: Arreglos de aletas'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/07_ICC/jupyter/e07_3.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+## Enunciado
+
+Usted tiene una tubería de aluminio 2024-T6 ($k=186~\text{W/m}\cdot\text{K}$) de $50~\text{cm}$ de largo y $3.5~\text{cm}$ de radio externo. Normalmente, esta se utiliza para calentar aire que fluye por fuera de la tubería a $298.15~\text{K}$. Además, sabe que la temperatura superficial del tubo es de $450~\text{K}$ con un coeficiente de convección $h=40~\text{W/m}^2\cdot\text{K}$. Ha decidido que para mejorar la transferencia de calor hacia los alrededores (aire) va a integrar aletas. Luego de cotizar en Dosimac encuentra aletas anulares con un grosor de $7~\text{mm}$ y largo $L=30~\text{mm}$.
+    
+1. Para comprobar si las aletas funcionan, usted compra 15 y las coloca igualmente espaciadas a lo largo del tubo. ¿Cuál es el aumento en la transferencia de calor producto de las aletas?
+2. Si el mínimo espaciamiento entre aletas permitido es $13~\text{mm}$, ¿cuántas aletas puede añadir como máximo? ¿Es mejor colocar esta cantidad de aletas o mantener el número inicial (15)?
+
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e07_3-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e07_3-sol .collapse .multi-collapse}
+
+```{python}
+import handcalcs.render
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+from numpy import pi
+```
+
+### Inciso 1
+
+Para un arreglo de aletas la ecuación para la tasa de transferencia de calor será:
+
+$$
+q_t = hA_t\left[1-\frac{NA_f}{A_t}\left(1-\eta_f\right)\right]\theta_b
+$$
+
+Para aletas anulares, tenemos que el área de la aleta dependerá de los parámetros de dimensionamiento corregidos:
+
+$$
+A_f = 2\pi\left(r_{2c}^2-r_1^2\right)
+$$
+
+Luego el área total del arreglo será la suma de las áreas de todas las aletas y del tubo
+
+$$
+A_t = N\cdot A_f + 2\pi r_1(H-N\cdot t)
+$$
+
+La eficiencia la podemos encontrar de manera gráfica utilizando parámetros corregidos. Y luego buscando el valor correspondiente de:
+
+$$
+L_c^{\frac{3}{2}}\left(\frac{h}{kA_p}\right)^{\frac{1}{2}}
+$$
+
+```{python}
+%%render params
+k = 186 #W/m$\cdot$K
+H = 0.5 #m
+r_1 = 0.035 #m
+T_inf = 298.15 #K
+T_b = 450 #K
+h = 40 #W/m$^2\cdot$K
+L = 30/1000 #m
+t = 7/1000 #m
+N = 15
+r_2 = r_1+L #m
+```
+
+Empezando por el cálculo para la eficiencia:
+
+```{python}
+%%render long
+r_2c = r_2 + t/2 #m
+L_c  = L + t/2 #m
+A_p = L_c*t #m$^2$
+x = L_c**(3/2)*(h/(k*A_p))**(1/2)
+curva = r_2c/r_1
+```
+
+Del gráfico obtenemos que $\eta_f \approx 0.94$.
+
+```{python}
+%%render long
+eta_f = 0.94
+A_f = 2*pi*(r_2c**2-r_1**2) #m$^2$
+A_t = N*A_f + 2*pi*r_1*(H-N*t) #m$^2$
+q_t = h*A_t*(1-(N*A_f)/A_t*(1-eta_f))*(T_b - T_inf) #W
+```
+
+Para el caso sin aletas tendremos un modelo de convección simple para la superficie exterior de una tubería.
+
+$$
+q_w = h(2\pi r_1H)\theta_b
+$$
+
+```{python}
+%%render long
+q_w = h*(2*pi*r_1*H)*(T_b-T_inf) #W
+```
+
+Luego el aumento será:
+
+```{python}
+%%render long
+Delta_q = q_t - q_w #W
+```
+
+### Inciso 2
+
+Por simetría la altura debe ser igual al grosor de las aletas más los espacios entre ellas. Asumiendo que entre el inicio de la tubería y el comienzo de la primera aleta el espaciamiento es $S=13~\text{mm}$. Y lo mismo se cumple para el término de la última aleta y el final de la tubería.
+
+$$
+H = N(t+S)+S
+$$
+
+Despejando y resolviendo:
+
+```{python}
+%%render long
+S = 0.013 #m
+N = (H-S)/(t+S)
+```
+
+Entonces el máximo de aletas posibles será $N=24$. Repetimos los cálculos que sea necesarios.
+
+```{python}
+%%render long
+N = 24
+A_t = N*A_f + 2*pi*r_1*(H-N*t) #m$^2$
+q_t = h*A_t*(1-(N*A_f)/A_t*(1-eta_f))*(T_b - T_inf) #W
+```
+
+Notamos que al aumentar las aletas mejoran la tasa de transferencia de calor.
+
+:::

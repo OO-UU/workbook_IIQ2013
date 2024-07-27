@@ -1,0 +1,204 @@
+---
+title: 'Ejercicio 1: ICTC y haces de tubos'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/06_ICTC/jupyter/e06_1.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+tbl-cap-location: bottom
+---
+
+## Enunciado
+
+Luego de enfriar tolueno con un intercambiador de doble tubo, desea determinar si un intercambiador de tubo y carcasa (**ICTC**) tipo 1-2n es una mejor alternativa. En esta situación, cuenta con diferentes flujos de operación. En específico, el flujo de enfriamiento (Agua) que se encuentra en la carcasa será de $F_c = 63~\text{kg/s}$ y entrará a una temperatura de $25~\text{°C}$. Mientras que el tolueno pasará por los tubos a contracorriente con un flujo de $F_h = 34.35~\text{kg/s}$ y a una temperatura inicial de $80~\text{°C}$. El intercambiador está formado por $N_t=45$ tubos de diámetro interno $d_i=3.5~\text{cm}$ y grosor de la tubería de $0.78~\text{cm}$, con un largo $L=5~\text{m}$ y un arreglo triagular con $2~\text{cm}$ de espacio entre tubos ($C$). La carcasa, tiene un diámetro de $D_c=0.9~\text{m}$ y cuenta con $25$ deflectores identicamente espaciados a lo largo de ella. Para las propiedades termofísicas de los fluidos utilice:
+
+| Fluido  | $c_P~\text{(J/kg}\cdot\text{K)}$ | $\rho~\text{(kg/m}^3\text{)}$ | $\mu~\text{(Pa}\cdot\text{s)}$ | $k~\text{(W/m}\cdot\text{K)}$ |
+|---------|-----------------------------------|-------------------------------|--------------------------------|-------------------------------|
+| Tolueno | 1917.25                           | 802.355                       | 3.003$\times 10^{-4}$          | 0.11329                       |
+| Agua    | 4181.95                           | 996.93                        | 8.994$\times 10^{-4}$          | 0.6062                        |
+
+: Propiedades termofísicas del tolueno y el agua en función de su temperatura promedio. {.striped .hover}
+
+1. Es deseable que el factor de corrección $F_T$ sea lo más cercano a 1. Encuentre las temperaturas de salida de ambos fluidos para que se cumpla esta relación. *Hint: Utilice el gráfico que relaciona el factor de corrección con la eficiencia de temperaturas.*
+2. Calcule el coeficiente de transferencia de calor para el flujo que pasa por la carcasa.
+3. Encuentre la caida de presión para el flujo que pasa por la carcasa. *Hint: Utilice el gráfico de factor de fricción para arreglos escalonados.*
+
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e06_1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e06_1-sol .collapse .multi-collapse}
+
+```{python}
+import handcalcs.render
+from handcalcs import handcalc
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+from numpy import pi, log, sqrt
+```
+
+### Inciso 1
+
+Para situarnos en el gráfico, necesitamos saber la razón de temperaturas $Z$ (En el gráfico está representado por $R$).
+
+$$
+Z = \frac{F_c\cdot c_{Pc}}{F_h\cdot c_{Ph}}
+$$
+
+Anotamos las propiedades termofísicas del enunciado y los flujos.
+
+```{python}
+%%render params
+F_c = 63 #kg/s
+rho_c = 996.93 #kg/m$^3$
+mu_c = 8.994e-4 #Pa$\cdot$s
+c_Pc = 4181.95 #J/kg$\cdot$K
+k_c = 0.6062 #W/m$\cdot$K
+F_h = 34.35 #kg/s
+rho_h = 802.355 #kg/m$^3$
+mu_h = 3.003e-4 #Pa$\cdot$s
+c_Ph = 1917.25 #J/kg$\cdot$K
+k_h = 0.11329 #W/m$\cdot$K
+```
+
+```{python}
+%%render long
+Z = (F_c*c_Pc)/(F_h*c_Ph)
+```
+
+De esta manera, nos situamos el la curva $R~\text{o}~Z=4$. Y buscamos el valor de $\eta_H$ tal que $F_T$ sea 1. De manera que encontramos que para que esto se cumpla $\eta_H \approx 0.05$. Luego, por definición:
+
+$$
+\eta_H = \frac{T_{c,o}-T_{c,i}}{T_{h,i}-T_{c,i}}
+$$
+
+```{python}
+%%render long
+T_ci = 25+273.15 #K
+T_hi = 80+273.15 #K
+eta_H = 0.05
+T_co = eta_H*(T_hi-T_ci) + T_ci #K
+```
+
+Luego despejamos $T_{h,o}$ mediante $Z$.
+
+```{python}
+%%render long
+T_ho = T_hi - Z*(T_co - T_ci) #K
+```
+
+Entonces, las temperaturas de salida del agua será $T_{c,o} \approx 27.75~\text{°C}$ y la del tolueno $T_{h,o} \approx 69~\text{°C}$.
+
+### Inciso 2
+
+En primer lugar, debemos encontrar el flujo posible entre los deflectores y tubos. Para esto calculamos el área disponible de flujo.
+
+$$
+a_c = D_cB\frac{C}{P_T}
+$$
+
+Ya que los deflectores se encuentran especiados de igual forma, sabemos entonces que el espacio entre deflectores será:
+
+$$
+N_B = \frac{L}{B}-1
+$$
+
+Mientras que el espacio entre los centros de dos tubos $P_T$ viene dado por la relación entre $C$ y el diámetro externo de las tuberías.
+
+$$
+P_T = C + d_e = C + \left(d_i + e\right)
+$$
+
+Con estas relaciones somos capaces de encontrar el diámetro equivalente para el flujo en la carcasa para arreglos triangulares (o escalonados).
+
+$$
+D_e = \frac{3.44P_T^2-\pi d_e^2}{\pi d_e}
+$$
+
+```{python}
+%%render params sci_not
+d_i = 3.5/100 #m
+e = 0.78/100 #m
+D_c = 0.9 #m
+N_B = 25
+L = 5
+C = 2/100 #m
+N_t = 45
+```
+
+```{python}
+%%render long
+B = L/(N_B+1) #m
+d_e = d_i+e #m
+P_T = C+d_e #m
+D_e = (3.44*P_T**2-pi*d_e**2)/(pi*d_e) #m
+a_c = D_c*B*(C/P_T) #m$^2$
+```
+
+Con esta información podemos calcular el número de Reynolds.
+
+$$
+Re = \frac{G_cD_e}{\mu}
+$$
+
+```{python}
+%%render long
+G_c = F_c/a_c #kg/m$^2\cdot$s
+Re = (G_c*D_e)/mu_c
+```
+
+Ya que nos encontramos ante un Reynolds que se encuentra dentro del rango disponible utilizamos la siguiente correlación asumiendo $\mu\approx\mu_s$.
+
+$$
+Nu = 0.36Re^{0.55}Pr^{1/3}
+$$
+
+```{python}
+%%render long
+Pr = (mu_c*c_Pc)/k_c
+Nusselt = 0.36*Re**(0.55)*Pr**(1/3)
+```
+
+Finalmente encontramos el coeficiente de transferencia de calor de la carcasa.
+
+$$
+h_c = \frac{Nu\cdot k}{D_e} 
+$$
+
+```{python}
+%%render long 
+h_c = (Nusselt*k_c)/D_e #W/m$^2\cdot$K
+```
+
+### Inciso 3
+
+Para poder utilizar el gráfico, necesitamos saber la curva que utilizaremos, estas representan el espacio que hay entre los centros de los tubos $P_T$ en $inch$.
+
+```{python}
+%%render params
+P_T = P_T/0.0254 #inch
+```
+
+Nos ubicamos en la curva donde $P_T\approx2.5~\text{inch}$ y $Re=7.383\times10^{4}$. Entonces $f'\approx0.2$.
+
+Luego la caida de presiones será:
+
+$$
+\Delta p = f'\left[\frac{\left(N_B+1\right)D_c}{D_e}\right]\left(\frac{G_c^2}{2\rho}\right)
+$$
+
+```{python}
+%%render long
+f = 0.2
+Dp= f*((N_B+1)*D_c)/(D_e)*(G_c**2/(2*rho_c)) #Pa
+```
+
+:::

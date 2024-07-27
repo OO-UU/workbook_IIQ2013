@@ -1,0 +1,224 @@
+---
+title: 'Ejercicio 1: Agitador con serpentín'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/05_tc-agitacion/jupyter/e05_1.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+tbl-cap-location: bottom
+---
+
+
+
+## Enunciado
+
+Usted desea enfriar $500~\text{L}$ de Etilbenceno mediante un estanque agitado con un serpentín. Para esto utiliza como flujo refrigerante agua ($40~\text{L/h}$) que entra a $25~\text{°C}$ al serpentín y sale a $40~\text{°C}$. El diámetro del serpentín es $D_s = 64~\text{cm}$ y la altura del serpentín $H_s = 80~\text{cm}$ con un número de espiras igual a $4$ como indica la figura. El diámetro interno del tubo del serpentín es de $1~\text{cm}$. En cuanto a las características del estanque, este se encuentra lleno completamento por el fluido, y tiene una altura de $1~\text{m}$ con un agitador que opera a $15~\text{RPM}$. Su configuración es $S_1 = 0.65$. El objetivo de esta operación es enfriar Etilbenceno desde los $120~\text{°C}$ hasta los $105~\text{°C}$.
+
+![Estanque agitado](./images/img05_1.png){width="60%"}
+
+ Usted cuenta con la tabla de las propiedades termofísicas de ambos fluidos a la temperatura promedio de entrada y salida.
+
+| Fluido      | $c_P~\text{(J/kg}\cdot\text{K)}$ | $\rho~\text{(kg/m}^3\text{)}$ | $\mu~\text{(Pa}\cdot\text{s)}$ | $k~\text{(W/m}\cdot\text{K)}$ |
+|-------------|----------------------------------|-------------------------------|--------------------------------|-------------------------------|
+| Etilbenceno | 2052.21                          | 730.884                       | 2.764$\times 10^{-4}$          | 0.1069                        |
+| Agua        | 4181.95                          | 996.93                        | 8.994$\times 10^{-4}$          | 0.6062                        |                       |
+
+: Propiedades termofísicas del etilbenceno y el agua en función de su temperatura promedio. {.striped .hover}
+
+Responda lo siguiente:
+
+1. Encuentre el coeficiente de transferencia de calor para el fluido en el estanque $h_o$. *Hint: Asuma que el grosor de la tubería del serpentín es despreciable.*
+2. Encuentre el coeficiente de transferencia de calor para el fluido en el serpentín $h_s$.
+3. ¿Cuántos días se demorará un lote para enfriar Etilbenceno?
+
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e05_1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e05_1-sol .collapse .multi-collapse}
+
+```{python}
+import handcalcs.render
+from handcalcs import handcalc
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+from numpy import pi, log, sqrt, exp
+```
+
+### Inciso 1
+
+Escribimos todas las propiedades termofísicas del enunciado.
+
+```{python}
+%%render params
+rho_c = 994.635 #kg/m$^3$
+mu_c = 7.714e-4 #Pa$\cdot$s
+c_Pc = 4180.35 #J/kg$\cdot$K
+k_c = 0.6175 #W/m$\cdot$K
+rho_h = 730.884 #kg/m$^3$
+mu_h = 2.764e-4 #Pa$\cdot$s
+c_Ph = 2052.21 #J/kg$\cdot$K
+k_h = 0.1069 #W/m$\cdot$K
+```
+
+Luego obtenemos todos los parámetros de dimensionamiento que nos faltan del reactor.
+
+Ya que el estanque de encuentra lleno, sabemos su volumen. Asumiendo estanque cilíndrico:
+
+$$
+V = \pi\left(\frac{D_t}{2}\right)^2H
+$$
+
+```{python}
+%%render long
+V= 0.5 #m$^3$
+H= 1 #m
+D_t = 2*sqrt(V/(pi*H)) #m
+```
+
+Con esta información, podemos también obtener el diámetro del estanque para luego obtener el número de Reynolds.
+
+```{python}
+%%render long
+S_1 = 0.65
+D_a = S_1*D_t
+N = 15 #RPM
+Re_D = (rho_h*(N/60)*D_a**2)/mu_h
+Pr_h = (mu_h*c_Ph)/k_h
+```
+
+Luego para estanques agitados con serpentín asumiendo $\mu \approx \mu_s$:
+
+$$
+Nu_D = 0.17\left(Re_D\right)^{0.67}Pr^{0.37}\left(\frac{D_a}{D_t}\right)^{0.1}\left(\frac{d}{D_t}\right)^{0.5}
+$$
+
+```{python}
+%%render long
+d = 1/100 #m
+Nusselt_D = 0.17*Re_D**0.67*Pr_h**0.37*(D_a/D_t)**0.1*(d/D_t)**0.5
+```
+
+
+$$
+h_o = \frac{Nu_Dk_h}{d}
+$$
+
+```{python}
+%%render long
+h_o = (Nusselt_D*k_h)/d #W/m$^2\cdot$K
+```
+
+### Inciso 2
+
+Para el serpentín, las correlaciones para obtener los números adimensionales son los mismos que para flujos en tuberías. Siempre y cuando, este flujo sea turbulento.
+
+$$
+Re_D = \frac{d \dot{m}_c}{\mu A}
+$$
+
+```{python}
+%%render long 6
+F = 40 # L/h
+m_c =  F/rho_c/1000*3600 #kg/s
+A = pi*(d/2)**2 #m$^2$
+Re_D = (d*m_c)/(mu_c*A)
+Pr_c = (mu_c*c_Pc)/k_c
+```
+
+Al ser turbulento, utilizamos Sieder-Tate asumiendo $\mu \approx \mu_s$:
+
+$$
+Nu_D = 0.027Re_D^{0.8}Pr^{1/3}
+$$
+
+Luego el coeficiente de transferencia de calor para el serpentín será el mismo para flujos turbulentos en tuberías, pero con un factor de corrección:
+
+$$
+FC = 1 + 1.75\frac{d}{r_s}
+$$
+
+Luego:
+
+$$
+h_s = FC\frac{Nu_Dk_c}{d}
+$$
+
+```{python}
+%%render long
+D_s = 64/100 #m
+r_s = D_s/2
+Nusselt_D = 0.027*Re_D**0.8*Pr_c**(1/3)
+FC = 1+1.75*(d/r_s)
+h_s = FC*(Nusselt_D*k_c)/d #W/m$^2\cdot$K
+```
+
+### Inciso 3
+
+Ya que el grosor del tubo del serpentín es despreciable, tampoco presenta resistencia a la transferencia de calor.
+
+$$
+\frac{1}{U} = \left(\frac{1}{h_o} + \frac{1}{h_s}\right)
+$$
+
+Por otro lado, el área de transferencia de calor para un serpentín será:
+
+$$
+A_t = \pi d\left(\sqrt{4\pi^2n^2r_s^2 + H_s^2}\right)
+$$
+
+Del enunciado recuperamos los parámetros de dimensionamiento del serpentín.
+
+```{python}
+%%render params
+H_s = 80/100 #m
+n = 4
+```
+
+```{python}
+%%render long
+U = (1/h_o + 1/h_s)**(-1) #W/m$^2\cdot$K
+A_t = pi*d*sqrt(2*pi**2*n**2*r_s**2 + H_s**2) #m$^2$
+```
+
+Ya que estamos en un proceso de enfriamiento el tiempo del proceso tenemos las siguientes ecuaciones para representar el tiempo de enfriamiento. En donde, se enfría un líquido desde $T_0$ hasta $T$.
+
+$$
+\Delta T_{ml} = \frac{T_{cs}-T_{ce}}{\ln\left(\frac{T-T_{ce}}{T-T_{cs}}\right)}
+$$
+
+$$
+K_{ME} = exp\left(-\frac{UA}{\dot{m}_cc_{P,c}}\right)
+$$
+
+$$
+t = \frac{Mc_{P,h}/c_{P,c}}{\dot{m}_c\left(1-K_{ME}\right)}\ln\left(\frac{T_0-T_{ce}}{T-T_{ce}}\right)
+$$
+
+Procedemos a calcular lo pedido.
+
+```{python}
+%%render params
+T_0 = 120+273.15 #K
+T = 105+273.15 #K
+T_ce = 25+273.15 #K
+T_cs = 40+273.15 #K
+M = 0.5*rho_h #kg
+```
+
+```{python}
+%%render long 5
+dT_ml = (T_cs-T_ce)/(log((T-T_ce)/(T-T_cs)))
+K_ME = exp(-(U*A)/(m_c*c_Pc))
+t = (M*c_Ph/c_Pc)/(m_c*(1-K_ME)) * log((T_0-T_ce)/(T-T_ce))* 1/(3600*24) #días
+```
+
+:::

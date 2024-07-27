@@ -1,0 +1,157 @@
+---
+title: 'Ejercicio 2: Aletas cuadradas'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/07_ICC/jupyter/e07_2.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+## Enunciado
+
+Encuentre la eficiencia de la siguiente aleta de acero ($k = 53~\text{W/m}\cdot\text{K}$), si su largo es $L = 100~\text{mm}$ y su ancho es igual a su grosor $t=10~\text{mm}$. Considere que el coeficiente de convección será $h = 60~\text{W/m}^2\cdot\text{K}$, si la temperatura del seno del fluido es $20~^\circ\text{C}$ y la temperatura de la pared es $95~^\circ\text{C}$.
+
+![Aleta cuadrada](./images/img07_2.png){width="60%"}
+
+Utilizando el mismo volumen de material, usted decide disminuir su grosor a favor de aumentar su ancho. Considere que el mínimo de grosor posible es de $3~\text{mm}$ y el largo debe mantenerse constante. ¿Cuánto cambia la eficiencia de esta aleta?¿Qué haría usted si solo quisiera aumentar la transferencia de calor?
+
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e07_2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e07_2-sol .collapse .multi-collapse}
+
+```{python}
+from numpy import cosh, sqrt, tanh
+import handcalcs.render
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+```
+
+### Inciso 1 - Cálculo de eficiencia aleta cuadrada
+
+La eficiencia de una aleta vendrá por la comparación entre la capacidad real de una aleta de transferir calor, versus la capacidad máxima de calor transferido.
+
+$$
+\eta_f = \frac{q_f}{q_{max}}
+$$
+
+Sabemos que para la aleta completa, el calor $q_f$ vendrá dado por:
+
+$$
+q_f = \sqrt{hPkA_c}\theta_b\tanh{mL}
+$$
+
+Donde $m$ será:
+
+$$
+m = \sqrt{\frac{hP}{kA_c}}
+$$
+
+Ya que la tasa a la cual se transfriere el calor por conducción debe ser equivalente a la tasa de trasnferencia de calor por convección, es posible escribir la misma ecuación de la siguiente manera:
+
+$$
+q_f = \int_{A_f} h\theta(x)dA_s
+$$
+
+Luego, la condición máxima de transferencia de calor implica que la aleta completa se encuente a la temperatura de la base:
+
+$$
+q_{max} = hA_f\theta_b
+$$
+
+Luego despejamos para la eficiencia.
+
+$$
+\eta_f = \frac{\sqrt{hPkA_c}\tanh{mL}}{ hA_f}
+$$
+
+Para una aleta cuadrada, el perímetro y el área transversal de flujo de calor por conduccción serán:
+
+$$
+P = 2t + 2w \hspace{2cm} A_c = w\cdot t
+$$
+
+Mientras que el área de la aleta ($A_f$) será todo el área superficial de la aleta.
+
+$$
+A_f = P\cdot L + w\cdot t
+$$
+
+Sin embargo, la convección en la punta de la aleta será 0, ya que trabajamos a partir del supuesto de punta adiabática. Por lo que el área real de superficie de una aleta para la transferencia de calor por convección será $A_f = P\cdot L$.
+
+Reordenando la ecuación para la eficiencia.
+
+$$
+\eta_f = \frac{\sqrt{hP}}{hP}\frac{\sqrt{kA_c}\tanh{mL}}{L} = \frac{1}{\sqrt{hP}}\frac{\sqrt{kA_c}\tanh{mL}}{L} = \frac{\tanh{mL}}{mL}
+$$
+
+```{python}
+%%render params
+k = 53 #W/m$\cdot$K
+h = 60 #W/m$^2\cdot$K
+L = 100/1000 #m
+t = 10/1000 #m
+w = t #m
+T_inf = 20 #$^\circ$C
+T_b = 95 #$^\circ$C
+```
+
+```{python}
+%%render long
+P = 2*t+2*w #m
+A_c = t*w #m$^2$
+m = sqrt((h*P)/(k*A_c)) #m$^{-1}$
+eta_f = tanh(m*L)/(m*L)
+```
+
+### Inciso 2 - Cálculo de eficiencia aleta rectangular
+
+El volumen disponible vendrá dado por:
+
+```{python}
+%%render long sci_not
+V = w*t*L #m$^3$
+```
+
+Luego el nuevo ancho de la aleta será:
+
+```{python}
+%%render params sci_not
+t = 3/1000 #m
+w = V/(t*L) #m
+```
+
+Ya que $w>>t$ es válido que el perímetro sea escrito de la siguiente manera.
+
+$$
+P = 2w
+$$
+
+Y observamos que el perímetro se mantiene constante para ambas aletas.
+
+```{python}
+%%render params
+P = 2*w
+A_c = w*t
+```
+
+```{python}
+%%render long
+P = 2*t+2*w #m
+A_c = t*w #m$^2$
+m = sqrt((h*P)/(k*A_c)) #m$^{-1}$
+eta_f = tanh(m*L)/(m*L)
+```
+
+Notamos que nos perjudica hacer este cambio, ya que la eficiencia disminuye.
+
+:::

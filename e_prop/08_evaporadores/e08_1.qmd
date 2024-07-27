@@ -1,0 +1,119 @@
+---
+title: 'Ejercicio 1: Evaporador de 1 efecto simple'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/08_evaporadores/jupyter/e08_1.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+## Enunciado
+
+Una solución con sólidos suspendidos debe ser concentrada desde un $15~\%$ hasta un $50~\%$ de fracción másica de sólidos. Suponga que la elevación del punto de ebullición es despreciable. El calor específico del flujo de alimentación es $3894~\text{J/kg}\cdot\text{°C}$. El vapor saturado entra a una presión absoluta de $0.8~\text{atm}$ y el evaporador se encuentra a una presión absoluta de $100~\text{mmHg}$. El flujo de alimentación entra a $15~\text{°C}$ y el coeficiente global de trasferencia de calor es $1700~\text{W/m}^2\cdot\text{°C}$.
+
+Si el evaporador debe evaporar $25000~\text{kg/h}$ de agua, ¿qué área de evaporador es requerida? ¿Cuál es el consumo de vapor en $\text{kg/h}$?
+
+Considere para sus cálculos:
+
+* La temperatura de condensación del vapor a $0.8~\text{atm}$ es $93.7~\text{°C}$ y su calor latente es de $2273.9~\text{kJ/kg}$.
+* La temperatura de ebullición del agua a $100~\text{mmHg}$ es $51.1~\text{°C}$ y su calor latente es de $2379.5~\text{kJ/kg}$.
+
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e08_1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e08_1-sol .collapse .multi-collapse}
+
+```{python}
+import handcalcs.render
+handcalcs.set_option("custom_symbols",{"dT": "\Delta T", "lambda": "\lambda", "Tebs": "T^eb"})
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+```
+
+Primero, debemos encontrar los flujos másicos de la alimentación. Para esto, podemos utilizar un balance de masa.
+
+$$
+F = V + L
+$$
+
+Además, por conservación de masa, la cantidad de sólidos suspendidos en la corriente de licor será la misma que en la alimentación.
+
+$$
+F\cdot w_F = L\cdot w_L
+$$
+
+Juntando ambas ecuaciones:
+
+$$
+F = V + F\cdot\left(\frac{w_F}{w_L}\right) \rightarrow V = F\left(1-\frac{w_F}{w_L}\right)
+$$
+
+```{python}
+%%render params
+V = 25000 #kg/h
+w_F = 0.15
+w_L = 0.50
+```
+
+```{python}
+%%render long
+F = V/(1-w_F/w_L) #kg/h
+```
+
+A partir de esta información, podemos plantear el balance de energía. Ya que los sólidos disueltos no actúan como una solución con interacciones fuertes, la entalpía de dilución y la elevación del punto de ebullición son despreciables. Luego, el balance de energía es simple.
+
+$$
+q = F\cdot c_{p,w}\left(T^{eb}_w-T_F\right) + V\cdot \lambda_V
+$$
+
+```{python}
+%%render params
+Tebs_w = 51.1 #$^\circ$C
+T_F = 15.6 #$^\circ$C
+Tebs_S = 93.7
+c_pw = 3894 #J/kg$\cdot^\circ$C
+lambda_V = 2379.5e3 #J/kg
+lambda_S = 2273.9e3 #J/kg
+```
+
+```{python}
+%%render long
+q = F/3600 * c_pw * (Tebs_w-T_F) + V/3600 * lambda_V #W
+```
+
+La ecuación de diseño de un evaporador será:
+
+$$
+q = U\cdot A\cdot\Delta T
+$$
+
+Donde la diferencia de temperaturas $\Delta T$ será la temperatura en el flujo de vapor $\text{S}$ y la temperatura de ebullición de la solución en el evaporador.
+
+```{python}
+%%render long
+U = 1700 #W/m$^2\cdot^\circ$C
+dT = Tebs_S - Tebs_w
+A = q/(U*dT) #m$^2$
+```
+
+Finalmente, el consumo de vapor viene dado por:
+
+$$
+q = S\cdot \lambda_S
+$$
+
+```{python}
+%%render long
+S = q/lambda_S * 3600 #kg/h
+```
+
+:::
