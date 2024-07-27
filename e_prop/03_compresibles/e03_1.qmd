@@ -59,15 +59,15 @@ Luego, al tener una tubería horizontal y sin trabajo de eje:
 
 $$
 v\cdot dp + V\cdot dV = -\left(\left(du + p\cdot dv\right) -  \frac{dQ}{dm}\right)
-$$ {#eq03_1-1}
+$$ {#eq-03_1-1}
 
 Ya que
 
 $$
 -\left(\left(du + p\cdot dv\right) -  \frac{dQ}{dm}\right) = -4f\left(\frac{dl}{D_{eq}}\right)\left(\frac{V^2}{2}\right)
-$$ {#eq03_1-2}
+$$ {#eq-03_1-2}
 
-Reemplazando la [ecuación .@eq03_1-2] en [-@eq03_1-1], cambiando la velocidad como $V = Gv/A$ y reordenando los términos:
+Reemplazando la [ecuación .@eq-03_1-2] en [-@eq-03_1-1], cambiando la velocidad como $V = Gv/A$ y reordenando los términos:
 
 $$
 \int_{p_1}^{p_2}\frac{dp}{v} + \left(\frac{G}{A}\right)^2\left(\ln\left(\frac{v_2}{v_1}\right) + 2f\frac{L}{D_{eq}}\right) = 0
