@@ -42,6 +42,7 @@ website:
           contents:
            - ./e_prop/03_compresibles/e03_1.qmd
            - ./e_prop/03_compresibles/e03_2.qmd
+        - text: "---"
         - text: "Transferencia de calor"
         - section: "ICDT"
           contents:
@@ -72,7 +73,7 @@ format:
     css: styles.css
     toc: true
     grid: 
-      body-width: 900px
-      sidebar-width: 300px
-      margin-width: 200px
-      gutter-width: 1em
+      body-width: 800px
+      sidebar-width: 370px
+      margin-width: 230px
+      gutter-width: 2em

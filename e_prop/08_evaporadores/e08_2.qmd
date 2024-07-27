@@ -26,7 +26,7 @@ Encuentre lo siguiente:
 3. La economía del evaporador.
 4. El área de evaporador requerido si la temperatura de condensación del vapor a $1.37~\text{atm}$ es $126.1~\text{°C}$.
 
-![Evaporador simple](./images/img08_2-1.png){width="60%"}
+![Evaporador simple](./images/img08_2-1.png){width="30%"}
 
 Para sus cálculos utilice la siguiente información:\
 Temperatura de ebullición del agua a $100~\text{mmHg}$: $51.11~\text{°C}$\
