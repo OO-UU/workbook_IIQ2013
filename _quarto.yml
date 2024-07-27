@@ -20,6 +20,8 @@ website:
   sidebar: 
     - title: "Ejercicios propuestos"
       logo: logo.png
+      collapse-level: 1
+      style: docked
       contents:
         - ./e_prop/intro.qmd
         - text: "---"

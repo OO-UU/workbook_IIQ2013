@@ -51,6 +51,8 @@ Encuentre:
 import handcalcs
 import handcalcs.render
 handcalcs.set_option("custom_symbols",{"dT": "\Delta T", "dEPE": "\Delta EPE", "dotm": "\dot{m", "lambda": "\lambda"})
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
 from sympy import *
 from sympy.solvers.solveset import linsolve
 ```

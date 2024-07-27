@@ -54,6 +54,8 @@ Ya que tenemos una solución salina, debemos considerar la entalpía de dilució
 ```{python}
 import handcalcs.render
 handcalcs.set_option("custom_symbols",{"dEPE": "\Delta EPE", "dotm": "\dot m", "lambda": "\lambda", "Tebs": "T^eb", "dT": "\Delta T"})
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
 ```
 
 Se debe cumplir la conservación de masa, tal que
