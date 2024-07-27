@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ejercicio 1: Bernoulli – IIQ2013</title>
+<title>Ejercicio 1: ICTC y haces de tubos – IIQ2013</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -176,7 +176,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Tuberías y bombas</a></li><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Ejercicio 1: Bernoulli</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/06_ICTC/e06_1.html">ICTC</a></li><li class="breadcrumb-item"><a href="../../e_prop/06_ICTC/e06_1.html">Ejercicio 1: ICTC y haces de tubos</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -222,7 +222,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/00_bernoulli/e00_1.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../e_prop/00_bernoulli/e00_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 1: Bernoulli</span></a>
   </div>
 </li>
@@ -351,7 +351,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/06_ICTC/e06_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../e_prop/06_ICTC/e06_1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Ejercicio 1: ICTC y haces de tubos</span></a>
   </div>
 </li>
@@ -434,14 +434,14 @@ window.Quarto = {
   <li><a href="#enunciado" id="toc-enunciado" class="nav-link active" data-scroll-target="#enunciado">Enunciado</a></li>
   <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
   </ul>
-<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/00_bernoulli/jupyter/e00_1.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/06_ICTC/jupyter/e06_1.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Tuberías y bombas</a></li><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Ejercicio 1: Bernoulli</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/06_ICTC/e06_1.html">ICTC</a></li><li class="breadcrumb-item"><a href="../../e_prop/06_ICTC/e06_1.html">Ejercicio 1: ICTC y haces de tubos</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Ejercicio 1: Bernoulli</h1>
+<h1 class="title">Ejercicio 1: ICTC y haces de tubos</h1>
 </div>
 
 
@@ -460,133 +460,332 @@ window.Quarto = {
 
 <section id="enunciado" class="level2">
 <h2 class="anchored" data-anchor-id="enunciado">Enunciado</h2>
-<p>Un estanque cilíndrico de diámetro <span class="math inline">\(d_e=10\hspace{1mm}(m)\)</span> se llena de agua hasta alcanzar los <span class="math inline">\(25\hspace{1mm}(m)\)</span> de altura. En su parte inferior se encuentra una tubería conectada a una válvula. Al abrir la válvula, el agua fluye por la tubería y el estanque se vacía. La tubería tiene un área transversal circular y con diámetro <span class="math inline">\(d_t=13\hspace{1mm}(cm)\)</span>. Ignore las pérdidas de carga por fricción y singularidades. Además, suponga que la presión en la tubería es igual a la presión de la superficie del fluido en el estanque.</p>
-<p>Calcule lo siguiente:</p>
+<p>Luego de enfriar tolueno con un intercambiador de doble tubo, desea determinar si un intercambiador de tubo y carcasa (<strong>ICTC</strong>) tipo 1-2n es una mejor alternativa. En esta situación, cuenta con diferentes flujos de operación. En específico, el flujo de enfriamiento (Agua) que se encuentra en la carcasa será de <span class="math inline">\(F_c = 63~\text{kg/s}\)</span> y entrará a una temperatura de <span class="math inline">\(25~\text{°C}\)</span>. Mientras que el tolueno pasará por los tubos a contracorriente con un flujo de <span class="math inline">\(F_h = 34.35~\text{kg/s}\)</span> y a una temperatura inicial de <span class="math inline">\(80~\text{°C}\)</span>. El intercambiador está formado por <span class="math inline">\(N_t=45\)</span> tubos de diámetro interno <span class="math inline">\(d_i=3.5~\text{cm}\)</span> y grosor de la tubería de <span class="math inline">\(0.78~\text{cm}\)</span>, con un largo <span class="math inline">\(L=5~\text{m}\)</span> y un arreglo triagular con <span class="math inline">\(2~\text{cm}\)</span> de espacio entre tubos (<span class="math inline">\(C\)</span>). La carcasa, tiene un diámetro de <span class="math inline">\(D_c=0.9~\text{m}\)</span> y cuenta con <span class="math inline">\(25\)</span> deflectores identicamente espaciados a lo largo de ella. Para las propiedades termofísicas de los fluidos utilice:</p>
+<table class="table-striped table-hover table">
+<caption>Propiedades termofísicas del tolueno y el agua en función de su temperatura promedio.</caption>
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 22%">
+<col style="width: 23%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fluido</th>
+<th><span class="math inline">\(c_P~\text{(J/kg}\cdot\text{K)}\)</span></th>
+<th><span class="math inline">\(\rho~\text{(kg/m}^3\text{)}\)</span></th>
+<th><span class="math inline">\(\mu~\text{(Pa}\cdot\text{s)}\)</span></th>
+<th><span class="math inline">\(k~\text{(W/m}\cdot\text{K)}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tolueno</td>
+<td>1917.25</td>
+<td>802.355</td>
+<td>3.003<span class="math inline">\(\times 10^{-4}\)</span></td>
+<td>0.11329</td>
+</tr>
+<tr class="even">
+<td>Agua</td>
+<td>4181.95</td>
+<td>996.93</td>
+<td>8.994<span class="math inline">\(\times 10^{-4}\)</span></td>
+<td>0.6062</td>
+</tr>
+</tbody>
+</table>
 <ol type="1">
-<li>El caudal que sale por la tubería al momento de abrir la válvula.</li>
-<li>El tiempo que se demora el estanque en vaciarse por completo.</li>
+<li>Es deseable que el factor de corrección <span class="math inline">\(F_T\)</span> sea lo más cercano a 1. Encuentre las temperaturas de salida de ambos fluidos para que se cumpla esta relación. <em>Hint: Utilice el gráfico que relaciona el factor de corrección con la eficiencia de temperaturas.</em></li>
+<li>Calcule el coeficiente de transferencia de calor para el flujo que pasa por la carcasa.</li>
+<li>Encuentre la caida de presión para el flujo que pasa por la carcasa. <em>Hint: Utilice el gráfico de factor de fricción para arreglos escalonados.</em></li>
 </ol>
 </section>
 <section id="solución" class="level2">
 <h2 class="anchored" data-anchor-id="solución">Solución</h2>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#e00_1-sol" aria-expanded="false">
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e06_1-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="e00_1-sol" class="collapse multi-collapse">
-<div id="c6401bb8" class="cell" data-execution_count="1">
+<div id="e06_1-sol" class="collapse multi-collapse">
+<div id="f2aade89" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Paquetes utilizados</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt, pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi, log, sqrt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="inciso-1" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
-<p>Tenemos que la <code>ecuación de Bernoulli</code>,</p>
+<p>Para situarnos en el gráfico, necesitamos saber la razón de temperaturas <span class="math inline">\(Z\)</span> (En el gráfico está representado por <span class="math inline">\(R\)</span>).</p>
 <p><span class="math display">\[
-\frac{p_A}{g\rho} + H_A + \frac{u_A^2}{2g} = \frac{p_B}{g\rho} + H_B + \frac{u_B^2}{2g}
+Z = \frac{F_c\cdot c_{Pc}}{F_h\cdot c_{Ph}}
 \]</span></p>
-<p>Aplicada al caso descrito</p>
-<p><span class="math display">\[
-H_A = \frac{u_B^2}{2g}
-\]</span></p>
-<p>Y luego despejando para la velocidad en el punto inferior (B), nos queda como:</p>
-<p><span id="eq-1"><span class="math display">\[
-u_B = \sqrt{2gH_A}
-\tag{1}\]</span></span></p>
-<p>Finalmente resolviendo:</p>
-<div id="a6f0f9a7" class="cell" data-tags="[]" data-execution_count="2">
+<p>Anotamos las propiedades termofísicas del enunciado y los flujos.</p>
+<div id="56929448" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>H_A <span class="op">=</span> <span class="dv">25</span> <span class="co">#m</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.8</span> <span class="co">#m/s2</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>u_B <span class="op">=</span> sqrt(<span class="dv">2</span><span class="op">*</span>g<span class="op">*</span>H_A) <span class="co">#m/s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>F_c <span class="op">=</span> <span class="dv">63</span> <span class="co">#kg/s</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rho_c <span class="op">=</span> <span class="fl">996.93</span> <span class="co">#kg/m$^3$</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mu_c <span class="op">=</span> <span class="fl">8.994e-4</span> <span class="co">#Pa$\cdot$s</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>c_Pc <span class="op">=</span> <span class="fl">4181.95</span> <span class="co">#J/kg$\cdot$K</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>k_c <span class="op">=</span> <span class="fl">0.6062</span> <span class="co">#W/m$\cdot$K</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>F_h <span class="op">=</span> <span class="fl">34.35</span> <span class="co">#kg/s</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>rho_h <span class="op">=</span> <span class="fl">802.355</span> <span class="co">#kg/m$^3$</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>mu_h <span class="op">=</span> <span class="fl">3.003e-4</span> <span class="co">#Pa$\cdot$s</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>c_Ph <span class="op">=</span> <span class="fl">1917.25</span> <span class="co">#J/kg$\cdot$K</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>k_h <span class="op">=</span> <span class="fl">0.11329</span> <span class="co">#W/m$\cdot$K</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-H_{A} &amp;= 25 \; \;\textrm{(m)}
+F_{c} &amp;= 63 \; \;\textrm{(kg/s)}
+&amp;\rho_{c} &amp;= 996.930 \; \;\textrm{(kg/m$^3$)}
+&amp;\mu_{c} &amp;= 0.001 \; \;\textrm{(Pa$\cdot$s)}
 \\[10pt]
-g &amp;= 9.800 \; \;\textrm{(m/s2)}
+c_{Pc} &amp;= 4181.950 \; \;\textrm{(J/kg$\cdot$K)}
+&amp;k_{c} &amp;= 0.606 \; \;\textrm{(W/m$\cdot$K)}
+&amp;F_{h} &amp;= 34.350 \; \;\textrm{(kg/s)}
 \\[10pt]
-u_{B} &amp;= \sqrt { 2 \cdot g \cdot H_{A} } \\&amp;= \sqrt { 2 \cdot 9.800 \cdot 25 } \\&amp;= 22.136 \; \;\textrm{(m/s)}\\[10pt]
+\rho_{h} &amp;= 802.355 \; \;\textrm{(kg/m$^3$)}
+&amp;\mu_{h} &amp;= 0.000 \; \;\textrm{(Pa$\cdot$s)}
+&amp;c_{Ph} &amp;= 1917.250 \; \;\textrm{(J/kg$\cdot$K)}
+\\[10pt]
+k_{h} &amp;= 0.113 \; \;\textrm{(W/m$\cdot$K)}
 \end{aligned}
 \]</span></p>
 </div>
 </div>
-<p>Luego, el caudal será</p>
-<p><span id="eq-2"><span class="math display">\[
-Q = u_BA
-\tag{2}\]</span></span></p>
-<div id="619f0f05" class="cell" data-execution_count="3">
+<div id="09fb1878" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>d_t <span class="op">=</span> <span class="fl">0.13</span> <span class="co">#m </span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> pi<span class="op">*</span>(d_t<span class="op">/</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span> <span class="co">#m2</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> u_B<span class="op">*</span>A <span class="co">#m3/s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> (F_c<span class="op">*</span>c_Pc)<span class="op">/</span>(F_h<span class="op">*</span>c_Ph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-d_{t} &amp;= 0.130 \; \;\textrm{(m)}
+Z &amp;= \frac{ F_{c} \cdot c_{Pc} }{ F_{h} \cdot c_{Ph} } \\&amp;= \frac{ 63 \cdot 4181.950 }{ 34.350 \cdot 1917.250 } \\&amp;= 4.000  \\[10pt]
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>De esta manera, nos situamos el la curva <span class="math inline">\(R~\text{o}~Z=4\)</span>. Y buscamos el valor de <span class="math inline">\(\eta_H\)</span> tal que <span class="math inline">\(F_T\)</span> sea 1. De manera que encontramos que para que esto se cumpla <span class="math inline">\(\eta_H \approx 0.05\)</span>. Luego, por definición:</p>
+<p><span class="math display">\[
+\eta_H = \frac{T_{c,o}-T_{c,i}}{T_{h,i}-T_{c,i}}
+\]</span></p>
+<div id="2b598a2d" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>T_ci <span class="op">=</span> <span class="dv">25</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>T_hi <span class="op">=</span> <span class="dv">80</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>eta_H <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>T_co <span class="op">=</span> eta_H<span class="op">*</span>(T_hi<span class="op">-</span>T_ci) <span class="op">+</span> T_ci <span class="co">#K</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+T_{ci} &amp;= 25 + 273.15 &amp;= 298.150 \; \;\textrm{(K)}
 \\[10pt]
-A &amp;= \pi \cdot \left( \frac{ d_{t} }{ 2 } \right) ^{ 2 } \\&amp;= 3.142 \cdot \left( \frac{ 0.130 }{ 2 } \right) ^{ 2 } \\&amp;= 0.013 \; \;\textrm{(m2)}\\[10pt]
+T_{hi} &amp;= 80 + 273.15 &amp;= 353.150 \; \;\textrm{(K)}
 \\[10pt]
-Q &amp;= u_{B} \cdot A \\&amp;= 22.136 \cdot 0.013 \\&amp;= 0.294 \; \;\textrm{(m3/s)}\\[10pt]
+\eta_{H} &amp;= 0.050 \;
+\\[10pt]
+T_{co} &amp;= \eta_{H} \cdot \left( T_{hi} - T_{ci} \right) + T_{ci} \\&amp;= 0.050 \cdot \left( 353.150 - 298.150 \right) + 298.150 \\&amp;= 300.900 \; \;\textrm{(K)}\\[10pt]
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Luego despejamos <span class="math inline">\(T_{h,o}\)</span> mediante <span class="math inline">\(Z\)</span>.</p>
+<div id="a2ecd856" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>T_ho <span class="op">=</span> T_hi <span class="op">-</span> Z<span class="op">*</span>(T_co <span class="op">-</span> T_ci) <span class="co">#K</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+T_{ho} &amp;= T_{hi} - Z \cdot \left( T_{co} - T_{ci} \right) \\&amp;= 353.150 - 4.000 \cdot \left( 300.900 - 298.150 \right) \\&amp;= 342.149 \; \;\textrm{(K)}\\[10pt]
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Entonces, las temperaturas de salida del agua será <span class="math inline">\(T_{c,o} \approx 27.75~\text{°C}\)</span> y la del tolueno <span class="math inline">\(T_{h,o} \approx 69~\text{°C}\)</span>.</p>
+</section>
+<section id="inciso-2" class="level3">
+<h3 class="anchored" data-anchor-id="inciso-2">Inciso 2</h3>
+<p>En primer lugar, debemos encontrar el flujo posible entre los deflectores y tubos. Para esto calculamos el área disponible de flujo.</p>
+<p><span class="math display">\[
+a_c = D_cB\frac{C}{P_T}
+\]</span></p>
+<p>Ya que los deflectores se encuentran especiados de igual forma, sabemos entonces que el espacio entre deflectores será:</p>
+<p><span class="math display">\[
+N_B = \frac{L}{B}-1
+\]</span></p>
+<p>Mientras que el espacio entre los centros de dos tubos <span class="math inline">\(P_T\)</span> viene dado por la relación entre <span class="math inline">\(C\)</span> y el diámetro externo de las tuberías.</p>
+<p><span class="math display">\[
+P_T = C + d_e = C + \left(d_i + e\right)
+\]</span></p>
+<p>Con estas relaciones somos capaces de encontrar el diámetro equivalente para el flujo en la carcasa para arreglos triangulares (o escalonados).</p>
+<p><span class="math display">\[
+D_e = \frac{3.44P_T^2-\pi d_e^2}{\pi d_e}
+\]</span></p>
+<div id="bbfc52c7" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params sci_not</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>d_i <span class="op">=</span> <span class="fl">3.5</span><span class="op">/</span><span class="dv">100</span> <span class="co">#m</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="fl">0.78</span><span class="op">/</span><span class="dv">100</span> <span class="co">#m</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>D_c <span class="op">=</span> <span class="fl">0.9</span> <span class="co">#m</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>N_B <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="dv">2</span><span class="op">/</span><span class="dv">100</span> <span class="co">#m</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>N_t <span class="op">=</span> <span class="dv">45</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+d_{i} &amp;= 3.500 \times 10 ^ {-2} \; \;\textrm{(m)}
+&amp;e &amp;= 7.800 \times 10 ^ {-3} \; \;\textrm{(m)}
+&amp;D_{c} &amp;= 9.000 \times 10 ^ {-1} \; \;\textrm{(m)}
+\\[10pt]
+N_{B} &amp;= 25 \;
+&amp;L &amp;= 5 \;
+&amp;C &amp;= 2.000 \times 10 ^ {-2} \; \;\textrm{(m)}
+\\[10pt]
+N_{t} &amp;= 45 \;
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<div id="c1b5bb60" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> L<span class="op">/</span>(N_B<span class="op">+</span><span class="dv">1</span>) <span class="co">#m</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>d_e <span class="op">=</span> d_i<span class="op">+</span>e <span class="co">#m</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>P_T <span class="op">=</span> C<span class="op">+</span>d_e <span class="co">#m</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>D_e <span class="op">=</span> (<span class="fl">3.44</span><span class="op">*</span>P_T<span class="op">**</span><span class="dv">2</span><span class="op">-</span>pi<span class="op">*</span>d_e<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(pi<span class="op">*</span>d_e) <span class="co">#m</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>a_c <span class="op">=</span> D_c<span class="op">*</span>B<span class="op">*</span>(C<span class="op">/</span>P_T) <span class="co">#m$^2$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+B &amp;= \frac{ L }{ N_{B} + 1 } \\&amp;= \frac{ 5 }{ 25 + 1 } \\&amp;= 0.192 \; \;\textrm{(m)}\\[10pt]
+\\[10pt]
+d_{e} &amp;= d_{i} + e \\&amp;= 0.035 + 0.008 \\&amp;= 0.043 \; \;\textrm{(m)}\\[10pt]
+\\[10pt]
+P_{T} &amp;= C + d_{e} \\&amp;= 0.020 + 0.043 \\&amp;= 0.063 \; \;\textrm{(m)}\\[10pt]
+\\[10pt]
+D_{e} &amp;= \frac{ 3.44 \cdot \left( P_{T} \right) ^{ 2 } - \pi \cdot \left( d_{e} \right) ^{ 2 } }{ \pi \cdot d_{e} } \\&amp;= \frac{ 3.44 \cdot \left( 0.063 \right) ^{ 2 } - 3.142 \cdot \left( 0.043 \right) ^{ 2 } }{ 3.142 \cdot 0.043 } \\&amp;= 0.058 \; \;\textrm{(m)}\\[10pt]
+\\[10pt]
+a_{c} &amp;= D_{c} \cdot B \cdot \left( \frac{ C }{ P_{T} } \right) \\&amp;= 0.900 \cdot 0.192 \cdot \left( \frac{ 0.020 }{ 0.063 } \right) \\&amp;= 0.055 \; \;\textrm{(m$^2$)}\\[10pt]
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Con esta información podemos calcular el número de Reynolds.</p>
+<p><span class="math display">\[
+Re = \frac{G_cD_e}{\mu}
+\]</span></p>
+<div id="c3103f6c" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>G_c <span class="op">=</span> F_c<span class="op">/</span>a_c <span class="co">#kg/m$^2\cdot$s</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Re <span class="op">=</span> (G_c<span class="op">*</span>D_e)<span class="op">/</span>mu_c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+G_{c} &amp;= \frac{ F_{c} }{ a_{c} } \\&amp;= \frac{ 63 }{ 0.055 } \\&amp;= 1142.960 \; \;\textrm{(kg/m$^2\cdot$s)}\\[10pt]
+\\[10pt]
+\mathrm{Re} &amp;= \frac{ G_{c} \cdot D_{e} }{ \mu_{c} } \\&amp;= \frac{ 1142.960 \cdot 0.058 }{ 0.001 } \\&amp;= 73831.550  \\[10pt]
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Ya que nos encontramos ante un Reynolds que se encuentra dentro del rango disponible utilizamos la siguiente correlación asumiendo <span class="math inline">\(\mu\approx\mu_s\)</span>.</p>
+<p><span class="math display">\[
+Nu = 0.36Re^{0.55}Pr^{1/3}
+\]</span></p>
+<div id="5cd4c02b" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Pr <span class="op">=</span> (mu_c<span class="op">*</span>c_Pc)<span class="op">/</span>k_c</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>Nusselt <span class="op">=</span> <span class="fl">0.36</span><span class="op">*</span>Re<span class="op">**</span>(<span class="fl">0.55</span>)<span class="op">*</span>Pr<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{Pr} &amp;= \frac{ \mu_{c} \cdot c_{Pc} }{ k_{c} } \\&amp;= \frac{ 0.001 \cdot 4181.950 }{ 0.606 } \\&amp;= 6.205  \\[10pt]
+\\[10pt]
+\mathrm{Nusselt} &amp;= 0.36 \cdot \left( \mathrm{Re} \right) ^{ 0.55 } \cdot \left( \mathrm{Pr} \right) ^{ \left( \frac{ 1 }{ 3 } \right) } \\&amp;= 0.36 \cdot \left( 73831.550 \right) ^{ 0.55 } \cdot \left( 6.205 \right) ^{ \left( \frac{ 1 }{ 3 } \right) } \\&amp;= 314.829  \\[10pt]
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Finalmente encontramos el coeficiente de transferencia de calor de la carcasa.</p>
+<p><span class="math display">\[
+h_c = \frac{Nu\cdot k}{D_e}
+\]</span></p>
+<div id="27bf1dc0" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>h_c <span class="op">=</span> (Nusselt<span class="op">*</span>k_c)<span class="op">/</span>D_e <span class="co">#W/m$^2\cdot$K</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+h_{c} &amp;= \frac{ \mathrm{Nusselt} \cdot k_{c} }{ D_{e} } \\&amp;= \frac{ 314.829 \cdot 0.606 }{ 0.058 } \\&amp;= 3284.931 \; \;\textrm{(W/m$^2\cdot$K)}\\[10pt]
 \end{aligned}
 \]</span></p>
 </div>
 </div>
 </section>
-<section id="inciso-2" class="level3">
-<h3 class="anchored" data-anchor-id="inciso-2">Inciso 2</h3>
-<p>El caudal también puede ser escrito como:</p>
-<p><span class="math display">\[
-Q = - \frac{dV}{dt}
-\]</span></p>
-<p>Ya que el diámetro del estanque se mantiene constante</p>
-<p><span class="math display">\[
-Q = -\pi\left(\frac{d_e}{2}\right)^2\frac{dH_A}{dt}
-\]</span></p>
-<p>Al reemplazar la ecuación <a href="#eq-1" class="quarto-xref">1</a> en <a href="#eq-2" class="quarto-xref">2</a> e igualando,</p>
-<p><span class="math display">\[
-\sqrt{2gH_A}\left(\pi\left(\frac{d_t}{2}\right)^2\right) = -\pi\left(\frac{d_e}{2}\right)^2\frac{dH_A}{dt}
-\]</span></p>
-<p>Reordenando los términos,</p>
-<p><span class="math display">\[
--H_A^{-\frac{1}{2}}dH_A = \sqrt{2g}\left(\frac{d_t}{d_e}\right)^2dt
-\]</span></p>
-<p>Inicialmente la altura del líquido es de <span class="math inline">\(25\hspace{1mm}(m)\)</span> hasta que en el tiempo final se vacía.</p>
-<p><span class="math display">\[
--\int_{25}^{0}H_A^{-\frac{1}{2}}dH_A = \sqrt{2g}\left(\frac{d_t}{d_e}\right)^2 \int_0^{t_T}dt
-\]</span></p>
-<p>Finalmente,</p>
-<p><span class="math display">\[
-t_T = 2\sqrt{\frac{25}{2g}}\left(\frac{d_e}{d_t}\right)^2
-\]</span></p>
-<div id="3618de4b" class="cell" data-execution_count="4">
+<section id="inciso-3" class="level3">
+<h3 class="anchored" data-anchor-id="inciso-3">Inciso 3</h3>
+<p>Para poder utilizar el gráfico, necesitamos saber la curva que utilizaremos, estas representan el espacio que hay entre los centros de los tubos <span class="math inline">\(P_T\)</span> en <span class="math inline">\(inch\)</span>.</p>
+<div id="42d3b0f4" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>d_e <span class="op">=</span> <span class="dv">10</span> <span class="co">#m</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>t_T <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>sqrt(<span class="dv">25</span><span class="op">/</span><span class="dv">2</span><span class="op">*</span>g)<span class="op">*</span>(d_e<span class="op">/</span>d_t)<span class="op">**</span><span class="dv">2</span> <span class="co">#s</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">## O</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> t_T<span class="op">/</span><span class="dv">3600</span> <span class="co">#h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>P_T <span class="op">=</span> P_T<span class="op">/</span><span class="fl">0.0254</span> <span class="co">#inch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-d_{e} &amp;= 10 \; \;\textrm{(m)}
+P_{T} &amp;= 2.472 \; \;\textrm{(inch)}
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Nos ubicamos en la curva donde <span class="math inline">\(P_T\approx2.5~\text{inch}\)</span> y <span class="math inline">\(Re=7.383\times10^{4}\)</span>. Entonces <span class="math inline">\(f'\approx0.2\)</span>.</p>
+<p>Luego la caida de presiones será:</p>
+<p><span class="math display">\[
+\Delta p = f'\left[\frac{\left(N_B+1\right)D_c}{D_e}\right]\left(\frac{G_c^2}{2\rho}\right)
+\]</span></p>
+<div id="ecb7151f" class="cell" data-execution_count="12">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>Dp<span class="op">=</span> f<span class="op">*</span>((N_B<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>D_c)<span class="op">/</span>(D_e)<span class="op">*</span>(G_c<span class="op">**</span><span class="dv">2</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>rho_c)) <span class="co">#Pa</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+f &amp;= 0.200 \;
 \\[10pt]
-t_{T} &amp;= 2 \cdot \sqrt { \frac{ 25 }{ 2 } \cdot g } \cdot \left( \frac{ d_{e} }{ d_{t} } \right) ^{ 2 } \\&amp;= 2 \cdot \sqrt { \frac{ 25 }{ 2 } \cdot 9.800 } \cdot \left( \frac{ 10 }{ 0.130 } \right) ^{ 2 } \\&amp;= 130981.915 \; \;\textrm{(s)}\\[10pt]
-\\[10pt]
-&amp; \textrm{ O}\\[10pt]
-t &amp;= \frac{ t_{T} }{ 3600 } \\&amp;= \frac{ 130981.915 }{ 3600 } \\&amp;= 36.384 \; \;\textrm{(h)}\\[10pt]
+\mathrm{Dp} &amp;= f \cdot \frac{ \left( N_{B} + 1 \right) \cdot D_{c} }{ D_{e} } \cdot \left( \frac{ \left( G_{c} \right) ^{ 2 } }{ 2 \cdot \rho_{c} } \right) \\&amp;= 0.200 \cdot \frac{ \left( 25 + 1 \right) \cdot 0.900 }{ 0.058 } \cdot \left( \frac{ \left( 1142.960 \right) ^{ 2 } }{ 2 \cdot 996.930 } \right) \\&amp;= 52777.573 \; \;\textrm{(Pa)}\\[10pt]
 \end{aligned}
 \]</span></p>
 </div>

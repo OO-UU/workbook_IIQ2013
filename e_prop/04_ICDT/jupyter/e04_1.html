@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ejercicio 1: Bernoulli – IIQ2013</title>
+<title>Solución – IIQ2013</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,24 +57,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -132,17 +132,17 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">IIQ2013</span>
     </a>
   </div>
@@ -152,11 +152,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../home.html"> 
+    <a class="nav-link" href="../../../home.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../e_prop/intro.html" aria-current="page"> 
+    <a class="nav-link" href="../../../e_prop/intro.html"> 
 <span class="menu-text">Ejercicios propuestos</span></a>
   </li>  
 </ul>
@@ -171,277 +171,28 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Tuberías y bombas</a></li><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Ejercicio 1: Bernoulli</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicios propuestos</span></a>
-  </div>
-</li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item">
- <span class="menu-text">Transporte de fluidos</span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Tuberías y bombas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/00_bernoulli/e00_1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Ejercicio 1: Bernoulli</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/00_bernoulli/e00_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 2: Pérdidas por singularidades y fricción</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/00_bernoulli/e00_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 3: Bombas y eficiencia</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Fluidos no Newtonianos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/01_FNN/e01_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 1: Fluidos pseudoplásticos y dilatantes</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Agitación y mezclado</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/02_agitacion/e02_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 1: Estanques agitados</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/02_agitacion/e02_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 2: Escalamiento de estanques agitados</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Fluidos compresibles y compresores</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/03_compresibles/e03_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 1: Fluidos compresibles en tuberías</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/03_compresibles/e03_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 2: Flujo compresible y compresores</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">Transferencia de calor</span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">ICDT</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/04_ICDT/e04_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 1: ICDT</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Transferencia de calor en estanques agitados</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/05_tc-agitacion/e05_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 1: Agitador con serpentín</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">ICTC</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/06_ICTC/e06_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 1: ICTC y haces de tubos</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/06_ICTC/e06_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 2: Método NTU - ICTC</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">Superficies extendidas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/07_ICC/e07_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 1: Aletas</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/07_ICC/e07_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 2: Aletas cuadradas</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/07_ICC/e07_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 3: Arreglos de aletas</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
- <span class="menu-text">Evaporadores</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/08_evaporadores/e08_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 1: Evaporador de 1 efecto simple</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/08_evaporadores/e08_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 2: Evaporador considerando entalpía de dilución</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../e_prop/08_evaporadores/e08_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ejercicio 3: Evaporador de 2 efectos <em>backward</em></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#enunciado" id="toc-enunciado" class="nav-link active" data-scroll-target="#enunciado">Enunciado</a></li>
-  <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
+  <li><a href="#inciso-1" id="toc-inciso-1" class="nav-link active" data-scroll-target="#inciso-1">Inciso 1</a></li>
+  <li><a href="#inciso-2" id="toc-inciso-2" class="nav-link" data-scroll-target="#inciso-2">Inciso 2</a></li>
+  <li><a href="#inciso-3" id="toc-inciso-3" class="nav-link" data-scroll-target="#inciso-3">Inciso 3</a></li>
   </ul>
-<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/00_bernoulli/jupyter/e00_1.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Tuberías y bombas</a></li><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Ejercicio 1: Bernoulli</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ejercicio 1: Bernoulli</h1>
+<h1 class="title">Solución</h1>
 </div>
 
 
@@ -458,141 +209,122 @@ window.Quarto = {
 </header>
 
 
-<section id="enunciado" class="level2">
-<h2 class="anchored" data-anchor-id="enunciado">Enunciado</h2>
-<p>Un estanque cilíndrico de diámetro <span class="math inline">\(d_e=10\hspace{1mm}(m)\)</span> se llena de agua hasta alcanzar los <span class="math inline">\(25\hspace{1mm}(m)\)</span> de altura. En su parte inferior se encuentra una tubería conectada a una válvula. Al abrir la válvula, el agua fluye por la tubería y el estanque se vacía. La tubería tiene un área transversal circular y con diámetro <span class="math inline">\(d_t=13\hspace{1mm}(cm)\)</span>. Ignore las pérdidas de carga por fricción y singularidades. Además, suponga que la presión en la tubería es igual a la presión de la superficie del fluido en el estanque.</p>
-<p>Calcule lo siguiente:</p>
-<ol type="1">
-<li>El caudal que sale por la tubería al momento de abrir la válvula.</li>
-<li>El tiempo que se demora el estanque en vaciarse por completo.</li>
-</ol>
-</section>
-<section id="solución" class="level2">
-<h2 class="anchored" data-anchor-id="solución">Solución</h2>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#e00_1-sol" aria-expanded="false">
-Mostrar solución
-</button>
-<div id="e00_1-sol" class="collapse multi-collapse">
-<div id="c6401bb8" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Paquetes utilizados</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt, pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="bdf6c544-872a-44bd-b782-df0eaee8aaad" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi, log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="inciso-1" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
-<p>Tenemos que la <code>ecuación de Bernoulli</code>,</p>
+<p>Para encontrar la temperatura de entrada del tolueno, podemos igualar los valores de <span class="math inline">\(q\)</span>:</p>
 <p><span class="math display">\[
-\frac{p_A}{g\rho} + H_A + \frac{u_A^2}{2g} = \frac{p_B}{g\rho} + H_B + \frac{u_B^2}{2g}
+q = \dot{m}_hc_{P,h}(T_{h,e}-T_{h,s}) = \dot{m}_cc_{P,c}(T_{c,s}-T_{c,e})
 \]</span></p>
-<p>Aplicada al caso descrito</p>
-<p><span class="math display">\[
-H_A = \frac{u_B^2}{2g}
-\]</span></p>
-<p>Y luego despejando para la velocidad en el punto inferior (B), nos queda como:</p>
-<p><span id="eq-1"><span class="math display">\[
-u_B = \sqrt{2gH_A}
-\tag{1}\]</span></span></p>
-<p>Finalmente resolviendo:</p>
-<div id="a6f0f9a7" class="cell" data-tags="[]" data-execution_count="2">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>H_A <span class="op">=</span> <span class="dv">25</span> <span class="co">#m</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.8</span> <span class="co">#m/s2</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>u_B <span class="op">=</span> sqrt(<span class="dv">2</span><span class="op">*</span>g<span class="op">*</span>H_A) <span class="co">#m/s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-H_{A} &amp;= 25 \; \;\textrm{(m)}
-\\[10pt]
-g &amp;= 9.800 \; \;\textrm{(m/s2)}
-\\[10pt]
-u_{B} &amp;= \sqrt { 2 \cdot g \cdot H_{A} } \\&amp;= \sqrt { 2 \cdot 9.800 \cdot 25 } \\&amp;= 22.136 \; \;\textrm{(m/s)}\\[10pt]
-\end{aligned}
-\]</span></p>
+<p>Para este ejercicio, el fluido caliente (tolueno) con subíndice <span class="math inline">\(h\)</span> pasa por el tubo, mientras que el fluido de enfriamiento (agua) con subíndice <span class="math inline">\(c\)</span> pasa por el ánulo. Del enunciado recuperamos todas las variables relevantes.</p>
+<div id="ac65974a-2ff7-42d2-a916-bd76ab5966ad" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params sci_not</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m_c <span class="op">=</span> <span class="fl">0.55</span> <span class="co">#kg/s</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>T_ce <span class="op">=</span> <span class="dv">10</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>T_cs <span class="op">=</span> <span class="dv">20</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>mu_c <span class="op">=</span> <span class="fl">8.994e-4</span> <span class="co">#Pa$\cdot$s</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>c_Pc <span class="op">=</span> <span class="fl">4181.95</span> <span class="co">#J/kg$\cdot$K</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>k_c <span class="op">=</span> <span class="fl">0.6062</span> <span class="co">#W/m$\cdot$K</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>m_h <span class="op">=</span> <span class="fl">0.48</span> <span class="co">#kg/s</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>T_hs <span class="op">=</span> <span class="dv">75</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>mu_h <span class="op">=</span> <span class="fl">3.003e-4</span> <span class="co">#Pa$\cdot$s</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>c_Ph <span class="op">=</span> <span class="fl">1917.25</span> <span class="co">#J/kg$\cdot$K</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>k_h <span class="op">=</span> <span class="fl">0.11329</span> <span class="co">#W/m$\cdot$K</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
-<p>Luego, el caudal será</p>
-<p><span id="eq-2"><span class="math display">\[
-Q = u_BA
-\tag{2}\]</span></span></p>
-<div id="619f0f05" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>d_t <span class="op">=</span> <span class="fl">0.13</span> <span class="co">#m </span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> pi<span class="op">*</span>(d_t<span class="op">/</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span> <span class="co">#m2</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> u_B<span class="op">*</span>A <span class="co">#m3/s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-d_{t} &amp;= 0.130 \; \;\textrm{(m)}
-\\[10pt]
-A &amp;= \pi \cdot \left( \frac{ d_{t} }{ 2 } \right) ^{ 2 } \\&amp;= 3.142 \cdot \left( \frac{ 0.130 }{ 2 } \right) ^{ 2 } \\&amp;= 0.013 \; \;\textrm{(m2)}\\[10pt]
-\\[10pt]
-Q &amp;= u_{B} \cdot A \\&amp;= 22.136 \cdot 0.013 \\&amp;= 0.294 \; \;\textrm{(m3/s)}\\[10pt]
-\end{aligned}
-\]</span></p>
+<div id="95e965c0-8bfa-4cb3-a853-2b6d6ee68334" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> m_c<span class="op">*</span>c_Pc<span class="op">*</span>(T_cs<span class="op">-</span>T_ce) <span class="co">#J/s</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>T_he <span class="op">=</span> q<span class="op">/</span>(m_h<span class="op">*</span>c_Ph)<span class="op">+</span>T_hs <span class="co">#K</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
 </section>
 <section id="inciso-2" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-2">Inciso 2</h3>
-<p>El caudal también puede ser escrito como:</p>
+<p>Para calcular los coeficientes de transferencia de calor vienen dados por el número de Nusselt.</p>
 <p><span class="math display">\[
-Q = - \frac{dV}{dt}
+Nu_D = \frac{hD_{térmico}}{k}
 \]</span></p>
-<p>Ya que el diámetro del estanque se mantiene constante</p>
+<p>El cual puede ser despejado de distintas correlaciones dependiendo del tipo de fluido. Por lo que es recomendable empezar calculando el número de Reynolds para discriminar el tipo de flujo.</p>
 <p><span class="math display">\[
-Q = -\pi\left(\frac{d_e}{2}\right)^2\frac{dH_A}{dt}
+Re_D = \frac{D_{térmico}\cdot\dot{m}}{A_t\cdot\mu}
 \]</span></p>
-<p>Al reemplazar la ecuación <a href="#eq-1" class="quarto-xref">1</a> en <a href="#eq-2" class="quarto-xref">2</a> e igualando,</p>
+<p>Por un lado, el diámetro térmico equivalente para el flujo que pasa por el tubo será equivalente al diámetro interno de la tubería. Por otro lado, el diámetro térmico equivalente para el flujo que pasa por el ánulo, será el siguiente:</p>
 <p><span class="math display">\[
-\sqrt{2gH_A}\left(\pi\left(\frac{d_t}{2}\right)^2\right) = -\pi\left(\frac{d_e}{2}\right)^2\frac{dH_A}{dt}
+D_{térmico} = \frac{D_{a}^2-D_{i,e}^2}{D_{i,e}}
 \]</span></p>
-<p>Reordenando los términos,</p>
-<p><span class="math display">\[
--H_A^{-\frac{1}{2}}dH_A = \sqrt{2g}\left(\frac{d_t}{d_e}\right)^2dt
-\]</span></p>
-<p>Inicialmente la altura del líquido es de <span class="math inline">\(25\hspace{1mm}(m)\)</span> hasta que en el tiempo final se vacía.</p>
-<p><span class="math display">\[
--\int_{25}^{0}H_A^{-\frac{1}{2}}dH_A = \sqrt{2g}\left(\frac{d_t}{d_e}\right)^2 \int_0^{t_T}dt
-\]</span></p>
-<p>Finalmente,</p>
-<p><span class="math display">\[
-t_T = 2\sqrt{\frac{25}{2g}}\left(\frac{d_e}{d_t}\right)^2
-\]</span></p>
-<div id="3618de4b" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>d_e <span class="op">=</span> <span class="dv">10</span> <span class="co">#m</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>t_T <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>sqrt(<span class="dv">25</span><span class="op">/</span><span class="dv">2</span><span class="op">*</span>g)<span class="op">*</span>(d_e<span class="op">/</span>d_t)<span class="op">**</span><span class="dv">2</span> <span class="co">#s</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">## O</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> t_T<span class="op">/</span><span class="dv">3600</span> <span class="co">#h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-d_{e} &amp;= 10 \; \;\textrm{(m)}
-\\[10pt]
-t_{T} &amp;= 2 \cdot \sqrt { \frac{ 25 }{ 2 } \cdot g } \cdot \left( \frac{ d_{e} }{ d_{t} } \right) ^{ 2 } \\&amp;= 2 \cdot \sqrt { \frac{ 25 }{ 2 } \cdot 9.800 } \cdot \left( \frac{ 10 }{ 0.130 } \right) ^{ 2 } \\&amp;= 130981.915 \; \;\textrm{(s)}\\[10pt]
-\\[10pt]
-&amp; \textrm{ O}\\[10pt]
-t &amp;= \frac{ t_{T} }{ 3600 } \\&amp;= \frac{ 130981.915 }{ 3600 } \\&amp;= 36.384 \; \;\textrm{(h)}\\[10pt]
-\end{aligned}
-\]</span></p>
+<p>Luego, podemos calcular los números de Prandtl y de Reynolds para ambos flujos.</p>
+<div id="822dc2e8-080a-4302-ba81-bb2dedeb2967" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>D_i <span class="op">=</span> <span class="dv">15</span><span class="op">/</span><span class="dv">100</span> <span class="co">#m</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>D_ie <span class="op">=</span> <span class="fl">15.5</span><span class="op">/</span><span class="dv">100</span> <span class="co">#m</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>D_a <span class="op">=</span> <span class="dv">25</span><span class="op">/</span><span class="dv">100</span> <span class="co">#m</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>k_p <span class="op">=</span> <span class="fl">50.2</span> <span class="co">#W/m$\cdot$K</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>Pr_h <span class="op">=</span> (mu_h<span class="op">*</span>c_Ph)<span class="op">/</span>k_h</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>Pr_c <span class="op">=</span> (mu_c<span class="op">*</span>c_Pc)<span class="op">/</span>k_c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+</div>
+</div>
+<div id="1b092e92-313a-4a22-bd22-583e5ce18933" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Re_Dh <span class="op">=</span> (D_i<span class="op">*</span>m_h)<span class="op">/</span>(pi<span class="op">*</span>(D_i<span class="op">/</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span><span class="op">*</span>mu_h)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>D_t <span class="op">=</span> (D_a<span class="op">**</span><span class="dv">2</span><span class="op">-</span>D_ie<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>D_ie <span class="co">#m</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>Re_Dc <span class="op">=</span> (D_t<span class="op">*</span>m_c)<span class="op">/</span>(pi<span class="op">*</span>((D_a<span class="op">-</span>D_ie)<span class="op">/</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span><span class="op">*</span>mu_c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+</div>
+</div>
+<p>Notamos que ambos flujos son turbulentos, y por lo tanto, se cosidera que la mejor ecuación para encontrar el número de Nusselt será la relación de Dittus-Boelter.</p>
+<div id="8ce4b414-d302-4e14-b002-88ccf092a01c" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>NuD_h <span class="op">=</span> <span class="fl">0.023</span><span class="op">*</span>Re_Dh<span class="op">**</span><span class="fl">0.8</span><span class="op">*</span>Pr_h<span class="op">**</span><span class="fl">0.3</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>NuD_c <span class="op">=</span> <span class="fl">0.023</span><span class="op">*</span>Re_Dc<span class="op">**</span><span class="fl">0.8</span><span class="op">*</span>Pr_c<span class="op">**</span><span class="fl">0.4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+</div>
+</div>
+<p>Con lo cual se puede despejar el coeficiente de transferencia de calor para ambos fluidos.</p>
+<div id="22994478-202f-4429-a5f2-db99a75d1915" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>h_h <span class="op">=</span> (NuD_h<span class="op">*</span>k_h)<span class="op">/</span>(D_i) <span class="co">#W/m$^2\cdot$K</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>h_c <span class="op">=</span> (NuD_c<span class="op">*</span>k_c)<span class="op">/</span>(D_t) <span class="co">#W/m$^2\cdot$K</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
 </section>
+<section id="inciso-3" class="level3">
+<h3 class="anchored" data-anchor-id="inciso-3">Inciso 3</h3>
+<p>Primero, calculamos el coeficiente global de transferencia de calor para un intercambiador de doble tubo sin ensuciamiento.</p>
+<div id="857149fe-ddff-4cad-9e72-cabf625f8817" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> (D_ie<span class="op">/</span>(D_i<span class="op">*</span>h_h) <span class="op">+</span> D_ie<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>k_p)<span class="op">*</span>log(D_ie<span class="op">/</span>D_i) <span class="op">+</span> <span class="dv">1</span><span class="op">/</span>h_c)<span class="op">**-</span><span class="dv">1</span> <span class="co">#W/m$^2\cdot$K</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
+</div>
+<p>Luego podemos despejar el factor de ensuciamiento.</p>
+<p><span class="math display">\[
+\frac{1}{U_T} = \frac{1}{U} + R_f
+\]</span></p>
+<div id="0aeb3204-5277-448d-87b1-42766ba9f248" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>U_T <span class="op">=</span> <span class="fl">28.43</span> <span class="co">#W/m$^2\cdot$K</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>R_f <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>U_T <span class="op">-</span> <span class="dv">1</span><span class="op">/</span>U <span class="co">#m$^2\cdot$K/W</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+</div>
+</div>
+<p>Finalmente, obtenemos que el factor de ensuciamiento es de <span class="math inline">\(R_f = 0.014~\text{m}^2\cdot\text{K/W}\)</span>.</p>
 
 
 </section>
