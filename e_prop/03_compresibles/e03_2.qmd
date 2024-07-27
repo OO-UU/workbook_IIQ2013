@@ -1,0 +1,180 @@
+---
+title: 'Ejercicio 2: Flujo compresible y compresores'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/03_compresibles/jupyter/e03_2.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+## Enunciado
+
+Usted cuenta con un compresor reciprocante de 2 etapas que opera a  $500~\text{RPM}$. En dicho compresor, se encuentra argón ($\text{PM}_{\text{Ar}}=39.948~\text{g/mol}$ y con coeficiente adiabático $\gamma=1.2$). A la salida del compresor se encuentra una tubería conectada por la cual se trasportará el argón a otro punto. Esta tubería es de acero comercial ($\varepsilon=0.046\text{mm}$), y tiene un largo $L=5~\text{km}$ con diámetro interno $D = 3~\text{in}$. Usted sabe que a la entrada de la tubería, el gas tiene una presión y temperatura de $10~\text{MPa}$ y $750~\text{K}$ respectivamente. Además, el flujo másico a lo largo de la tubería debe ser de $G=3~\text{kg/s}$.
+
+
+1. Encuentre el largo máximo de la tubería para que el argón o alcance la condición de ahogamiento. ¿Es el largo de la tubería indicado para operar en las condiciones descritas? *Hint: recuerde que puede asumir que $Re\rightarrow\infty$.*
+2. Si en la primera etapa el compresor se encuentra a $70~\text{kPa}$, y el compresor opera de manera isoentrópica con razón de presiones constante. Encuentre el volumen específico del argón a la entrada de la segunda etapa $v_{i1}$.
+3. Considerando una holgura en la segunda etapa de $c_2 = 0.2$, calcule el trabajo total del segundo ciclo.
+
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e03_2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e03_2-sol .collapse .multi-collapse}
+
+```{python}
+#Cargamos los paquetes que vamos a utilizar.
+import handcalcs.render
+from handcalcs import handcalc
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+from numpy import sqrt, pi, log
+```
+
+### Inciso 1
+
+En primer lugar, se calcula el número de Mach a la entrada de la tubería ($Ma_1$).
+
+$$
+\frac{G}{A} = Ma_1\frac{c}{v} = Ma_1 c\rho
+$$
+
+Se puede asumir que el argón es un gas ideal, luego su densidad será obtenida mediante la ecuación de gases ideales.
+
+$$
+pv = \frac{RT}{\text{PM}_\text{Ar}} \Rightarrow \rho = \frac{p\text{PM}_\text{Ar}}{RT}
+$$
+
+Cuya velocidad del sonido será:
+
+$$
+c = \sqrt{\frac{\gamma RT}{\text{PM}_\text{Ar}}}
+$$
+
+```{python}
+%%render sci_not params 3
+PM_Ar = 39.948e-3 #kg/mol
+P_1 = 10e6 #Pa
+T_1 = 750 #K
+gamma = 1.2
+R = 8.314 #g/mol$\cdot$K
+G = 3 #kg/s
+D = 3/39.37 #m
+L = 5e3 #m
+epsilon = 0.046/1000 #m
+```
+
+```{python}
+%%render long
+rho = (P_1*PM_Ar)/(R*T_1) #kg/m$^3$
+c = sqrt((gamma*R*T_1)/(PM_Ar)) #m/s
+```
+
+Con los resultados obtenidos, se puede despejar el número de Mach a la entrada de la tubería.
+
+$$
+Ma_1 = \frac{G}{A}\frac{1}{c\rho}
+$$
+
+```{python}
+%%render long
+A = pi * (D/2)**2 #m$^2$
+Ma_1 = G/A * 1/(c*rho)
+```
+
+A continuación, podemos calcular el factor de fricción utilizando la ecuación de *Colebrook-White* eliminando los términos que dependen del número de Reynolds.
+
+$$
+\frac{1}{\sqrt{f}} = -1.737\ln{\left(0.269\frac{\varepsilon}{D}\right)}
+$$
+
+```{python}
+%%render long sci_not
+f = (1/(-1.737*log(0.269*(epsilon/D))))**2
+```
+
+Finalmente, calculamos el largo máximo permitido.
+
+$$
+L = \frac{D}{4f}\left(\frac{1-Ma^2}{Ma^2}+\frac{\gamma+1}{2\gamma}\ln{\left(\frac{\left(\gamma+1\right)Ma^2}{2+\left(\gamma-1\right)Ma^2}\right)}\right)
+$$
+
+```{python}
+%%render long
+L = D/(4*f)*((1-Ma_1**2)/(Ma_1**2) + (gamma+1)/(2*gamma)*log(((gamma+1)*Ma_1**2)/(2+(gamma-1)*Ma_1**2))) #m
+```
+
+Ya que el largo máximo permitido es mayor al largo de la tubería ($5~\text{km}$), entonces sí podemos operar en este sistema.
+
+### Inciso 2
+
+Sabemos que la razón de compresión para dos etapas:
+
+$$
+r_p = \frac{P_{i1}}{P_1} = \frac{P_2}{P_{i1}} = \left(\frac{P_2}{P_1}\right)^{\frac{1}{n}}
+$$
+
+```{python}
+%%render long
+P_2 = 10e6 #Pa
+P_1 = 70e3 #Pa
+n = 2
+r_p = (P_2/P_1)**(1/n)
+```
+
+Ya que tenemos una compresión isoentrópica, $pv^\gamma$ es consante. Antes de continuar, recordemos que en nuestro compresor tenemos en la primera etapa $v_{1}\rightarrow v_{i1}$ y luego la segunda etapa $v_{i1}\rightarrow v_{2}$. En donde la relación de compresión isoentrópica se cumple para el cambio $v_{inicial}\rightarrow v_{final}$. Ya que no contamos con $P_{i1}$ utilizamos la razón de compresión.
+
+```{python}
+%%render long sci_not
+v_2 = 1/rho #m$^3$/kg
+v_i1 = v_2*r_p**(1/gamma) #m$^3$/kg
+```
+
+El volumen a la entrada del segundo ciclo será $v_{i1}=0.1234~\text{m}^3\text{/kg}$. Notamos que en el segundo ciclo, el compresor reduce el volumen del gas aproximadamente 10 veces su tamaño original.
+
+### Inciso 3
+
+Sabemos que el trabajo total por ciclo si se considera holgura será.
+
+$$
+-W = \frac{\gamma}{\gamma-1}P_1V_s\left(\left(\frac{P_2}{P_1}\right)^{\frac{\gamma-1}{\gamma}}-1\right)\left(1+c\left(1-\left(\frac{P_2}{P_1}\right)^{\frac{1}{\gamma}}\right)\right)
+$$
+
+Para esto necesitamo el volumen de barrido, el cual podemos obtener mediante el siguiente razonamiento. El volumen de barrido nos dice qué parte del volumen total del cilindro (véase, cuando el cilindro no se encuentra contraido) sale efectivamente de la etapa. Se desea cumplir con los $3~\text{kg/s}$ de flujo másico, para esto, contamos con un volumen másico inicial en el segundo ciclo (obtenido en el inciso anterior) de $v_{i1}=0.1234~\text{m}^3\text{/kg}$.\
+Para cumplir con los requerimientos, necesito entonces
+
+$$
+\dot{v} = v_{i1}\cdot G
+$$
+
+Considerando que el compresor realiza 500 ciclos de compresión por minuto (ya que opera a $500~\text{RPM}$). Podemos obtener el volumen de barrido utilizando:
+
+$$
+V_s = \frac{\dot{v}}{\text{RPS}}
+$$
+
+```{python}
+%%render sci_not long
+RPS = 500/60 #1/s
+V_s = (v_i1*G)/RPS #m$^3$
+```
+
+Luego reemplazamos en la ecuación para obtener el trabajo.
+
+```{python}
+%%render long
+c = 0.2
+W = -gamma/(gamma-1)*P_1*V_s*((P_2/P_1)**((gamma-1)/gamma)-1)*(1+c*(1-(P_2/P_1)**(1/gamma))) #J
+```
+
+El trabajo requerido en la segunda etapa es de $271.09~\text{kJ}$.
+
+:::

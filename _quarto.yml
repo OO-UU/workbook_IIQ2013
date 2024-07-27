@@ -36,6 +36,11 @@ website:
           contents:
             - ./e_prop/02_agitacion/e02_1.qmd
             - ./e_prop/02_agitacion/e02_2.qmd
+        - section: "Fluidos compresibles y compresores"
+          contents:
+           - ./e_prop/03_compresibles/e03_1.qmd
+           - ./e_prop/03_compresibles/e03_2.qmd
+        - text: "Transferencia de calor"
 
 format:
   html:

@@ -1,0 +1,188 @@
+---
+title: 'Ejercicio 1: Fluidos compresibles en tuberías'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/03_compresibles/jupyter/e03_1.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+
+
+## Enunciado
+
+Usted cuenta con una tubería de acero galvanizado $(\varepsilon = 0.15~mm)$ horizontal de $70~\text{mm}$ diámetro y $1~\text{km}$ de largo, la cual desea utilizar para transportar metano a $40\text{°C}$ cuyo peso molecular es de $16.04~(\text{g/mol})$. El metano se encuentra inicialmente a $48~\text{MPa}$. Asuma que no hay trabajo de eje en el sistema y que el metano se comporta como un gas ideal. Usted desconoce el tipo de flujo del sistema (adiabático, isotérmico o isoentrópico), no obstante, tiene la siguiente relación para gases:
+
+$$
+pv + \psi p^2 = cte
+$$
+
+Usted sabe que la presión a la salida del sistema es de $5~\text{MPa}$. Con $\psi = 4\times10^{-4}~(\text{m}^3/\text{kg}\cdot\text{Pa})$.
+
+Encuentre lo siguiente:
+
+1. La expresión del balance de energía.
+2. El flujo másico del sistema $G$.
+
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e03_1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e03_1-sol .collapse .multi-collapse}
+
+```{python}
+#Paquetes utilizados
+import handcalcs.render
+from handcalcs import handcalc
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+from numpy import log, pi, sqrt
+```
+
+### Inciso 1
+
+Del balance de energía tenemos que:
+
+$$
+d\left(u+pv\right) + g\cdot dz + d\left(\frac{V^2}{2}\right) = \frac{dW}{dm} + \frac{dQ}{dm}
+$$
+
+Luego, al tener una tubería horizontal y sin trabajo de eje:
+
+$$
+v\cdot dp + V\cdot dV = -\left(\left(du + p\cdot dv\right) -  \frac{dQ}{dm}\right)
+$$ {#eq03_1-1}
+
+Ya que
+
+$$
+-\left(\left(du + p\cdot dv\right) -  \frac{dQ}{dm}\right) = -4f\left(\frac{dl}{D_{eq}}\right)\left(\frac{V^2}{2}\right)
+$$ {#eq03_1-2}
+
+Reemplazando la [ecuación .@eq03_1-2] en [-@eq03_1-1], cambiando la velocidad como $V = Gv/A$ y reordenando los términos:
+
+$$
+\int_{p_1}^{p_2}\frac{dp}{v} + \left(\frac{G}{A}\right)^2\left(\ln\left(\frac{v_2}{v_1}\right) + 2f\frac{L}{D_{eq}}\right) = 0
+$$
+
+Primero calculamos el primer componente de la ecuación:
+
+$$
+\int_{p_1}^{p_2}\frac{dp}{v}
+$$
+
+Ya que en el enunciado nos dicen que $pv +\psi p^2 =cte$. Entonces podemos despejar $v$ en función de $p$.
+
+$$
+pv+\psi p^2 = p_1v_1+\psi p_1^2 ~ \Rightarrow ~ v = \frac{p_1v_1 + \psi p_1^2 - \psi p^2}{p} ~ \Rightarrow ~ \frac{1}{v} = \frac{p}{p_1v_1 + \psi p_1^2 - \psi p^2}
+$$
+
+Luego
+
+$$
+\int_{p_1}^{p_2} \frac{p}{p_1v_1 + \psi p_1^2 - \psi p^2} dp = -\frac{1}{2\psi}\left.\left[\ln\left(p_1v_1+\psi p_1^2-\psi p^2\right)\right]\right|_{p_1}^{p_2}
+$$
+
+$$
+= -\frac{1}{2\psi}\left[\ln\left(\psi p_1^2+p_1v_1-\psi p_2^2\right) - \ln\left(p_1v_1\right)\right] = -\frac{1}{2\psi}\left[\ln\left(\frac{p_1v_1+\psi(p_1^2 - p_2^2)}{p_1v_1}\right)\right]
+$$
+
+Luego, reemplazamos el término $\ln(v_2/v_1)$ utilizando la expresión para $v$ encontrada anteriormente.
+
+$$
+\ln\left(\frac{v_2}{v_1}\right) = \ln\left(\frac{p_1v_1+\psi(p_1^2-p_2^2)}{p_2v_1}\right)
+$$
+
+De manera que encontramos la expresión para el balance de energía de nuestro flujo:
+
+$$
+-\frac{1}{2\psi}\left[\ln\left(\frac{p_1v_1+\psi(p_1^2 - p_2^2)}{p_1v_1}\right)\right] + \left(\frac{G}{\text{A}}\right)^2\left(\ln\left(\frac{p_1v_1+\psi(p_1^2-p_2^2)}{p_2v_1}\right) + 2f\frac{L}{D_{eq}}\right) = 0
+$$
+
+### Inciso 2
+
+Para simplificar la resolución del problema, separamos el balance de energía, tal que:
+
+$$
+k_1 = \frac{1}{2\psi}\left[\ln\left(\frac{p_1v_1+\psi(p_1^2 - p_2^2)}{p_1v_1}\right)\right]
+$$
+
+$$
+k_2 = \ln\left(\frac{p_1v_1+\psi(p_1^2-p_2^2)}{p_2v_1}\right)
+$$
+
+$$
+k_3  = 2f\frac{L}{D_{eq}}
+$$
+
+Luego el balance encontrado en el inciso anterior nos queda como:
+
+$$
+-k_1 + \left(\frac{G}{A}\right)^2(k_2+k_3) = 0 \hspace{1.5cm}\Rightarrow\hspace{1.5cm} \left(\frac{G}{A}\right)^2 = \frac{k_1}{k_2+k_3}
+$$
+
+Para $k_1$ y $k_2$, encontramos el volumen másico $v_1$.
+
+$$
+v_1 = \frac{RT}{M_Wp_1}
+$$
+
+```{python}
+%%render long
+R = 8.314 #J/mol$\cdot$K
+M_W = 0.01604 #kg/mol
+T = 313.15 #K
+p_1 = 48e6 #Pa
+v_1 = (R*T)/(M_W*p_1) #m$^3$/kg
+```
+
+Para $k_3$ buscamos $f$. Ya que para fluidos compresibles podemos asumir que $\text{Re}\rightarrow\infty$, usaremos la ecuación de Colebrook-White.
+
+$$
+\frac{1}{\sqrt{f_{T}}} = -1.737\ln\left(0.269\frac{\varepsilon}{D}+\frac{1.257}{Re\sqrt{f_T}}\right)
+$$
+
+Tal que
+
+$$
+f_T = \left(\frac{1}{-1.737\ln\left(0.269\frac{\varepsilon}{D}\right)}\right)^2
+$$
+
+```{python}
+%%render long
+epsilon = 0.15e-3 #m
+D = 0.070 #m
+f = (1/(-1.737*log(0.269*(epsilon/D))))**2
+```
+
+Con los datos obtenidos, se procede a calcular el valor de cada $k$.
+
+```{python}
+%%render long
+p_2 = 5e6 #Pa
+L = 1000 #m
+psi = 4e-4 #m$^3$/mol$\cdot$Pa
+k_1 = 1/(2*psi)*(log((psi*(p_1**2-p_2**2)+p_1*v_1)/(p_1*v_1)))
+k_2 = log((p_1*v_1+psi*(p_1**2+p_2**2))/(p_2*v_1))
+k_3 = 2*f*(L/D)
+```
+
+Finalmente, encontramos el valor para el flujo másico $G$.
+
+```{python}
+%%render long
+A = pi*(D/2)**2 #m$^2$
+G = sqrt(k_1/(k_2+k_3))*A #kg/s
+```
+
+Encontramos que el flujo másico es de $G = 0.039~(\text{kg/s})$.
+
+:::
