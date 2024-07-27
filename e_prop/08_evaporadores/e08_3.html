@@ -303,6 +303,7 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
  <span class="menu-text">Transferencia de calor</span>
   </li>
@@ -493,7 +494,7 @@ c_p (\text{J/kg}\cdot\text{°C}) = 6.5684 T + 3499
 Mostrar solución
 </button>
 <div id="e08_3-sol" class="collapse multi-collapse">
-<div id="ad63717a" class="cell" data-execution_count="1">
+<div id="d2346cac" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs</span>
@@ -507,7 +508,7 @@ Mostrar solución
 </div>
 <section id="inciso-1" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
-<div id="4a6f3a4c" class="cell" data-execution_count="2">
+<div id="732bd75e" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -527,7 +528,7 @@ w_{f} &amp;= 0.190 \;
 </div>
 </div>
 <p>Asumiendo <span class="math inline">\(1~\text{hora}\)</span> de opración.</p>
-<div id="79e309b2" class="cell" data-execution_count="3">
+<div id="d8978d09" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short <span class="dv">2</span></span>
@@ -551,7 +552,7 @@ V &amp;= F - P  = 84630.72 - 40199.59 &amp;= 44431.13 \; \;\textrm{(kg)}
 <p><span class="math display">\[
 w_f\cdot F = w_{E2}\cdot L =  w_{E2}\cdot (F-V_{E2})
 \]</span></p>
-<div id="c9404a05" class="cell" data-execution_count="4">
+<div id="422964cb" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short</span>
@@ -572,7 +573,7 @@ w_{E2} &amp;= \frac{ w_{f} \cdot F }{ F - V_{E2} }  = \frac{ 0.190 \cdot 84630.7
 <section id="inciso-2-y-3" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-2-y-3">Inciso 2 y 3</h3>
 <p>Del enunciado sabemos lo siguiente:</p>
-<div id="83f3d9f9" class="cell" data-execution_count="5">
+<div id="8878893f" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -603,7 +604,7 @@ w_{E2} &amp;= \frac{ w_{f} \cdot F }{ F - V_{E2} }  = \frac{ 0.190 \cdot 84630.7
 </div>
 </div>
 <p>Además definiremos una función que calcule el calor específico promedio entre dos temperaturas.</p>
-<div id="bc81b80f" class="cell" data-execution_count="6">
+<div id="f39f2dd6" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> c_p(T_1,T_2):</span>
@@ -613,7 +614,7 @@ w_{E2} &amp;= \frac{ w_{f} \cdot F }{ F - V_{E2} }  = \frac{ 0.190 \cdot 84630.7
 </details>
 </div>
 <p>A partir del enunciado podemos despejar las tempraturas de los flujos.</p>
-<div id="8296acd6" class="cell" data-execution_count="7">
+<div id="72468763" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short</span>
@@ -651,7 +652,7 @@ T_{F} &amp;= 25 \; \;\textrm{(Líquido que entra a a)}
 </div>
 </div>
 <p>Los balances de calor entonces serán:</p>
-<div id="dae00ebb" class="cell" data-execution_count="8">
+<div id="828a36ca" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>m_1 <span class="op">=</span> P</span>
@@ -663,7 +664,7 @@ T_{F} &amp;= 25 \; \;\textrm{(Líquido que entra a a)}
 <p><span class="math display">\[
 \dot{m}_s\lambda_s = (\dot{m}_2-\dot{m}_1)\lambda_1 + \dot{m}_2\left(\frac{c_p(T_1)\cdot c_p(T_2)}{2}\right)\left(T_1-T_2\right)
 \]</span></p>
-<div id="bfde6f68" class="cell" data-execution_count="9">
+<div id="7900816a" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>E1 <span class="op">=</span> Eq(m_s<span class="op">*</span>lambda_s, (m_2<span class="op">-</span>m_1)<span class="op">*</span>lambda_1<span class="op">+</span>m_2<span class="op">*</span>c_p(T_1,T_2)<span class="op">*</span>(T_1<span class="op">-</span>T_2))</span>
@@ -677,7 +678,7 @@ T_{F} &amp;= 25 \; \;\textrm{(Líquido que entra a a)}
 <p><span class="math display">\[
 (\dot{m}_2-\dot{m}_1)\lambda_1 = (\dot{m}_F-\dot{m}_2)\lambda_2 + \dot{m}_F\left(\frac{c_p(T_2)\cdot c_p(T_b)}{2}\right)\left(T_2-T_b\right) + \dot{m}_F\left(\frac{c_p(T_b)\cdot c_p(T_a)}{2}\right)\left(T_b-T_a\right)
 \]</span></p>
-<div id="8e74f38f" class="cell" data-execution_count="10">
+<div id="b4b1e74a" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>E2 <span class="op">=</span> Eq((m_2<span class="op">-</span>m_1)<span class="op">*</span>lambda_1, (m_F<span class="op">-</span>m_2)<span class="op">*</span>lambda_2 <span class="op">+</span> m_F<span class="op">*</span>c_p(T_2,T_b)<span class="op">*</span>(T_2<span class="op">-</span>T_b)<span class="op">+</span> m_F<span class="op">*</span>c_p(T_b,T_a)<span class="op">*</span>(T_b<span class="op">-</span>T_a))</span>
@@ -687,7 +688,7 @@ T_{F} &amp;= 25 \; \;\textrm{(Líquido que entra a a)}
 <p><span class="math inline">\(\displaystyle 2341000.0 \dot{m}_2 - 94107244872.0 = 231245952445.871 - 2678000.0 \dot{m}_2\)</span></p>
 </div>
 </div>
-<div id="de5cc5af" class="cell" data-execution_count="11">
+<div id="62be284b" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> linsolve((E1,E2), (m_s, m_2))</span>
@@ -697,7 +698,7 @@ T_{F} &amp;= 25 \; \;\textrm{(Líquido que entra a a)}
 </details>
 </div>
 <p>Luego de resolver el sistema de ecuaciones llegamos a los siguientes flujos.</p>
-<div id="7811ba10" class="cell" data-execution_count="12">
+<div id="6054d51f" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="dv">0</span></span>
@@ -724,7 +725,7 @@ T_{F} &amp;= 25 \; \;\textrm{(Líquido que entra a a)}
 <p><span class="math display">\[
 q = UA\Delta T
 \]</span></p>
-<div id="805eb02c" class="cell" data-execution_count="13">
+<div id="b6998cdb" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -757,7 +758,7 @@ A_{2} &amp;= \frac{ q_{2} }{ U_{2} \cdot \Delta T_{2} } \\&amp;= \frac{ 16574749
 </div>
 </div>
 <p>Se debe cumplir que <span class="math inline">\(A_1 = A_2\)</span>, por lo tanto los <span class="math inline">\(\Delta T_1\)</span> y <span class="math inline">\(\Delta T_2\)</span> no son los correspondientes a los efectos. Se debe hacer una corrección a las temperaturas.</p>
-<div id="d55241b2" class="cell" data-execution_count="14">
+<div id="0fafc3e6" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
@@ -778,7 +779,7 @@ A_{prom} &amp;= \frac{ A_{1} + A_{2} }{ 2 }  = \frac{ 31.304 + 27.642 }{ 2 } &am
 </div>
 </div>
 <p>Con estas nuevas diferencias de temperaturas iteramos.</p>
-<div id="ce238b0e" class="cell" data-execution_count="15">
+<div id="1b676abe" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short</span>
@@ -816,7 +817,7 @@ T_{F} &amp;= 25 \; \;\textrm{(Líquido que entra a a)}
 </div>
 </div>
 <p>El sistema de ecuaciones es el mismo, pero ahora cambian las temperaturas.</p>
-<div id="4635e31b" class="cell" data-execution_count="16">
+<div id="a553c6fd" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>m_1 <span class="op">=</span> P</span>
@@ -829,7 +830,7 @@ T_{F} &amp;= 25 \; \;\textrm{(Líquido que entra a a)}
 <p><span class="math inline">\(\displaystyle 2183000.0 \dot{m}_s = 2425248.49178518 \dot{m}_2 - 94107244872.0\)</span></p>
 </div>
 </div>
-<div id="9cb4c670" class="cell" data-execution_count="17">
+<div id="53c14862" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>E2 <span class="op">=</span> Eq((m_2<span class="op">-</span>m_1)<span class="op">*</span>lambda_1, (m_F<span class="op">-</span>m_2)<span class="op">*</span>lambda_2 <span class="op">+</span> m_F<span class="op">*</span>c_p(T_2,T_b)<span class="op">*</span>(T_2<span class="op">-</span>T_b)<span class="op">+</span> m_F<span class="op">*</span>c_p(T_b,T_a)<span class="op">*</span>(T_b<span class="op">-</span>T_a))</span>
@@ -839,7 +840,7 @@ T_{F} &amp;= 25 \; \;\textrm{(Líquido que entra a a)}
 <p><span class="math inline">\(\displaystyle 2341000.0 \dot{m}_2 - 94107244872.0 = 231242568253.435 - 2678000.0 \dot{m}_2\)</span></p>
 </div>
 </div>
-<div id="4a0ae5b4" class="cell" data-execution_count="18">
+<div id="9e385e2d" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> linsolve((E1,E2), (m_s, m_2))</span>
@@ -849,7 +850,7 @@ T_{F} &amp;= 25 \; \;\textrm{(Líquido que entra a a)}
 </details>
 </div>
 <p>Los nuevos flujos serán:</p>
-<div id="80f5cec6" class="cell" data-execution_count="19">
+<div id="a567392c" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="dv">2</span></span>
@@ -873,7 +874,7 @@ T_{F} &amp;= 25 \; \;\textrm{(Líquido que entra a a)}
 </div>
 </div>
 <p>Por último comprobamos que las áreas sean las mismas.</p>
-<div id="54bdcd94" class="cell" data-execution_count="20">
+<div id="009441c4" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> <span class="dv">1</span></span>
@@ -906,7 +907,7 @@ A_{2} &amp;= \frac{ q_{2} }{ U_{2} \cdot \Delta T_{c2} } \\&amp;= \frac{ 1666225
 </div>
 </div>
 <p>Las áreas son lo suficientemente parecidas. Por lo que podemos asumir que el área de los efectos será un promedio entre ambas.</p>
-<div id="21964964" class="cell" data-execution_count="21">
+<div id="e7ab7bad" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="dv">1</span></span>
@@ -925,7 +926,7 @@ A_{prom} &amp;= \frac{ A_{1} + A_{2} }{ 2 }  = \frac{ 29.4 + 29.6 }{ 2 } &amp;= 
 <section id="inciso-4" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-4">Inciso 4</h3>
 <p>La economía del sistema completo viene dado por la división entre la cantidad evaporada <span class="math inline">\(\text{V}\)</span> calculada en el inciso 1 y el flujo de vapor <span class="math inline">\(\text{S}\)</span>.</p>
-<div id="36da7ecb" class="cell" data-execution_count="22">
+<div id="b8ec7b24" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="dv">2</span></span>
@@ -946,7 +947,7 @@ E &amp;= \frac{ V }{ \dot{m_{s}} }  = \frac{ 44431.13 }{ 28908.0 } &amp;= 1.54 \
 <p><span class="math display">\[
 q_C = \left(\dot{m}_F-\dot{m}_2\right)\lambda_2 - \dot{m}_F\left(\frac{c_p(T_a)\cdot c_p(T_F)}{2}\right)\left(T_a-T_F\right)
 \]</span></p>
-<div id="92912416" class="cell" data-execution_count="23">
+<div id="ad4cdafe" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -960,7 +961,7 @@ q_{C} &amp;= \left( \frac{ \dot{m_{F}} - \dot{m_{2}} }{ 3600 } \right) \cdot \la
 \]</span></p>
 </div>
 </div>
-<div id="6df643fd" class="cell" data-execution_count="24">
+<div id="4b7e003b" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params <span class="dv">1</span></span>

@@ -303,6 +303,7 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
  <span class="menu-text">Transferencia de calor</span>
   </li>
@@ -511,7 +512,7 @@ P = \frac{\Delta p\dot{m}}{\rho}
 Mostrar solución
 </button>
 <div id="e06_2-sol" class="collapse multi-collapse">
-<div id="ed47891e" class="cell" data-execution_count="1">
+<div id="44b759b4" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Paquetes utilizados</span></span>
@@ -531,7 +532,7 @@ q = c_p\dot{m}\Delta T
 <p><span class="math display">\[
 q = q_A + q_B = \dot{m}_h\left(c_{p,h}\left(T_{i,h}-T^{sat}\right)+h_{fg}\right)
 \]</span></p>
-<div id="39b8dbf3" class="cell" data-execution_count="2">
+<div id="3a152c7c" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -554,7 +555,7 @@ T_{sat} &amp;= 100 \; \;\textrm{($^\circ$C)}
 \]</span></p>
 </div>
 </div>
-<div id="346ec119" class="cell" data-execution_count="3">
+<div id="49caadf3" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -572,7 +573,7 @@ m_{h} &amp;= \frac{ q }{ c_{ph} \cdot \left( T_{ih} - T_{sat} \right) + h_{fg} }
 <p><span class="math display">\[
 \dot{m}_c = \frac{N_t}{n}\times\dot{m}_{tubo}
 \]</span></p>
-<div id="fa796d68" class="cell" data-execution_count="4">
+<div id="08f1b9ee" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -595,7 +596,7 @@ m_{c} &amp;= 13500.000 \; \;\textrm{(kg/s)}
 \]</span></p>
 </div>
 </div>
-<div id="a4f75009" class="cell" data-execution_count="5">
+<div id="e5fd2cd8" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -621,7 +622,7 @@ T_{i,h}^A = 130~\text{°C} \hspace{0.5cm} T_{o,h}^A = 100~\text{°C} \hspace{2cm
 T_{i,c}^B = 20~\text{°C} \hspace{2cm} T_{o,c}^B = T_{i,c}^A \hspace{2cm} T_{o,c}^A = 55.451~\text{°C}
 \]</span></p>
 <p>Podemos calcular la temperatura de salida de <span class="math inline">\(A\)</span> con <span class="math inline">\(q_A\)</span> o la temperatura de <span class="math inline">\(B\)</span> con <span class="math inline">\(q_B\)</span>.</p>
-<div id="250c7c5d" class="cell" data-execution_count="6">
+<div id="24a27d1c" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -663,7 +664,7 @@ C_h = \dot{m}_h\cdot c_{p,h} \hspace{2cm} C_c = \dot{m}_c\cdot c_{p,c}
 <p><span class="math display">\[
 C_{r,A} = \frac{C_{min,A}}{C_{max,A}}
 \]</span></p>
-<div id="e96e404b" class="cell" data-execution_count="7">
+<div id="6e270132" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -684,7 +685,7 @@ C_{rA} &amp;= \frac{ C_{h} }{ C_{c} } \\&amp;= \frac{ 1920150.907 }{ 56416500.00
 </div>
 </div>
 <p>Luego, podemos obtener <span class="math inline">\(\varepsilon_A\)</span> y <span class="math inline">\(NTU_A\)</span> para flujos contra-corriente.</p>
-<div id="712eaaa1" class="cell" data-execution_count="8">
+<div id="f80b5089" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -723,7 +724,7 @@ G_t = \frac{\dot{m}}{a_t} = \frac{\frac{N_t}{n}\dot{m}_{tubo}}{\frac{N_t}{n}\lef
 <p><span class="math display">\[
 Re_D = \frac{4\dot{m}_{tubo}}{\pi d_i\mu}
 \]</span></p>
-<div id="404cbcba" class="cell" data-execution_count="9">
+<div id="1dff1e8b" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -744,7 +745,7 @@ d_{i} &amp;= 0.026 \; \;\textrm{(m)}
 </div>
 </div>
 <p>Para flujos turbulentos, tenemos que el número de Nusselt utilizamos la ecuación de Sieder-Tate bajo el supuesto <span class="math inline">\(\mu\approx\mu_s\)</span>.</p>
-<div id="4bd34aa7" class="cell" data-execution_count="10">
+<div id="0af4ec49" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -761,7 +762,7 @@ d_{i} &amp;= 0.026 \; \;\textrm{(m)}
 \]</span></p>
 </div>
 </div>
-<div id="60b1902a" class="cell" data-execution_count="11">
+<div id="9195dfd0" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -779,7 +780,7 @@ h_{i} &amp;= \mathrm{Nusselt}_{D} \cdot \left( \frac{ k }{ d_{i} } \right) \\&am
 </div>
 </div>
 <p>Por último calculamos <span class="math inline">\(U_A\)</span> a partir de los coeficientes locales y luego despejamos el área de transferencia <span class="math inline">\(A_A\)</span>.</p>
-<div id="86ff14b2" class="cell" data-execution_count="12">
+<div id="eaccf826" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -807,7 +808,7 @@ A_{A} &amp;= \frac{ \mathrm{NTU}_{A} \cdot C_{h} }{ U_{A} } \\&amp;= \frac{ 0.51
 </div>
 <p><strong>Análisis de <em>B</em></strong></p>
 <p>Para <span class="math inline">\(B\)</span> consideramos que el proceso de condensación libera tanta energía tal que <span class="math inline">\(C_h=\infty\)</span>. Luego, <span class="math inline">\(C_{r,B} = 0\)</span>.</p>
-<div id="42afc0e2" class="cell" data-execution_count="13">
+<div id="38e4b5a5" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -831,7 +832,7 @@ E_{B} &amp;= \frac{ 2 - \epsilon_{B} }{ \epsilon_{B} } \\&amp;= \frac{ 2 - 0.430
 </div>
 </div>
 <p>Luego para <span class="math inline">\(U_B\)</span>, <span class="math inline">\(h_o\)</span> será el mismo.</p>
-<div id="3143b1e7" class="cell" data-execution_count="14">
+<div id="c7d10290" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -855,7 +856,7 @@ A_{B} &amp;= \frac{ \mathrm{NTU}_{B} \cdot C_{c} }{ U_{B} } \\&amp;= \frac{ 0.56
 <p><span class="math display">\[
 A = \frac{N_t}{n}\times 2\pi d_iL
 \]</span></p>
-<div id="1ffdf5eb" class="cell" data-execution_count="15">
+<div id="551d3a91" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -883,7 +884,7 @@ L &amp;= \frac{ A }{ \frac{ N_{t} }{ 2 } \cdot \pi \cdot d_{i} } \\&amp;= \frac{
 <p><span class="math display">\[
 u_t = \frac{4\dot{m}_{tubo}}{\rho\pi d_i^2}
 \]</span></p>
-<div id="40555b6d" class="cell" data-execution_count="16">
+<div id="74d344b3" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -910,7 +911,7 @@ u_{t} &amp;= \frac{ 4 \cdot m_{tubo} }{ \rho \cdot \pi \cdot \left( d_{i} \right
 </div>
 </div>
 <p>Para la potencia de la bomba, se utiliza la ecuación proporcionada.</p>
-<div id="2757c28a" class="cell" data-execution_count="17">
+<div id="1772d3a4" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>

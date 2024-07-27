@@ -303,6 +303,7 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
  <span class="menu-text">Transferencia de calor</span>
   </li>
@@ -475,7 +476,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e02_1-sol" class="collapse multi-collapse">
-<div id="d5174023" class="cell" data-execution_count="1">
+<div id="95027b15" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquetes utilizados</span></span>
@@ -489,7 +490,7 @@ Mostrar solución
 <section id="inciso-1" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
 <p>Para saber qué agitador utilizar, debemos saber el volumen del estanque y la viscosidad del fluido.</p>
-<div id="43556be3" class="cell" data-execution_count="2">
+<div id="c86e0a58" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -525,7 +526,7 @@ V_{t} &amp;= \pi \cdot \left( \frac{ D_{t} }{ 2 } \right) ^{ 2 } \cdot H \\&amp;
 <section id="inciso-2" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-2">Inciso 2</h3>
 <p>Para saber si el motor disponible es adecuado, debemos saber el consumo de potencia teórico que este tendría si opera a las condiciones descritas. Ya que tenemos el modelo, podemos utilizar el gráfico para recuperar el número de potencia. Calculamos el número de Reynolds</p>
-<div id="693819b0" class="cell" data-execution_count="3">
+<div id="2908d4cd" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -566,7 +567,7 @@ D_{a} &amp;= S_{1} \cdot D_{t} \\&amp;= 0.333 \cdot 2.500 \\&amp;= 0.833 \; \;\t
 <p><span class="math display">\[
 P = K_T\rho N^3D_a^5
 \]</span></p>
-<div id="f0a74245" class="cell" data-execution_count="4">
+<div id="67d2253b" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -595,7 +596,7 @@ Np = K\cdot Re^n
 <p><span class="math display">\[
 N = \sqrt[3]{\frac{P}{K_T\rho D_a^5}}
 \]</span></p>
-<div id="e2aa5498" class="cell" data-execution_count="5">
+<div id="ff217d1a" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -612,7 +613,7 @@ N_{max} &amp;= \left( \frac{ P_{max} }{ K_{T} \cdot \rho \cdot \left( D_{a} \rig
 \]</span></p>
 </div>
 </div>
-<div id="33f39a42" class="cell" data-execution_count="6">
+<div id="7a396d2e" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"La velocidad máxima de agitación es de </span><span class="sc">{</span>N_max<span class="op">*</span><span class="dv">60</span><span class="sc">:g}</span><span class="ss"> RPM"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -622,7 +623,7 @@ N_{max} &amp;= \left( \frac{ P_{max} }{ K_{T} \cdot \rho \cdot \left( D_{a} \rig
 </div>
 </div>
 <p>Comprobamos si nuestro supuesto para <span class="math inline">\(K_T\)</span> es correcto mediante el número de Reynolds.</p>
-<div id="9ebad23f" class="cell" data-execution_count="7">
+<div id="c6ae6d65" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -649,7 +650,7 @@ N_{max} &amp;= \left( \frac{ P_{max} }{ K_{T} \cdot \rho \cdot \left( D_{a} \rig
 </figure>
 </div>
 <p>Obtenemos que <span class="math inline">\(N\times t_M \approx 80\)</span>. Luego calculamos el tiempo de mezclado.</p>
-<div id="92724884" class="cell" data-execution_count="8">
+<div id="3805dc45" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>

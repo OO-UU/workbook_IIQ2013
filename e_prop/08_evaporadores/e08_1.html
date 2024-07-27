@@ -303,6 +303,7 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
  <span class="menu-text">Transferencia de calor</span>
   </li>
@@ -474,7 +475,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e08_1-sol" class="collapse multi-collapse">
-<div id="50a48b83" class="cell" data-execution_count="1">
+<div id="852160db" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
@@ -495,7 +496,7 @@ F\cdot w_F = L\cdot w_L
 <p><span class="math display">\[
 F = V + F\cdot\left(\frac{w_F}{w_L}\right) \rightarrow V = F\left(1-\frac{w_F}{w_L}\right)
 \]</span></p>
-<div id="cc0cbabe" class="cell" data-execution_count="2">
+<div id="b946efbc" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -514,7 +515,7 @@ V &amp;= 25000 \; \;\textrm{(kg/h)}
 \]</span></p>
 </div>
 </div>
-<div id="999d86f5" class="cell" data-execution_count="3">
+<div id="0f6eddf9" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -532,7 +533,7 @@ F &amp;= \frac{ V }{ 1 - \frac{ w_{F} }{ w_{L} } } \\&amp;= \frac{ 25000 }{ 1 - 
 <p><span class="math display">\[
 q = F\cdot c_{p,w}\left(T^{eb}_w-T_F\right) + V\cdot \lambda_V
 \]</span></p>
-<div id="9cc85c81" class="cell" data-execution_count="4">
+<div id="fe49c774" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -558,7 +559,7 @@ c_{pw} &amp;= 3894 \; \;\textrm{(J/kg$\cdot^\circ$C)}
 \]</span></p>
 </div>
 </div>
-<div id="c41243fe" class="cell" data-execution_count="5">
+<div id="f8ac6afc" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -577,7 +578,7 @@ q &amp;= \frac{ F }{ 3600 } \cdot c_{pw} \cdot \left( \mathrm{T^eb}_{w} - T_{F} 
 q = U\cdot A\cdot\Delta T
 \]</span></p>
 <p>Donde la diferencia de temperaturas <span class="math inline">\(\Delta T\)</span> será la temperatura en el flujo de vapor <span class="math inline">\(\text{S}\)</span> y la temperatura de ebullición de la solución en el evaporador.</p>
-<div id="375c480d" class="cell" data-execution_count="6">
+<div id="9bda2bde" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -601,7 +602,7 @@ A &amp;= \frac{ q }{ U \cdot \Delta T } \\&amp;= \frac{ 17895704.365 }{ 1700 \cd
 <p><span class="math display">\[
 q = S\cdot \lambda_S
 \]</span></p>
-<div id="30be3028" class="cell" data-execution_count="7">
+<div id="39d88d20" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
