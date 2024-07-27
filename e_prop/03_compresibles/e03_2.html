@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ejercicio 3: Bombas y eficiencia – IIQ2013</title>
+<title>Ejercicio 2: Flujo compresible y compresores – IIQ2013</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -176,7 +176,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Tuberías y bombas</a></li><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_3.html">Ejercicio 3: Bombas y eficiencia</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/03_compresibles/e03_1.html">Fluidos compresibles y compresores</a></li><li class="breadcrumb-item"><a href="../../e_prop/03_compresibles/e03_2.html">Ejercicio 2: Flujo compresible y compresores</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -234,7 +234,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/00_bernoulli/e00_3.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../e_prop/00_bernoulli/e00_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 3: Bombas y eficiencia</span></a>
   </div>
 </li>
@@ -297,7 +297,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/03_compresibles/e03_2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../e_prop/03_compresibles/e03_2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Ejercicio 2: Flujo compresible y compresores</span></a>
   </div>
 </li>
@@ -319,14 +319,14 @@ window.Quarto = {
   <li><a href="#enunciado" id="toc-enunciado" class="nav-link active" data-scroll-target="#enunciado">Enunciado</a></li>
   <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
   </ul>
-<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/00_bernoulli/jupyter/e00_3.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/03_compresibles/jupyter/e03_2.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_1.html">Tuberías y bombas</a></li><li class="breadcrumb-item"><a href="../../e_prop/00_bernoulli/e00_3.html">Ejercicio 3: Bombas y eficiencia</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/03_compresibles/e03_1.html">Fluidos compresibles y compresores</a></li><li class="breadcrumb-item"><a href="../../e_prop/03_compresibles/e03_2.html">Ejercicio 2: Flujo compresible y compresores</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Ejercicio 3: Bombas y eficiencia</h1>
+<h1 class="title">Ejercicio 2: Flujo compresible y compresores</h1>
 </div>
 
 
@@ -345,211 +345,253 @@ window.Quarto = {
 
 <section id="enunciado" class="level2">
 <h2 class="anchored" data-anchor-id="enunciado">Enunciado</h2>
-<p>Entra benceno a <span class="math inline">\(37.8~\text{°C}\)</span> el cual debe ser bombeado a caudal <span class="math inline">\(11~\text{m}^3\text{/h}\)</span>. El modelo de la bomba es tipo <span class="math inline">\(3656/3756~\text{Grupo-S}\)</span>, con un rodete <span class="math inline">\(\text{B}\)</span> de diámetro <span class="math inline">\(7.75~\text{in}\)</span>. El benceno se transporta desde un estanque hasta otro tal y como muestra la figura. Ambos estanques se encuentran a <span class="math inline">\(3~\text{atm}\)</span>. La altura entre los puntos <span class="math inline">\(\text{a'}\)</span> y <span class="math inline">\(\text{a}\)</span> es <span class="math inline">\(10~\text{m}\)</span> y la altura entre los puntos <span class="math inline">\(\text{b}\)</span> y <span class="math inline">\(\text{b'}\)</span> es de <span class="math inline">\(2~\text{m}\)</span>. Las tuberías tienen un diámetro de <span class="math inline">\(12~\text{cm}\)</span>. La densidad del benceno a la temperatura de operación es de <span class="math inline">\(865~\text{kg/m}^3\)</span> y su presión de vapor es <span class="math inline">\(26.2~\text{kPa}\)</span>. Si la altura asociada a las perdidas por fricción es <span class="math inline">\(h_f = 3~\text{m}\)</span> y los codos son codos cuadrados.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/img00_3.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Sistema de tuberías y bomba</figcaption>
-</figure>
-</div>
-<p>Responda lo siguiente:</p>
+<p>Usted cuenta con un compresor reciprocante de 2 etapas que opera a <span class="math inline">\(500~\text{RPM}\)</span>. En dicho compresor, se encuentra argón (<span class="math inline">\(\text{PM}_{\text{Ar}}=39.948~\text{g/mol}\)</span> y con coeficiente adiabático <span class="math inline">\(\gamma=1.2\)</span>). A la salida del compresor se encuentra una tubería conectada por la cual se trasportará el argón a otro punto. Esta tubería es de acero comercial (<span class="math inline">\(\varepsilon=0.046\text{mm}\)</span>), y tiene un largo <span class="math inline">\(L=5~\text{km}\)</span> con diámetro interno <span class="math inline">\(D = 3~\text{in}\)</span>. Usted sabe que a la entrada de la tubería, el gas tiene una presión y temperatura de <span class="math inline">\(10~\text{MPa}\)</span> y <span class="math inline">\(750~\text{K}\)</span> respectivamente. Además, el flujo másico a lo largo de la tubería debe ser de <span class="math inline">\(G=3~\text{kg/s}\)</span>.</p>
 <ol type="1">
-<li>Demuestre la ecuación que describe el trabajo de la bomba (<span class="math inline">\(\eta W_p\)</span>) a partir de las ecuaciones de bernoulli para los puntos <span class="math inline">\(\text{a'-a}\)</span>, <span class="math inline">\(\text{a-b}\)</span> y <span class="math inline">\(\text{b-b'}\)</span>.</li>
-<li>Encuentre la altura de la bomba (<span class="math inline">\(h_B\)</span>) en <span class="math inline">\(\text{m}\)</span>.</li>
-<li>Calcule la potencia requerida por la bomba (<span class="math inline">\(P_m\)</span>) en <span class="math inline">\(\text{W}\)</span>.</li>
-<li>Determine si la bomba cavita considerando que la altura asociada a las perdidas por fricción entre <span class="math inline">\(\text{a'}\)</span> y <span class="math inline">\(\text{a}\)</span> contribuyen <span class="math inline">\(2/3\)</span> de las pérdidas totales por fricción.</li>
+<li>Encuentre el largo máximo de la tubería para que el argón o alcance la condición de ahogamiento. ¿Es el largo de la tubería indicado para operar en las condiciones descritas? <em>Hint: recuerde que puede asumir que <span class="math inline">\(Re\rightarrow\infty\)</span>.</em></li>
+<li>Si en la primera etapa el compresor se encuentra a <span class="math inline">\(70~\text{kPa}\)</span>, y el compresor opera de manera isoentrópica con razón de presiones constante. Encuentre el volumen específico del argón a la entrada de la segunda etapa <span class="math inline">\(v_{i1}\)</span>.</li>
+<li>Considerando una holgura en la segunda etapa de <span class="math inline">\(c_2 = 0.2\)</span>, calcule el trabajo total del segundo ciclo.</li>
 </ol>
 </section>
 <section id="solución" class="level2">
 <h2 class="anchored" data-anchor-id="solución">Solución</h2>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#e00_3-sol" aria-expanded="false">
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e03_2-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="e00_3-sol" class="collapse multi-collapse">
-<div id="bb25bef7" class="cell" data-execution_count="1">
+<div id="e03_2-sol" class="collapse multi-collapse">
+<div id="d0323923" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"custom_symbols"</span>,{<span class="st">"ap"</span>: <span class="st">"a'"</span>, <span class="st">"bp"</span>: <span class="st">"b'"</span>, <span class="st">"eta"</span>: <span class="st">"\eta "</span>, <span class="st">"dotm"</span>: <span class="st">"\dot m"</span>})</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Cargamos los paquetes que vamos a utilizar.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt, pi, log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="inciso-1" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
-<p>Para el primer tramo (<span class="math inline">\(\text{a'-a}\)</span>), la ecuación de bernoulli será:</p>
+<p>En primer lugar, se calcula el número de Mach a la entrada de la tubería (<span class="math inline">\(Ma_1\)</span>).</p>
 <p><span class="math display">\[
-\left(\frac{P_{a'}}{\rho} + g\cdot Z_{a'} + \frac{V_{a'}^2}{2}\right) = \left(\frac{P_a}{\rho} + g\cdot Z_a + \frac{V_a^2}{2}\right) + \left(\phi_s+\phi_f\right)_{a'-a}
+\frac{G}{A} = Ma_1\frac{c}{v} = Ma_1 c\rho
 \]</span></p>
-<p>Para el tramo <span class="math inline">\(\text{a-b}\)</span>:</p>
+<p>Se puede asumir que el argón es un gas ideal, luego su densidad será obtenida mediante la ecuación de gases ideales.</p>
 <p><span class="math display">\[
-\left(\frac{P_{a}}{\rho} + g\cdot Z_{a} + \frac{V_{a}^2}{2}\right) = \left(\frac{P_b}{\rho} + g\cdot Z_b + \frac{V_b^2}{2}\right) - \eta W_p
+pv = \frac{RT}{\text{PM}_\text{Ar}} \Rightarrow \rho = \frac{p\text{PM}_\text{Ar}}{RT}
 \]</span></p>
-<p>Por último, para el tramo <span class="math inline">\(\text{b-b'}\)</span>:</p>
+<p>Cuya velocidad del sonido será:</p>
 <p><span class="math display">\[
-\left(\frac{P_{b}}{\rho} + g\cdot Z_{b} + \frac{V_{b}^2}{2}\right) = \left(\frac{P_{b'}}{\rho} + g\cdot Z_{b'} + \frac{V_{b'}^2}{2}\right) + \left(\phi_s+\phi_f\right)_{b-b'}
+c = \sqrt{\frac{\gamma RT}{\text{PM}_\text{Ar}}}
 \]</span></p>
-<p>Despejando en la ecuación de bernoulli entre los puntos <span class="math inline">\(\text{a-b}\)</span>.</p>
-<p><span class="math display">\[
-\left(\frac{P_{a'}}{\rho} + g\cdot Z_{a'} + \frac{V_{a'}^2}{2}\right) - \left(\phi_s+\phi_f\right)_{a'-a} = \left(\frac{P_{b'}}{\rho} + g\cdot Z_{b'} + \frac{V_{b'}^2}{2}\right) + \left(\phi_s+\phi_f\right)_{b-b'} - \eta W_p
-\]</span></p>
-<p>Luego, podemos entender la suma de las pérdidas de carga por fricción y singularidades entre <span class="math inline">\(\text{a'-a}\)</span> y <span class="math inline">\(\text{b-b'}\)</span> como las pérdidas de cargas en todo el sistema.</p>
-<p><span class="math display">\[
-\left(\phi_s+\phi_f\right)_{a'-b'} = \left(\phi_s+\phi_f\right)_{a'-a} + \left(\phi_s+\phi_f\right)_{b-b'}
-\]</span></p>
-<p>Finalmente llegamos a la última ecuación:</p>
-<p><span class="math display">\[
-\left(\frac{P_{a'}}{\rho} + g\cdot Z_{a'} + \frac{V_{a'}^2}{2}\right) = \left(\frac{P_{b'}}{\rho} + g\cdot Z_{b'} + \frac{V_{b'}^2}{2}\right) + \left(\phi_s+\phi_f\right)_{a'-b'} - \eta W_p
-\]</span></p>
-<p>Para que la ecuación sea consistente con la figura, consideremos que <span class="math inline">\(Z_{a'}=0\)</span> y que ambos estanques se encuentran a la misma presión (<span class="math inline">\(3~\text{atm}\)</span>), la cual será la referencia <span class="math inline">\(P_{a'}=P_{b'}=0\)</span>. Además, el punto <span class="math inline">\(\text{a'}\)</span> se considera sin movimiento (<span class="math inline">\(V_{a'}=0\)</span>) por el supuesto de estanque muy grande. Reordenando:</p>
-<p><span class="math display">\[
-\eta W_p = \left(g\cdot Z_{b'} + \frac{V_{b'}^2}{2}\right) + \left(\phi_s+\phi_f\right)_{a'-b'}
-\]</span></p>
-<p>Luego, reemplazando las pérdidas de carga y asumiendo que la velocidad el todo el sistema (excluyendo el estanque) es constante:</p>
-<p><span class="math display">\[
-\eta W_p = g\cdot Z_{b'} + \left(1 + 4f\left(\frac{L}{D_e}\right) + K \right)\frac{V^2}{2}
-\]</span></p>
-</section>
-<section id="inciso-2" class="level3">
-<h3 class="anchored" data-anchor-id="inciso-2">Inciso 2</h3>
-<p>Ya que en el enunciado nos entregan las pérdidas de carga por fricción en <span class="math inline">\(\text{m}\)</span>, escribmos la función para <span class="math inline">\(\eta W_p\)</span> de la siguiente manera:</p>
-<p><span class="math display">\[
-\eta W_p = g\cdot Z_{b'} + \left(1 + K \right)\frac{8Q^2}{\pi^2D^4} + g\cdot h_f
-\]</span></p>
-<div id="9d34a681" class="cell" data-execution_count="2">
+<div id="a673e677" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span> <span class="co">#m/s$^2$</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Z_bp <span class="op">=</span> <span class="dv">10</span><span class="op">-</span><span class="dv">2</span> <span class="co">#m</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="dv">12</span><span class="op">/</span><span class="dv">100</span> <span class="co">#m</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>K_codo <span class="op">=</span> <span class="fl">1.2</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>K_salida <span class="op">=</span> <span class="fl">0.5</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>K_entrada <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> <span class="dv">11</span><span class="op">/</span><span class="dv">3600</span> <span class="co">#m$^3$/s</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>h_f <span class="op">=</span> <span class="dv">3</span> <span class="co">#m</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="dv">865</span>  <span class="co">#kg/m$^3$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render sci_not params <span class="dv">3</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>PM_Ar <span class="op">=</span> <span class="fl">39.948e-3</span> <span class="co">#kg/mol</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>P_1 <span class="op">=</span> <span class="fl">10e6</span> <span class="co">#Pa</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>T_1 <span class="op">=</span> <span class="dv">750</span> <span class="co">#K</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.2</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">8.314</span> <span class="co">#g/mol$\cdot$K</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="dv">3</span> <span class="co">#kg/s</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="dv">3</span><span class="op">/</span><span class="fl">39.37</span> <span class="co">#m</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="fl">5e3</span> <span class="co">#m</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="fl">0.046</span><span class="op">/</span><span class="dv">1000</span> <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-g &amp;= 9.810 \; \;\textrm{(m/s$^2$)}
-&amp;Z_{b'} &amp;= 8 \; \;\textrm{(m)}
-&amp;D &amp;= 0.120 \; \;\textrm{(m)}
+\mathrm{PM}_{Ar} &amp;= 3.995 \times 10 ^ {-2} \; \;\textrm{(kg/mol)}
+&amp;P_{1} &amp;= 1.000 \times 10 ^ {7} \; \;\textrm{(Pa)}
+&amp;T_{1} &amp;= 750 \; \;\textrm{(K)}
 \\[10pt]
-K_{codo} &amp;= 1.200 \;
-&amp;K_{salida} &amp;= 0.500 \;
-&amp;K_{entrada} &amp;= 1.000 \;
+\gamma &amp;= 1.200 \times 10 ^ {0} \;
+&amp;R &amp;= 8.314 \times 10 ^ {0} \; \;\textrm{(g/mol$\cdot$K)}
+&amp;G &amp;= 3 \; \;\textrm{(kg/s)}
 \\[10pt]
-Q &amp;= 0.003 \; \;\textrm{(m$^3$/s)}
-&amp;h_{f} &amp;= 3 \; \;\textrm{(m)}
-&amp;\rho &amp;= 865 \; \;\textrm{(kg/m$^3$)}
+D &amp;= 7.620 \times 10 ^ {-2} \; \;\textrm{(m)}
+&amp;L &amp;= 5.000 \times 10 ^ {3} \; \;\textrm{(m)}
+&amp;\epsilon &amp;= 4.600 \times 10 ^ {-5} \; \;\textrm{(m)}
 \\[10pt]
 \end{aligned}
 \]</span></p>
 </div>
 </div>
-<div id="22f1e211" class="cell" data-execution_count="3">
+<div id="da365c2f" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>etaW_p <span class="op">=</span> g<span class="op">*</span>Z_bp <span class="op">+</span> (<span class="dv">1</span> <span class="op">+</span> (K_salida <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>K_codo <span class="op">+</span> K_entrada))<span class="op">*</span>(<span class="dv">8</span><span class="op">*</span>Q<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(pi<span class="op">**</span><span class="dv">2</span><span class="op">*</span>D<span class="op">**</span><span class="dv">4</span>) <span class="op">+</span> g<span class="op">*</span>h_f <span class="co">#J/kg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> (P_1<span class="op">*</span>PM_Ar)<span class="op">/</span>(R<span class="op">*</span>T_1) <span class="co">#kg/m$^3$</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> sqrt((gamma<span class="op">*</span>R<span class="op">*</span>T_1)<span class="op">/</span>(PM_Ar)) <span class="co">#m/s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-\eta W_{p} &amp;= g \cdot Z_{b'} + \left( 1 + \left( K_{salida} + 4 \cdot K_{codo} + K_{entrada} \right) \right) \cdot \frac{ 8 \cdot \left( Q \right) ^{ 2 } }{ \left( \pi \right) ^{ 2 } \cdot \left( D \right) ^{ 4 } } + g \cdot h_{f} \\&amp;= 9.810 \cdot 8 + \left( 1 + \left( 0.500 + 4 \cdot 1.200 + 1.000 \right) \right) \cdot \frac{ 8 \cdot \left( 0.003 \right) ^{ 2 } }{ \left( 3.142 \right) ^{ 2 } \cdot \left( 0.120 \right) ^{ 4 } } + 9.810 \cdot 3 \\&amp;= 108.176 \; \;\textrm{(J/kg)}\\[10pt]
+\rho &amp;= \frac{ P_{1} \cdot \mathrm{PM}_{Ar} }{ R \cdot T_{1} } \\&amp;= \frac{ 10000000.000 \cdot 0.040 }{ 8.314 \cdot 750 } \\&amp;= 64.065 \; \;\textrm{(kg/m$^3$)}\\[10pt]
+\\[10pt]
+c &amp;= \sqrt { \frac{ \gamma \cdot R \cdot T_{1} }{ \mathrm{PM}_{Ar} } } \\&amp;= \sqrt { \frac{ 1.200 \cdot 8.314 \cdot 750 }{ 0.040 } } \\&amp;= 432.792 \; \;\textrm{(m/s)}\\[10pt]
 \end{aligned}
 \]</span></p>
 </div>
 </div>
-<div id="f380fcbe" class="cell" data-execution_count="4">
+<p>Con los resultados obtenidos, se puede despejar el número de Mach a la entrada de la tubería.</p>
+<p><span class="math display">\[
+Ma_1 = \frac{G}{A}\frac{1}{c\rho}
+\]</span></p>
+<div id="67cf815b" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>h_B <span class="op">=</span> etaW_p<span class="op">/</span>g <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> pi <span class="op">*</span> (D<span class="op">/</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span> <span class="co">#m$^2$</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Ma_1 <span class="op">=</span> G<span class="op">/</span>A <span class="op">*</span> <span class="dv">1</span><span class="op">/</span>(c<span class="op">*</span>rho)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-h_{B} &amp;= \frac{ \eta W_{p} }{ g } \\&amp;= \frac{ 108.176 }{ 9.810 } \\&amp;= 11.027 \; \;\textrm{(m)}\\[10pt]
+A &amp;= \pi \cdot \left( \frac{ D }{ 2 } \right) ^{ 2 } \\&amp;= 3.142 \cdot \left( \frac{ 0.076 }{ 2 } \right) ^{ 2 } \\&amp;= 0.005 \; \;\textrm{(m$^2$)}\\[10pt]
+\\[10pt]
+\mathrm{Ma}_{1} &amp;= \frac{ G }{ A } \cdot \frac{ 1 }{ c \cdot \rho } \\&amp;= \frac{ 3 }{ 0.005 } \cdot \frac{ 1 }{ 432.792 \cdot 64.065 } \\&amp;= 0.024  \\[10pt]
 \end{aligned}
 \]</span></p>
 </div>
 </div>
-</section>
-<section id="inciso-3" class="level3">
-<h3 class="anchored" data-anchor-id="inciso-3">Inciso 3</h3>
-<p>Del gráfico para la bomba tipo <span class="math inline">\(3656/3756~\text{Grupo-S}\)</span> con rodete <span class="math inline">\(\text{B}\)</span> de diámetro <span class="math inline">\(7.75~\text{in}\)</span>, vemos que para un caudal de <span class="math inline">\(11~\text{m}^3\text{/h}\)</span> la eficiencia es aproximadamente de un <span class="math inline">\(\eta = 65~\%\)</span>.</p>
-<p>La fórmula para la potencia requerida puede ser escrita como:</p>
+<p>A continuación, podemos calcular el factor de fricción utilizando la ecuación de <em>Colebrook-White</em> eliminando los términos que dependen del número de Reynolds.</p>
 <p><span class="math display">\[
-P_B = \dot{m}W_p
+\frac{1}{\sqrt{f}} = -1.737\ln{\left(0.269\frac{\varepsilon}{D}\right)}
 \]</span></p>
-<div id="24a3f305" class="cell" data-execution_count="5">
+<div id="26d6bccd" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>eta <span class="op">=</span> <span class="fl">0.65</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>dotm <span class="op">=</span> Q<span class="op">*</span>rho <span class="co">#kg/s</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>P_B <span class="op">=</span> dotm<span class="op">*</span>etaW_p<span class="op">/</span>eta <span class="co">#W</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> sci_not</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>(<span class="op">-</span><span class="fl">1.737</span><span class="op">*</span>log(<span class="fl">0.269</span><span class="op">*</span>(epsilon<span class="op">/</span>D))))<span class="op">**</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-\eta  &amp;= 0.650 \;
-\\[10pt]
-\dot m &amp;= Q \cdot \rho \\&amp;= 0.003 \cdot 865 \\&amp;= 2.643 \; \;\textrm{(kg/s)}\\[10pt]
-\\[10pt]
-P_{B} &amp;= \dot m \cdot \frac{ \eta W_{p} }{ \eta  } \\&amp;= 2.643 \cdot \frac{ 108.176 }{ 0.650 } \\&amp;= 439.871 \; \;\textrm{(W)}\\[10pt]
+f &amp;= \left( \frac{ 1 }{ \left( - 1.737 \right) \cdot \ln \left( 0.269 \cdot \left( \frac{ \epsilon }{ D } \right) \right) } \right) ^{ 2 } \\&amp;= \left( \frac{ 1 }{ \left( - 1.737 \right) \cdot \ln \left( 0.269 \cdot \left( \frac{ 4.600 \times 10 ^ {-5} }{ 7.620 \times 10 ^ {-2} } \right) \right) } \right) ^{ 2 } \\&amp;= 4.353 \times 10 ^ {-3}  \\[10pt]
 \end{aligned}
 \]</span></p>
 </div>
 </div>
-</section>
-<section id="inciso-4" class="level3">
-<h3 class="anchored" data-anchor-id="inciso-4">Inciso 4</h3>
-<p>Debemos compara <span class="math inline">\(\text{NPSH}_d\)</span> con <span class="math inline">\(\text{NPSH}_r\)</span>. Del gráfico, <span class="math inline">\(\text{NPSH}_r \approx 17.5~\text{m}\)</span>.</p>
-<p>Para la <span class="math inline">\(\text{NPSH}_d\)</span> sabemos que:</p>
+<p>Finalmente, calculamos el largo máximo permitido.</p>
 <p><span class="math display">\[
-\text{NPSH}_d = \frac{P_{a'}-P_v}{\rho g} - z_a - \left(1 + K \right)\frac{8Q^2}{g\pi^2D^4} - h_{f,a'-a}
+L = \frac{D}{4f}\left(\frac{1-Ma^2}{Ma^2}+\frac{\gamma+1}{2\gamma}\ln{\left(\frac{\left(\gamma+1\right)Ma^2}{2+\left(\gamma-1\right)Ma^2}\right)}\right)
 \]</span></p>
-<div id="7ba1733d" class="cell" data-execution_count="6">
+<div id="514269ba" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>P_v <span class="op">=</span> <span class="fl">26.2</span><span class="op">*</span><span class="dv">1000</span> <span class="co">#Pa</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>P_ap <span class="op">=</span> <span class="dv">3</span><span class="op">*</span><span class="dv">101325</span> <span class="co">#Pa</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>z_a <span class="op">=</span> <span class="dv">10</span> <span class="co">#m</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>h_f <span class="op">=</span> <span class="dv">2</span> <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> D<span class="op">/</span>(<span class="dv">4</span><span class="op">*</span>f)<span class="op">*</span>((<span class="dv">1</span><span class="op">-</span>Ma_1<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(Ma_1<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> (gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gamma)<span class="op">*</span>log(((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>Ma_1<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma_1<span class="op">**</span><span class="dv">2</span>))) <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-P_{v} &amp;= 26200.000 \; \;\textrm{(Pa)}
-&amp;P_{a'} &amp;= 303975 \; \;\textrm{(Pa)}
-&amp;z_{a} &amp;= 10 \; \;\textrm{(m)}
-\\[10pt]
-h_{f} &amp;= 2 \; \;\textrm{(m)}
+L &amp;= \frac{ D }{ 4 \cdot f } \cdot \left( \frac{ 1 - \left( \mathrm{Ma}_{1} \right) ^{ 2 } }{ \left( \mathrm{Ma}_{1} \right) ^{ 2 } } + \frac{ \gamma + 1 }{ 2 \cdot \gamma } \cdot \ln \left( \frac{ \left( \gamma + 1 \right) \cdot \left( \mathrm{Ma}_{1} \right) ^{ 2 } }{ 2 + \left( \gamma - 1 \right) \cdot \left( \mathrm{Ma}_{1} \right) ^{ 2 } } \right) \right) \\&amp;= \frac{ 0.076 }{ 4 \cdot 0.004 } \cdot \left( \frac{ 1 - \left( 0.024 \right) ^{ 2 } }{ \left( 0.024 \right) ^{ 2 } } + \frac{ 1.200 + 1 }{ 2 \cdot 1.200 } \cdot \ln \left( \frac{ \left( 1.200 + 1 \right) \cdot \left( 0.024 \right) ^{ 2 } }{ 2 + \left( 1.200 - 1 \right) \cdot \left( 0.024 \right) ^{ 2 } } \right) \right) \\&amp;= 7739.980 \; \;\textrm{(m)}\\[10pt]
 \end{aligned}
 \]</span></p>
 </div>
 </div>
-<div id="c4149ba2" class="cell" data-execution_count="7">
+<p>Ya que el largo máximo permitido es mayor al largo de la tubería (<span class="math inline">\(5~\text{km}\)</span>), entonces sí podemos operar en este sistema.</p>
+</section>
+<section id="inciso-2" class="level3">
+<h3 class="anchored" data-anchor-id="inciso-2">Inciso 2</h3>
+<p>Sabemos que la razón de compresión para dos etapas:</p>
+<p><span class="math display">\[
+r_p = \frac{P_{i1}}{P_1} = \frac{P_2}{P_{i1}} = \left(\frac{P_2}{P_1}\right)^{\frac{1}{n}}
+\]</span></p>
+<div id="a3ad126f" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>NPSH_d <span class="op">=</span> (P_ap<span class="op">-</span>P_v)<span class="op">/</span>(rho<span class="op">*</span>g) <span class="op">-</span> z_a <span class="op">-</span> (<span class="dv">1</span><span class="op">+</span>(K_salida<span class="op">+</span><span class="dv">4</span><span class="op">*</span>K_codo<span class="op">+</span>K_entrada))<span class="op">*</span>(<span class="dv">8</span><span class="op">*</span>Q<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(g<span class="op">*</span>pi<span class="op">**</span><span class="dv">2</span><span class="op">*</span>D<span class="op">**</span><span class="dv">4</span>) <span class="op">-</span> h_f <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>P_2 <span class="op">=</span> <span class="fl">10e6</span> <span class="co">#Pa</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>P_1 <span class="op">=</span> <span class="fl">70e3</span> <span class="co">#Pa</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>r_p <span class="op">=</span> (P_2<span class="op">/</span>P_1)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span>n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-\mathrm{NPSH}_{d} &amp;= \frac{ P_{a'} - P_{v} }{ \rho \cdot g } - z_{a} - \left( 1 + \left( K_{salida} + 4 \cdot K_{codo} + K_{entrada} \right) \right) \cdot \frac{ 8 \cdot \left( Q \right) ^{ 2 } }{ g \cdot \left( \pi \right) ^{ 2 } \cdot \left( D \right) ^{ 4 } } - h_{f} \\&amp;= \frac{ 303975 - 26200.000 }{ 865 \cdot 9.810 } - 10 - \left( 1 + \left( 0.500 + 4 \cdot 1.200 + 1.000 \right) \right) \cdot \frac{ 8 \cdot \left( 0.003 \right) ^{ 2 } }{ 9.810 \cdot \left( 3.142 \right) ^{ 2 } \cdot \left( 0.120 \right) ^{ 4 } } - 2 \\&amp;= 20.708 \; \;\textrm{(m)}\\[10pt]
+P_{2} &amp;= 10000000.000 \; \;\textrm{(Pa)}
+\\[10pt]
+P_{1} &amp;= 70000.000 \; \;\textrm{(Pa)}
+\\[10pt]
+n &amp;= 2 \;
+\\[10pt]
+r_{p} &amp;= \left( \frac{ P_{2} }{ P_{1} } \right) ^{ \left( \frac{ 1 }{ n } \right) } \\&amp;= \left( \frac{ 10000000.000 }{ 70000.000 } \right) ^{ \left( \frac{ 1 }{ 2 } \right) } \\&amp;= 11.952  \\[10pt]
 \end{aligned}
 \]</span></p>
 </div>
 </div>
-<p>Ya que <span class="math inline">\(\text{NPSH}_d&gt;\text{NPSH}_r\)</span>, la bomba no cavita.</p>
+<p>Ya que tenemos una compresión isoentrópica, <span class="math inline">\(pv^\gamma\)</span> es consante. Antes de continuar, recordemos que en nuestro compresor tenemos en la primera etapa <span class="math inline">\(v_{1}\rightarrow v_{i1}\)</span> y luego la segunda etapa <span class="math inline">\(v_{i1}\rightarrow v_{2}\)</span>. En donde la relación de compresión isoentrópica se cumple para el cambio <span class="math inline">\(v_{inicial}\rightarrow v_{final}\)</span>. Ya que no contamos con <span class="math inline">\(P_{i1}\)</span> utilizamos la razón de compresión.</p>
+<div id="c6dc28d0" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> sci_not</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>v_2 <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>rho <span class="co">#m$^3$/kg</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>v_i1 <span class="op">=</span> v_2<span class="op">*</span>r_p<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span>gamma) <span class="co">#m$^3$/kg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+v_{2} &amp;= \frac{ 1 }{ \rho } \\&amp;= \frac{ 1 }{ 6.407 \times 10 ^ {1} } \\&amp;= 1.561 \times 10 ^ {-2} \; \;\textrm{(m$^3$/kg)}\\[10pt]
+\\[10pt]
+v_{i1} &amp;= v_{2} \cdot \left( r_{p} \right) ^{ \left( \frac{ 1 }{ \gamma } \right) } \\&amp;= 1.561 \times 10 ^ {-2} \cdot \left( 1.195 \times 10 ^ {1} \right) ^{ \left( \frac{ 1 }{ 1.200 \times 10 ^ {0} } \right) } \\&amp;= 1.234 \times 10 ^ {-1} \; \;\textrm{(m$^3$/kg)}\\[10pt]
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>El volumen a la entrada del segundo ciclo será <span class="math inline">\(v_{i1}=0.1234~\text{m}^3\text{/kg}\)</span>. Notamos que en el segundo ciclo, el compresor reduce el volumen del gas aproximadamente 10 veces su tamaño original.</p>
+</section>
+<section id="inciso-3" class="level3">
+<h3 class="anchored" data-anchor-id="inciso-3">Inciso 3</h3>
+<p>Sabemos que el trabajo total por ciclo si se considera holgura será.</p>
+<p><span class="math display">\[
+-W = \frac{\gamma}{\gamma-1}P_1V_s\left(\left(\frac{P_2}{P_1}\right)^{\frac{\gamma-1}{\gamma}}-1\right)\left(1+c\left(1-\left(\frac{P_2}{P_1}\right)^{\frac{1}{\gamma}}\right)\right)
+\]</span></p>
+<p>Para esto necesitamo el volumen de barrido, el cual podemos obtener mediante el siguiente razonamiento. El volumen de barrido nos dice qué parte del volumen total del cilindro (véase, cuando el cilindro no se encuentra contraido) sale efectivamente de la etapa. Se desea cumplir con los <span class="math inline">\(3~\text{kg/s}\)</span> de flujo másico, para esto, contamos con un volumen másico inicial en el segundo ciclo (obtenido en el inciso anterior) de <span class="math inline">\(v_{i1}=0.1234~\text{m}^3\text{/kg}\)</span>.<br>
+Para cumplir con los requerimientos, necesito entonces</p>
+<p><span class="math display">\[
+\dot{v} = v_{i1}\cdot G
+\]</span></p>
+<p>Considerando que el compresor realiza 500 ciclos de compresión por minuto (ya que opera a <span class="math inline">\(500~\text{RPM}\)</span>). Podemos obtener el volumen de barrido utilizando:</p>
+<p><span class="math display">\[
+V_s = \frac{\dot{v}}{\text{RPS}}
+\]</span></p>
+<div id="380c9ad6" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render sci_not <span class="bu">long</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>RPS <span class="op">=</span> <span class="dv">500</span><span class="op">/</span><span class="dv">60</span> <span class="co">#1/s</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>V_s <span class="op">=</span> (v_i1<span class="op">*</span>G)<span class="op">/</span>RPS <span class="co">#m$^3$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{RPS} &amp;= \frac{ 500 }{ 60 } &amp;= 8.333 \times 10 ^ {0} \; \;\textrm{(1/s)}
+\\[10pt]
+V_{s} &amp;= \frac{ v_{i1} \cdot G }{ \mathrm{RPS} } \\&amp;= \frac{ 1.234 \times 10 ^ {-1} \cdot 3 }{ 8.333 \times 10 ^ {0} } \\&amp;= 4.442 \times 10 ^ {-2} \; \;\textrm{(m$^3$)}\\[10pt]
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Luego reemplazamos en la ecuación para obtener el trabajo.</p>
+<div id="8ceee71c" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>W <span class="op">=</span> <span class="op">-</span>gamma<span class="op">/</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>P_1<span class="op">*</span>V_s<span class="op">*</span>((P_2<span class="op">/</span>P_1)<span class="op">**</span>((gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span>gamma)<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>c<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>(P_2<span class="op">/</span>P_1)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span>gamma))) <span class="co">#J</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+c &amp;= 0.200 \;
+\\[10pt]
+W &amp;= \frac{ \left( - \gamma \right) }{ \gamma - 1 } \cdot P_{1} \cdot V_{s} \cdot \left( \left( \frac{ P_{2} }{ P_{1} } \right) ^{ \left( \frac{ \gamma - 1 }{ \gamma } \right) } - 1 \right) \cdot \left( 1 + c \cdot \left( 1 - \left( \frac{ P_{2} }{ P_{1} } \right) ^{ \left( \frac{ 1 }{ \gamma } \right) } \right) \right) \\&amp;= \frac{ \left( - 1.200 \right) }{ 1.200 - 1 } \cdot 70000.000 \cdot 0.044 \cdot \left( \left( \frac{ 10000000.000 }{ 70000.000 } \right) ^{ \left( \frac{ 1.200 - 1 }{ 1.200 } \right) } - 1 \right) \cdot \left( 1 + 0.200 \cdot \left( 1 - \left( \frac{ 10000000.000 }{ 70000.000 } \right) ^{ \left( \frac{ 1 }{ 1.200 } \right) } \right) \right) \\&amp;= 271089.661 \; \;\textrm{(J)}\\[10pt]
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>El trabajo requerido en la segunda etapa es de <span class="math inline">\(271.09~\text{kJ}\)</span>.</p>
 </section>
 </div>
 
