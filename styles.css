@@ -1,7 +1,18 @@
 /* css styles */
 
+p {
+  text-align: justify;
+}
+
 .sidebar-logo {
-    width: 200px;
-    margin-left: 35px;
-    margin-right: auto;
-  }
+  width: 80%;
+}
+
+.quarto-sidebar-footer {
+  font-style: italic;
+  color: #808080;
+}
+
+.verticalLine {
+  border-left: thick solid #ff0000;
+}

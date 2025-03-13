@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.53">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ejercicio 2: Método NTU - ICTC – IIQ2013</title>
+<title>Ejercicio 2: Método NTU - ICTC</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,6 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../e_prop/07_ICC/e07_1.html" rel="next">
+<link href="../../e_prop/06_ICTC/e06_1.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -77,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
-  "copy-button": false,
+  "copy-button": true,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
@@ -88,17 +90,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "s"
   ],
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
   }
 }</script>
 
@@ -135,75 +137,42 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">IIQ2013</span>
-    </a>
-  </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../home.html"> 
-<span class="menu-text">Inicio</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../../e_prop/intro.html" aria-current="page"> 
-<span class="menu-text">Ejercicios propuestos</span></a>
-  </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/OO-UU/workbook_IIQ2013"> <i class="bi bi-github" role="img" aria-label="GitHub">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/06_ICTC/e06_1.html">ICTC</a></li><li class="breadcrumb-item"><a href="../../e_prop/06_ICTC/e06_2.html">Ejercicio 2: Método NTU - ICTC</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../index.html" class="sidebar-logo-link">
       <img src="../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">IIQ2013</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Buscar"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -222,7 +191,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Tuberías y bombas</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -251,7 +220,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Fluidos no Newtonianos</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -268,7 +237,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Agitación y mezclado</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -291,7 +260,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">Fluidos compresibles y compresores</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -318,7 +287,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">ICDT</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -335,7 +304,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">Transferencia de calor en estanques agitados</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -352,7 +321,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
  <span class="menu-text">ICTC</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -375,7 +344,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
  <span class="menu-text">Superficies extendidas</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -404,7 +373,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
  <span class="menu-text">Evaporadores</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -431,21 +400,23 @@ window.Quarto = {
   </li>
     </ul>
     </div>
-</nav>
+<div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
+<p>Ejercicios propuestos</p>
+</div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Contenido</h2>
    
   <ul>
   <li><a href="#enunciado" id="toc-enunciado" class="nav-link active" data-scroll-target="#enunciado">Enunciado</a></li>
   <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
   </ul>
-<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/06_ICTC/jupyter/e06_2.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
+<div class="quarto-code-links"><h2>Enlaces de código</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/06_ICTC/jupyter/e06_2.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/06_ICTC/e06_1.html">ICTC</a></li><li class="breadcrumb-item"><a href="../../e_prop/06_ICTC/e06_2.html">Ejercicio 2: Método NTU - ICTC</a></li></ol></nav>
 <div class="quarto-title">
@@ -454,7 +425,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -519,14 +490,14 @@ P = \frac{\Delta p\dot{m}}{\rho}
 Mostrar solución
 </button>
 <div id="e06_2-sol" class="collapse multi-collapse">
-<div id="355471e0" class="cell" data-execution_count="1">
+<div id="1462923b" class="cell" data-execution_count="1">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Paquetes utilizados</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi, log, sqrt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="inciso-1-y-2" class="level3">
@@ -539,15 +510,15 @@ q = c_p\dot{m}\Delta T
 <p><span class="math display">\[
 q = q_A + q_B = \dot{m}_h\left(c_{p,h}\left(T_{i,h}-T^{sat}\right)+h_{fg}\right)
 \]</span></p>
-<div id="cb036f6d" class="cell" data-execution_count="2">
+<div id="d52e2961" class="cell" data-execution_count="2">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="fl">2e9</span> <span class="co">#W</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>c_ph <span class="op">=</span> <span class="dv">2158</span> <span class="co">#J/kg$\cdot$K</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>T_ih <span class="op">=</span> <span class="dv">130</span> <span class="co">#$^\circ$C</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>T_sat <span class="op">=</span> <span class="dv">100</span> <span class="co">#$^\circ$C</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>h_fg <span class="op">=</span> <span class="dv">2183</span><span class="op">*</span><span class="dv">1000</span> <span class="co">#J/kg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>h_fg <span class="op">=</span> <span class="dv">2183</span><span class="op">*</span><span class="dv">1000</span> <span class="co">#J/kg</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -562,11 +533,11 @@ T_{sat} &amp;= 100 \; \;\textrm{($^\circ$C)}
 \]</span></p>
 </div>
 </div>
-<div id="d42f58c1" class="cell" data-execution_count="3">
+<div id="717c7e17" class="cell" data-execution_count="3">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>m_h <span class="op">=</span> q<span class="op">/</span>(c_ph<span class="op">*</span>(T_ih<span class="op">-</span>T_sat)<span class="op">+</span>h_fg) <span class="co">#kg/s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>m_h <span class="op">=</span> q<span class="op">/</span>(c_ph<span class="op">*</span>(T_ih<span class="op">-</span>T_sat)<span class="op">+</span>h_fg) <span class="co">#kg/s</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -580,15 +551,15 @@ m_{h} &amp;= \frac{ q }{ c_{ph} \cdot \left( T_{ih} - T_{sat} \right) + h_{fg} }
 <p><span class="math display">\[
 \dot{m}_c = \frac{N_t}{n}\times\dot{m}_{tubo}
 \]</span></p>
-<div id="a77446f1" class="cell" data-execution_count="4">
+<div id="4b58c0e1" class="cell" data-execution_count="4">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>c_pc <span class="op">=</span> <span class="dv">4179</span> <span class="co">#J/kg$\cdot$K</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>N_t <span class="op">=</span> <span class="dv">27000</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>m_tubo <span class="op">=</span> <span class="dv">1</span> <span class="co">#kg/s</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>m_c <span class="op">=</span> (N_t<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>m_tubo <span class="co">#kg/s</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>T_ic <span class="op">=</span> <span class="dv">20</span> <span class="co">#$^\circ$C</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>T_ic <span class="op">=</span> <span class="dv">20</span> <span class="co">#$^\circ$C</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -603,11 +574,11 @@ m_{c} &amp;= 13500.000 \; \;\textrm{(kg/s)}
 \]</span></p>
 </div>
 </div>
-<div id="d1087d96" class="cell" data-execution_count="5">
+<div id="a45575f9" class="cell" data-execution_count="5">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>T_oc <span class="op">=</span> q<span class="op">/</span>(m_c<span class="op">*</span>c_pc) <span class="op">+</span> T_ic <span class="co">#$^\circ$C</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>T_oc <span class="op">=</span> q<span class="op">/</span>(m_c<span class="op">*</span>c_pc) <span class="op">+</span> T_ic <span class="co">#$^\circ$C</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -629,9 +600,9 @@ T_{i,h}^A = 130~\text{°C} \hspace{0.5cm} T_{o,h}^A = 100~\text{°C} \hspace{2cm
 T_{i,c}^B = 20~\text{°C} \hspace{2cm} T_{o,c}^B = T_{i,c}^A \hspace{2cm} T_{o,c}^A = 55.451~\text{°C}
 \]</span></p>
 <p>Podemos calcular la temperatura de salida de <span class="math inline">\(A\)</span> con <span class="math inline">\(q_A\)</span> o la temperatura de <span class="math inline">\(B\)</span> con <span class="math inline">\(q_B\)</span>.</p>
-<div id="1e7366da" class="cell" data-execution_count="6">
+<div id="5afc45ee" class="cell" data-execution_count="6">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Usando B:</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>T_icB <span class="op">=</span> T_ic <span class="co">#$^\circ$C</span></span>
@@ -640,7 +611,7 @@ T_{i,c}^B = 20~\text{°C} \hspace{2cm} T_{o,c}^B = T_{i,c}^A \hspace{2cm} T_{o,c
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">## De igual forma, usando A:</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>T_ocA <span class="op">=</span> T_oc <span class="co">#$^\circ$C</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>q_A <span class="op">=</span> m_h<span class="op">*</span>c_ph<span class="op">*</span>(T_ih<span class="op">-</span>T_sat) <span class="co">#W</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>T_icA <span class="op">=</span> T_ocA <span class="op">-</span> q_A<span class="op">/</span>(m_c<span class="op">*</span>c_pc) <span class="co">#$^\circ$C</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>T_icA <span class="op">=</span> T_ocA <span class="op">-</span> q_A<span class="op">/</span>(m_c<span class="op">*</span>c_pc) <span class="co">#$^\circ$C</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -671,13 +642,13 @@ C_h = \dot{m}_h\cdot c_{p,h} \hspace{2cm} C_c = \dot{m}_c\cdot c_{p,c}
 <p><span class="math display">\[
 C_{r,A} = \frac{C_{min,A}}{C_{max,A}}
 \]</span></p>
-<div id="bc9c56bd" class="cell" data-execution_count="7">
+<div id="2fb88fd9" class="cell" data-execution_count="7">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>C_h <span class="op">=</span> m_h<span class="op">*</span>c_ph <span class="co">#W/K</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>C_c <span class="op">=</span> m_c<span class="op">*</span>c_pc <span class="co">#W/K</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>C_rA <span class="op">=</span> C_h<span class="op">/</span>C_c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>C_rA <span class="op">=</span> C_h<span class="op">/</span>C_c</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -692,13 +663,13 @@ C_{rA} &amp;= \frac{ C_{h} }{ C_{c} } \\&amp;= \frac{ 1920150.907 }{ 56416500.00
 </div>
 </div>
 <p>Luego, podemos obtener <span class="math inline">\(\varepsilon_A\)</span> y <span class="math inline">\(NTU_A\)</span> para flujos contra-corriente.</p>
-<div id="0e8d982b" class="cell" data-execution_count="8">
+<div id="8a667c35" class="cell" data-execution_count="8">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>epsilon_A <span class="op">=</span> q_A<span class="op">/</span>(C_h<span class="op">*</span>(T_ih<span class="op">-</span>T_icA))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>E_A <span class="op">=</span> (<span class="dv">2</span><span class="op">-</span>epsilon_A<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>C_rA))<span class="op">/</span>(epsilon_A<span class="op">*</span>sqrt(<span class="dv">1</span><span class="op">+</span>C_rA<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>NTU_A <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>sqrt(<span class="dv">1</span><span class="op">+</span>C_rA<span class="op">**</span><span class="dv">2</span>)<span class="op">*</span>log((E_A<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(E_A<span class="op">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>NTU_A <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>sqrt(<span class="dv">1</span><span class="op">+</span>C_rA<span class="op">**</span><span class="dv">2</span>)<span class="op">*</span>log((E_A<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(E_A<span class="op">-</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -731,13 +702,13 @@ G_t = \frac{\dot{m}}{a_t} = \frac{\frac{N_t}{n}\dot{m}_{tubo}}{\frac{N_t}{n}\lef
 <p><span class="math display">\[
 Re_D = \frac{4\dot{m}_{tubo}}{\pi d_i\mu}
 \]</span></p>
-<div id="36f83574" class="cell" data-execution_count="9">
+<div id="5de69e17" class="cell" data-execution_count="9">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="fl">855e-6</span> <span class="co">#N$\cdot$s/m$^2$</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>d_i <span class="op">=</span> <span class="fl">0.026</span> <span class="co">#m</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>Re_D <span class="op">=</span> (<span class="dv">4</span><span class="op">*</span>m_tubo)<span class="op">/</span>(pi<span class="op">*</span>d_i<span class="op">*</span>mu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>Re_D <span class="op">=</span> (<span class="dv">4</span><span class="op">*</span>m_tubo)<span class="op">/</span>(pi<span class="op">*</span>d_i<span class="op">*</span>mu)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -752,12 +723,12 @@ d_{i} &amp;= 0.026 \; \;\textrm{(m)}
 </div>
 </div>
 <p>Para flujos turbulentos, tenemos que el número de Nusselt utilizamos la ecuación de Sieder-Tate bajo el supuesto <span class="math inline">\(\mu\approx\mu_s\)</span>.</p>
-<div id="f58f325a" class="cell" data-execution_count="10">
+<div id="4fb3c3d1" class="cell" data-execution_count="10">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Pr <span class="op">=</span> <span class="fl">5.83</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>Nusselt_D <span class="op">=</span> <span class="fl">0.027</span><span class="op">*</span>Re_D<span class="op">**</span><span class="fl">0.8</span><span class="op">*</span>Pr<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>Nusselt_D <span class="op">=</span> <span class="fl">0.027</span><span class="op">*</span>Re_D<span class="op">**</span><span class="fl">0.8</span><span class="op">*</span>Pr<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -769,12 +740,12 @@ d_{i} &amp;= 0.026 \; \;\textrm{(m)}
 \]</span></p>
 </div>
 </div>
-<div id="fcd87bee" class="cell" data-execution_count="11">
+<div id="1c7e196b" class="cell" data-execution_count="11">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="fl">0.613</span> <span class="co">#W/m$\cdot$K</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>h_i <span class="op">=</span> Nusselt_D<span class="op">*</span>(k<span class="op">/</span>d_i) <span class="co">#W/m$^2\cdot$K</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>h_i <span class="op">=</span> Nusselt_D<span class="op">*</span>(k<span class="op">/</span>d_i) <span class="co">#W/m$^2\cdot$K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -787,15 +758,15 @@ h_{i} &amp;= \mathrm{Nusselt}_{D} \cdot \left( \frac{ k }{ d_{i} } \right) \\&am
 </div>
 </div>
 <p>Por último calculamos <span class="math inline">\(U_A\)</span> a partir de los coeficientes locales y luego despejamos el área de transferencia <span class="math inline">\(A_A\)</span>.</p>
-<div id="377fd299" class="cell" data-execution_count="12">
+<div id="fdb1510e" class="cell" data-execution_count="12">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>h_cA <span class="op">=</span> <span class="dv">14200</span> <span class="co">#W/m$^2\cdot$K</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>k_p <span class="op">=</span> <span class="dv">53</span> <span class="co">#W/m$\cdot$K</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>d_e <span class="op">=</span> <span class="fl">0.03</span> <span class="co">#m</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>U_A <span class="op">=</span> (d_i<span class="op">/</span>(d_e<span class="op">*</span>h_i) <span class="op">+</span> d_i<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>k_p)<span class="op">*</span>log(d_i<span class="op">/</span>d_e) <span class="op">+</span> <span class="dv">1</span><span class="op">/</span>h_cA)<span class="op">**-</span><span class="dv">1</span> <span class="co">#W/m$^2\cdot$K</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>A_A <span class="op">=</span> (NTU_A<span class="op">*</span>C_h)<span class="op">/</span>U_A <span class="co">#m$^2$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>A_A <span class="op">=</span> (NTU_A<span class="op">*</span>C_h)<span class="op">/</span>U_A <span class="co">#m$^2$</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -815,14 +786,14 @@ A_{A} &amp;= \frac{ \mathrm{NTU}_{A} \cdot C_{h} }{ U_{A} } \\&amp;= \frac{ 0.51
 </div>
 <p><strong>Análisis de <em>B</em></strong></p>
 <p>Para <span class="math inline">\(B\)</span> consideramos que el proceso de condensación libera tanta energía tal que <span class="math inline">\(C_h=\infty\)</span>. Luego, <span class="math inline">\(C_{r,B} = 0\)</span>.</p>
-<div id="c143d75e" class="cell" data-execution_count="13">
+<div id="a8ae9b58" class="cell" data-execution_count="13">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>C_rB <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>epsilon_B <span class="op">=</span> q_B<span class="op">/</span>(C_c<span class="op">*</span>(T_sat<span class="op">-</span>T_icB))</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>E_B <span class="op">=</span> (<span class="dv">2</span><span class="op">-</span>epsilon_B)<span class="op">/</span>epsilon_B</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>NTU_B <span class="op">=</span> log((E_B<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(E_B<span class="op">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>NTU_B <span class="op">=</span> log((E_B<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(E_B<span class="op">-</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -839,13 +810,13 @@ E_{B} &amp;= \frac{ 2 - \epsilon_{B} }{ \epsilon_{B} } \\&amp;= \frac{ 2 - 0.430
 </div>
 </div>
 <p>Luego para <span class="math inline">\(U_B\)</span>, <span class="math inline">\(h_o\)</span> será el mismo.</p>
-<div id="3ad2d56b" class="cell" data-execution_count="14">
+<div id="fcd66407" class="cell" data-execution_count="14">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>h_cB <span class="op">=</span> <span class="dv">10800</span> <span class="co">#W/m$^2\cdot$K</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>U_B <span class="op">=</span> (d_i<span class="op">/</span>(d_e<span class="op">*</span>h_i) <span class="op">+</span> d_i<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>k_p)<span class="op">*</span>log(d_i<span class="op">/</span>d_e) <span class="op">+</span> <span class="dv">1</span><span class="op">/</span>h_cB)<span class="op">**-</span><span class="dv">1</span> <span class="co">#W/m$^2\cdot$K</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>A_B <span class="op">=</span> (NTU_B<span class="op">*</span>C_c)<span class="op">/</span>U_B <span class="co">#m$^2$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>A_B <span class="op">=</span> (NTU_B<span class="op">*</span>C_c)<span class="op">/</span>U_B <span class="co">#m$^2$</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -863,12 +834,12 @@ A_{B} &amp;= \frac{ \mathrm{NTU}_{B} \cdot C_{c} }{ U_{B} } \\&amp;= \frac{ 0.56
 <p><span class="math display">\[
 A = \frac{N_t}{n}\times 2\pi d_iL
 \]</span></p>
-<div id="d67d67f5" class="cell" data-execution_count="15">
+<div id="b465aea9" class="cell" data-execution_count="15">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> A_A <span class="op">+</span> A_B <span class="co">#m$^2$</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> A<span class="op">/</span>(N_t<span class="op">/</span><span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span>d_i) <span class="co">#m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> A<span class="op">/</span>(N_t<span class="op">/</span><span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span>d_i) <span class="co">#m</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -891,15 +862,15 @@ L &amp;= \frac{ A }{ \frac{ N_{t} }{ 2 } \cdot \pi \cdot d_{i} } \\&amp;= \frac{
 <p><span class="math display">\[
 u_t = \frac{4\dot{m}_{tubo}}{\rho\pi d_i^2}
 \]</span></p>
-<div id="75c3fbec" class="cell" data-execution_count="16">
+<div id="13906cd1" class="cell" data-execution_count="16">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="fl">0.046</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="dv">997</span> <span class="co">#kg/m$^3$</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="fl">0.001375</span><span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>(<span class="dv">2</span><span class="op">*</span><span class="dv">10</span><span class="op">**</span><span class="dv">4</span><span class="op">*</span>(epsilon<span class="op">/</span>d_i)<span class="op">+</span>(<span class="dv">10</span><span class="op">**</span><span class="dv">6</span><span class="op">/</span>Re_D))<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>u_t <span class="op">=</span> (<span class="dv">4</span><span class="op">*</span>m_tubo)<span class="op">/</span>(rho<span class="op">*</span>pi<span class="op">*</span>d_i<span class="op">**</span><span class="dv">2</span>) <span class="co">#m/s</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>Delta_P <span class="op">=</span> <span class="dv">4</span><span class="op">*</span>f<span class="op">*</span>((L<span class="op">*</span>u_t<span class="op">*</span>rho)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>d_i)) <span class="co">#N/m$^2$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>Delta_P <span class="op">=</span> <span class="dv">4</span><span class="op">*</span>f<span class="op">*</span>((L<span class="op">*</span>u_t<span class="op">*</span>rho)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>d_i)) <span class="co">#N/m$^2$</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -918,11 +889,11 @@ u_{t} &amp;= \frac{ 4 \cdot m_{tubo} }{ \rho \cdot \pi \cdot \left( d_{i} \right
 </div>
 </div>
 <p>Para la potencia de la bomba, se utiliza la ecuación proporcionada.</p>
-<div id="eca29c85" class="cell" data-execution_count="17">
+<div id="7b068c65" class="cell" data-execution_count="17">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> (Delta_P<span class="op">*</span>m_c)<span class="op">/</span>rho <span class="co">#W</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> (Delta_P<span class="op">*</span>m_c)<span class="op">/</span>rho <span class="co">#W</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
@@ -939,7 +910,7 @@ P &amp;= \frac{ \Delta_{P} \cdot m_{c} }{ \rho } \\&amp;= \frac{ 35005.562 \cdot
 
 </section>
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Volver arriba</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1127,12 +1098,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiado");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiado");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -1504,7 +1475,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="../../e_prop/06_ICTC/e06_1.html" class="pagination-link" aria-label="Ejercicio 1: ICTC y haces de tubos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Ejercicio 1: ICTC y haces de tubos</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../e_prop/07_ICC/e07_1.html" class="pagination-link" aria-label="Ejercicio 1: Aletas">
+        <span class="nav-page-text">Ejercicio 1: Aletas</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>2025, Operaciones Unitarias I</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/OO-UU/workbook_IIQ2013">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://quarto.org/">
+      <i class="bi bi-code-square" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 
