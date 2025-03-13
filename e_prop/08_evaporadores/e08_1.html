@@ -453,7 +453,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e08_1-sol" class="collapse multi-collapse">
-<div id="d10caa33" class="cell" data-execution_count="1">
+<div id="48ab7e1b" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
@@ -466,9 +466,9 @@ Mostrar solución
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence '\l'
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence '\D'
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence '\l'
-/tmp/ipykernel_25933/1925453529.py:2: SyntaxWarning: invalid escape sequence '\D'
+/tmp/ipykernel_10902/1925453529.py:2: SyntaxWarning: invalid escape sequence '\D'
   handcalcs.set_option("custom_symbols",{"dT": "\Delta T", "lambda": "\lambda", "Tebs": "T^eb"})
-/tmp/ipykernel_25933/1925453529.py:2: SyntaxWarning: invalid escape sequence '\l'
+/tmp/ipykernel_10902/1925453529.py:2: SyntaxWarning: invalid escape sequence '\l'
   handcalcs.set_option("custom_symbols",{"dT": "\Delta T", "lambda": "\lambda", "Tebs": "T^eb"})</code></pre>
 </div>
 </div>
@@ -484,7 +484,7 @@ F\cdot w_F = L\cdot w_L
 <p><span class="math display">\[
 F = V + F\cdot\left(\frac{w_F}{w_L}\right) \rightarrow V = F\left(1-\frac{w_F}{w_L}\right)
 \]</span></p>
-<div id="cbd56643" class="cell" data-execution_count="2">
+<div id="76204b19" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -503,7 +503,7 @@ V &amp;= 25000 \; \;\textrm{(kg/h)}
 \]</span></p>
 </div>
 </div>
-<div id="423d7533" class="cell" data-execution_count="3">
+<div id="e40aa716" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -521,7 +521,7 @@ F &amp;= \frac{ V }{ 1 - \frac{ w_{F} }{ w_{L} } } \\&amp;= \frac{ 25000 }{ 1 - 
 <p><span class="math display">\[
 q = F\cdot c_{p,w}\left(T^{eb}_w-T_F\right) + V\cdot \lambda_V
 \]</span></p>
-<div id="8e4e8012" class="cell" data-execution_count="4">
+<div id="2e0d4b30" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -547,7 +547,7 @@ c_{pw} &amp;= 3894 \; \;\textrm{(J/kg$\cdot^\circ$C)}
 \]</span></p>
 </div>
 </div>
-<div id="56f47899" class="cell" data-execution_count="5">
+<div id="e0a6d574" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -566,7 +566,7 @@ q &amp;= \frac{ F }{ 3600 } \cdot c_{pw} \cdot \left( \mathrm{T^eb}_{w} - T_{F} 
 q = U\cdot A\cdot\Delta T
 \]</span></p>
 <p>Donde la diferencia de temperaturas <span class="math inline">\(\Delta T\)</span> será la temperatura en el flujo de vapor <span class="math inline">\(\text{S}\)</span> y la temperatura de ebullición de la solución en el evaporador.</p>
-<div id="987cfb81" class="cell" data-execution_count="6">
+<div id="4991c5e5" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -590,7 +590,7 @@ A &amp;= \frac{ q }{ U \cdot \Delta T } \\&amp;= \frac{ 17895704.365 }{ 1700 \cd
 <p><span class="math display">\[
 q = S\cdot \lambda_S
 \]</span></p>
-<div id="ba218508" class="cell" data-execution_count="7">
+<div id="2f8743f9" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
