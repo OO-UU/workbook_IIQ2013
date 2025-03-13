@@ -1,84 +1,85 @@
 project:
   type: website
-
+lang: es
 website:
-  title: "IIQ2013"
-  reader-mode: true
-  repo-url: https://github.com/OO-UU/workbook_IIQ2013
-  search: 
-    location: sidebar
+  page-navigation: true
+  back-to-top-navigation: true
+  search:
     type: textbox
-  back-to-top-navigation: false
-  
-  navbar:
-    toggle-position: left
-    left:
-      - href: home.qmd
-        text: "Inicio"
-      - href: ./e_prop/intro.qmd
-        text: "Ejercicios propuestos"
+    copy-button: true
+  page-footer: 
+    background: secondary
+    left: "2025, Operaciones Unitarias I"
     right:
       - icon: github
         href: https://github.com/OO-UU/workbook_IIQ2013
-        aria-label: GitHub
+      - icon: code-square
+        href: https://quarto.org/
 
-  sidebar: 
-    - title: "Ejercicios propuestos"
-      logo: logo.png
-      collapse-level: 1
-      style: docked
-      contents:
-        - ./e_prop/intro.qmd
-        - text: "---"
-        - text: "Transporte de fluidos"
-        - section: "Tuberías y bombas"
-          contents: 
-            - ./e_prop/00_bernoulli/e00_1.qmd
-            - ./e_prop/00_bernoulli/e00_2.qmd
-            - ./e_prop/00_bernoulli/e00_3.qmd
-        - section: "Fluidos no Newtonianos"
-          contents:
-            - ./e_prop/01_FNN/e01_1.qmd
-        - section: "Agitación y mezclado"
-          contents:
-            - ./e_prop/02_agitacion/e02_1.qmd
-            - ./e_prop/02_agitacion/e02_2.qmd
-        - section: "Fluidos compresibles y compresores"
-          contents:
-           - ./e_prop/03_compresibles/e03_1.qmd
-           - ./e_prop/03_compresibles/e03_2.qmd
-        - text: "---"
-        - text: "Transferencia de calor"
-        - section: "ICDT"
-          contents:
-           - ./e_prop/04_ICDT/e04_1.qmd
-        - section: "Transferencia de calor en estanques agitados"
-          contents:
-           - ./e_prop/05_tc-agitacion/e05_1.qmd
-        - section: "ICTC"
-          contents: 
-           - ./e_prop/06_ICTC/e06_1.qmd
-           - ./e_prop/06_ICTC/e06_2.qmd
-        - section: "Superficies extendidas"
-          contents: 
-           - ./e_prop/07_ICC/e07_1.qmd
-           - ./e_prop/07_ICC/e07_2.qmd
-           - ./e_prop/07_ICC/e07_3.qmd
-        - section: "Evaporadores"
-          contents: 
-           - ./e_prop/08_evaporadores/e08_1.qmd
-           - ./e_prop/08_evaporadores/e08_2.qmd
-           - ./e_prop/08_evaporadores/e08_3.qmd
+  sidebar:
+    aligment: center
+    footer: "Ejercicios propuestos"
+    title: "IIQ2013"
+    logo: logo.png
+    collapse-level: 1
+    style: docked
+    contents:
+      - ./e_prop/intro.qmd
+      - text: "---"
+      - text: "Transporte de fluidos"
+      - section: "Tuberías y bombas"
+        contents: 
+          - ./e_prop/00_bernoulli/e00_1.qmd
+          - ./e_prop/00_bernoulli/e00_2.qmd
+          - ./e_prop/00_bernoulli/e00_3.qmd
+      - section: "Fluidos no Newtonianos"
+        contents:
+          - ./e_prop/01_FNN/e01_1.qmd
+      - section: "Agitación y mezclado"
+        contents:
+          - ./e_prop/02_agitacion/e02_1.qmd
+          - ./e_prop/02_agitacion/e02_2.qmd
+      - section: "Fluidos compresibles y compresores"
+        contents:
+          - ./e_prop/03_compresibles/e03_1.qmd
+          - ./e_prop/03_compresibles/e03_2.qmd
+      - text: "---"
+      - text: "Transferencia de calor"
+      - section: "ICDT"
+        contents:
+          - ./e_prop/04_ICDT/e04_1.qmd
+      - section: "Transferencia de calor en estanques agitados"
+        contents:
+          - ./e_prop/05_tc-agitacion/e05_1.qmd
+      - section: "ICTC"
+        contents: 
+          - ./e_prop/06_ICTC/e06_1.qmd
+          - ./e_prop/06_ICTC/e06_2.qmd
+      - section: "Superficies extendidas"
+        contents: 
+          - ./e_prop/07_ICC/e07_1.qmd
+          - ./e_prop/07_ICC/e07_2.qmd
+          - ./e_prop/07_ICC/e07_3.qmd
+      - section: "Evaporadores"
+        contents: 
+          - ./e_prop/08_evaporadores/e08_1.qmd
+          - ./e_prop/08_evaporadores/e08_2.qmd
+          - ./e_prop/08_evaporadores/e08_3.qmd
 
 format:
   html:
+    page-layout: full
     theme:
       light: flatly
       dark: darkly
     css: styles.css
     toc: true
+    toc-depth: 3
+    toc-expand: true
+    toc-title: "Contenido"
     grid: 
       body-width: 800px
-      sidebar-width: 370px
-      margin-width: 230px
+      sidebar-width: 250px
+      margin-width: 300px
       gutter-width: 2em
+    tbl-cap-location: bottom
