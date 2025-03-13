@@ -40,7 +40,7 @@ from math import sqrt, pi
 
 ### Inciso 1
 
-Tenemos que la `ecuación de Bernoulli`,
+Tenemos que la `ecuación de Bernoulli`:
 
 $$
 \frac{p_A}{g\rho} + H_A + \frac{u_A^2}{2g} = \frac{p_B}{g\rho} + H_B + \frac{u_B^2}{2g}
