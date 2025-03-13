@@ -24,7 +24,8 @@ website:
     collapse-level: 1
     style: docked
     contents:
-      - index.qmd
+      - text: "Introducción"
+        href: index.qmd
       - text: "---"
       - text: "Transporte de fluidos"
       - section: "Tuberías y bombas"
