@@ -159,7 +159,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="../../index.html" class="sidebar-logo-link">
       <img src="../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -279,7 +279,6 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
  <span class="menu-text">Transferencia de calor</span>
   </li>
@@ -398,6 +397,24 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Ejercicios clase a clase</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_clase/IIQ2013_C1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
@@ -449,7 +466,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div id="imgs02_2" class="quarto-layout-panel" data-layout-ncol="2" data-layout-align="center">
+<div id="imgs02_2" class="quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
@@ -476,7 +493,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e02_2-sol" class="collapse multi-collapse">
-<div id="ef901e48" class="cell" data-execution_count="1">
+<div id="c60b8922" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquetes utilizados</span></span>
@@ -494,7 +511,7 @@ Mostrar solución
 \mu_1N_1^2 = \mu_2N_2^2
 \]</span></p>
 <p>Entonces despejando para <span class="math inline">\(\mu_2\)</span>.</p>
-<div id="266d5909" class="cell" data-execution_count="2">
+<div id="7761e12e" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -526,7 +543,7 @@ N_{2} &amp;= 230 \; \;\textrm{(RPM)}
 D_{a,1}N_1=D_{a,2}N_2
 \]</span></p>
 <p>Entonces,</p>
-<div id="625c9174" class="cell" data-execution_count="3">
+<div id="bf83fdc4" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -560,7 +577,7 @@ V_{2} &amp;= \pi \cdot \left( \frac{ D_{t2} }{ 2 } \right) ^{ 2 } \cdot H_{2} \\
 N_{p,1} = N_{p,2} \Rightarrow \frac{P_1}{\rho_1N_1^3D_{a,1}^5} = \frac{P_2}{\rho_2N_2^3D_{a,2}^5}
 \]</span></p>
 <p>Recordar que la temperatura del agitador industrial se encuentra aproximadamente a <span class="math inline">\(6\hspace{1mm}°C\)</span>, a esa temperatura la densidad del aceite será <span class="math inline">\(\rho_2\approx 887.5\hspace{1mm}(kg/m^3)\)</span>. Y en las condiciones iniciales a <span class="math inline">\(20\hspace{1mm}°C\)</span> la densidad <span class="math inline">\(\rho_1\approx 878\hspace{1mm}(kg/m^3)\)</span>.</p>
-<div id="55e7a1c6" class="cell" data-execution_count="4">
+<div id="5884bd53" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
