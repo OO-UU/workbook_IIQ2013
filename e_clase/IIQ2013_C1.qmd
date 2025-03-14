@@ -1,0 +1,124 @@
+---
+title: 'Ejercicio clase 1'
+format:
+    html: 
+      code-copy: true
+      code-fold: false
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C2.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+
+En primer lugar se deben cargar las librerias que vamos a utilizar
+
+```{python}
+import numpy as np
+```
+
+## Pregunta 1
+
+¿Cuál es el régimen de flujo en una tubería de 10 in de diámetro nominal (D= 254,5
+mm) cuando a través de ella se hacen circular Q= 0.1 m3/s de agua?
+
+(a)  Laminar
+
+(b)  Turbulento
+
+(c)  Transición de laminar a turbulento
+
+(d)  Se necesita más información
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_1-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_1-1-sol .collapse .multi-collapse}
+
+```{python}
+# 1
+d = 254.5e-3
+Q = 0.1 # m^3/s
+V = Q/(np.pi*d**2/4) # Calculamos la velocidad 
+rho = 1000
+mu = 0.001
+Re = rho*V*d/mu
+print("El número de Reynlosd es igual a Re = %.3e" % Re)
+```
+
+Por lo tanto, el regimen de flujo es turbulento y la alternativa correcta es la **b**.
+
+:::
+
+## Pregunta 2
+
+Considerando que la tubería es de acero comercial, el factor de fricción de Fanning ($f_F$) en el caso bajo análisis es aproximadamente el siguiente:
+
+(a) $f_F >$ 0.010 
+
+(b) 0.005 $< f_F <$ 0.010 
+
+(c) 0.002 $< f_F <$ 0.005 
+
+(d) $f_F \leq$ 0.010 
+
+Para los cómputos considere usar el diagrama de Moody o una correlación adecuada.
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_1-2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_1-2-sol .collapse .multi-collapse}
+
+Generamos funciones para el calculo utilizando la correlacion de Nevers y Schacham 
+
+```{python}
+
+def f_Nevers(eps, D, Re):
+    return 0.001375 * (1 + (2e4 * eps/D + 1e6/Re)**(1/3))
+
+def f_Schacham(eps, D, Re):
+    rhs = -1.737 * np.log(0.269 * eps/D - 2.185/Re * \
+                         np.log(0.269 * eps/D + 14.5/Re))
+    return (1/rhs)**2
+
+eps = 0.046*1e-3
+print(f"El factor de fricción con la ecuación de Nevers es: {f_Nevers(eps, d, Re)}")
+print(f"El factor de fricción con la ecuación de Schacham es: {f_Schacham(eps, d, Re)}")
+
+```
+
+Por lo tanto la alternativa correcta es la **c**.
+
+:::
+
+## Pregunta 3
+
+El valor de las pérdidas por fricción ($\Phi$) en un tramo horizontal de L= 100 m de la tubería bajo análisis es aproximadamente el siguiente:
+
+(a) $\Phi >$ 50 (m/s)$^2$
+
+(b) 25 $< \Phi \leq$ 50 (m/s)$^2$  
+
+(c) 14 $< \Phi \leq$ 25 (m/s)$^2$
+
+(d) $\Phi \leq$ 14 (m/s)$^2$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_1-3-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_1-3-sol .collapse .multi-collapse}
+
+Siguiendo con el factor calculado con Nevers
+
+```{python}
+f = f_Nevers(eps, d, Re)
+L = 100 # m
+phi = 4 * f * (L/d) * (V**2/2)
+print(f"El valor de la caída de presión por fricción es: {phi} (m/s)^2")
+```
+
+Por lo tanto la alternativa correcta es la **d**.
+
+:::

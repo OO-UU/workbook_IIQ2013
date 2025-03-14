@@ -17,7 +17,7 @@ website:
         href: https://quarto.org/
 
   sidebar:
-    aligment: center
+    alignment: center
     footer: "Ejercicios propuestos"
     title: "IIQ2013"
     logo: logo.png
@@ -44,7 +44,6 @@ website:
         contents:
           - ./e_prop/03_compresibles/e03_1.qmd
           - ./e_prop/03_compresibles/e03_2.qmd
-      - text: "---"
       - text: "Transferencia de calor"
       - section: "ICDT"
         contents:
@@ -66,6 +65,10 @@ website:
           - ./e_prop/08_evaporadores/e08_1.qmd
           - ./e_prop/08_evaporadores/e08_2.qmd
           - ./e_prop/08_evaporadores/e08_3.qmd
+      - text: "---"
+      - section: "Ejercicios clase a clase"
+        contents:
+          - ./e_clase/IIQ2013_C1.qmd
 
 format:
   html:
@@ -80,7 +83,7 @@ format:
     toc-title: "Contenido"
     grid: 
       body-width: 800px
-      sidebar-width: 250px
+      sidebar-width: 300px
       margin-width: 300px
       gutter-width: 2em
     tbl-cap-location: bottom
