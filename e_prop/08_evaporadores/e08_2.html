@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,12 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c83d7c460c2dd0eda8cb0e7a35c70823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-0d27518ea7b11f2284aee3b0d61fc55d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": true,
@@ -501,7 +501,7 @@ Mostrar solución
 <div id="e08_2-sol" class="collapse multi-collapse">
 <section id="inciso-1" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
-<div id="2355c98e" class="cell" data-execution_count="1">
+<div id="d3e17142" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
@@ -510,61 +510,29 @@ Mostrar solución
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>&lt;&gt;:2: SyntaxWarning:
-
-invalid escape sequence '\D'
-
-&lt;&gt;:2: SyntaxWarning:
-
-invalid escape sequence '\d'
-
-&lt;&gt;:2: SyntaxWarning:
-
-invalid escape sequence '\l'
-
-&lt;&gt;:2: SyntaxWarning:
-
-invalid escape sequence '\D'
-
-&lt;&gt;:2: SyntaxWarning:
-
-invalid escape sequence '\D'
-
-&lt;&gt;:2: SyntaxWarning:
-
-invalid escape sequence '\d'
-
-&lt;&gt;:2: SyntaxWarning:
-
-invalid escape sequence '\l'
-
-&lt;&gt;:2: SyntaxWarning:
-
-invalid escape sequence '\D'
-
-C:\Users\nfgaj\AppData\Local\Temp\ipykernel_25912\1935075477.py:2: SyntaxWarning:
-
-invalid escape sequence '\D'
-
-C:\Users\nfgaj\AppData\Local\Temp\ipykernel_25912\1935075477.py:2: SyntaxWarning:
-
-invalid escape sequence '\d'
-
-C:\Users\nfgaj\AppData\Local\Temp\ipykernel_25912\1935075477.py:2: SyntaxWarning:
-
-invalid escape sequence '\l'
-
-C:\Users\nfgaj\AppData\Local\Temp\ipykernel_25912\1935075477.py:2: SyntaxWarning:
-
-invalid escape sequence '\D'
-</code></pre>
+<pre><code>&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\D'
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\d'
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\l'
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\D'
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\D'
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\d'
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\l'
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\D'
+/tmp/ipykernel_17013/1935075477.py:2: SyntaxWarning: invalid escape sequence '\D'
+  handcalcs.set_option("custom_symbols",{"dEPE": "\Delta EPE", "dotm": "\dot m", "lambda": "\lambda", "Tebs": "T^eb", "dT": "\Delta T"})
+/tmp/ipykernel_17013/1935075477.py:2: SyntaxWarning: invalid escape sequence '\d'
+  handcalcs.set_option("custom_symbols",{"dEPE": "\Delta EPE", "dotm": "\dot m", "lambda": "\lambda", "Tebs": "T^eb", "dT": "\Delta T"})
+/tmp/ipykernel_17013/1935075477.py:2: SyntaxWarning: invalid escape sequence '\l'
+  handcalcs.set_option("custom_symbols",{"dEPE": "\Delta EPE", "dotm": "\dot m", "lambda": "\lambda", "Tebs": "T^eb", "dT": "\Delta T"})
+/tmp/ipykernel_17013/1935075477.py:2: SyntaxWarning: invalid escape sequence '\D'
+  handcalcs.set_option("custom_symbols",{"dEPE": "\Delta EPE", "dotm": "\dot m", "lambda": "\lambda", "Tebs": "T^eb", "dT": "\Delta T"})</code></pre>
 </div>
 </div>
 <p>Se debe cumplir la conservación de masa, tal que</p>
 <p><span class="math display">\[
 w_F\cdot F = w_L\cdot L
 \]</span></p>
-<div id="23a16c30" class="cell" data-execution_count="2">
+<div id="2aa24e83" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -583,7 +551,7 @@ w_F\cdot F = w_L\cdot L
 \]</span></p>
 </div>
 </div>
-<div id="8f8797b4" class="cell" data-execution_count="3">
+<div id="caa24732" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short</span>
@@ -598,7 +566,7 @@ w_F\cdot F = w_L\cdot L
 </div>
 </div>
 <p>Por balance de masa se despeja <span class="math inline">\(\dot{m}_V\)</span>.</p>
-<div id="b5513ac2" class="cell" data-execution_count="4">
+<div id="fde35089" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short <span class="dv">0</span></span>
@@ -619,7 +587,7 @@ w_F\cdot F = w_L\cdot L
 <p><span class="math display">\[
 \dot{m}_s\cdot\lambda_s = \dot{m}_v\cdot H_v + \dot{m}_L\cdot H_L - \dot{m}_F\cdot H_F
 \]</span></p>
-<div id="5cee004c" class="cell" data-execution_count="5">
+<div id="1330efc3" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -639,7 +607,7 @@ w_F\cdot F = w_L\cdot L
 </div>
 </div>
 <p>Por definición, el <span class="math inline">\(\Delta\text{EPE}\)</span> es la diferencia entre las temperaturas de ebullición de la solución y el agua pura. Ya que la fórmula para <span class="math inline">\(H_v\)</span> se encuentra en función de la temperatura en Farenheit, hacemos el cambio de unidades.</p>
-<div id="83dd60e0" class="cell" data-execution_count="6">
+<div id="32a29217" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short <span class="dv">0</span></span>
@@ -665,7 +633,7 @@ H_{V} &amp;= 1116 + 0.45 \cdot \Delta EPE  = 1116 + 0.45 \cdot 73 &amp;= 1149 \;
 <p>Las otras entalpías las encontramos de forma gráfica:<br>
 <span class="math inline">\(H_F:~20~\%~\text{sólidos a}~100~\text{°F}\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(55~\text{Btu/lb}\)</span><br>
 <span class="math inline">\(H_L:~50~\%~\text{sólidos a}~197~\text{°F}\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(221~\text{Btu/lb}\)</span></p>
-<div id="0365fd55" class="cell" data-execution_count="7">
+<div id="6eb25d96" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short</span>
@@ -685,7 +653,7 @@ H_{L} &amp;= 221 \cdot 2.326 &amp;= 514.046 \; \;\textrm{(kJ/kg)}
 \]</span></p>
 </div>
 </div>
-<div id="a96f7e80" class="cell" data-execution_count="8">
+<div id="4abae5a1" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -705,7 +673,7 @@ q &amp;= \dot m_{V} \cdot H_{V} + \dot m_{L} \cdot H_{L} - \dot m_{F} \cdot H_{F
 </section>
 <section id="inciso-3" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-3">Inciso 3</h3>
-<div id="adcb37de" class="cell" data-execution_count="9">
+<div id="3cb51239" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="dv">2</span></span>
@@ -727,7 +695,7 @@ E &amp;= \frac{ \dot m_{V} }{ \dot m_{s} }  = \frac{ 5442.00 }{ 6981.69 } &amp;=
 q = U\cdot A\cdot\Delta T
 \]</span></p>
 <p>Donde la diferencia de temperaturas <span class="math inline">\(\Delta T\)</span> será la temperatura en el flujo de vapor <span class="math inline">\(\text{S}\)</span> y la temperatura de ebullición de la solución en el evaporador.</p>
-<div id="f455ec28" class="cell" data-execution_count="10">
+<div id="0ddcf535" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -983,6 +951,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1093,6 +1063,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
