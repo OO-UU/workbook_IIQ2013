@@ -83,7 +83,7 @@ format:
     toc-expand: true
     toc-title: "Contenido"
     grid: 
-      body-width: 800px
+      #body-width: 800px
       sidebar-width: 300px
       margin-width: 300px
       gutter-width: 2em

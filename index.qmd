@@ -1,5 +1,66 @@
 ---
-title: "Ejercicios propuestos"
+title: "Introducción"
 ---
 
 Aquí podrán encontrar ejercicios sobre la mayoría de los tópicos del curso. El propósito de estos ejercicios es ayudarlos con sus estudios y fomentar el uso de herramientas de programación como medio para la resolución de problemas. Los ejercicios se encuentran ordenados en secciones según la materia que corresponda. Si bien los ejercicios cuentan con solución, ojalá que puedan aprovechar estos ejercicios para comparar los resultados que ustedes obtengan al resolverlos.
+
+## Tabla de contenidos
+
+### Ejercicios propuestos
+
+:::: {.columns}
+::: {.column width="20%"}
+##### Hidroestática
+* [Ejercicio 1](./e_prop/00_bernoulli/e00_1.qmd)
+* [Ejercicio 2](./e_prop/00_bernoulli/e00_2.qmd)
+* [Ejercicio 3](./e_prop/00_bernoulli/e00_3.qmd)
+:::
+
+::: {.column width="20%"}
+##### Fluidos no Newtonianos
+* [Ejercicio 1](./e_prop/01_FNN/e01_1.qmd)
+:::
+::: {.column width="20%"}
+##### Fenómenos de agitación
+* [Ejercicio 1](./e_prop/02_agitacion/e02_1.qmd)
+* [Ejercicio 2](./e_prop/02_agitacion/e02_2.qmd)
+:::
+::: {.column width="20%"}
+##### Fluidos compresibles
+* [Ejercicio 1](./e_prop/03_compresibles/e03_1.qmd)
+* [Ejercicio 2](./e_prop/03_compresibles/e03_2.qmd)
+:::
+::: {.column width="20%"}
+##### IC: Doble tubo
+* [Ejercicio 1](./e_prop/04_ICDT/e04_1.qmd)
+:::
+::::
+
+:::: {.columns align=center}
+::: {.column width="20%"}
+##### Transferencia de calor para agitación
+* [Ejercicio 1](./e_prop/05_tc-agitacion/e05_1.qmd)
+:::
+::: {.column width="20%"}
+##### IC: Tubo y carcasa
+* [Ejercicio 1](./e_prop/06_ICTC/e06_1.qmd)
+* [Ejercicio 2](./e_prop/06_ICTC/e06_2.qmd)
+:::
+::: {.column width="20%"}
+##### IC: Compactos
+* [Ejercicio 1](./e_prop/07_ICC/e07_1.qmd)
+* [Ejercicio 2](./e_prop/07_ICC/e07_2.qmd)
+* [Ejercicio 3](./e_prop/07_ICC/e07_3.qmd)
+:::
+::: {.column width="20%"}
+##### Evaporadores
+* [Ejercicio 1](./e_prop/08_evaporadores/e08_1.qmd)
+* [Ejercicio 2](./e_prop/08_evaporadores/e08_2.qmd)
+* [Ejercicio 3](./e_prop/08_evaporadores/e08_3.qmd)
+:::
+::::
+
+### Ejercicios clase a clase
+
+* [Clase 1](./e_clase/IIQ2013_C1.qmd)
+* [Clase 2](./e_clase/IIQ2013_C2.qmd)
