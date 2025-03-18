@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,12 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-c83d7c460c2dd0eda8cb0e7a35c70823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-0d27518ea7b11f2284aee3b0d61fc55d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": true,
@@ -419,6 +419,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 2</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_clase/IIQ2013_C3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 3</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -510,7 +516,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e06_1-sol" class="collapse multi-collapse">
-<div id="5d4c2bb1" class="cell" data-execution_count="1">
+<div id="5283372b" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
@@ -527,7 +533,7 @@ Mostrar solución
 Z = \frac{F_c\cdot c_{Pc}}{F_h\cdot c_{Ph}}
 \]</span></p>
 <p>Anotamos las propiedades termofísicas del enunciado y los flujos.</p>
-<div id="9e0a8c44" class="cell" data-execution_count="2">
+<div id="341c6215" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -562,7 +568,7 @@ k_{h} &amp;= 0.113 \; \;\textrm{(W/m$\cdot$K)}
 \]</span></p>
 </div>
 </div>
-<div id="c02f89a1" class="cell" data-execution_count="3">
+<div id="ca24be96" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -580,7 +586,7 @@ Z &amp;= \frac{ F_{c} \cdot c_{Pc} }{ F_{h} \cdot c_{Ph} } \\&amp;= \frac{ 63 \c
 <p><span class="math display">\[
 \eta_H = \frac{T_{c,o}-T_{c,i}}{T_{h,i}-T_{c,i}}
 \]</span></p>
-<div id="b7bfc9f6" class="cell" data-execution_count="4">
+<div id="6ee231f6" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -604,7 +610,7 @@ T_{co} &amp;= \eta_{H} \cdot \left( T_{hi} - T_{ci} \right) + T_{ci} \\&amp;= 0.
 </div>
 </div>
 <p>Luego despejamos <span class="math inline">\(T_{h,o}\)</span> mediante <span class="math inline">\(Z\)</span>.</p>
-<div id="c6742b2b" class="cell" data-execution_count="5">
+<div id="61bb3eab" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -638,7 +644,7 @@ P_T = C + d_e = C + \left(d_i + e\right)
 <p><span class="math display">\[
 D_e = \frac{3.44P_T^2-\pi d_e^2}{\pi d_e}
 \]</span></p>
-<div id="3da3e30c" class="cell" data-execution_count="6">
+<div id="bb73129c" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params sci_not</span>
@@ -666,7 +672,7 @@ N_{t} &amp;= 45 \;
 \]</span></p>
 </div>
 </div>
-<div id="ff527d64" class="cell" data-execution_count="7">
+<div id="9192ce6a" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -696,7 +702,7 @@ a_{c} &amp;= D_{c} \cdot B \cdot \left( \frac{ C }{ P_{T} } \right) \\&amp;= 0.9
 <p><span class="math display">\[
 Re = \frac{G_cD_e}{\mu}
 \]</span></p>
-<div id="465ecb85" class="cell" data-execution_count="8">
+<div id="dc611158" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -717,7 +723,7 @@ G_{c} &amp;= \frac{ F_{c} }{ a_{c} } \\&amp;= \frac{ 63 }{ 0.055 } \\&amp;= 1142
 <p><span class="math display">\[
 Nu = 0.36Re^{0.55}Pr^{1/3}
 \]</span></p>
-<div id="c351581c" class="cell" data-execution_count="9">
+<div id="cfa8a66e" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -738,7 +744,7 @@ Nu = 0.36Re^{0.55}Pr^{1/3}
 <p><span class="math display">\[
 h_c = \frac{Nu\cdot k}{D_e}
 \]</span></p>
-<div id="0de15c37" class="cell" data-execution_count="10">
+<div id="3d3982ec" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> </span>
@@ -756,7 +762,7 @@ h_{c} &amp;= \frac{ \mathrm{Nusselt} \cdot k_{c} }{ D_{e} } \\&amp;= \frac{ 314.
 <section id="inciso-3" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-3">Inciso 3</h3>
 <p>Para poder utilizar el gráfico, necesitamos saber la curva que utilizaremos, estas representan el espacio que hay entre los centros de los tubos <span class="math inline">\(P_T\)</span> en <span class="math inline">\(inch\)</span>.</p>
-<div id="049b2655" class="cell" data-execution_count="11">
+<div id="d6e4c4b2" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -775,7 +781,7 @@ P_{T} &amp;= 2.472 \; \;\textrm{(inch)}
 <p><span class="math display">\[
 \Delta p = f'\left[\frac{\left(N_B+1\right)D_c}{D_e}\right]\left(\frac{G_c^2}{2\rho}\right)
 \]</span></p>
-<div id="b035271d" class="cell" data-execution_count="12">
+<div id="5d37686d" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -1025,8 +1031,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1137,7 +1141,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,12 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-c83d7c460c2dd0eda8cb0e7a35c70823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-0d27518ea7b11f2284aee3b0d61fc55d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": true,
@@ -419,6 +419,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 2</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_clase/IIQ2013_C3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 3</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -512,7 +518,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e04_1-sol" class="collapse multi-collapse">
-<div id="05fdd775" class="cell" data-execution_count="1">
+<div id="f3948611" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
@@ -529,7 +535,7 @@ Mostrar solución
 q = \dot{m}_hc_{P,h}(T_{h,e}-T_{h,s}) = \dot{m}_cc_{P,c}(T_{c,s}-T_{c,e})
 \]</span></p>
 <p>Para este ejercicio, el fluido caliente (tolueno) con subíndice <span class="math inline">\(h\)</span> pasa por el tubo, mientras que el fluido de enfriamiento (agua) con subíndice <span class="math inline">\(c\)</span> pasa por el ánulo. Del enunciado recuperamos todas las variables relevantes.</p>
-<div id="74e5cf56" class="cell" data-execution_count="2">
+<div id="a4208aaa" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params sci_not</span>
@@ -566,7 +572,7 @@ c_{Ph} &amp;= 1.917 \times 10 ^ {3} \; \;\textrm{(J/kg$\cdot$K)}
 \]</span></p>
 </div>
 </div>
-<div id="36601567" class="cell" data-execution_count="3">
+<div id="b9ac3a01" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -599,7 +605,7 @@ Re_D = \frac{D_{térmico}\cdot\dot{m}}{A_t\cdot\mu}
 D_{térmico} = \frac{D_{a}^2-D_{i,e}^2}{D_{i,e}}
 \]</span></p>
 <p>Luego, podemos calcular los números de Prandtl y de Reynolds para ambos flujos.</p>
-<div id="2cee0d14" class="cell" data-execution_count="4">
+<div id="3af75704" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -625,7 +631,7 @@ k_{p} &amp;= 50.200 \; \;\textrm{(W/m$\cdot$K)}
 \]</span></p>
 </div>
 </div>
-<div id="2cd7b5d4" class="cell" data-execution_count="5">
+<div id="736ff3e3" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -646,7 +652,7 @@ D_{t} &amp;= \frac{ \left( D_{a} \right) ^{ 2 } - \left( D_{ie} \right) ^{ 2 } }
 </div>
 </div>
 <p>Notamos que ambos flujos son turbulentos, y por lo tanto, se cosidera que la mejor ecuación para encontrar el número de Nusselt será la relación de Dittus-Boelter.</p>
-<div id="89f31c9a" class="cell" data-execution_count="6">
+<div id="47ddf9a8" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -664,7 +670,7 @@ D_{t} &amp;= \frac{ \left( D_{a} \right) ^{ 2 } - \left( D_{ie} \right) ^{ 2 } }
 </div>
 </div>
 <p>Con lo cual se puede despejar el coeficiente de transferencia de calor para ambos fluidos.</p>
-<div id="07a45fcf" class="cell" data-execution_count="7">
+<div id="2bc31c52" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -685,7 +691,7 @@ h_{c} &amp;= \frac{ \mathrm{NuD}_{c} \cdot k_{c} }{ D_{t} } \\&amp;= \frac{ 139.
 <section id="inciso-3" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-3">Inciso 3</h3>
 <p>Primero, calculamos el coeficiente global de transferencia de calor para un intercambiador de doble tubo sin ensuciamiento.</p>
-<div id="47756b19" class="cell" data-execution_count="8">
+<div id="1751fac9" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -703,7 +709,7 @@ U &amp;= \left( \frac{ D_{ie} }{ D_{i} \cdot h_{h} } + \frac{ D_{ie} }{ 2 \cdot 
 <p><span class="math display">\[
 \frac{1}{U_T} = \frac{1}{U} + R_f
 \]</span></p>
-<div id="1caecb13" class="cell" data-execution_count="9">
+<div id="969b00cb" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -954,8 +960,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1066,7 +1070,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

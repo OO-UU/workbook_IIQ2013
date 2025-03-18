@@ -2,242 +2,246 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://OO-UU.github.io/workbook_IIQ2013/index.html</loc>
-    <lastmod>2025-03-14T22:02:44.280Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C14.html</loc>
-    <lastmod>2025-03-14T17:22:05.827Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C5.html</loc>
-    <lastmod>2025-03-14T17:22:05.828Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C11.html</loc>
-    <lastmod>2025-03-14T17:22:05.827Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C19.html</loc>
-    <lastmod>2025-03-14T17:22:05.828Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C20.html</loc>
-    <lastmod>2025-03-14T17:22:05.828Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C4.html</loc>
-    <lastmod>2025-03-14T17:22:05.828Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C9.html</loc>
-    <lastmod>2025-03-14T17:22:05.828Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C12.html</loc>
-    <lastmod>2025-03-14T17:22:05.827Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C13.html</loc>
-    <lastmod>2025-03-14T17:22:05.827Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C18.html</loc>
-    <lastmod>2025-03-14T17:22:05.828Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C2.html</loc>
-    <lastmod>2025-03-14T17:22:05.828Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/03_compresibles/e03_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.243Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/03_compresibles/jupyter/e03_2.html</loc>
-    <lastmod>2025-03-13T21:09:29.243Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/02_agitacion/e02_2.html</loc>
-    <lastmod>2025-03-13T21:09:29.232Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/02_agitacion/jupyter/e02_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.243Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/e00_2.html</loc>
-    <lastmod>2025-03-13T22:31:21.332Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/jupyter/e00_3.html</loc>
-    <lastmod>2025-03-13T21:09:29.231Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/jupyter/e00_2.html</loc>
-    <lastmod>2025-03-13T21:09:29.231Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/08_evaporadores/e08_2.html</loc>
-    <lastmod>2025-03-13T21:09:29.245Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/08_evaporadores/jupyter/e08_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.251Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/08_evaporadores/jupyter/e08_3.html</loc>
-    <lastmod>2025-03-13T21:09:29.251Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/04_ICDT/e04_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.243Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/07_ICC/e07_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.244Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/07_ICC/jupyter/e07_2.html</loc>
-    <lastmod>2025-03-13T21:09:29.245Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/07_ICC/jupyter/e07_3.html</loc>
-    <lastmod>2025-03-13T21:09:29.245Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/06_ICTC/e06_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.244Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/06_ICTC/jupyter/e06_2.html</loc>
-    <lastmod>2025-03-13T21:09:29.244Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/05_tc-agitacion/jupyter/e05_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.244Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/01_FNN/e01_1.html</loc>
-    <lastmod>2025-03-13T22:32:39.146Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/01_FNN/jupyter/e01_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.232Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/05_tc-agitacion/e05_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.243Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/06_ICTC/e06_2.html</loc>
-    <lastmod>2025-03-13T21:09:29.244Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/06_ICTC/jupyter/e06_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.244Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/07_ICC/e07_3.html</loc>
-    <lastmod>2025-03-13T21:09:29.244Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/07_ICC/jupyter/e07_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.245Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/07_ICC/e07_2.html</loc>
-    <lastmod>2025-03-13T21:09:29.244Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/04_ICDT/jupyter/e04_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.243Z</lastmod>
-  </url>
-  <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/08_evaporadores/e08_3.html</loc>
-    <lastmod>2025-03-13T21:09:29.245Z</lastmod>
+    <lastmod>2025-03-18T12:45:22.875Z</lastmod>
   </url>
   <url>
     <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/08_evaporadores/jupyter/e08_2.html</loc>
-    <lastmod>2025-03-13T21:09:29.251Z</lastmod>
+    <lastmod>2025-03-14T15:33:48.255Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/08_evaporadores/e08_3.html</loc>
+    <lastmod>2025-03-14T15:33:48.248Z</lastmod>
   </url>
   <url>
     <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/08_evaporadores/e08_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.245Z</lastmod>
+    <lastmod>2025-03-14T15:33:48.248Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/e00_3.html</loc>
-    <lastmod>2025-03-13T21:09:29.230Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/07_ICC/jupyter/e07_2.html</loc>
+    <lastmod>2025-03-14T15:33:48.247Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/jupyter/e00_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.231Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/07_ICC/e07_3.html</loc>
+    <lastmod>2025-03-14T15:33:48.246Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/e00_1.html</loc>
-    <lastmod>2025-03-14T17:45:36.602Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/07_ICC/e07_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.246Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/02_agitacion/e02_1.html</loc>
-    <lastmod>2025-03-13T22:43:52.625Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/06_ICTC/jupyter/e06_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.244Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/02_agitacion/jupyter/e02_2.html</loc>
-    <lastmod>2025-03-13T21:09:29.243Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/06_ICTC/e06_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.244Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/05_tc-agitacion/e05_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.243Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/04_ICDT/e04_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.242Z</lastmod>
   </url>
   <url>
     <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/03_compresibles/jupyter/e03_1.html</loc>
-    <lastmod>2025-03-13T21:09:29.243Z</lastmod>
+    <lastmod>2025-03-14T15:33:48.241Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/03_compresibles/e03_2.html</loc>
-    <lastmod>2025-03-13T21:09:29.243Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/03_compresibles/e03_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.241Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/IIQ2013_C1.html</loc>
-    <lastmod>2025-03-14T17:42:54.536Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/02_agitacion/jupyter/e02_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.240Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C21.html</loc>
-    <lastmod>2025-03-14T17:22:05.828Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/02_agitacion/e02_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.226Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C17.html</loc>
-    <lastmod>2025-03-14T17:22:05.827Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/01_FNN/e01_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.225Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C1.html</loc>
-    <lastmod>2025-03-14T17:22:05.827Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/jupyter/e00_2.html</loc>
+    <lastmod>2025-03-14T15:33:48.224Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C3.html</loc>
-    <lastmod>2025-03-14T17:22:05.828Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/e00_3.html</loc>
+    <lastmod>2025-03-14T15:33:48.223Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/e00_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.222Z</lastmod>
   </url>
   <url>
     <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C8.html</loc>
-    <lastmod>2025-03-14T17:22:05.828Z</lastmod>
+    <lastmod>2025-03-14T15:33:48.221Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C10.html</loc>
-    <lastmod>2025-03-14T17:22:05.827Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C5.html</loc>
+    <lastmod>2025-03-14T15:33:48.221Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C7.html</loc>
-    <lastmod>2025-03-14T17:22:05.828Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C3.html</loc>
+    <lastmod>2025-03-14T15:33:48.220Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C22.html</loc>
-    <lastmod>2025-03-14T17:22:05.828Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C21.html</loc>
+    <lastmod>2025-03-14T15:33:48.220Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C15.html</loc>
-    <lastmod>2025-03-14T17:22:05.827Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C2.html</loc>
+    <lastmod>2025-03-14T15:33:48.218Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C18.html</loc>
+    <lastmod>2025-03-14T15:33:48.218Z</lastmod>
   </url>
   <url>
     <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C16.html</loc>
-    <lastmod>2025-03-14T17:22:05.827Z</lastmod>
+    <lastmod>2025-03-14T15:33:48.217Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C14.html</loc>
+    <lastmod>2025-03-14T15:33:48.216Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C12.html</loc>
+    <lastmod>2025-03-14T15:33:48.216Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C10.html</loc>
+    <lastmod>2025-03-14T15:33:48.215Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/IIQ2013_C3.html</loc>
+    <lastmod>2025-03-18T12:49:36.453Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/IIQ2013_C1.html</loc>
+    <lastmod>2025-03-14T15:33:48.204Z</lastmod>
   </url>
   <url>
     <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/IIQ2013_C2.html</loc>
-    <lastmod>2025-03-14T21:09:45.240Z</lastmod>
+    <lastmod>2025-03-14T15:43:11.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C1.html</loc>
+    <lastmod>2025-03-14T15:33:48.215Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C11.html</loc>
+    <lastmod>2025-03-14T15:33:48.215Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C13.html</loc>
+    <lastmod>2025-03-14T15:33:48.216Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C15.html</loc>
+    <lastmod>2025-03-14T15:33:48.217Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C17.html</loc>
+    <lastmod>2025-03-14T15:33:48.217Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C19.html</loc>
+    <lastmod>2025-03-14T15:33:48.218Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C20.html</loc>
+    <lastmod>2025-03-14T15:33:48.218Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C22.html</loc>
+    <lastmod>2025-03-14T15:33:48.220Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C4.html</loc>
+    <lastmod>2025-03-14T15:33:48.220Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C7.html</loc>
+    <lastmod>2025-03-14T15:33:48.221Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C9.html</loc>
+    <lastmod>2025-03-14T15:33:48.222Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/e00_2.html</loc>
+    <lastmod>2025-03-14T15:33:48.222Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/jupyter/e00_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.224Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/00_bernoulli/jupyter/e00_3.html</loc>
+    <lastmod>2025-03-14T15:33:48.225Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/01_FNN/jupyter/e01_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.226Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/02_agitacion/e02_2.html</loc>
+    <lastmod>2025-03-14T15:33:48.226Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/02_agitacion/jupyter/e02_2.html</loc>
+    <lastmod>2025-03-14T15:33:48.240Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/03_compresibles/e03_2.html</loc>
+    <lastmod>2025-03-14T15:33:48.241Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/03_compresibles/jupyter/e03_2.html</loc>
+    <lastmod>2025-03-14T15:33:48.242Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/04_ICDT/jupyter/e04_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.242Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/05_tc-agitacion/jupyter/e05_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.243Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/06_ICTC/e06_2.html</loc>
+    <lastmod>2025-03-14T15:33:48.244Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/06_ICTC/jupyter/e06_2.html</loc>
+    <lastmod>2025-03-14T15:33:48.246Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/07_ICC/e07_2.html</loc>
+    <lastmod>2025-03-14T15:33:48.246Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/07_ICC/jupyter/e07_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.247Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/07_ICC/jupyter/e07_3.html</loc>
+    <lastmod>2025-03-14T15:33:48.247Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/08_evaporadores/e08_2.html</loc>
+    <lastmod>2025-03-14T15:33:48.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/08_evaporadores/jupyter/e08_1.html</loc>
+    <lastmod>2025-03-14T15:33:48.255Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_prop/08_evaporadores/jupyter/e08_3.html</loc>
+    <lastmod>2025-03-14T15:33:48.255Z</lastmod>
   </url>
 </urlset>
