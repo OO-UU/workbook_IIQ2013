@@ -1,0 +1,134 @@
+---
+title: 'Ejercicio clase 3'
+format:
+    html: 
+      code-copy: true
+      code-fold: false
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C4.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+
+En primer lugar se deben cargar las librerias que vamos a utilizar
+
+```{python}
+import numpy as np
+```
+
+## Pregunta 1
+
+Responda las siguientes preguntas en relación con las curvas características de la bomba centrífugas con un rodete **C** (6.75 in de diámetro) disponible en el formulario:
+       
+
+(a) $h_B$ / $(h_B)_{teórico} <$ 40 \% 
+
+(b) 40 $\leq h_B$ / $(h_B)_{teórico} <$ 60 \% 
+
+(c) 60 $\leq h_B$ / $(h_B)_{teórico} <$ 80 \% 
+
+(d) $h_B$ / $(h_B)_{teórico} \geq$ 80 \% 
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_2-1-sol .collapse .multi-collapse}
+
+Si $\beta$ = 90° entonces tan $\beta$ = $\infty$. Luego (gh<sub>B,teórico</sub>) $\approx$ r<sub>3</sub><sup>2</sup>w<sup>2</sup> y h<sub>B</sub> se puede obtener directamente del gráfico de la página 9 del formulario para una descarga nula
+
+```{python}
+g = 9.81 # aceleracion de gravedad m/s^2
+w = 2*np.pi*1750/60 # 2 * Pi * RPM / 60 para dejar la velocidad en rad/s
+r_3 = (6.75/2)*2.54*0.01 # Diametro / 2 y el cambio de unidades de in a metros.
+
+h_b_teorico = (w*r_3)**2 / g 
+h_b = 13.75 # Desde el gráfico del formulario
+fraccion = h_b / h_b_teorico
+print(f"La fracción de la carga teórica alcanzada para la carga nula es {100 * fraccion} %")
+```
+
+Por lo tanto la alternativa correcta es la **c**.
+
+:::
+
+## Pregunta 2
+
+Para la misma combinación de rodete y carcasa de (1) pero con una bomba operando a 3500 rpm, el valor de la carga real en la condición de máxima carga es aproximadamente el siguiente: 
+    
+(a) $h_B <$ 30 m
+
+(b) 30 $\leq h_B <$ 45 m
+
+(c)  45 $\leq h_B <$ 60 m
+
+(d)  $h_B \geq$ 60 m
+
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_2-1-sol .collapse .multi-collapse}
+
+Utilizando la siguiente relación de proporcionalidad Q<sup>1/2</sup> $\propto$ $\omega$<sup>1/2</sup>r<sub>3</sub><sup>3/2</sup>. Haciendo un poco de algebra con las proporcionalidades Q<sup>1/2</sup>$\omega$ / h<sub>b</sub><sup>3/4</sup> = constante. Luego si planteamos esta proporcionalidad utilizando la altura de descarga mínima se obtiene:
+
+```{python}
+h_b_1 = h_b
+w_2 = 2*np.pi*3500/60
+h_b_2 = h_b_1*(w_2/w)**2
+h_b_2
+print(f"El valor de la carga real en la condició de máaxima carga es {h_b_2} m")
+```
+
+Por lo tanto la alternativa correcta es la **c**.
+
+:::
+
+## Pregunta 3
+
+Considere ahora que la bomba se instala en el sistema de la Figura 1, a una distancia $Z_a$ = 2 m por encima de un depósito abierto al ambiente ($P_{atm}$ = 101325 Pa. El diámetro del ducto de succión igualada al del ducto de entrada de la bomba (D= 1.5 in) y por el circulan $Q$ = 5.5 L/s de agua a 25 °C ($P_{v}$ = 3170 Pa, $\rho$ = 997 kg/m<sup>3</sup>, $\mu$ = 1 mPa s). Si las pérdidas por fricción y singularidades del ducto de succión son $\Phi$ = 35 m<sup>2</sup>/s<sup>2</sup> el valor del NPSH<sub>d</sub> para el sistema anterior es aproximandamente el siguiente:
+
+(a) NPSH<sub>d</sub>$< $ 1 m 
+
+(b) 1 $\leq$ NPSH<sub>d</sub> $<$ 2 m
+
+(c) 2 $\leq$ NPSH<sub>d</sub> $\leq$ 3 m
+
+(d) NPSH<sub>d</sub> > $ 3 m 
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_2-1-sol .collapse .multi-collapse}
+
+Primero generamos una función para el cálculo de el NPSH disponible en el sistema.
+
+```{python}
+#
+def NPSH_d(Patm, Pv,rho, z_succion, phi):
+    return ((Patm-Pv)/(rho*9.81)) - z_succion - phi
+
+```
+
+En segundo lugar calculamos $\Phi$ incluyendo pérdidas por fricción y singularidades y luego aplicamos la formula del NPSH disponible.
+
+```{python}
+g = 9.81 # aceleracion de gravedad m/s^2
+D = 1.5*2.54*0.01 #m
+Q = 5.5/1000 #m3/s 
+rho = 997 # kg/m3
+P_v = 3170 # Pa
+P_atm = 101325 #Pa
+z = 2
+phi_real = ((8*Q**2) / (np.pi**2*D**4) + 35)/g #incluye fricción y singularidades
+
+NPSH = NPSH_d(P_atm,P_v,rho,z,phi_real)
+print(f"El valor del NPSH disponible es {NPSH} m")
+
+```
+
+Por lo tanto la alternativa correcta es la **d**.
+
+:::

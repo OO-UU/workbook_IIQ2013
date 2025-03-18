@@ -64,3 +64,4 @@ Aquí podrán encontrar ejercicios sobre la mayoría de los tópicos del curso. 
 
 * [Clase 1](./e_clase/IIQ2013_C1.qmd)
 * [Clase 2](./e_clase/IIQ2013_C2.qmd)
+* [Clase 3](./e_clase/IIQ2013_C3.qmd)
