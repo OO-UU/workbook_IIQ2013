@@ -53,7 +53,7 @@
     "href": "e_prop/08_evaporadores/e08_3.html#solución",
     "title": "Ejercicio 3: Evaporador de 2 efectos backward",
     "section": "Solución",
-    "text": "Solución\n\nMostrar solución\n\n\n\n\nCódigo\nimport handcalcs\nimport handcalcs.render\nhandcalcs.set_option(\"custom_symbols\",{\"dT\": \"\\Delta T\", \"dEPE\": \"\\Delta EPE\", \"dotm\": \"\\dot{m\", \"lambda\": \"\\lambda\"})\nhandcalcs.set_option(\"latex_block_start\", \"$$\")\nhandcalcs.set_option(\"latex_block_end\", \"$$\")\nfrom sympy import *\nfrom sympy.solvers.solveset import linsolve\n\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_8248\\59094726.py:3: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_8248\\59094726.py:3: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_8248\\59094726.py:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_8248\\59094726.py:3: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\n\n\n\nInciso 1\n\n\nCódigo\n%%render params\nw_f = 0.19\nw_p = 0.4\nrho_w = 0.995 #kg/L\n\n\n\\[\n\\begin{aligned}\nw_{f} &= 0.190 \\;\n&w_{p} &= 0.400 \\;\n&\\rho_{w} &= 0.995 \\; \\;\\textrm{(kg/L)}\n\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nAsumiendo \\(1~\\text{hora}\\) de opración.\n\n\nCódigo\n%%render short 2\nF = 80000*1.0632*rho_w #kg\nP = F*(w_f/w_p) #kg\nV = F-P #kg\n\n\n\\[\n\\begin{aligned}\nF &= 80000 \\cdot 1.0632 \\cdot \\rho_{w}  = 80000 \\cdot 1.0632 \\cdot 0.99 &= 84630.72 \\; \\;\\textrm{(kg)}\n\\\\[10pt]\nP &= F \\cdot \\left( \\frac{ w_{f} }{ w_{p} } \\right)  = 84630.72 \\cdot \\left( \\frac{ 0.19 }{ 0.40 } \\right) &= 40199.59 \\; \\;\\textrm{(kg)}\n\\\\[10pt]\nV &= F - P  = 84630.72 - 40199.59 &= 44431.13 \\; \\;\\textrm{(kg)}\n\\end{aligned}\n\\]\n\n\nPodemos asumir que la evaporación es equitativa en ambos efectos, luego para el segundo efecto:\n\\[\nw_f\\cdot F = w_{E2}\\cdot L =  w_{E2}\\cdot (F-V_{E2})\n\\]\n\n\nCódigo\n%%render short\nV_E2 = V/2 #kg\nw_E2 = (w_f*F)/(F-V_E2)\n\n\n\\[\n\\begin{aligned}\nV_{E2} &= \\frac{ V }{ 2 }  = \\frac{ 44431.128 }{ 2 } &= 22215.564 \\; \\;\\textrm{(kg)}\n\\\\[10pt]\nw_{E2} &= \\frac{ w_{f} \\cdot F }{ F - V_{E2} }  = \\frac{ 0.190 \\cdot 84630.720 }{ 84630.720 - 22215.564 } &= 0.258  \n\\end{aligned}\n\\]\n\n\n\n\nInciso 2 y 3\nDel enunciado sabemos lo siguiente:\n\n\nCódigo\n%%render params\ndT_1 = 22\ndEPE_1 = 7\ndT_2 = 15\ndEPE_2 = 4\ndT_h = 10\nlambda_s = 2183e3 #J/kg\nlambda_1 = 2341e3 #J/kg\nlambda_2 = 2678e3 #J/kg\n\n\n\\[\n\\begin{aligned}\n\\Delta T_{1} &= 22 \\;\n&\\Delta EPE_{1} &= 7 \\;\n&\\Delta T_{2} &= 15 \\;\n\\\\[10pt]\n\\Delta EPE_{2} &= 4 \\;\n&\\Delta T_{h} &= 10 \\;\n&\\lambda_{s} &= 2183000.000 \\; \\;\\textrm{(J/kg)}\n\\\\[10pt]\n\\lambda_{1} &= 2341000.000 \\; \\;\\textrm{(J/kg)}\n&\\lambda_{2} &= 2678000.000 \\; \\;\\textrm{(J/kg)}\n\\end{aligned}\n\\]\n\n\nAdemás definiremos una función que calcule el calor específico promedio entre dos temperaturas.\n\n\nCódigo\ndef c_p(T_1,T_2):\n    c_p1 = 6.5684*T_1+3499\n    c_p2 = 6.5684*T_2+3499\n    return (c_p1+c_p2)/2\n\n\nA partir del enunciado podemos despejar las tempraturas de los flujos.\n\n\nCódigo\n%%render short\n## Temperaturas en $^\\circ$C\nT_s = 110 #Vapor que entra a E1\nT_1 = T_s-dT_1 #Líquido en E1 o producto\nT_s2 = T_1-dEPE_1 #Vapor hacia E2\nT_2 = T_s2-dT_2 #Líquido en E2\nT_c = T_2-dEPE_2 #Vapor hacia el condensador\nT_b = T_s2-dT_h #Líquido que entra a E2 después de b\nT_a = T_c-dT_h #líquido que entra a b después de a\nT_F = 25 #Líquido que entra a a\n\n\n\\[\n\\begin{aligned}\n& \\textrm{ Temperaturas en $^\\circ$C}\\\\[10pt]\nT_{s} &= 110 \\; \\;\\textrm{(Vapor que entra a E1)}\n\\\\[10pt]\nT_{1} &= T_{s} - \\Delta T_{1}  = 110 - 22 &= 88 \\; \\;\\textrm{(Líquido en E1 o producto)}\n\\\\[10pt]\nT_{s2} &= T_{1} - \\Delta EPE_{1}  = 88 - 7 &= 81 \\; \\;\\textrm{(Vapor hacia E2)}\n\\\\[10pt]\nT_{2} &= T_{s2} - \\Delta T_{2}  = 81 - 15 &= 66 \\; \\;\\textrm{(Líquido en E2)}\n\\\\[10pt]\nT_{c} &= T_{2} - \\Delta EPE_{2}  = 66 - 4 &= 62 \\; \\;\\textrm{(Vapor hacia el condensador)}\n\\\\[10pt]\nT_{b} &= T_{s2} - \\Delta T_{h}  = 81 - 10 &= 71 \\; \\;\\textrm{(Líquido que entra a E2 después de b)}\n\\\\[10pt]\nT_{a} &= T_{c} - \\Delta T_{h}  = 62 - 10 &= 52 \\; \\;\\textrm{(líquido que entra a b después de a)}\n\\\\[10pt]\nT_{F} &= 25 \\; \\;\\textrm{(Líquido que entra a a)}\n\\end{aligned}\n\\]\n\n\nLos balances de calor entonces serán:\n\n\nCódigo\nm_1 = P\nm_F = F\nm_s, m_2 = symbols('\\dot{m}_s, \\dot{m}_2')\n\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_8248\\3860211534.py:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n\n\nPara el primer efecto.\n\\[\n\\dot{m}_s\\lambda_s = (\\dot{m}_2-\\dot{m}_1)\\lambda_1 + \\dot{m}_2\\left(\\frac{c_p(T_1)\\cdot c_p(T_2)}{2}\\right)\\left(T_1-T_2\\right)\n\\]\n\n\nCódigo\nE1 = Eq(m_s*lambda_s, (m_2-m_1)*lambda_1+m_2*c_p(T_1,T_2)*(T_1-T_2))\nE1\n\n\n\\(\\displaystyle 2183000.0 \\dot{m}_s = 2429104.8696 \\dot{m}_2 - 94107244872.0\\)\n\n\nPara el segundo efecto más el calentador \\(b\\).\n\\[\n(\\dot{m}_2-\\dot{m}_1)\\lambda_1 = (\\dot{m}_F-\\dot{m}_2)\\lambda_2 + \\dot{m}_F\\left(\\frac{c_p(T_2)\\cdot c_p(T_b)}{2}\\right)\\left(T_2-T_b\\right) + \\dot{m}_F\\left(\\frac{c_p(T_b)\\cdot c_p(T_a)}{2}\\right)\\left(T_b-T_a\\right)\n\\]\n\n\nCódigo\nE2 = Eq((m_2-m_1)*lambda_1, (m_F-m_2)*lambda_2 + m_F*c_p(T_2,T_b)*(T_2-T_b)+ m_F*c_p(T_b,T_a)*(T_b-T_a))\nE2\n\n\n\\(\\displaystyle 2341000.0 \\dot{m}_2 - 94107244872.0 = 231245952445.871 - 2678000.0 \\dot{m}_2\\)\n\n\n\n\nCódigo\nsol = linsolve((E1,E2), (m_s, m_2))\nfor sol1, sol2 in sol:\n    dotm_s = sol1\n    dotm_2 = sol2\n\n\nLuego de resolver el sistema de ecuaciones llegamos a los siguientes flujos.\n\n\nCódigo\n%%render 0\ndotm_s = dotm_s #kg/h\ndotm_1 = m_1 #kg/h\ndotm_2 = dotm_2 #kg/h\ndotm_F = m_F #kg/h\n\n\n\\[\n\\begin{aligned}\n\\dot{m_{s}} &= 29023.0 \\; \\;\\textrm{(kg/h)}\n\\\\[10pt]\n\\dot{m_{1}} &= 40200 \\; \\;\\textrm{(kg/h)}\n\\\\[10pt]\n\\dot{m_{2}} &= 64824.0 \\; \\;\\textrm{(kg/h)}\n\\\\[10pt]\n\\dot{m_{F}} &= 84631 \\; \\;\\textrm{(kg/h)}\n\\end{aligned}\n\\]\n\n\nA partir de esta información podemos depejar la áreas en función de la ecuación característica.\n\\[\nq = UA\\Delta T\n\\]\n\n\nCódigo\n%%render long\nU_1 = 25555.12 #W/m$^2\\cdot$K\nU_2 = 39974.8 #W/m$^2\\cdot$K\nq_1 = (dotm_s/3600)*lambda_s #W\nA_1 = q_1/(U_1*dT_1) #m$^2$\nq_b = (dotm_F/3600)*c_p(T_b,T_a)*(T_b-T_a) #W\nq_2 = ((dotm_2-dotm_1)/3600)*lambda_2 - q_b #W\nA_2 = q_2/(U_2*dT_2) #m$^2$\n\n\n\\[\n\\begin{aligned}\nU_{1} &= 25555.120 \\; \\;\\textrm{(W/m$^2\\cdot$K)}\n\\\\[10pt]\nU_{2} &= 39974.800 \\; \\;\\textrm{(W/m$^2\\cdot$K)}\n\\\\[10pt]\nq_{1} &= \\left( \\frac{ \\dot{m_{s}} }{ 3600 } \\right) \\cdot \\lambda_{s} \\\\&= \\left( \\frac{ 29023.269 }{ 3600 } \\right) \\cdot 2183000.000 \\\\&= 17599387.546 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\nA_{1} &= \\frac{ q_{1} }{ U_{1} \\cdot \\Delta T_{1} } \\\\&= \\frac{ 17599387.546 }{ 25555.120 \\cdot 22 } \\\\&= 31.304 \\; \\;\\textrm{(m$^2$)}\\\\[10pt]\n\\\\[10pt]\nq_{b} &= \\left( \\frac{ \\dot{m_{F}} }{ 3600 } \\right) \\cdot \\operatorname{c_{p}} \\left( T_{b} ,\\  T_{a} \\right) \\cdot \\left( T_{b} - T_{a} \\right) \\\\&= \\left( \\frac{ 84630.720 }{ 3600 } \\right) \\cdot \\operatorname{c_{p}} \\left( 71 ,\\  52 \\right) \\cdot \\left( 71 - 52 \\right) \\\\&= 1743302.921 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\nq_{2} &= \\left( \\frac{ \\dot{m_{2}} - \\dot{m_{1}} }{ 3600 } \\right) \\cdot \\lambda_{2} - q_{b} \\\\&= \\left( \\frac{ 64824.307 - 40199.592 }{ 3600 } \\right) \\cdot 2678000.000 - 1743302.921 \\\\&= 16574749.031 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\nA_{2} &= \\frac{ q_{2} }{ U_{2} \\cdot \\Delta T_{2} } \\\\&= \\frac{ 16574749.031 }{ 39974.800 \\cdot 15 } \\\\&= 27.642 \\; \\;\\textrm{(m$^2$)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nSe debe cumplir que \\(A_1 = A_2\\), por lo tanto los \\(\\Delta T_1\\) y \\(\\Delta T_2\\) no son los correspondientes a los efectos. Se debe hacer una corrección a las temperaturas.\n\n\nCódigo\n%%render\nA_prom = (A_1+A_2)/2\ndT_c1 = dT_1 * (A_1/A_prom)\ndT_c2 = dT_2 * (A_2/A_prom)\n\n\n\\[\n\\begin{aligned}\nA_{prom} &= \\frac{ A_{1} + A_{2} }{ 2 }  = \\frac{ 31.304 + 27.642 }{ 2 } &= 29.473  \n\\\\[10pt]\n\\Delta T_{c1} &= \\Delta T_{1} \\cdot \\left( \\frac{ A_{1} }{ A_{prom} } \\right)  = 22 \\cdot \\left( \\frac{ 31.304 }{ 29.473 } \\right) &= 23.367  \n\\\\[10pt]\n\\Delta T_{c2} &= \\Delta T_{2} \\cdot \\left( \\frac{ A_{2} }{ A_{prom} } \\right)  = 15 \\cdot \\left( \\frac{ 27.642 }{ 29.473 } \\right) &= 14.068  \n\\end{aligned}\n\\]\n\n\nCon estas nuevas diferencias de temperaturas iteramos.\n\n\nCódigo\n%%render short\n## Temperaturas en $^\\circ$C\nT_s = 110 #Vapor que entra a E1\nT_1 = T_s-dT_c1 #Líquido en E1 o producto\nT_s2 = T_1-dEPE_1 #Vapor hacia E2\nT_2 = T_s2-dT_c2 #Líquido en E2\nT_c = T_2-dEPE_2 #Vapor hacia el condensador\nT_b = T_s2-dT_h #Líquido que entra a E2 después de b\nT_a = T_c-dT_h #líquido que entra a b después de a\nT_F = 25 #Líquido que entra a a\n\n\n\\[\n\\begin{aligned}\n& \\textrm{ Temperaturas en $^\\circ$C}\\\\[10pt]\nT_{s} &= 110 \\; \\;\\textrm{(Vapor que entra a E1)}\n\\\\[10pt]\nT_{1} &= T_{s} - \\Delta T_{c1}  = 110 - 23.367 &= 86.633 \\; \\;\\textrm{(Líquido en E1 o producto)}\n\\\\[10pt]\nT_{s2} &= T_{1} - \\Delta EPE_{1}  = 86.633 - 7 &= 79.633 \\; \\;\\textrm{(Vapor hacia E2)}\n\\\\[10pt]\nT_{2} &= T_{s2} - \\Delta T_{c2}  = 79.633 - 14.068 &= 65.565 \\; \\;\\textrm{(Líquido en E2)}\n\\\\[10pt]\nT_{c} &= T_{2} - \\Delta EPE_{2}  = 65.565 - 4 &= 61.565 \\; \\;\\textrm{(Vapor hacia el condensador)}\n\\\\[10pt]\nT_{b} &= T_{s2} - \\Delta T_{h}  = 79.633 - 10 &= 69.633 \\; \\;\\textrm{(Líquido que entra a E2 después de b)}\n\\\\[10pt]\nT_{a} &= T_{c} - \\Delta T_{h}  = 61.565 - 10 &= 51.565 \\; \\;\\textrm{(líquido que entra a b después de a)}\n\\\\[10pt]\nT_{F} &= 25 \\; \\;\\textrm{(Líquido que entra a a)}\n\\end{aligned}\n\\]\n\n\nEl sistema de ecuaciones es el mismo, pero ahora cambian las temperaturas.\n\n\nCódigo\nm_1 = P\nm_F = F\nm_s, m_2 = symbols('\\dot{m}_s, \\dot{m}_2')\nE1 = Eq(m_s*lambda_s, (m_2-m_1)*lambda_1+m_2*c_p(T_1,T_2)*(T_1-T_2))\nE1\n\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_8248\\2094224241.py:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n\n\n\\(\\displaystyle 2183000.0 \\dot{m}_s = 2425248.49178518 \\dot{m}_2 - 94107244872.0\\)\n\n\n\n\nCódigo\nE2 = Eq((m_2-m_1)*lambda_1, (m_F-m_2)*lambda_2 + m_F*c_p(T_2,T_b)*(T_2-T_b)+ m_F*c_p(T_b,T_a)*(T_b-T_a))\nE2\n\n\n\\(\\displaystyle 2341000.0 \\dot{m}_2 - 94107244872.0 = 231242568253.435 - 2678000.0 \\dot{m}_2\\)\n\n\n\n\nCódigo\nsol = linsolve((E1,E2), (m_s, m_2))\nfor sol1, sol2 in sol:\n    dotm_s = sol1\n    dotm_2 = sol2\n\n\nLos nuevos flujos serán:\n\n\nCódigo\n%%render 2\ndotm_s = dotm_s #kg/h\ndotm_1 = m_1 #kg/h\ndotm_2 = dotm_2 #kg/h\ndotm_F = m_F #kg/h\n\n\n\\[\n\\begin{aligned}\n\\dot{m_{s}} &= 28908.0 \\; \\;\\textrm{(kg/h)}\n\\\\[10pt]\n\\dot{m_{1}} &= 40199.59 \\; \\;\\textrm{(kg/h)}\n\\\\[10pt]\n\\dot{m_{2}} &= 64823.63 \\; \\;\\textrm{(kg/h)}\n\\\\[10pt]\n\\dot{m_{F}} &= 84630.72 \\; \\;\\textrm{(kg/h)}\n\\end{aligned}\n\\]\n\n\nPor último comprobamos que las áreas sean las mismas.\n\n\nCódigo\n%%render long 1\nU_1 = 25555.12 #W/m$^2\\cdot$K\nU_2 = 39974.8 #W/m$^2\\cdot$K\nq_1 = (dotm_s/3600)*lambda_s #W\nA_1 = q_1/(U_1*dT_c1) #m$^2$\nq_b = (dotm_F/3600)*c_p(T_b,T_a)*(T_b-T_a) #W\nq_2 = ((dotm_2-dotm_1)/3600)*lambda_2 - q_b #W\nA_2 = q_2/(U_2*dT_c2) #m$^2$\n\n\n\\[\n\\begin{aligned}\nU_{1} &= 25555.1 \\; \\;\\textrm{(W/m$^2\\cdot$K)}\n\\\\[10pt]\nU_{2} &= 39974.8 \\; \\;\\textrm{(W/m$^2\\cdot$K)}\n\\\\[10pt]\nq_{1} &= \\left( \\frac{ \\dot{m_{s}} }{ 3600 } \\right) \\cdot \\lambda_{s} \\\\&= \\left( \\frac{ 28908.0 }{ 3600 } \\right) \\cdot 2183000.0 \\\\&= 17529492.5 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\nA_{1} &= \\frac{ q_{1} }{ U_{1} \\cdot \\Delta T_{c1} } \\\\&= \\frac{ 17529492.5 }{ 25555.1 \\cdot 23.4 } \\\\&= 29.4 \\; \\;\\textrm{(m$^2$)}\\\\[10pt]\n\\\\[10pt]\nq_{b} &= \\left( \\frac{ \\dot{m_{F}} }{ 3600 } \\right) \\cdot \\operatorname{c_{p}} \\left( T_{b} ,\\  T_{a} \\right) \\cdot \\left( T_{b} - T_{a} \\right) \\\\&= \\left( \\frac{ 84630.7 }{ 3600 } \\right) \\cdot \\operatorname{c_{p}} \\left( 69.6 ,\\  51.6 \\right) \\cdot \\left( 69.6 - 51.6 \\right) \\\\&= 1655292.6 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\nq_{2} &= \\left( \\frac{ \\dot{m_{2}} - \\dot{m_{1}} }{ 3600 } \\right) \\cdot \\lambda_{2} - q_{b} \\\\&= \\left( \\frac{ 64823.6 - 40199.6 }{ 3600 } \\right) \\cdot 2678000.0 - 1655292.6 \\\\&= 16662257.7 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\nA_{2} &= \\frac{ q_{2} }{ U_{2} \\cdot \\Delta T_{c2} } \\\\&= \\frac{ 16662257.7 }{ 39974.8 \\cdot 14.1 } \\\\&= 29.6 \\; \\;\\textrm{(m$^2$)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nLas áreas son lo suficientemente parecidas. Por lo que podemos asumir que el área de los efectos será un promedio entre ambas.\n\n\nCódigo\n%%render 1\nA_prom = (A_1+A_2)/2\n\n\n\\[\n\\begin{aligned}\nA_{prom} &= \\frac{ A_{1} + A_{2} }{ 2 }  = \\frac{ 29.4 + 29.6 }{ 2 } &= 29.5  \n\\end{aligned}\n\\]\n\n\nEl flujo de vapor en la corriente \\(\\text{S}\\) será \\(28908~\\text{kg/h}\\). El área de los efectos será \\(29.5~\\text{m}^2\\).\n\n\nInciso 4\nLa economía del sistema completo viene dado por la división entre la cantidad evaporada \\(\\text{V}\\) calculada en el inciso 1 y el flujo de vapor \\(\\text{S}\\).\n\n\nCódigo\n%%render 2\nE = V/dotm_s #kg/kg\n\n\n\\[\n\\begin{aligned}\nE &= \\frac{ V }{ \\dot{m_{s}} }  = \\frac{ 44431.13 }{ 28908.0 } &= 1.54 \\; \\;\\textrm{(kg/kg)}\n\\end{aligned}\n\\]\n\n\n\n\nInciso 5\nEl calor removido en el condensador final será.\n\\[\nq_C = \\left(\\dot{m}_F-\\dot{m}_2\\right)\\lambda_2 - \\dot{m}_F\\left(\\frac{c_p(T_a)\\cdot c_p(T_F)}{2}\\right)\\left(T_a-T_F\\right)\n\\]\n\n\nCódigo\n%%render long\nq_C = ((dotm_F - dotm_2)/3600)*lambda_2 - (dotm_F/3600)*c_p(T_a,T_F)*(T_a-T_F) #W\n\n\n\\[\n\\begin{aligned}\nq_{C} &= \\left( \\frac{ \\dot{m_{F}} - \\dot{m_{2}} }{ 3600 } \\right) \\cdot \\lambda_{2} - \\left( \\frac{ \\dot{m_{F}} }{ 3600 } \\right) \\cdot \\operatorname{c_{p}} \\left( T_{a} ,\\  T_{F} \\right) \\cdot \\left( T_{a} - T_{F} \\right) \\\\&= \\left( \\frac{ 84630.720 - 64823.633 }{ 3600 } \\right) \\cdot 2678000.000 - \\left( \\frac{ 84630.720 }{ 3600 } \\right) \\cdot \\operatorname{c_{p}} \\left( 51.565 ,\\  25 \\right) \\cdot \\left( 51.565 - 25 \\right) \\\\&= 12392083.821 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render params 1\nR = q_C/10**6 #MW\n\n\n\\[\n\\begin{aligned}\nR &= 12.4 \\; \\;\\textrm{(MW)}\n\\end{aligned}\n\\]",
+    "text": "Solución\n\nMostrar solución\n\n\n\n\nCódigo\nimport handcalcs\nimport handcalcs.render\nhandcalcs.set_option(\"custom_symbols\",{\"dT\": \"\\Delta T\", \"dEPE\": \"\\Delta EPE\", \"dotm\": \"\\dot{m\", \"lambda\": \"\\lambda\"})\nhandcalcs.set_option(\"latex_block_start\", \"$$\")\nhandcalcs.set_option(\"latex_block_end\", \"$$\")\nfrom sympy import *\nfrom sympy.solvers.solveset import linsolve\n\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_24624\\59094726.py:3: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_24624\\59094726.py:3: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_24624\\59094726.py:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_24624\\59094726.py:3: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\n\n\n\nInciso 1\n\n\nCódigo\n%%render params\nw_f = 0.19\nw_p = 0.4\nrho_w = 0.995 #kg/L\n\n\n\\[\n\\begin{aligned}\nw_{f} &= 0.190 \\;\n&w_{p} &= 0.400 \\;\n&\\rho_{w} &= 0.995 \\; \\;\\textrm{(kg/L)}\n\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nAsumiendo \\(1~\\text{hora}\\) de opración.\n\n\nCódigo\n%%render short 2\nF = 80000*1.0632*rho_w #kg\nP = F*(w_f/w_p) #kg\nV = F-P #kg\n\n\n\\[\n\\begin{aligned}\nF &= 80000 \\cdot 1.0632 \\cdot \\rho_{w}  = 80000 \\cdot 1.0632 \\cdot 0.99 &= 84630.72 \\; \\;\\textrm{(kg)}\n\\\\[10pt]\nP &= F \\cdot \\left( \\frac{ w_{f} }{ w_{p} } \\right)  = 84630.72 \\cdot \\left( \\frac{ 0.19 }{ 0.40 } \\right) &= 40199.59 \\; \\;\\textrm{(kg)}\n\\\\[10pt]\nV &= F - P  = 84630.72 - 40199.59 &= 44431.13 \\; \\;\\textrm{(kg)}\n\\end{aligned}\n\\]\n\n\nPodemos asumir que la evaporación es equitativa en ambos efectos, luego para el segundo efecto:\n\\[\nw_f\\cdot F = w_{E2}\\cdot L =  w_{E2}\\cdot (F-V_{E2})\n\\]\n\n\nCódigo\n%%render short\nV_E2 = V/2 #kg\nw_E2 = (w_f*F)/(F-V_E2)\n\n\n\\[\n\\begin{aligned}\nV_{E2} &= \\frac{ V }{ 2 }  = \\frac{ 44431.128 }{ 2 } &= 22215.564 \\; \\;\\textrm{(kg)}\n\\\\[10pt]\nw_{E2} &= \\frac{ w_{f} \\cdot F }{ F - V_{E2} }  = \\frac{ 0.190 \\cdot 84630.720 }{ 84630.720 - 22215.564 } &= 0.258  \n\\end{aligned}\n\\]\n\n\n\n\nInciso 2 y 3\nDel enunciado sabemos lo siguiente:\n\n\nCódigo\n%%render params\ndT_1 = 22\ndEPE_1 = 7\ndT_2 = 15\ndEPE_2 = 4\ndT_h = 10\nlambda_s = 2183e3 #J/kg\nlambda_1 = 2341e3 #J/kg\nlambda_2 = 2678e3 #J/kg\n\n\n\\[\n\\begin{aligned}\n\\Delta T_{1} &= 22 \\;\n&\\Delta EPE_{1} &= 7 \\;\n&\\Delta T_{2} &= 15 \\;\n\\\\[10pt]\n\\Delta EPE_{2} &= 4 \\;\n&\\Delta T_{h} &= 10 \\;\n&\\lambda_{s} &= 2183000.000 \\; \\;\\textrm{(J/kg)}\n\\\\[10pt]\n\\lambda_{1} &= 2341000.000 \\; \\;\\textrm{(J/kg)}\n&\\lambda_{2} &= 2678000.000 \\; \\;\\textrm{(J/kg)}\n\\end{aligned}\n\\]\n\n\nAdemás definiremos una función que calcule el calor específico promedio entre dos temperaturas.\n\n\nCódigo\ndef c_p(T_1,T_2):\n    c_p1 = 6.5684*T_1+3499\n    c_p2 = 6.5684*T_2+3499\n    return (c_p1+c_p2)/2\n\n\nA partir del enunciado podemos despejar las tempraturas de los flujos.\n\n\nCódigo\n%%render short\n## Temperaturas en $^\\circ$C\nT_s = 110 #Vapor que entra a E1\nT_1 = T_s-dT_1 #Líquido en E1 o producto\nT_s2 = T_1-dEPE_1 #Vapor hacia E2\nT_2 = T_s2-dT_2 #Líquido en E2\nT_c = T_2-dEPE_2 #Vapor hacia el condensador\nT_b = T_s2-dT_h #Líquido que entra a E2 después de b\nT_a = T_c-dT_h #líquido que entra a b después de a\nT_F = 25 #Líquido que entra a a\n\n\n\\[\n\\begin{aligned}\n& \\textrm{ Temperaturas en $^\\circ$C}\\\\[10pt]\nT_{s} &= 110 \\; \\;\\textrm{(Vapor que entra a E1)}\n\\\\[10pt]\nT_{1} &= T_{s} - \\Delta T_{1}  = 110 - 22 &= 88 \\; \\;\\textrm{(Líquido en E1 o producto)}\n\\\\[10pt]\nT_{s2} &= T_{1} - \\Delta EPE_{1}  = 88 - 7 &= 81 \\; \\;\\textrm{(Vapor hacia E2)}\n\\\\[10pt]\nT_{2} &= T_{s2} - \\Delta T_{2}  = 81 - 15 &= 66 \\; \\;\\textrm{(Líquido en E2)}\n\\\\[10pt]\nT_{c} &= T_{2} - \\Delta EPE_{2}  = 66 - 4 &= 62 \\; \\;\\textrm{(Vapor hacia el condensador)}\n\\\\[10pt]\nT_{b} &= T_{s2} - \\Delta T_{h}  = 81 - 10 &= 71 \\; \\;\\textrm{(Líquido que entra a E2 después de b)}\n\\\\[10pt]\nT_{a} &= T_{c} - \\Delta T_{h}  = 62 - 10 &= 52 \\; \\;\\textrm{(líquido que entra a b después de a)}\n\\\\[10pt]\nT_{F} &= 25 \\; \\;\\textrm{(Líquido que entra a a)}\n\\end{aligned}\n\\]\n\n\nLos balances de calor entonces serán:\n\n\nCódigo\nm_1 = P\nm_F = F\nm_s, m_2 = symbols('\\dot{m}_s, \\dot{m}_2')\n\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_24624\\3860211534.py:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n\n\nPara el primer efecto.\n\\[\n\\dot{m}_s\\lambda_s = (\\dot{m}_2-\\dot{m}_1)\\lambda_1 + \\dot{m}_2\\left(\\frac{c_p(T_1)\\cdot c_p(T_2)}{2}\\right)\\left(T_1-T_2\\right)\n\\]\n\n\nCódigo\nE1 = Eq(m_s*lambda_s, (m_2-m_1)*lambda_1+m_2*c_p(T_1,T_2)*(T_1-T_2))\nE1\n\n\n\\(\\displaystyle 2183000.0 \\dot{m}_s = 2429104.8696 \\dot{m}_2 - 94107244872.0\\)\n\n\nPara el segundo efecto más el calentador \\(b\\).\n\\[\n(\\dot{m}_2-\\dot{m}_1)\\lambda_1 = (\\dot{m}_F-\\dot{m}_2)\\lambda_2 + \\dot{m}_F\\left(\\frac{c_p(T_2)\\cdot c_p(T_b)}{2}\\right)\\left(T_2-T_b\\right) + \\dot{m}_F\\left(\\frac{c_p(T_b)\\cdot c_p(T_a)}{2}\\right)\\left(T_b-T_a\\right)\n\\]\n\n\nCódigo\nE2 = Eq((m_2-m_1)*lambda_1, (m_F-m_2)*lambda_2 + m_F*c_p(T_2,T_b)*(T_2-T_b)+ m_F*c_p(T_b,T_a)*(T_b-T_a))\nE2\n\n\n\\(\\displaystyle 2341000.0 \\dot{m}_2 - 94107244872.0 = 231245952445.871 - 2678000.0 \\dot{m}_2\\)\n\n\n\n\nCódigo\nsol = linsolve((E1,E2), (m_s, m_2))\nfor sol1, sol2 in sol:\n    dotm_s = sol1\n    dotm_2 = sol2\n\n\nLuego de resolver el sistema de ecuaciones llegamos a los siguientes flujos.\n\n\nCódigo\n%%render 0\ndotm_s = dotm_s #kg/h\ndotm_1 = m_1 #kg/h\ndotm_2 = dotm_2 #kg/h\ndotm_F = m_F #kg/h\n\n\n\\[\n\\begin{aligned}\n\\dot{m_{s}} &= 29023.0 \\; \\;\\textrm{(kg/h)}\n\\\\[10pt]\n\\dot{m_{1}} &= 40200 \\; \\;\\textrm{(kg/h)}\n\\\\[10pt]\n\\dot{m_{2}} &= 64824.0 \\; \\;\\textrm{(kg/h)}\n\\\\[10pt]\n\\dot{m_{F}} &= 84631 \\; \\;\\textrm{(kg/h)}\n\\end{aligned}\n\\]\n\n\nA partir de esta información podemos depejar la áreas en función de la ecuación característica.\n\\[\nq = UA\\Delta T\n\\]\n\n\nCódigo\n%%render long\nU_1 = 25555.12 #W/m$^2\\cdot$K\nU_2 = 39974.8 #W/m$^2\\cdot$K\nq_1 = (dotm_s/3600)*lambda_s #W\nA_1 = q_1/(U_1*dT_1) #m$^2$\nq_b = (dotm_F/3600)*c_p(T_b,T_a)*(T_b-T_a) #W\nq_2 = ((dotm_2-dotm_1)/3600)*lambda_2 - q_b #W\nA_2 = q_2/(U_2*dT_2) #m$^2$\n\n\n\\[\n\\begin{aligned}\nU_{1} &= 25555.120 \\; \\;\\textrm{(W/m$^2\\cdot$K)}\n\\\\[10pt]\nU_{2} &= 39974.800 \\; \\;\\textrm{(W/m$^2\\cdot$K)}\n\\\\[10pt]\nq_{1} &= \\left( \\frac{ \\dot{m_{s}} }{ 3600 } \\right) \\cdot \\lambda_{s} \\\\&= \\left( \\frac{ 29023.269 }{ 3600 } \\right) \\cdot 2183000.000 \\\\&= 17599387.546 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\nA_{1} &= \\frac{ q_{1} }{ U_{1} \\cdot \\Delta T_{1} } \\\\&= \\frac{ 17599387.546 }{ 25555.120 \\cdot 22 } \\\\&= 31.304 \\; \\;\\textrm{(m$^2$)}\\\\[10pt]\n\\\\[10pt]\nq_{b} &= \\left( \\frac{ \\dot{m_{F}} }{ 3600 } \\right) \\cdot \\operatorname{c_{p}} \\left( T_{b} ,\\  T_{a} \\right) \\cdot \\left( T_{b} - T_{a} \\right) \\\\&= \\left( \\frac{ 84630.720 }{ 3600 } \\right) \\cdot \\operatorname{c_{p}} \\left( 71 ,\\  52 \\right) \\cdot \\left( 71 - 52 \\right) \\\\&= 1743302.921 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\nq_{2} &= \\left( \\frac{ \\dot{m_{2}} - \\dot{m_{1}} }{ 3600 } \\right) \\cdot \\lambda_{2} - q_{b} \\\\&= \\left( \\frac{ 64824.307 - 40199.592 }{ 3600 } \\right) \\cdot 2678000.000 - 1743302.921 \\\\&= 16574749.031 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\nA_{2} &= \\frac{ q_{2} }{ U_{2} \\cdot \\Delta T_{2} } \\\\&= \\frac{ 16574749.031 }{ 39974.800 \\cdot 15 } \\\\&= 27.642 \\; \\;\\textrm{(m$^2$)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nSe debe cumplir que \\(A_1 = A_2\\), por lo tanto los \\(\\Delta T_1\\) y \\(\\Delta T_2\\) no son los correspondientes a los efectos. Se debe hacer una corrección a las temperaturas.\n\n\nCódigo\n%%render\nA_prom = (A_1+A_2)/2\ndT_c1 = dT_1 * (A_1/A_prom)\ndT_c2 = dT_2 * (A_2/A_prom)\n\n\n\\[\n\\begin{aligned}\nA_{prom} &= \\frac{ A_{1} + A_{2} }{ 2 }  = \\frac{ 31.304 + 27.642 }{ 2 } &= 29.473  \n\\\\[10pt]\n\\Delta T_{c1} &= \\Delta T_{1} \\cdot \\left( \\frac{ A_{1} }{ A_{prom} } \\right)  = 22 \\cdot \\left( \\frac{ 31.304 }{ 29.473 } \\right) &= 23.367  \n\\\\[10pt]\n\\Delta T_{c2} &= \\Delta T_{2} \\cdot \\left( \\frac{ A_{2} }{ A_{prom} } \\right)  = 15 \\cdot \\left( \\frac{ 27.642 }{ 29.473 } \\right) &= 14.068  \n\\end{aligned}\n\\]\n\n\nCon estas nuevas diferencias de temperaturas iteramos.\n\n\nCódigo\n%%render short\n## Temperaturas en $^\\circ$C\nT_s = 110 #Vapor que entra a E1\nT_1 = T_s-dT_c1 #Líquido en E1 o producto\nT_s2 = T_1-dEPE_1 #Vapor hacia E2\nT_2 = T_s2-dT_c2 #Líquido en E2\nT_c = T_2-dEPE_2 #Vapor hacia el condensador\nT_b = T_s2-dT_h #Líquido que entra a E2 después de b\nT_a = T_c-dT_h #líquido que entra a b después de a\nT_F = 25 #Líquido que entra a a\n\n\n\\[\n\\begin{aligned}\n& \\textrm{ Temperaturas en $^\\circ$C}\\\\[10pt]\nT_{s} &= 110 \\; \\;\\textrm{(Vapor que entra a E1)}\n\\\\[10pt]\nT_{1} &= T_{s} - \\Delta T_{c1}  = 110 - 23.367 &= 86.633 \\; \\;\\textrm{(Líquido en E1 o producto)}\n\\\\[10pt]\nT_{s2} &= T_{1} - \\Delta EPE_{1}  = 86.633 - 7 &= 79.633 \\; \\;\\textrm{(Vapor hacia E2)}\n\\\\[10pt]\nT_{2} &= T_{s2} - \\Delta T_{c2}  = 79.633 - 14.068 &= 65.565 \\; \\;\\textrm{(Líquido en E2)}\n\\\\[10pt]\nT_{c} &= T_{2} - \\Delta EPE_{2}  = 65.565 - 4 &= 61.565 \\; \\;\\textrm{(Vapor hacia el condensador)}\n\\\\[10pt]\nT_{b} &= T_{s2} - \\Delta T_{h}  = 79.633 - 10 &= 69.633 \\; \\;\\textrm{(Líquido que entra a E2 después de b)}\n\\\\[10pt]\nT_{a} &= T_{c} - \\Delta T_{h}  = 61.565 - 10 &= 51.565 \\; \\;\\textrm{(líquido que entra a b después de a)}\n\\\\[10pt]\nT_{F} &= 25 \\; \\;\\textrm{(Líquido que entra a a)}\n\\end{aligned}\n\\]\n\n\nEl sistema de ecuaciones es el mismo, pero ahora cambian las temperaturas.\n\n\nCódigo\nm_1 = P\nm_F = F\nm_s, m_2 = symbols('\\dot{m}_s, \\dot{m}_2')\nE1 = Eq(m_s*lambda_s, (m_2-m_1)*lambda_1+m_2*c_p(T_1,T_2)*(T_1-T_2))\nE1\n\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_24624\\2094224241.py:3: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n\n\n\\(\\displaystyle 2183000.0 \\dot{m}_s = 2425248.49178518 \\dot{m}_2 - 94107244872.0\\)\n\n\n\n\nCódigo\nE2 = Eq((m_2-m_1)*lambda_1, (m_F-m_2)*lambda_2 + m_F*c_p(T_2,T_b)*(T_2-T_b)+ m_F*c_p(T_b,T_a)*(T_b-T_a))\nE2\n\n\n\\(\\displaystyle 2341000.0 \\dot{m}_2 - 94107244872.0 = 231242568253.435 - 2678000.0 \\dot{m}_2\\)\n\n\n\n\nCódigo\nsol = linsolve((E1,E2), (m_s, m_2))\nfor sol1, sol2 in sol:\n    dotm_s = sol1\n    dotm_2 = sol2\n\n\nLos nuevos flujos serán:\n\n\nCódigo\n%%render 2\ndotm_s = dotm_s #kg/h\ndotm_1 = m_1 #kg/h\ndotm_2 = dotm_2 #kg/h\ndotm_F = m_F #kg/h\n\n\n\\[\n\\begin{aligned}\n\\dot{m_{s}} &= 28908.0 \\; \\;\\textrm{(kg/h)}\n\\\\[10pt]\n\\dot{m_{1}} &= 40199.59 \\; \\;\\textrm{(kg/h)}\n\\\\[10pt]\n\\dot{m_{2}} &= 64823.63 \\; \\;\\textrm{(kg/h)}\n\\\\[10pt]\n\\dot{m_{F}} &= 84630.72 \\; \\;\\textrm{(kg/h)}\n\\end{aligned}\n\\]\n\n\nPor último comprobamos que las áreas sean las mismas.\n\n\nCódigo\n%%render long 1\nU_1 = 25555.12 #W/m$^2\\cdot$K\nU_2 = 39974.8 #W/m$^2\\cdot$K\nq_1 = (dotm_s/3600)*lambda_s #W\nA_1 = q_1/(U_1*dT_c1) #m$^2$\nq_b = (dotm_F/3600)*c_p(T_b,T_a)*(T_b-T_a) #W\nq_2 = ((dotm_2-dotm_1)/3600)*lambda_2 - q_b #W\nA_2 = q_2/(U_2*dT_c2) #m$^2$\n\n\n\\[\n\\begin{aligned}\nU_{1} &= 25555.1 \\; \\;\\textrm{(W/m$^2\\cdot$K)}\n\\\\[10pt]\nU_{2} &= 39974.8 \\; \\;\\textrm{(W/m$^2\\cdot$K)}\n\\\\[10pt]\nq_{1} &= \\left( \\frac{ \\dot{m_{s}} }{ 3600 } \\right) \\cdot \\lambda_{s} \\\\&= \\left( \\frac{ 28908.0 }{ 3600 } \\right) \\cdot 2183000.0 \\\\&= 17529492.5 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\nA_{1} &= \\frac{ q_{1} }{ U_{1} \\cdot \\Delta T_{c1} } \\\\&= \\frac{ 17529492.5 }{ 25555.1 \\cdot 23.4 } \\\\&= 29.4 \\; \\;\\textrm{(m$^2$)}\\\\[10pt]\n\\\\[10pt]\nq_{b} &= \\left( \\frac{ \\dot{m_{F}} }{ 3600 } \\right) \\cdot \\operatorname{c_{p}} \\left( T_{b} ,\\  T_{a} \\right) \\cdot \\left( T_{b} - T_{a} \\right) \\\\&= \\left( \\frac{ 84630.7 }{ 3600 } \\right) \\cdot \\operatorname{c_{p}} \\left( 69.6 ,\\  51.6 \\right) \\cdot \\left( 69.6 - 51.6 \\right) \\\\&= 1655292.6 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\nq_{2} &= \\left( \\frac{ \\dot{m_{2}} - \\dot{m_{1}} }{ 3600 } \\right) \\cdot \\lambda_{2} - q_{b} \\\\&= \\left( \\frac{ 64823.6 - 40199.6 }{ 3600 } \\right) \\cdot 2678000.0 - 1655292.6 \\\\&= 16662257.7 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\nA_{2} &= \\frac{ q_{2} }{ U_{2} \\cdot \\Delta T_{c2} } \\\\&= \\frac{ 16662257.7 }{ 39974.8 \\cdot 14.1 } \\\\&= 29.6 \\; \\;\\textrm{(m$^2$)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nLas áreas son lo suficientemente parecidas. Por lo que podemos asumir que el área de los efectos será un promedio entre ambas.\n\n\nCódigo\n%%render 1\nA_prom = (A_1+A_2)/2\n\n\n\\[\n\\begin{aligned}\nA_{prom} &= \\frac{ A_{1} + A_{2} }{ 2 }  = \\frac{ 29.4 + 29.6 }{ 2 } &= 29.5  \n\\end{aligned}\n\\]\n\n\nEl flujo de vapor en la corriente \\(\\text{S}\\) será \\(28908~\\text{kg/h}\\). El área de los efectos será \\(29.5~\\text{m}^2\\).\n\n\nInciso 4\nLa economía del sistema completo viene dado por la división entre la cantidad evaporada \\(\\text{V}\\) calculada en el inciso 1 y el flujo de vapor \\(\\text{S}\\).\n\n\nCódigo\n%%render 2\nE = V/dotm_s #kg/kg\n\n\n\\[\n\\begin{aligned}\nE &= \\frac{ V }{ \\dot{m_{s}} }  = \\frac{ 44431.13 }{ 28908.0 } &= 1.54 \\; \\;\\textrm{(kg/kg)}\n\\end{aligned}\n\\]\n\n\n\n\nInciso 5\nEl calor removido en el condensador final será.\n\\[\nq_C = \\left(\\dot{m}_F-\\dot{m}_2\\right)\\lambda_2 - \\dot{m}_F\\left(\\frac{c_p(T_a)\\cdot c_p(T_F)}{2}\\right)\\left(T_a-T_F\\right)\n\\]\n\n\nCódigo\n%%render long\nq_C = ((dotm_F - dotm_2)/3600)*lambda_2 - (dotm_F/3600)*c_p(T_a,T_F)*(T_a-T_F) #W\n\n\n\\[\n\\begin{aligned}\nq_{C} &= \\left( \\frac{ \\dot{m_{F}} - \\dot{m_{2}} }{ 3600 } \\right) \\cdot \\lambda_{2} - \\left( \\frac{ \\dot{m_{F}} }{ 3600 } \\right) \\cdot \\operatorname{c_{p}} \\left( T_{a} ,\\  T_{F} \\right) \\cdot \\left( T_{a} - T_{F} \\right) \\\\&= \\left( \\frac{ 84630.720 - 64823.633 }{ 3600 } \\right) \\cdot 2678000.000 - \\left( \\frac{ 84630.720 }{ 3600 } \\right) \\cdot \\operatorname{c_{p}} \\left( 51.565 ,\\  25 \\right) \\cdot \\left( 51.565 - 25 \\right) \\\\&= 12392083.821 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render params 1\nR = q_C/10**6 #MW\n\n\n\\[\n\\begin{aligned}\nR &= 12.4 \\; \\;\\textrm{(MW)}\n\\end{aligned}\n\\]",
     "crumbs": [
       "Evaporadores",
       "Ejercicio 3: Evaporador de 2 efectos *backward*"
@@ -86,7 +86,7 @@
     "href": "e_prop/08_evaporadores/e08_1.html#solución",
     "title": "Ejercicio 1: Evaporador de 1 efecto simple",
     "section": "Solución",
-    "text": "Solución\n\nMostrar solución\n\n\n\n\nCódigo\nimport handcalcs.render\nhandcalcs.set_option(\"custom_symbols\",{\"dT\": \"\\Delta T\", \"lambda\": \"\\lambda\", \"Tebs\": \"T^eb\"})\nhandcalcs.set_option(\"latex_block_start\", \"$$\")\nhandcalcs.set_option(\"latex_block_end\", \"$$\")\n\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_9888\\1925453529.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_9888\\1925453529.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\n\n\nPrimero, debemos encontrar los flujos másicos de la alimentación. Para esto, podemos utilizar un balance de masa.\n\\[\nF = V + L\n\\]\nAdemás, por conservación de masa, la cantidad de sólidos suspendidos en la corriente de licor será la misma que en la alimentación.\n\\[\nF\\cdot w_F = L\\cdot w_L\n\\]\nJuntando ambas ecuaciones:\n\\[\nF = V + F\\cdot\\left(\\frac{w_F}{w_L}\\right) \\rightarrow V = F\\left(1-\\frac{w_F}{w_L}\\right)\n\\]\n\n\nCódigo\n%%render params\nV = 25000 #kg/h\nw_F = 0.15\nw_L = 0.50\n\n\n\\[\n\\begin{aligned}\nV &= 25000 \\; \\;\\textrm{(kg/h)}\n&w_{F} &= 0.150 \\;\n&w_{L} &= 0.500 \\;\n\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render long\nF = V/(1-w_F/w_L) #kg/h\n\n\n\\[\n\\begin{aligned}\nF &= \\frac{ V }{ 1 - \\frac{ w_{F} }{ w_{L} } } \\\\&= \\frac{ 25000 }{ 1 - \\frac{ 0.150 }{ 0.500 } } \\\\&= 35714.286 \\; \\;\\textrm{(kg/h)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nA partir de esta información, podemos plantear el balance de energía. Ya que los sólidos disueltos no actúan como una solución con interacciones fuertes, la entalpía de dilución y la elevación del punto de ebullición son despreciables. Luego, el balance de energía es simple.\n\\[\nq = F\\cdot c_{p,w}\\left(T^{eb}_w-T_F\\right) + V\\cdot \\lambda_V\n\\]\n\n\nCódigo\n%%render params\nTebs_w = 51.1 #$^\\circ$C\nT_F = 15.6 #$^\\circ$C\nTebs_S = 93.7\nc_pw = 3894 #J/kg$\\cdot^\\circ$C\nlambda_V = 2379.5e3 #J/kg\nlambda_S = 2273.9e3 #J/kg\n\n\n\\[\n\\begin{aligned}\n\\mathrm{T^eb}_{w} &= 51.100 \\; \\;\\textrm{($^\\circ$C)}\n&T_{F} &= 15.600 \\; \\;\\textrm{($^\\circ$C)}\n&\\mathrm{T^eb}_{S} &= 93.700 \\;\n\\\\[10pt]\nc_{pw} &= 3894 \\; \\;\\textrm{(J/kg$\\cdot^\\circ$C)}\n&\\lambda_{V} &= 2379500.000 \\; \\;\\textrm{(J/kg)}\n&\\lambda_{S} &= 2273900.000 \\; \\;\\textrm{(J/kg)}\n\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render long\nq = F/3600 * c_pw * (Tebs_w-T_F) + V/3600 * lambda_V #W\n\n\n\\[\n\\begin{aligned}\nq &= \\frac{ F }{ 3600 } \\cdot c_{pw} \\cdot \\left( \\mathrm{T^eb}_{w} - T_{F} \\right) + \\frac{ V }{ 3600 } \\cdot \\lambda_{V} \\\\&= \\frac{ 35714.286 }{ 3600 } \\cdot 3894 \\cdot \\left( 51.100 - 15.600 \\right) + \\frac{ 25000 }{ 3600 } \\cdot 2379500.000 \\\\&= 17895704.365 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nLa ecuación de diseño de un evaporador será:\n\\[\nq = U\\cdot A\\cdot\\Delta T\n\\]\nDonde la diferencia de temperaturas \\(\\Delta T\\) será la temperatura en el flujo de vapor \\(\\text{S}\\) y la temperatura de ebullición de la solución en el evaporador.\n\n\nCódigo\n%%render long\nU = 1700 #W/m$^2\\cdot^\\circ$C\ndT = Tebs_S - Tebs_w\nA = q/(U*dT) #m$^2$\n\n\n\\[\n\\begin{aligned}\nU &= 1700 \\; \\;\\textrm{(W/m$^2\\cdot^\\circ$C)}\n\\\\[10pt]\n\\Delta T &= \\mathrm{T^eb}_{S} - \\mathrm{T^eb}_{w} \\\\&= 93.700 - 51.100 \\\\&= 42.600  \\\\[10pt]\n\\\\[10pt]\nA &= \\frac{ q }{ U \\cdot \\Delta T } \\\\&= \\frac{ 17895704.365 }{ 1700 \\cdot 42.600 } \\\\&= 247.110 \\; \\;\\textrm{(m$^2$)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nFinalmente, el consumo de vapor viene dado por:\n\\[\nq = S\\cdot \\lambda_S\n\\]\n\n\nCódigo\n%%render long\nS = q/lambda_S * 3600 #kg/h\n\n\n\\[\n\\begin{aligned}\nS &= \\frac{ q }{ \\lambda_{S} } \\cdot 3600 \\\\&= \\frac{ 17895704.365 }{ 2273900.000 } \\cdot 3600 \\\\&= 28332.176 \\; \\;\\textrm{(kg/h)}\\\\[10pt]\n\\end{aligned}\n\\]",
+    "text": "Solución\n\nMostrar solución\n\n\n\n\nCódigo\nimport handcalcs.render\nhandcalcs.set_option(\"custom_symbols\",{\"dT\": \"\\Delta T\", \"lambda\": \"\\lambda\", \"Tebs\": \"T^eb\"})\nhandcalcs.set_option(\"latex_block_start\", \"$$\")\nhandcalcs.set_option(\"latex_block_end\", \"$$\")\n\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_10016\\1925453529.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_10016\\1925453529.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\n\n\nPrimero, debemos encontrar los flujos másicos de la alimentación. Para esto, podemos utilizar un balance de masa.\n\\[\nF = V + L\n\\]\nAdemás, por conservación de masa, la cantidad de sólidos suspendidos en la corriente de licor será la misma que en la alimentación.\n\\[\nF\\cdot w_F = L\\cdot w_L\n\\]\nJuntando ambas ecuaciones:\n\\[\nF = V + F\\cdot\\left(\\frac{w_F}{w_L}\\right) \\rightarrow V = F\\left(1-\\frac{w_F}{w_L}\\right)\n\\]\n\n\nCódigo\n%%render params\nV = 25000 #kg/h\nw_F = 0.15\nw_L = 0.50\n\n\n\\[\n\\begin{aligned}\nV &= 25000 \\; \\;\\textrm{(kg/h)}\n&w_{F} &= 0.150 \\;\n&w_{L} &= 0.500 \\;\n\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render long\nF = V/(1-w_F/w_L) #kg/h\n\n\n\\[\n\\begin{aligned}\nF &= \\frac{ V }{ 1 - \\frac{ w_{F} }{ w_{L} } } \\\\&= \\frac{ 25000 }{ 1 - \\frac{ 0.150 }{ 0.500 } } \\\\&= 35714.286 \\; \\;\\textrm{(kg/h)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nA partir de esta información, podemos plantear el balance de energía. Ya que los sólidos disueltos no actúan como una solución con interacciones fuertes, la entalpía de dilución y la elevación del punto de ebullición son despreciables. Luego, el balance de energía es simple.\n\\[\nq = F\\cdot c_{p,w}\\left(T^{eb}_w-T_F\\right) + V\\cdot \\lambda_V\n\\]\n\n\nCódigo\n%%render params\nTebs_w = 51.1 #$^\\circ$C\nT_F = 15.6 #$^\\circ$C\nTebs_S = 93.7\nc_pw = 3894 #J/kg$\\cdot^\\circ$C\nlambda_V = 2379.5e3 #J/kg\nlambda_S = 2273.9e3 #J/kg\n\n\n\\[\n\\begin{aligned}\n\\mathrm{T^eb}_{w} &= 51.100 \\; \\;\\textrm{($^\\circ$C)}\n&T_{F} &= 15.600 \\; \\;\\textrm{($^\\circ$C)}\n&\\mathrm{T^eb}_{S} &= 93.700 \\;\n\\\\[10pt]\nc_{pw} &= 3894 \\; \\;\\textrm{(J/kg$\\cdot^\\circ$C)}\n&\\lambda_{V} &= 2379500.000 \\; \\;\\textrm{(J/kg)}\n&\\lambda_{S} &= 2273900.000 \\; \\;\\textrm{(J/kg)}\n\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render long\nq = F/3600 * c_pw * (Tebs_w-T_F) + V/3600 * lambda_V #W\n\n\n\\[\n\\begin{aligned}\nq &= \\frac{ F }{ 3600 } \\cdot c_{pw} \\cdot \\left( \\mathrm{T^eb}_{w} - T_{F} \\right) + \\frac{ V }{ 3600 } \\cdot \\lambda_{V} \\\\&= \\frac{ 35714.286 }{ 3600 } \\cdot 3894 \\cdot \\left( 51.100 - 15.600 \\right) + \\frac{ 25000 }{ 3600 } \\cdot 2379500.000 \\\\&= 17895704.365 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nLa ecuación de diseño de un evaporador será:\n\\[\nq = U\\cdot A\\cdot\\Delta T\n\\]\nDonde la diferencia de temperaturas \\(\\Delta T\\) será la temperatura en el flujo de vapor \\(\\text{S}\\) y la temperatura de ebullición de la solución en el evaporador.\n\n\nCódigo\n%%render long\nU = 1700 #W/m$^2\\cdot^\\circ$C\ndT = Tebs_S - Tebs_w\nA = q/(U*dT) #m$^2$\n\n\n\\[\n\\begin{aligned}\nU &= 1700 \\; \\;\\textrm{(W/m$^2\\cdot^\\circ$C)}\n\\\\[10pt]\n\\Delta T &= \\mathrm{T^eb}_{S} - \\mathrm{T^eb}_{w} \\\\&= 93.700 - 51.100 \\\\&= 42.600  \\\\[10pt]\n\\\\[10pt]\nA &= \\frac{ q }{ U \\cdot \\Delta T } \\\\&= \\frac{ 17895704.365 }{ 1700 \\cdot 42.600 } \\\\&= 247.110 \\; \\;\\textrm{(m$^2$)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nFinalmente, el consumo de vapor viene dado por:\n\\[\nq = S\\cdot \\lambda_S\n\\]\n\n\nCódigo\n%%render long\nS = q/lambda_S * 3600 #kg/h\n\n\n\\[\n\\begin{aligned}\nS &= \\frac{ q }{ \\lambda_{S} } \\cdot 3600 \\\\&= \\frac{ 17895704.365 }{ 2273900.000 } \\cdot 3600 \\\\&= 28332.176 \\; \\;\\textrm{(kg/h)}\\\\[10pt]\n\\end{aligned}\n\\]",
     "crumbs": [
       "Evaporadores",
       "Ejercicio 1: Evaporador de 1 efecto simple"
@@ -418,7 +418,7 @@
     "href": "e_prop/00_bernoulli/e00_3.html#solución",
     "title": "Ejercicio 3: Bombas y eficiencia",
     "section": "Solución",
-    "text": "Solución\n\nMostrar solución\n\n\n\n\nCódigo\nimport handcalcs.render\nhandcalcs.set_option(\"custom_symbols\",{\"ap\": \"a'\", \"bp\": \"b'\", \"eta\": \"\\eta \", \"dotm\": \"\\dot m\"})\nhandcalcs.set_option(\"latex_block_start\", \"$$\")\nhandcalcs.set_option(\"latex_block_end\", \"$$\")\nfrom numpy import pi\n\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\e'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\e'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_4824\\815821512.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\e'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_4824\\815821512.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n\n\n\nInciso 1\nPara el primer tramo (\\(\\text{a'-a}\\)), la ecuación de bernoulli será:\n\\[\n\\left(\\frac{P_{a'}}{\\rho} + g\\cdot Z_{a'} + \\frac{V_{a'}^2}{2}\\right) = \\left(\\frac{P_a}{\\rho} + g\\cdot Z_a + \\frac{V_a^2}{2}\\right) + \\left(\\phi_s+\\phi_f\\right)_{a'-a}\n\\]\nPara el tramo \\(\\text{a-b}\\):\n\\[\n\\left(\\frac{P_{a}}{\\rho} + g\\cdot Z_{a} + \\frac{V_{a}^2}{2}\\right) = \\left(\\frac{P_b}{\\rho} + g\\cdot Z_b + \\frac{V_b^2}{2}\\right) - \\eta W_p\n\\]\nPor último, para el tramo \\(\\text{b-b'}\\):\n\\[\n\\left(\\frac{P_{b}}{\\rho} + g\\cdot Z_{b} + \\frac{V_{b}^2}{2}\\right) = \\left(\\frac{P_{b'}}{\\rho} + g\\cdot Z_{b'} + \\frac{V_{b'}^2}{2}\\right) + \\left(\\phi_s+\\phi_f\\right)_{b-b'}\n\\]\nDespejando en la ecuación de bernoulli entre los puntos \\(\\text{a-b}\\).\n\\[\n\\left(\\frac{P_{a'}}{\\rho} + g\\cdot Z_{a'} + \\frac{V_{a'}^2}{2}\\right) - \\left(\\phi_s+\\phi_f\\right)_{a'-a} = \\left(\\frac{P_{b'}}{\\rho} + g\\cdot Z_{b'} + \\frac{V_{b'}^2}{2}\\right) + \\left(\\phi_s+\\phi_f\\right)_{b-b'} - \\eta W_p\n\\]\nLuego, podemos entender la suma de las pérdidas de carga por fricción y singularidades entre \\(\\text{a'-a}\\) y \\(\\text{b-b'}\\) como las pérdidas de cargas en todo el sistema.\n\\[\n\\left(\\phi_s+\\phi_f\\right)_{a'-b'} = \\left(\\phi_s+\\phi_f\\right)_{a'-a} + \\left(\\phi_s+\\phi_f\\right)_{b-b'}\n\\]\nFinalmente llegamos a la última ecuación:\n\\[\n\\left(\\frac{P_{a'}}{\\rho} + g\\cdot Z_{a'} + \\frac{V_{a'}^2}{2}\\right) = \\left(\\frac{P_{b'}}{\\rho} + g\\cdot Z_{b'} + \\frac{V_{b'}^2}{2}\\right) + \\left(\\phi_s+\\phi_f\\right)_{a'-b'} - \\eta W_p\n\\]\nPara que la ecuación sea consistente con la figura, consideremos que \\(Z_{a'}=0\\) y que ambos estanques se encuentran a la misma presión (\\(3~\\text{atm}\\)), la cual será la referencia \\(P_{a'}=P_{b'}=0\\). Además, el punto \\(\\text{a'}\\) se considera sin movimiento (\\(V_{a'}=0\\)) por el supuesto de estanque muy grande. Reordenando:\n\\[\n\\eta W_p = \\left(g\\cdot Z_{b'} + \\frac{V_{b'}^2}{2}\\right) + \\left(\\phi_s+\\phi_f\\right)_{a'-b'}\n\\]\nLuego, reemplazando las pérdidas de carga y asumiendo que la velocidad el todo el sistema (excluyendo el estanque) es constante:\n\\[\n\\eta W_p = g\\cdot Z_{b'} + \\left(1 + 4f\\left(\\frac{L}{D_e}\\right) + K \\right)\\frac{V^2}{2}\n\\]\n\n\nInciso 2\nYa que en el enunciado nos entregan las pérdidas de carga por fricción en \\(\\text{m}\\), escribmos la función para \\(\\eta W_p\\) de la siguiente manera:\n\\[\n\\eta W_p = g\\cdot Z_{b'} + \\left(1 + K \\right)\\frac{8Q^2}{\\pi^2D^4} + g\\cdot h_f\n\\]\n\n\nCódigo\n%%render params\ng = 9.81 #m/s$^2$\nZ_bp = 10-2 #m\nD = 12/100 #m\nK_codo = 1.2\nK_salida = 0.5\nK_entrada = 1.0\nQ = 11/3600 #m$^3$/s\nh_f = 3 #m\nrho = 865  #kg/m$^3$\n\n\n\\[\n\\begin{aligned}\ng &= 9.810 \\; \\;\\textrm{(m/s$^2$)}\n&Z_{b'} &= 8 \\; \\;\\textrm{(m)}\n&D &= 0.120 \\; \\;\\textrm{(m)}\n\\\\[10pt]\nK_{codo} &= 1.200 \\;\n&K_{salida} &= 0.500 \\;\n&K_{entrada} &= 1.000 \\;\n\\\\[10pt]\nQ &= 0.003 \\; \\;\\textrm{(m$^3$/s)}\n&h_{f} &= 3 \\; \\;\\textrm{(m)}\n&\\rho &= 865 \\; \\;\\textrm{(kg/m$^3$)}\n\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render long\netaW_p = g*Z_bp + (1 + (K_salida + 4*K_codo + K_entrada))*(8*Q**2)/(pi**2*D**4) + g*h_f #J/kg\n\n\n\\[\n\\begin{aligned}\n\\eta W_{p} &= g \\cdot Z_{b'} + \\left( 1 + \\left( K_{salida} + 4 \\cdot K_{codo} + K_{entrada} \\right) \\right) \\cdot \\frac{ 8 \\cdot \\left( Q \\right) ^{ 2 } }{ \\left( \\pi \\right) ^{ 2 } \\cdot \\left( D \\right) ^{ 4 } } + g \\cdot h_{f} \\\\&= 9.810 \\cdot 8 + \\left( 1 + \\left( 0.500 + 4 \\cdot 1.200 + 1.000 \\right) \\right) \\cdot \\frac{ 8 \\cdot \\left( 0.003 \\right) ^{ 2 } }{ \\left( 3.142 \\right) ^{ 2 } \\cdot \\left( 0.120 \\right) ^{ 4 } } + 9.810 \\cdot 3 \\\\&= 108.176 \\; \\;\\textrm{(J/kg)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render long\nh_B = etaW_p/g #m\n\n\n\\[\n\\begin{aligned}\nh_{B} &= \\frac{ \\eta W_{p} }{ g } \\\\&= \\frac{ 108.176 }{ 9.810 } \\\\&= 11.027 \\; \\;\\textrm{(m)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nInciso 3\nDel gráfico para la bomba tipo \\(3656/3756~\\text{Grupo-S}\\) con rodete \\(\\text{B}\\) de diámetro \\(7.75~\\text{in}\\), vemos que para un caudal de \\(11~\\text{m}^3\\text{/h}\\) la eficiencia es aproximadamente de un \\(\\eta = 65~\\%\\).\nLa fórmula para la potencia requerida puede ser escrita como:\n\\[\nP_B = \\dot{m}W_p\n\\]\n\n\nCódigo\n%%render long\neta = 0.65\ndotm = Q*rho #kg/s\nP_B = dotm*etaW_p/eta #W\n\n\n\\[\n\\begin{aligned}\n\\eta  &= 0.650 \\;\n\\\\[10pt]\n\\dot m &= Q \\cdot \\rho \\\\&= 0.003 \\cdot 865 \\\\&= 2.643 \\; \\;\\textrm{(kg/s)}\\\\[10pt]\n\\\\[10pt]\nP_{B} &= \\dot m \\cdot \\frac{ \\eta W_{p} }{ \\eta  } \\\\&= 2.643 \\cdot \\frac{ 108.176 }{ 0.650 } \\\\&= 439.871 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nInciso 4\nDebemos compara \\(\\text{NPSH}_d\\) con \\(\\text{NPSH}_r\\). Del gráfico, \\(\\text{NPSH}_r \\approx 17.5~\\text{m}\\).\nPara la \\(\\text{NPSH}_d\\) sabemos que:\n\\[\n\\text{NPSH}_d = \\frac{P_{a'}-P_v}{\\rho g} - z_a - \\left(1 + K \\right)\\frac{8Q^2}{g\\pi^2D^4} - h_{f,a'-a}\n\\]\n\n\nCódigo\n%%render params\nP_v = 26.2*1000 #Pa\nP_ap = 3*101325 #Pa\nz_a = 10 #m\nh_f = 2 #m\n\n\n\\[\n\\begin{aligned}\nP_{v} &= 26200.000 \\; \\;\\textrm{(Pa)}\n&P_{a'} &= 303975 \\; \\;\\textrm{(Pa)}\n&z_{a} &= 10 \\; \\;\\textrm{(m)}\n\\\\[10pt]\nh_{f} &= 2 \\; \\;\\textrm{(m)}\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render long\nNPSH_d = (P_ap-P_v)/(rho*g) - z_a - (1+(K_salida+4*K_codo+K_entrada))*(8*Q**2)/(g*pi**2*D**4) - h_f #m\n\n\n\\[\n\\begin{aligned}\n\\mathrm{NPSH}_{d} &= \\frac{ P_{a'} - P_{v} }{ \\rho \\cdot g } - z_{a} - \\left( 1 + \\left( K_{salida} + 4 \\cdot K_{codo} + K_{entrada} \\right) \\right) \\cdot \\frac{ 8 \\cdot \\left( Q \\right) ^{ 2 } }{ g \\cdot \\left( \\pi \\right) ^{ 2 } \\cdot \\left( D \\right) ^{ 4 } } - h_{f} \\\\&= \\frac{ 303975 - 26200.000 }{ 865 \\cdot 9.810 } - 10 - \\left( 1 + \\left( 0.500 + 4 \\cdot 1.200 + 1.000 \\right) \\right) \\cdot \\frac{ 8 \\cdot \\left( 0.003 \\right) ^{ 2 } }{ 9.810 \\cdot \\left( 3.142 \\right) ^{ 2 } \\cdot \\left( 0.120 \\right) ^{ 4 } } - 2 \\\\&= 20.708 \\; \\;\\textrm{(m)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nYa que \\(\\text{NPSH}_d&gt;\\text{NPSH}_r\\), la bomba no cavita.",
+    "text": "Solución\n\nMostrar solución\n\n\n\n\nCódigo\nimport handcalcs.render\nhandcalcs.set_option(\"custom_symbols\",{\"ap\": \"a'\", \"bp\": \"b'\", \"eta\": \"\\eta \", \"dotm\": \"\\dot m\"})\nhandcalcs.set_option(\"latex_block_start\", \"$$\")\nhandcalcs.set_option(\"latex_block_end\", \"$$\")\nfrom numpy import pi\n\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\e'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\e'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_22852\\815821512.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\e'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_22852\\815821512.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n\n\n\nInciso 1\nPara el primer tramo (\\(\\text{a'-a}\\)), la ecuación de bernoulli será:\n\\[\n\\left(\\frac{P_{a'}}{\\rho} + g\\cdot Z_{a'} + \\frac{V_{a'}^2}{2}\\right) = \\left(\\frac{P_a}{\\rho} + g\\cdot Z_a + \\frac{V_a^2}{2}\\right) + \\left(\\phi_s+\\phi_f\\right)_{a'-a}\n\\]\nPara el tramo \\(\\text{a-b}\\):\n\\[\n\\left(\\frac{P_{a}}{\\rho} + g\\cdot Z_{a} + \\frac{V_{a}^2}{2}\\right) = \\left(\\frac{P_b}{\\rho} + g\\cdot Z_b + \\frac{V_b^2}{2}\\right) - \\eta W_p\n\\]\nPor último, para el tramo \\(\\text{b-b'}\\):\n\\[\n\\left(\\frac{P_{b}}{\\rho} + g\\cdot Z_{b} + \\frac{V_{b}^2}{2}\\right) = \\left(\\frac{P_{b'}}{\\rho} + g\\cdot Z_{b'} + \\frac{V_{b'}^2}{2}\\right) + \\left(\\phi_s+\\phi_f\\right)_{b-b'}\n\\]\nDespejando en la ecuación de bernoulli entre los puntos \\(\\text{a-b}\\).\n\\[\n\\left(\\frac{P_{a'}}{\\rho} + g\\cdot Z_{a'} + \\frac{V_{a'}^2}{2}\\right) - \\left(\\phi_s+\\phi_f\\right)_{a'-a} = \\left(\\frac{P_{b'}}{\\rho} + g\\cdot Z_{b'} + \\frac{V_{b'}^2}{2}\\right) + \\left(\\phi_s+\\phi_f\\right)_{b-b'} - \\eta W_p\n\\]\nLuego, podemos entender la suma de las pérdidas de carga por fricción y singularidades entre \\(\\text{a'-a}\\) y \\(\\text{b-b'}\\) como las pérdidas de cargas en todo el sistema.\n\\[\n\\left(\\phi_s+\\phi_f\\right)_{a'-b'} = \\left(\\phi_s+\\phi_f\\right)_{a'-a} + \\left(\\phi_s+\\phi_f\\right)_{b-b'}\n\\]\nFinalmente llegamos a la última ecuación:\n\\[\n\\left(\\frac{P_{a'}}{\\rho} + g\\cdot Z_{a'} + \\frac{V_{a'}^2}{2}\\right) = \\left(\\frac{P_{b'}}{\\rho} + g\\cdot Z_{b'} + \\frac{V_{b'}^2}{2}\\right) + \\left(\\phi_s+\\phi_f\\right)_{a'-b'} - \\eta W_p\n\\]\nPara que la ecuación sea consistente con la figura, consideremos que \\(Z_{a'}=0\\) y que ambos estanques se encuentran a la misma presión (\\(3~\\text{atm}\\)), la cual será la referencia \\(P_{a'}=P_{b'}=0\\). Además, el punto \\(\\text{a'}\\) se considera sin movimiento (\\(V_{a'}=0\\)) por el supuesto de estanque muy grande. Reordenando:\n\\[\n\\eta W_p = \\left(g\\cdot Z_{b'} + \\frac{V_{b'}^2}{2}\\right) + \\left(\\phi_s+\\phi_f\\right)_{a'-b'}\n\\]\nLuego, reemplazando las pérdidas de carga y asumiendo que la velocidad el todo el sistema (excluyendo el estanque) es constante:\n\\[\n\\eta W_p = g\\cdot Z_{b'} + \\left(1 + 4f\\left(\\frac{L}{D_e}\\right) + K \\right)\\frac{V^2}{2}\n\\]\n\n\nInciso 2\nYa que en el enunciado nos entregan las pérdidas de carga por fricción en \\(\\text{m}\\), escribmos la función para \\(\\eta W_p\\) de la siguiente manera:\n\\[\n\\eta W_p = g\\cdot Z_{b'} + \\left(1 + K \\right)\\frac{8Q^2}{\\pi^2D^4} + g\\cdot h_f\n\\]\n\n\nCódigo\n%%render params\ng = 9.81 #m/s$^2$\nZ_bp = 10-2 #m\nD = 12/100 #m\nK_codo = 1.2\nK_salida = 0.5\nK_entrada = 1.0\nQ = 11/3600 #m$^3$/s\nh_f = 3 #m\nrho = 865  #kg/m$^3$\n\n\n\\[\n\\begin{aligned}\ng &= 9.810 \\; \\;\\textrm{(m/s$^2$)}\n&Z_{b'} &= 8 \\; \\;\\textrm{(m)}\n&D &= 0.120 \\; \\;\\textrm{(m)}\n\\\\[10pt]\nK_{codo} &= 1.200 \\;\n&K_{salida} &= 0.500 \\;\n&K_{entrada} &= 1.000 \\;\n\\\\[10pt]\nQ &= 0.003 \\; \\;\\textrm{(m$^3$/s)}\n&h_{f} &= 3 \\; \\;\\textrm{(m)}\n&\\rho &= 865 \\; \\;\\textrm{(kg/m$^3$)}\n\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render long\netaW_p = g*Z_bp + (1 + (K_salida + 4*K_codo + K_entrada))*(8*Q**2)/(pi**2*D**4) + g*h_f #J/kg\n\n\n\\[\n\\begin{aligned}\n\\eta W_{p} &= g \\cdot Z_{b'} + \\left( 1 + \\left( K_{salida} + 4 \\cdot K_{codo} + K_{entrada} \\right) \\right) \\cdot \\frac{ 8 \\cdot \\left( Q \\right) ^{ 2 } }{ \\left( \\pi \\right) ^{ 2 } \\cdot \\left( D \\right) ^{ 4 } } + g \\cdot h_{f} \\\\&= 9.810 \\cdot 8 + \\left( 1 + \\left( 0.500 + 4 \\cdot 1.200 + 1.000 \\right) \\right) \\cdot \\frac{ 8 \\cdot \\left( 0.003 \\right) ^{ 2 } }{ \\left( 3.142 \\right) ^{ 2 } \\cdot \\left( 0.120 \\right) ^{ 4 } } + 9.810 \\cdot 3 \\\\&= 108.176 \\; \\;\\textrm{(J/kg)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render long\nh_B = etaW_p/g #m\n\n\n\\[\n\\begin{aligned}\nh_{B} &= \\frac{ \\eta W_{p} }{ g } \\\\&= \\frac{ 108.176 }{ 9.810 } \\\\&= 11.027 \\; \\;\\textrm{(m)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nInciso 3\nDel gráfico para la bomba tipo \\(3656/3756~\\text{Grupo-S}\\) con rodete \\(\\text{B}\\) de diámetro \\(7.75~\\text{in}\\), vemos que para un caudal de \\(11~\\text{m}^3\\text{/h}\\) la eficiencia es aproximadamente de un \\(\\eta = 65~\\%\\).\nLa fórmula para la potencia requerida puede ser escrita como:\n\\[\nP_B = \\dot{m}W_p\n\\]\n\n\nCódigo\n%%render long\neta = 0.65\ndotm = Q*rho #kg/s\nP_B = dotm*etaW_p/eta #W\n\n\n\\[\n\\begin{aligned}\n\\eta  &= 0.650 \\;\n\\\\[10pt]\n\\dot m &= Q \\cdot \\rho \\\\&= 0.003 \\cdot 865 \\\\&= 2.643 \\; \\;\\textrm{(kg/s)}\\\\[10pt]\n\\\\[10pt]\nP_{B} &= \\dot m \\cdot \\frac{ \\eta W_{p} }{ \\eta  } \\\\&= 2.643 \\cdot \\frac{ 108.176 }{ 0.650 } \\\\&= 439.871 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nInciso 4\nDebemos compara \\(\\text{NPSH}_d\\) con \\(\\text{NPSH}_r\\). Del gráfico, \\(\\text{NPSH}_r \\approx 17.5~\\text{m}\\).\nPara la \\(\\text{NPSH}_d\\) sabemos que:\n\\[\n\\text{NPSH}_d = \\frac{P_{a'}-P_v}{\\rho g} - z_a - \\left(1 + K \\right)\\frac{8Q^2}{g\\pi^2D^4} - h_{f,a'-a}\n\\]\n\n\nCódigo\n%%render params\nP_v = 26.2*1000 #Pa\nP_ap = 3*101325 #Pa\nz_a = 10 #m\nh_f = 2 #m\n\n\n\\[\n\\begin{aligned}\nP_{v} &= 26200.000 \\; \\;\\textrm{(Pa)}\n&P_{a'} &= 303975 \\; \\;\\textrm{(Pa)}\n&z_{a} &= 10 \\; \\;\\textrm{(m)}\n\\\\[10pt]\nh_{f} &= 2 \\; \\;\\textrm{(m)}\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render long\nNPSH_d = (P_ap-P_v)/(rho*g) - z_a - (1+(K_salida+4*K_codo+K_entrada))*(8*Q**2)/(g*pi**2*D**4) - h_f #m\n\n\n\\[\n\\begin{aligned}\n\\mathrm{NPSH}_{d} &= \\frac{ P_{a'} - P_{v} }{ \\rho \\cdot g } - z_{a} - \\left( 1 + \\left( K_{salida} + 4 \\cdot K_{codo} + K_{entrada} \\right) \\right) \\cdot \\frac{ 8 \\cdot \\left( Q \\right) ^{ 2 } }{ g \\cdot \\left( \\pi \\right) ^{ 2 } \\cdot \\left( D \\right) ^{ 4 } } - h_{f} \\\\&= \\frac{ 303975 - 26200.000 }{ 865 \\cdot 9.810 } - 10 - \\left( 1 + \\left( 0.500 + 4 \\cdot 1.200 + 1.000 \\right) \\right) \\cdot \\frac{ 8 \\cdot \\left( 0.003 \\right) ^{ 2 } }{ 9.810 \\cdot \\left( 3.142 \\right) ^{ 2 } \\cdot \\left( 0.120 \\right) ^{ 4 } } - 2 \\\\&= 20.708 \\; \\;\\textrm{(m)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nYa que \\(\\text{NPSH}_d&gt;\\text{NPSH}_r\\), la bomba no cavita.",
     "crumbs": [
       "Tuberías y bombas",
       "Ejercicio 3: Bombas y eficiencia"
@@ -458,508 +458,53 @@
     ]
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C8.html",
-    "href": "e_clase/jupyter/IIQ2013_C8.html",
-    "title": "IIQ2013 - Clase 8",
-    "section": "",
-    "text": "Interesa dimensionar el motor del agitador (una turbina) y estimar el tiempo de mezclado de un líquido [\\(\\rho = 1000\\hspace{1mm}kg/m^3\\), \\(\\mu = 20\\hspace{1mm}cP\\)] para un estanque agitado de \\(100\\hspace{1mm}m^3\\) de capacidad y configuración estándar (\\(S_6 = H/D_t  = 1\\)).\nEn primer lugar se deben cargar las librerias que vamos a utilizar\nimport numpy as np\nfrom numpy import sqrt, pi\nimport handcalcs.render\nfrom handcalcs import handcalc"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C8.html#problema-1",
-    "href": "e_clase/jupyter/IIQ2013_C8.html#problema-1",
-    "title": "IIQ2013 - Clase 8",
-    "section": "Problema 1",
-    "text": "Problema 1\nSi para una configuración estándar de estanque agitado con turbina \\(1/S_1  = D_t/D_a = 4\\), entonces el diámetro de agitador industrial \\((D_a)\\) es aproximadamente el siguiente:\n\nD\\(_a\\) \\(&lt;\\) 50 cm\n50 \\(\\leq\\) D\\(_a\\) \\(&lt;\\) 100 cm\n100 \\(\\leq\\) D\\(_a\\) \\(&lt;\\) 150 cm\nD\\(_a\\) \\(\\geq\\) 150 cm"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C8.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C8.html#solución",
-    "title": "IIQ2013 - Clase 8",
-    "section": "Solución",
-    "text": "Solución\nSabemos el volumen, luego despejamos para \\(D_t\\).\n\\[\nD_t = \\sqrt[3]{\\frac{4V}{\\pi}}\n\\]\n\n%%render long\nV = 100 #m$^3$\nS_1 = 1/4\nD_t = ((4*100)/pi)**(1/3) #m\nD_a = D_t*S_1 #m\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es la c."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C8.html#problema-2",
-    "href": "e_clase/jupyter/IIQ2013_C8.html#problema-2",
-    "title": "IIQ2013 - Clase 8",
-    "section": "Problema 2",
-    "text": "Problema 2\nEl régimen de flujo en el estanque si la turbina opera a N = 25 rpm es el siguiente:\n\nLaminar\nDe transición de laminar a turbulento\nTurbulento\nNo existe suficiente información para determinar el régimen de flujo"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C8.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C8.html#solución-1",
-    "title": "IIQ2013 - Clase 8",
-    "section": "Solución",
-    "text": "Solución\n\n%%render long\nrho = 1000 #kg/m$^3$\nmu = 0.02 #Pa$\\cdot$s\nN = 25 #RPM\nRe = (rho*(N/60)*D_a**2)/mu\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nYa que \\(Re &gt; 10^4\\), el régimen es turbulento."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C8.html#problema-3",
-    "href": "e_clase/jupyter/IIQ2013_C8.html#problema-3",
-    "title": "IIQ2013 - Clase 8",
-    "section": "Problema 3",
-    "text": "Problema 3\nSi para la configuración estándar del estanque agitado equipado con un agitador de turbina \\(K_L = 65\\) y \\(K_T = 5.75\\), entonces el consumo de potencia del estanque \\((P)\\) es aproximadamente el siguiente:\n\nP \\(&lt;\\) 1 kW\n1 kW \\(\\leq\\) P \\(&lt;\\) 5 kW\n5 kW \\(\\leq\\) P \\(&lt;\\) 25 kW\nP \\(\\geq\\) 25 kW"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C8.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C8.html#solución-2",
-    "title": "IIQ2013 - Clase 8",
-    "section": "Solución",
-    "text": "Solución\n\n%%render long\nK_T = 5.75\nP = K_T*rho*(N/60)**3*D_a**5 #W\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es la b."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C8.html#problema-4",
-    "href": "e_clase/jupyter/IIQ2013_C8.html#problema-4",
-    "title": "IIQ2013 - Clase 8",
-    "section": "Problema 4",
-    "text": "Problema 4\nEl tiempo promedio que toma el fluido que descarga la turbina en circular por el estanque y retornar a la turbina \\((t_c)\\) es aproximadamente el siguiente:\n\n\\(t_c\\) \\(&lt;\\) 20 s\n20 \\(\\leq\\) \\(t_c\\) \\(&lt;\\) 40 s\n40 \\(\\leq\\) \\(t_c\\) \\(&lt;\\) 80 s\n\\(t_c\\) \\(\\geq\\) 80 s"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C8.html#solución-3",
-    "href": "e_clase/jupyter/IIQ2013_C8.html#solución-3",
-    "title": "IIQ2013 - Clase 8",
-    "section": "Solución",
-    "text": "Solución\nDel gráfico:"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C8.html#squbxdpu-.imagesimg_ec-8.png",
-    "href": "e_clase/jupyter/IIQ2013_C8.html#squbxdpu-.imagesimg_ec-8.png",
-    "title": "IIQ2013 - Clase 8",
-    "section": "```squbxdpu ./images/img_EC-8.png",
-    "text": "```squbxdpu ./images/img_EC-8.png\nname: figura-EC8 scale: 60% align: center —\nGráfico para tiempo adimensional de mezclado.\n\nAsumiendo que para $D_a/D_t=1/4$ es válida la línea de turbina $D_a/D_t=1/3$. Entonces $N\\times t_M \\approx 60$.\n\n::: {#6b8396e4-a72c-4ddd-bea6-d27ed77dafd7 .cell execution_count=20}\n``` {.python .cell-code}\n%%render long\nNxt_M = 60\nt_m = Nxt_M/(N/60) #s\n\n&lt;IPython.core.display.Latex object&gt;\n\n:::\nYa que \\(t_m\\approx 5t_c\\).\n\n%%render long\nt_c = t_m/5 #s\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es b."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C5.html",
-    "href": "e_clase/jupyter/IIQ2013_C5.html",
-    "title": "IIQ2013 - Clase 5",
-    "section": "",
-    "text": "En primer lugar se deben cargar las librerias que vamos a utilizar\nimport numpy as np"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C5.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C5.html#pregunta-1",
-    "title": "IIQ2013 - Clase 5",
-    "section": "Pregunta 1",
-    "text": "Pregunta 1\nLa Figura adjunta presenta el perfil de velocidades en régimen de flujo laminar de un plástico de Bingham que está fluynedo por una tubería cilíindrica horizontal de 4 cm de diámetro interno. Calcule."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C5.html#rrugrkbk-.imagesimg_ec-5.jpeg",
-    "href": "e_clase/jupyter/IIQ2013_C5.html#rrugrkbk-.imagesimg_ec-5.jpeg",
-    "title": "IIQ2013 - Clase 5",
-    "section": "```rrugrkbk ./images/img_EC-5.jpeg",
-    "text": "```rrugrkbk ./images/img_EC-5.jpeg\nname: figura-EC5 scale: 60% align: center —\nPerfil de velocidades de un plático de Bingham.\n\n(a) La tasa de deformación del fluido muy cerca de la pared de la tubería.\n\n(b) Si $\\Delta p / L=300 \\mathrm{kN} / \\mathrm{m}^3$, el esfuerzo cortante en la pared de la tuberia.\n\n(c) La viscosidad aparente del fluido muy cerca de la pared de la tubería.\n\n(d) El valor aproximado del esfuerzo de fluencia del fluido.\n\n## Solución\nDesde el gráfico podemos constatar que la tasa de deformación cerca de la pared se puede aproximar a:\n\n::: {#cell-8 .cell execution_count=2}\n``` {.python .cell-code}\n# a)\ndelta_v = 0.002 # m/s\ndelta_r = 0.001 # m\ngamma_punto = delta_v/delta_r\n\nprint(f\"La tasa de deformación del fluido cerca de la pared es {gamma_punto} 1/s\")\n\n\nLa tasa de deformación del fluido cerca de la pared es 2.0 1/s\n\n:::\nEl esfuerzo cortante cerca de la pared de la tubería es \\(\\tau_{w}\\) = \\(\\Delta\\) P/A y A = 4L/D, luego:\n\n# b)\nt_wall = 300 * 1000 * 0.04 /4 # Pa\nprint(f\"El esfuerzo cortante cerca de la pared es {t_wall} Pa\")\n\nEl esfuerzo cortante cerca de la pared es 3000.0 Pa\n\n\n\n# c)\nmu_app = t_wall/gamma_punto # Pa\nprint(f\"El esfuerzo cortante cerca de la pared es {mu_app} Pa⋅s o {mu_app*1000:.1E} cP\")\n\nEl esfuerzo cortante cerca de la pared es 1500.0 Pa⋅s o 1.5E+06 cP\n\n\nFinalmente, el radio crítico se puede obtener del gráfico adjunto, aproximadamente \\(r_{c}\\) = 0.0099 m. Por lo que el esfuerzo de fluencia del fluido es igual a:\n\nr_c = 0.0099\nR = 0.02\ntau_0 = t_wall*r_c/R\nprint(f\"El esfuerzo de fluencia es {tau_0} Pa\")\n\nEl esfuerzo de fluencia es 1485.0 Pa"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C3.html",
-    "href": "e_clase/jupyter/IIQ2013_C3.html",
-    "title": "IIQ2013 - Clase 3",
-    "section": "",
-    "text": "En primer lugar se deben cargar las librerias que vamos a utilizar\nimport numpy as np"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C3.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C3.html#pregunta-1",
-    "title": "IIQ2013 - Clase 3",
-    "section": "Pregunta 1",
-    "text": "Pregunta 1\nLa pérdida de carga (\\(\\Delta p/L\\)) al transportar \\(Q\\) = 100 L/s de agua por una tubería horizontal de acero comercial de 10 in de diámetro nominal (D= 254,5 mm) es la siguiente:\n\n\\(\\Delta p/L &gt;\\) 0.13 atm/100 m\n0.12 \\(&lt; \\Delta p/L \\leq\\) 0.13 atm/100 m\n0.11 \\(&lt; \\Delta p/L \\leq\\) 0.12 atm/100 m\n\\(\\Delta p/L \\leq\\) 0.11 atm/100 m\n\nConsidere las propiedades físicas del agua a 20 °C [\\(\\rho\\)= 1000 kg/m\\(^3\\), \\(\\mu\\)= 0.001 Pa s]."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C3.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C3.html#solución",
-    "title": "IIQ2013 - Clase 3",
-    "section": "Solución",
-    "text": "Solución\nComenzamos recordando el ejercicio de la clase anterior …\n\n# 1\nd = 254.5e-3\nQ = 0.1 # m^3/s\nV = Q/(np.pi*d**2/4) # Calculamos la velocidad \nrho = 1000\nmu = 0.001\nRe = rho*V*d/mu\neps = 0.046*1e-3\ndef f_Nevers(eps, D, Re):\n    return 0.001375 * (1 + (2e4 * eps/D + 1e6/Re)**(1/3))\n\nf = f_Nevers(eps, d, Re)\n\nL = 100 # m\nphi = 4 * f * (L/d) * (V**2/2)\nprint(f\"La perdida de carga por unidad de largo es {1000 * phi/L} Pa/m\")\n\n\nLa perdida de carga por unidad de largo es 115.96605830597088 Pa/m\n\n\nRealizando el cambio de unidades\n\nprint(f\"La perdida de carga por unidad de largo es {100000 * phi/L*9.86923e-6} atm/100 m\")\n\nLa perdida de carga por unidad de largo es 0.11444957016150369 atm/100 m\n\n\nPor lo tanto la alternativa correcta es la c."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C3.html#pregunta-2",
-    "href": "e_clase/jupyter/IIQ2013_C3.html#pregunta-2",
-    "title": "IIQ2013 - Clase 3",
-    "section": "Pregunta 2",
-    "text": "Pregunta 2\nLa pérdida de carga en un tramo de 100 metros de la tubería de (1) que inclute una válvula de compuerta abierta en un 75%, estimada usando el valor tabulado de coeficiente de pérdida de energía para la válvula, es la siguiente:\n\n\\(\\Delta p &gt;\\) 0.13 atm\n0.12 \\(&lt; \\Delta p \\leq\\) 0.13 atm\n0.11 \\(&lt; \\Delta p \\leq\\) 0.12 atm\n\\(\\Delta p \\leq\\) 0.11 atm"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C3.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C3.html#solución-1",
-    "title": "IIQ2013 - Clase 3",
-    "section": "Solución",
-    "text": "Solución\nNecesitamos sumar el coeficiente de fricción con el coeficiente de fricción por singularidad. Para una válvula de compuerta abierta en un 75% utilizamos un valor de K = 1\n\nK = 1\nf = f_Nevers(eps, d, Re)\nL = 100 # m\nphi = (4 * f * (L/d) + K) * (V**2/2)\nprint(f\"La perdida de carga {1000 * phi*9.86923e-6} atm\")\n\n\nLa perdida de carga 0.1335183263148772 atm\n\n\nPor lo tanto la alternativa correcta es la a."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C3.html#pregunta-3",
-    "href": "e_clase/jupyter/IIQ2013_C3.html#pregunta-3",
-    "title": "IIQ2013 - Clase 3",
-    "section": "Pregunta 3",
-    "text": "Pregunta 3\nEl valor de la pérdida de carga (2), pero evaluado considerando que el largo equivalente (\\(L_e\\)/D) de una válvula de compuerta abierta en un 75% es 40, es el siguiente:\n\n\\(\\Delta p &gt;\\) 0.13 atm\n0.12 \\(&lt; \\Delta p \\leq\\) 0.13 atm\n0.11 \\(&lt; \\Delta p \\leq\\) 0.12 atm\n\\(\\Delta p \\leq\\) 0.11 atm"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C3.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C3.html#solución-2",
-    "title": "IIQ2013 - Clase 3",
-    "section": "Solución",
-    "text": "Solución\nOcupando la aproximación del largo equivalente\n\nK = 1\nf = f_Nevers(eps, d, Re)\nL = 100 # m\nphi = (4 * f * (L/d + 40) ) * (V**2/2)\nprint(f\"La perdida de carga {1000 * phi*9.86923e-6} atm\")\n\nLa perdida de carga 0.12610053640394478 atm\n\n\nPor lo tanto la alternativa correcta es la b."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C21.html",
-    "href": "e_clase/jupyter/IIQ2013_C21.html",
-    "title": "IIQ2013 - Clase 21",
-    "section": "",
-    "text": "import handcalcs.render\nimport forallpeople\nimport numpy as np\nimport forallpeople as si\nfrom CoolProp.CoolProp import PropsSI\nsi.environment('default', top_level=True)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C21.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C21.html#pregunta-1",
-    "title": "IIQ2013 - Clase 21",
-    "section": "Pregunta 1",
-    "text": "Pregunta 1\nConsiderando la curva típica de ebullición para agua a \\(1~\\text{atm}\\) que se adjunta, si \\(h &gt; 104~\\text{W/m}^2\\cdot\\text{K}\\), el régimen de ebullición probablemente sea el siguiente:\n```aiuehopg ./images/img_EC-21.png :align: center :name: figura_EC-21\nRegímenes de ebullición.\n\n(a) Ebullición de convección libre  \\\n(b) Ebullición nucleada \\\n(c) Ebullición de transición \\\n(d) Ebullición de película\n\n## Solución\n\nDado que no tenemos un valor exacto de $h$ para el agua, procedemos a testear el límite superior de la ebullición de convección libre.\n\nDel gráfico, asumiremos $q = 1.6 \\times 10^4~\\text{W/m}^2$. Esto correspodne a una diferencia de temperatura aproximadamente de 5°C. Luego,\n\n::: {#891de737 .cell execution_count=7}\n``` {.python .cell-code}\n%%render\ndT = 5\np = 1 # atm\nh = 1043 * dT**(1/3) * p **(0.4) #W/m$^2\\cdot$K\n\n&lt;IPython.core.display.Latex object&gt;\n\n:::\nEste coeficiente de convección es muy bajo, por lo tanto descartamos nucleación por convección natural. Ahora procedemos a testear el segundo límite de flux entre ebullición nucleada y ebullición de transición.\nDel gráfico, asumiremos \\(q = 2.4 \\times 10^5~\\text{W/m}^2\\). Esto corresponde a una diferencia de temperatura aproximadamente de 15°C. Luego,\n\n%%render\ndT = 15\np = 1 # atm\nh = 5.56 * dT**(3) * p **(0.4) #W/m$^2\\cdot$K\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nQue es mayor a \\(10^4\\). Este valor está en un punto medio en la región de ebullición nucleada, por lo tanto el régimen de ebullición es probablemente ebullición nucleada. Esto corresponde a la alternativa b)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C21.html#pregunta-2",
-    "href": "e_clase/jupyter/IIQ2013_C21.html#pregunta-2",
-    "title": "IIQ2013 - Clase 21",
-    "section": "Pregunta 2",
-    "text": "Pregunta 2\nSe puede afirmar lo siguiente sobre procesos de ebullición de alberca:\n\nUn número de Jakob pequeño (\\(Ja &lt; 1\\)) sugiere que el calor absorbido durante el cambio de fase supera al calor sensible absorbido por la fase líquida, con el resultado de aumentar el flujo de calor.\n\nEl calor máximo que se puede transferir en procesos de ebullición nucleada disminuye constantemente a medida que la presión se acerca a la presión crítica del fluido, cuando dicho calor se reduce a nada.\n\nAmbas (a) y (b) son verdaderas.\n\nAmbas (a) y (b) son falsas."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C21.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C21.html#solución",
-    "title": "IIQ2013 - Clase 21",
-    "section": "Solución",
-    "text": "Solución\n\nEl número de Jakob viene dado por\n\n\\[ Ja = \\frac{c_p \\Delta T}{\\lambda_{lv}}\\]\nSi el número de Jakob es pequeño, el calor sensible es muy pequeño en comparación al calor latente. Por lo tanto el calor absorbido durante el cambio de fase es mas grande que el calor absorbido por la fase líquida. Sin embargo, esto produce un menor flujo de calor. Por lo tanto, a) es incorrecta.\n\nCerca del punto crítico, el flux crítico de calor se acerca a cero, por lo tanto b) es correcta."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C21.html#pregunta-3",
-    "href": "e_clase/jupyter/IIQ2013_C21.html#pregunta-3",
-    "title": "IIQ2013 - Clase 21",
-    "section": "Pregunta 3",
-    "text": "Pregunta 3\nConsidere un tubo vertical de \\(50~\\text{mm}\\) de diámetro interior por el cual fluye agua a \\(4~\\text{bar}\\). Si la ebullición comienza en una posición en que la pared del tubo se encuentra \\(15~\\text{°C}\\) por sobre la temperatura de saturación, la tasa de transferencia de calor por unidad de largo de la tubería (\\(q’\\)) es aproximadamente la siguiente\n\n\\(q’\\) \\(&gt;\\) \\(1000\\) \\(\\text{kW/m}\\)\n\n\\(500\\) \\(&lt;\\) \\(q’\\) \\(\\leq\\) \\(1000\\) \\(\\text{kW/m}\\)\n\n\\(100\\) \\(&lt;\\) \\(q’\\) \\(\\leq\\) \\(500\\) \\(\\text{kW/m}\\)\n\n\\(q’\\) \\(\\leq\\) \\(100\\) \\(\\text{kW/m}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C21.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C21.html#solución-1",
-    "title": "IIQ2013 - Clase 21",
-    "section": "Solución",
-    "text": "Solución\nPrimero calculamos el coeficiente de convección para ebullición nucleada en una superficie vertical. En primer lugar iteramos el primer tramo de la ecuación:\n\n%%render\ndT = 15 # C\np = 4 # bar\nh = 537 * dT**(1/7) * p **0.4\nq = h*dT\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nSin embargo, esto muestra que estamos fuera del rango de validez del coeficiente de convección para flujo bajo, ya que \\(q = 20,6 kW m^{-2} &gt; 3 kW m^{-2}\\). Repetimos el cálculo con la otra ecuación.\n\n%%render\ndT = 15 # C\np = 4 # bar\nh = 7.95 * dT**(3) * p **0.4\nq = h*dT\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nCon lo que concluimos que \\(q = 700 kW m^{-2}\\), por ende la alternativa b) es la correcta."
-  },
-  {
     "objectID": "e_clase/jupyter/IIQ2013_C2.html",
     "href": "e_clase/jupyter/IIQ2013_C2.html",
-    "title": "IIQ2013 - Clase 2",
+    "title": "IIQ2013 - Clase 3",
     "section": "",
     "text": "En primer lugar se deben cargar las librerias que vamos a utilizar\nimport numpy as np"
   },
   {
     "objectID": "e_clase/jupyter/IIQ2013_C2.html#pregunta-1",
     "href": "e_clase/jupyter/IIQ2013_C2.html#pregunta-1",
-    "title": "IIQ2013 - Clase 2",
+    "title": "IIQ2013 - Clase 3",
     "section": "Pregunta 1",
-    "text": "Pregunta 1\n¿Cuál es el régimen de flujo en una tubería de 10 in de diámetro nominal (D= 254,5 mm) cuando a travús de ella se hacen circular Q= 0.1 m3/s de agua?\n\nLaminar\nTurbulento\nTransición de laminar a turbulento\nSe necesita mas información"
+    "text": "Pregunta 1\nLa pérdida de carga (\\(\\Delta p/L\\)) al transportar \\(Q\\) = 100 L/s de agua por una tubería horizontal de acero comercial de 10 in de diámetro nominal (D= 254,5 mm) es la siguiente:\n\n\\(\\Delta p/L &gt;\\) 0.13 atm/100 m\n0.12 \\(&lt; \\Delta p/L \\leq\\) 0.13 atm/100 m\n0.11 \\(&lt; \\Delta p/L \\leq\\) 0.12 atm/100 m\n\\(\\Delta p/L \\leq\\) 0.11 atm/100 m\n\nConsidere las propiedades físicas del agua a 20 °C [\\(\\rho\\)= 1000 kg/m\\(^3\\), \\(\\mu\\)= 0.001 Pa s]."
   },
   {
     "objectID": "e_clase/jupyter/IIQ2013_C2.html#solución",
     "href": "e_clase/jupyter/IIQ2013_C2.html#solución",
-    "title": "IIQ2013 - Clase 2",
+    "title": "IIQ2013 - Clase 3",
     "section": "Solución",
-    "text": "Solución\n\n# 1\nd = 254.5e-3\nQ = 0.1 # m^3/s\nV = Q/(np.pi*d**2/4) # Calculamos la velocidad \nrho = 1000\nmu = 0.001\nRe = rho*V*d/mu\nprint(\"El número de Reynlosd es igual a Re = %.3e\" % Re)\n\nEl número de Reynlosd es igual a Re = 5.003e+05\n\n\nPor lo tanto, el regimen de flujo es turbulento y la alternativa correcta es la b."
+    "text": "Solución\nComenzamos recordando el ejercicio de la clase anterior …\n\n# 1\nd = 254.5e-3\nQ = 0.1 # m^3/s\nV = Q/(np.pi*d**2/4) # Calculamos la velocidad \nrho = 1000\nmu = 0.001\nRe = rho*V*d/mu\neps = 0.046*1e-3\ndef f_Nevers(eps, D, Re):\n    return 0.001375 * (1 + (2e4 * eps/D + 1e6/Re)**(1/3))\n\nf = f_Nevers(eps, d, Re)\n\nL = 100 # m\nphi = 4 * f * (L/d) * (V**2/2)\nprint(f\"La perdida de carga por unidad de largo es {1000 * phi/L} Pa/m\")\n\n\nLa perdida de carga por unidad de largo es 115.96605830597088 Pa/m\n\n\nRealizando el cambio de unidades\n\nprint(f\"La perdida de carga por unidad de largo es {100000 * phi/L*9.86923e-6} atm/100 m\")\n\nLa perdida de carga por unidad de largo es 0.11444957016150369 atm/100 m\n\n\nPor lo tanto la alternativa correcta es la c."
   },
   {
     "objectID": "e_clase/jupyter/IIQ2013_C2.html#pregunta-2",
     "href": "e_clase/jupyter/IIQ2013_C2.html#pregunta-2",
-    "title": "IIQ2013 - Clase 2",
+    "title": "IIQ2013 - Clase 3",
     "section": "Pregunta 2",
-    "text": "Pregunta 2\nConsiderando que la tubería es de acero comercial, el factor de fricción de Fanning (\\(f_F\\)) en el caso bajo análisis es aproximadamente el siguiente:\n\n\\(f_F &gt;\\) 0.010\n0.005 \\(&lt; f_F &lt;\\) 0.010\n0.002 \\(&lt; f_F &lt;\\) 0.005\n\\(f_F \\leq\\) 0.010\n\nPara los cómputos considere usar el diagrama de Moody o una correlación adecuada."
+    "text": "Pregunta 2\nLa pérdida de carga en un tramo de 100 metros de la tubería de (1) que inclute una válvula de compuerta abierta en un 75%, estimada usando el valor tabulado de coeficiente de pérdida de energía para la válvula, es la siguiente:\n\n\\(\\Delta p &gt;\\) 0.13 atm\n0.12 \\(&lt; \\Delta p \\leq\\) 0.13 atm\n0.11 \\(&lt; \\Delta p \\leq\\) 0.12 atm\n\\(\\Delta p \\leq\\) 0.11 atm"
   },
   {
     "objectID": "e_clase/jupyter/IIQ2013_C2.html#solución-1",
     "href": "e_clase/jupyter/IIQ2013_C2.html#solución-1",
-    "title": "IIQ2013 - Clase 2",
+    "title": "IIQ2013 - Clase 3",
     "section": "Solución",
-    "text": "Solución\nGeneramos funciones para el calculo utilizando la correlacion de Nevers y Schacham\n\n\ndef f_Nevers(eps, D, Re):\n    return 0.001375 * (1 + (2e4 * eps/D + 1e6/Re)**(1/3))\n\ndef f_Schacham(eps, D, Re):\n    rhs = -1.737 * np.log(0.269 * eps/D - 2.185/Re * \\\n                         np.log(0.269 * eps/D + 14.5/Re))\n    return (1/rhs)**2\n\neps = 0.046*1e-3\nprint(f\"El factor de fricción con la ecuación de Nevers es: {f_Nevers(eps, d, Re)}\")\nprint(f\"El factor de fricción con la ecuación de Schacham es: {f_Schacham(eps, d, Re)}\")\n\n\n\nEl factor de fricción con la ecuación de Nevers es: 0.003818735654783344\nEl factor de fricción con la ecuación de Schacham es: 0.0038187535955500397\n\n\nPor lo tanto la alternativa correcta es la c."
+    "text": "Solución\nNecesitamos sumar el coeficiente de fricción con el coeficiente de fricción por singularidad. Para una válvula de compuerta abierta en un 75% utilizamos un valor de K = 1\n\nK = 1\nf = f_Nevers(eps, d, Re)\nL = 100 # m\nphi = (4 * f * (L/d) + K) * (V**2/2)\nprint(f\"La perdida de carga {1000 * phi*9.86923e-6} atm\")\n\n\nLa perdida de carga 0.1335183263148772 atm\n\n\nPor lo tanto la alternativa correcta es la a."
   },
   {
     "objectID": "e_clase/jupyter/IIQ2013_C2.html#pregunta-3",
     "href": "e_clase/jupyter/IIQ2013_C2.html#pregunta-3",
-    "title": "IIQ2013 - Clase 2",
+    "title": "IIQ2013 - Clase 3",
     "section": "Pregunta 3",
-    "text": "Pregunta 3\nEl valor de las pérdidas por fricción (\\(\\Phi\\)) en un tramo horizontal de L= 100 m de la tubería bajo análisis es aproximadamente el siguiente:\n\n\\(\\Phi &gt;\\) 50 (m/s)\\(^2\\)\n25 \\(&lt; \\Phi \\leq\\) 50 (m/s)\\(^2\\)\n14 \\(&lt; \\Phi \\leq\\) 25 (m/s)\\(^2\\)\n\\(\\Phi \\leq\\) 14 (m/s)\\(^2\\)"
+    "text": "Pregunta 3\nEl valor de la pérdida de carga (2), pero evaluado considerando que el largo equivalente (\\(L_e\\)/D) de una válvula de compuerta abierta en un 75% es 40, es el siguiente:\n\n\\(\\Delta p &gt;\\) 0.13 atm\n0.12 \\(&lt; \\Delta p \\leq\\) 0.13 atm\n0.11 \\(&lt; \\Delta p \\leq\\) 0.12 atm\n\\(\\Delta p \\leq\\) 0.11 atm"
   },
   {
     "objectID": "e_clase/jupyter/IIQ2013_C2.html#solución-2",
     "href": "e_clase/jupyter/IIQ2013_C2.html#solución-2",
-    "title": "IIQ2013 - Clase 2",
+    "title": "IIQ2013 - Clase 3",
     "section": "Solución",
-    "text": "Solución\nSiguiendo con el factor calculado con Nevers\n\nf = f_Nevers(eps, d, Re)\nL = 100 # m\nphi = 4 * f * (L/d) * (V**2/2)\nprint(f\"El valor de la caída de presión por fricción es: {phi} (m/s)^2\")\n\nEl valor de la caída de presión por fricción es: 11.596605830597086 (m/s)^2\n\n\nPor lo tanto la alternativa correcta es la d."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C18.html",
-    "href": "e_clase/jupyter/IIQ2013_C18.html",
-    "title": "IIQ2013 - Clase 18",
-    "section": "",
-    "text": "Se usa un intercambiador de calor de tubos y carcasa (ICTC) tipo 1-2n para enfriar \\(F_h = 20~\\text{ton/h}\\) de agua (flujo por lado de carcasa) a \\(T_{h,i} = 81~\\text{°C}\\) con \\(F_c = 120~\\text{ton/h}\\) de agua de enfriamiento a \\(T_{c,i} = 17~\\text{°C}\\) (flujo por el lado de los tubos). El ICTC dispone de \\(N_t = 60\\) tubos de \\(1~\\text{in}\\) de diámetro nominal (\\(D_o = 2.54~\\text{cm}\\); \\(D_i = 2.21 ~\\text{cm}\\)) y \\(L = 2.44~\\text{m}\\) de largo (\\(A = 11.7~\\text{m}^2\\)) ordenados según un arreglo cuadrado de \\(P_T = 1.25~\\text{in}\\) de paso. La carcasa tiene \\(D_c =31.9~\\text{cm}\\) de diámetro, y está equipada con \\(N_B = 30\\) deflectores segmentales igualmente espaciados.\nimport handcalcs.render\nimport forallpeople\nimport numpy as np\nimport forallpeople as si\nsi.environment('default', top_level=True)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C18.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C18.html#pregunta-1",
-    "title": "IIQ2013 - Clase 18",
-    "section": "Pregunta 1",
-    "text": "Pregunta 1\nEl coeficiente de transferencia de calor por convección para el agua caliente que circula por el lado de la carcasa (\\(h_c\\)) es aproximadamente el siguiente:\n\n\\(h_c\\) \\(&lt;\\) 3750 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n3750 \\(\\leq\\) \\(h_c\\) \\(&lt;\\) 5000 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n5000 \\(\\leq\\) \\(h_c\\) \\(&lt;\\) 7500 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(h_c\\) \\(\\geq\\) 7500 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\nLas propiedades termofísicas para el agua por el lado de la carcasa evaluado a la temperatura promedio son: \\(\\mu_c = 0.489~\\text{cP}\\), \\(Pr_c = 3.15\\), \\(k_c = 0.65~\\text{W/m}\\cdot\\text{K}\\)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C18.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C18.html#solución",
-    "title": "IIQ2013 - Clase 18",
-    "section": "Solución",
-    "text": "Solución\n\n%%render\nL = 2.44 * m\nD_o = 0.0254 * m\nN_b = 30 # Número de deflectores\nD_c = 0.319*  m # Diámetro de la carcasa\nP_t = 1.25 * 0.0254* m\nB = L/(N_b+1) # espaciamiento entre deflectores\na_c = D_c * B *(P_t-D_o)/P_t\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render\nF_h = 20*1e3/3600 * kg / s\nmu = 4.89e-4 * Pa *s\nG_c = F_h/a_c\npi = np.pi\nD_e = (4*P_t**2 - pi*D_o**2)/(pi*D_o)\nRe_c = G_c * D_e / mu\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto el flujo por el lado de la carcasa es turbulento.\n\n%%render\nj_h = 0.36 * Re_c**0.55\nPr = 3.15\nNusselt_c = Pr**(1/3) * j_h\nk = 0.650 * W / m / K\nh_c = Nusselt_c*k/D_e\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto la alternativa correcta es \\(c)\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C18.html#pregunta-2",
-    "href": "e_clase/jupyter/IIQ2013_C18.html#pregunta-2",
-    "title": "IIQ2013 - Clase 18",
-    "section": "Pregunta 2:",
-    "text": "Pregunta 2:\nEl coeficiente de transferencia de calor por convección para el agua de enfriamiento que circula por el lado de los tubos (\\(h_t\\)) es aproximadamente el siguiente:\n\n\\(h_t\\) \\(&lt;\\) 7500 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n7500 \\(\\leq\\) \\(h_t\\) \\(&lt;\\) 9000 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n9000 \\(\\leq\\) \\(h_t\\) \\(&lt;\\) 12000 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(h_t\\) \\(\\geq\\) 12000 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\nLas propiedades termofísicas para el agua por el lado del tubo evaluado a la temperatura promedio son: \\(\\mu_t = 0.959~\\text{cP}\\), \\(Pr_t = 6.62\\), \\(k_t = 0.0.606~\\text{W/m}\\cdot\\text{K}\\)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C18.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C18.html#solución-1",
-    "title": "IIQ2013 - Clase 18",
-    "section": "Solución",
-    "text": "Solución\n\n%%render\nN = 60 # Número de tubos\nn = 2 # Número de pasadas\nD_i = 0.0221 * m\na_t = pi * D_i**2 / 4 * (N/n)\nF_c = 120*1e3/3600 * kg / s\nG_t = F_c/a_t\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nCon el flux másico por el lado de los tubos, podemos calcular el número de Reynolds en el lado de los tubos.\n\n%%render\nmu_t = 9.59e-4 * Pa * s\nRe_t = (G_t * D_i) / mu_t\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto el flujo es turbulento. Asumiendo paredes lisas, podemos utilizar la ecuación de Dittus Boelman.\n\n%%render \nn = 0.4 #(Para calentamiento)\nPr_t = 6.62\nNusselt_t = 0.023 * Re_t ** 0.8 * Pr_t ** 0.4\nk_t = 0.606 * W / m / K # (Conductividad térmica por el lado de los tubos)\nh_t = Nusselt_t * k_t / D_i\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto la alternativa correcta es c)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C18.html#pregunta-3",
-    "href": "e_clase/jupyter/IIQ2013_C18.html#pregunta-3",
-    "title": "IIQ2013 - Clase 18",
-    "section": "Pregunta 3",
-    "text": "Pregunta 3\nUsando el método \\(\\epsilon-\\text{NTU}\\), se puede estimar que, en este ICTC, el agua caliente se enfría hasta aproximadamente la siguiente temperatura:\n\n\\(T_{h,o}\\) \\(&lt;\\) 30 °C\n\n30 \\(\\leq\\) \\(T_{h,o}\\) \\(&lt;\\) 40 °C\n\n40 \\(\\leq\\) \\(T_{h,o}\\) \\(&lt;\\) 50 °C\n\n\\(T_{h,o}\\) \\(\\geq\\) 50 °C"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C18.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C18.html#solución-2",
-    "title": "IIQ2013 - Clase 18",
-    "section": "Solución",
-    "text": "Solución\nPrimero, calculamos las NTU basadas en el fluido con menor capacidad calórica. En este caso, es el fluido por la carcasa.\n\n%%render\nc_pc = 4184 * J / kg / K\nc_ph = 4181 * J / kg / K\nC_c = F_c*c_pc\nC_h = F_h*c_ph\n\nU =  (1/h_c + 1/h_t * D_o/D_i)**-1\nA = 11.7 * m**2\nNTU = (U*A)/(C_h)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nCalcularemos la efectividad del ICTC de manera analítica\n\nfrom math import sqrt, exp\n\n\n%%render\nC_r = C_h/C_c\nepsilon = 2 / (1 + C_r + sqrt(1+C_r**2) * (1+exp(-NTU*sqrt(1+C_r**2)))/(1-exp(-NTU*sqrt(1+C_r**2))))\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nCon la eficiencia, podemos calcular la temperatura de salida del fluido por la carcasa\n\n%%render\nT_hi = 81 * C\nT_ci = 17 * C\nT_ho = T_hi - (T_hi - T_ci)*epsilon\n\n&lt;IPython.core.display.Latex object&gt;"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C16.html",
-    "href": "e_clase/jupyter/IIQ2013_C16.html",
-    "title": "IIQ2013 - Clase 16",
-    "section": "",
-    "text": "Se usa un intercambiador de calor de tubos y carcasa (ICTC) tipo 1-2 para enfriar \\(20~\\text{ton/h}\\) de agua (flujo por el lado de la carcasa) de \\(81\\) a \\(33\\text{°C}\\) usando \\(120~\\text{ton/h}\\) de agua de enfriamiento a \\(17~\\text{°C}\\) (flujo por el lado de los tubos). El ICTC dispone de \\(Nt = 60\\) tubos de \\(1~\\text{in}\\) de diámetro nominal (\\(D_0 = 2.54~\\text{cm}\\); \\(D_i = 2.21~\\text{cm}\\)) y \\(L = 2.44~\\text{m}\\) de largo ordenados según un arreglo cuadrado de \\(1.25~\\text{in}\\) de paso dentro de una carcasa de \\(D_c = 31.9~\\text{cm}\\) de diámetro.\nPaquetes utilizados:\nimport numpy as np\nfrom handcalcs import render\nimport forallpeople as si\nfrom math import pi, log\nsi.environment('default', top_level=True)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C16.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C16.html#pregunta-1",
-    "title": "IIQ2013 - Clase 16",
-    "section": "Pregunta 1",
-    "text": "Pregunta 1\nEl área de transferencia de calor (\\(A\\)) del equipo es la siguiente:\n\n\\(A \\leq 10~\\text{m}^2\\)\n\n\\(10 &lt; A \\leq 11~\\text{m}^2\\)\n\n\\(11 &lt; A \\leq 12~\\text{m}^2\\)\n\n\\(A &gt; 12~\\text{m}^2\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C16.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C16.html#solución",
-    "title": "IIQ2013 - Clase 16",
-    "section": "Solución",
-    "text": "Solución\nPrimero anotamos todos los datos disponibles\n\n%%render params\nF_h = 20 * 1e3 / 3600 * kg / s\nT_hi = 81 * K\nT_ho = 33 * K\n\nF_c = 120 * 1e3 / 3600 * kg / s\nT_ci = 17 * K\n\nN_t = 60 \nd_o = 0.0254 * m\nd_i = 0.0221 * m\n\nL = 2.44 * m\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nEl área de intercambio de calor puede calcularse directamente a partir de la geometría del tubo y del número de tubos del arreglo\n\\[ A = N_t \\pi d_o L \\]\n\n%%render\nA = N_t * pi * d_o * L\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto, la alternativa correcta es c."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C16.html#pregunta-2",
-    "href": "e_clase/jupyter/IIQ2013_C16.html#pregunta-2",
-    "title": "IIQ2013 - Clase 16",
-    "section": "Pregunta 2",
-    "text": "Pregunta 2\nLa diferencia de temperatura relevante para el diseño del ICTC (\\(\\Delta T\\)) es la siguiente:\n\n\\(\\Delta T \\leq 29~\\text{°C}\\)\n\n\\(29 &lt;\\Delta T \\leq 30~\\text{°C}\\)\n\n\\(30 &lt; \\Delta T \\leq 31~\\text{°C}\\)\n\n\\(\\Delta T &gt; 31~\\text{°C}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C16.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C16.html#solución-1",
-    "title": "IIQ2013 - Clase 16",
-    "section": "Solución",
-    "text": "Solución\nAhora tenemos que calcular la diferencia de temperatura relevante para el diseño del intercambiador de calor de tubo y carcasa. Para ello, calculamos los factores \\(Z\\) y \\(F_h\\) con el propósito de estimar el factor de corrección \\(F_T\\).\n\n%%render\nZ = F_c/F_h\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render\nT_co = (T_hi - T_ho)/Z + T_ci\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render\neta_H = (T_co - T_ci) / (T_hi - T_ci)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nUtilizando la fórmula para el \\(F_T\\) de un ICTC 1-2,\n\ndef Ft_12(Z, eta):\n    num = np.sqrt(Z**2 + 1) * np.log( (1-eta) / (1-eta*Z))\n    den = (Z-1) * np.log ( (2-eta*(Z+1 - np.sqrt(Z**2+1)))\n                          / (2-eta*(Z+1 + np.sqrt(Z**2+1))))\n    F_t = num/den\n    return F_t\n\n\nF_t = Ft_12(Z, eta_H)\n\n\n%%render\nF_t = F_t\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nAhora calculamos \\(\\Delta T_{ml}\\)\n\n%%render\ndT_h = T_hi - T_co\ndT_c = T_ho - T_ci\ndT_lm = (dT_h-dT_c)/log(dT_h/dT_c)\n\n## Tal que la diferencia de temperaturas relevantes es:\ndT = F_t * dT_lm\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto, la alternativa correcta es la b."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C16.html#pregunta-3",
-    "href": "e_clase/jupyter/IIQ2013_C16.html#pregunta-3",
-    "title": "IIQ2013 - Clase 16",
-    "section": "Pregunta 3",
-    "text": "Pregunta 3\nSi la carcasa tiene \\(N_B = 30\\) deflectores segmentales igualmente espaciados, el coeficiente de transferencia de calor por convección para el agua caliente que circula por el lado de la carcasa (\\(h_c\\)) es el siguiente:\n\n\\(h_c &lt; 3750~\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(3750 \\leq h_c &lt; 5000~\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(5000 \\leq h_c &lt; 7500~\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(h_c \\geq 7500~\\text{W/m}^2\\cdot\\text{K}\\)\n\nConsidere los siguiente valores para las propiedades termofísicas del agua a \\(57~\\text{°C}\\): \\(\\rho = 984~\\text{kg/m}^3\\); \\(c_p = 4184~\\text{J/kg}\\cdot\\text{K}\\), \\(\\mu = 0.489\\times10^{−3}~\\text{Pa}\\cdot\\text{s}\\); \\(k = 0.650~\\text{W/m}\\cdot\\text{K}\\); y \\(Pr = 3.148\\)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C16.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C16.html#solución-2",
-    "title": "IIQ2013 - Clase 16",
-    "section": "Solución",
-    "text": "Solución\nParámetros geométricos y físicos,\n\n%%render params\nN_b = 30 # número de deflectores\nB = L/N_b # espaciamiento entre deflectores\nmu = 0.489e-3 * Pa * s\nc_p = 4184 * J / kg / K\nk = 0.65 * W / m / K\nPr = 3.148\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nCálculo del número de Reynolds\n\n%%render\nS_T = 1.25 * 0.0254 * m # Paso del arreglo\nD_e = (4*S_T**2- np.pi * d_o**2)/(np.pi * d_o) # Diámetro equivalente\n# Shell diameter\nD_c = 0.319 * m # Diámetro de la carcasa\na_c = D_c * B * (S_T-d_o)/S_T # Área libre de flujo\nG = F_h/a_c\n# Reynolds number calculation\nRe = G * D_e / mu\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nCálculos de transferencia de calor. Asumiremos que \\(\\mu_s/\\mu \\sim 1\\)\n\n%%render\nj_h = 0.36 * Re**0.55 \nNusselt = j_h * Pr**(1/3)\nh_c = Nusselt * k / D_e\n\n&lt;IPython.core.display.Latex object&gt;"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C16.html#pregunta-4",
-    "href": "e_clase/jupyter/IIQ2013_C16.html#pregunta-4",
-    "title": "IIQ2013 - Clase 16",
-    "section": "Pregunta 4",
-    "text": "Pregunta 4\nSi el coeficiente de transferencia de calor por convección para el agua fría que circula por el lado de los tubos es \\(h_t = 10000~\\text{W/m}^2\\cdot\\text{K}\\), la resistencia de ensuciamiento de diseño (\\(R_d\\)) es la siguiente:\n\n\\(R_d &lt; 10^{−5}~\\text{m}^2\\cdot{K/W}\\)\n\n\\(10^{−5} \\leq R_d &lt; 4\\times10^{−5}~\\text{m}^2\\cdot{K/W}\\)\n\n\\(4\\times10^{−5} \\leq R_d &lt; 10^{−4}~\\text{m}^2\\cdot{K/W}\\)\n\n\\(R_d \\geq 10^{−4}~\\text{m}^2\\cdot{K/W}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C16.html#solución-3",
-    "href": "e_clase/jupyter/IIQ2013_C16.html#solución-3",
-    "title": "IIQ2013 - Clase 16",
-    "section": "Solución",
-    "text": "Solución\nDesde la ecuación de diseño.\n\\[ q = UA F_t \\Delta T_{ml}\\]\n\n%%render sci_not\nh_t = 10000 * W / m**2 / K\nq = F_h * c_p * (T_hi - T_ho)\nU_T = q/(A*dT)\nU = (d_o/(d_i*h_t) + 1/h_c)**(-1)\nR_f = 1/U_T - (d_o/(d_i*h_t) + 1/h_c)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\\(R_f = 1.0023 \\times 10 ^{-5} m^2  K W^{-1}\\)\nPor lo tanto la alternativa correcta es \\(b)\\)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C14.html",
-    "href": "e_clase/jupyter/IIQ2013_C14.html",
-    "title": "IIQ2013 - Clase 14",
-    "section": "",
-    "text": "Interesa evaluar el tiempo que demora calentar \\(V = 10~\\text{m}^3\\) de glicerina de \\(T_i = 25~\\text{°C}\\) a \\(T_f = 35~\\text{°C}\\) en un estanque agitado de configuración estándar (\\(D_a/D_t = 1/3\\), \\(H/D_t = 1\\)) equipado con un impulsor de ancla que opera a \\(N = 32~\\text{RPM}\\), y una camisa con deflectores (ancho, \\(w = 10~\\text{cm}\\)) por la que circulan \\(F = 12000~\\text{kg/h}\\) de vapor de agua a \\(T_{hi} = 100~\\text{°C}\\).\nLibrerias a utilizar\nimport handcalcs.render\nimport forallpeople\nimport numpy as np\nimport forallpeople as si\nsi.environment('default', top_level=True)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C14.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C14.html#pregunta-1",
-    "title": "IIQ2013 - Clase 14",
-    "section": "Pregunta 1:",
-    "text": "Pregunta 1:\nEstime el coeficiente de transferencia de calor para glicerina en el estanque (considere los siguientes valores de las propiedades físicas de la glicerina a \\(30~\\text{°C}\\): \\(r = 1260~\\text{kg/m}^3\\); \\(\\mu = 0.656~\\text{Pa}\\cdot\\text{s}\\); \\(k = 0.286~\\text{W/m}\\cdot\\text{K}\\); y \\(Pr = 5590\\))\n\n\\(h_o\\) \\(&gt;\\) 60 \\(\\text{W/m}\\cdot\\text{K}\\)\n\n50 \\(\\leq\\) \\(h_o\\) \\(&lt;\\) 60 \\(\\text{W/m}\\cdot\\text{K}\\)\n\n40 \\(\\leq\\) \\(h_o\\) \\(&lt;\\) 50 \\(\\text{W/m}\\cdot\\text{K}\\)\n\n\\(h_o\\) \\(&lt;\\) 40 \\(\\text{W/m}\\cdot\\text{K}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C14.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C14.html#solución",
-    "title": "IIQ2013 - Clase 14",
-    "section": "Solución",
-    "text": "Solución\n\n%%render params\nrho = 1260 * kg/m**3\nN = 32/60 * 1/s\nD_a = 0.778 * m\nmu = 0.656 * Pa * s\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render long\nRe = rho*N*D_a**2/mu\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nAhora calculamos el diámetro del estanque y del agitador\n\n%%render long\nV_t = 10 * m **3\npi = np.pi\nD_t = (4*V_t/pi)** (1/3)\nD_a = D_t/3\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nAhora calculamos el coeficiente de convección por el lado del fluido agitado\n\n%%render long\nPr = 5590\nNusselt_t = 0.36 * (Re)**0.67 * Pr**(0.33)\nk = 0.286 * W / m / K\nh_o = Nusselt_t*k/D_t\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto, la alternativa correcta es la b."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C14.html#pregunta-2",
-    "href": "e_clase/jupyter/IIQ2013_C14.html#pregunta-2",
-    "title": "IIQ2013 - Clase 14",
-    "section": "Pregunta 2",
-    "text": "Pregunta 2\nEn base al diámetro equivalente para el fluido que circula por la chaqueta, estime el coeficiente de transferencia de calor por convección para el vapor de agua de calefacción. Asuma que el vapor de agua no cambia de fase y se mantiene a temperatura constante. Considere \\(\\rho = 0.59~\\text{kg/m}^3\\), \\(\\mu = 0.01~\\text{cP}\\), \\(k = 0.025~\\text{W/m}\\cdot\\text{K}\\), \\(Pr = 1\\).\n\n\\(h_c\\) \\(\\geq\\) 150 \\(\\text{W/m}\\cdot\\text{K}\\)\n\n100 \\(\\leq\\) \\(h_c\\) \\(&lt;\\) 150 \\(\\text{W/m}\\cdot\\text{K}\\)\n\n50 \\(\\leq\\) \\(h_c\\) \\(&lt;\\) 100 \\(\\text{W/m}\\cdot\\text{K}\\)\nd ) \\(h_c\\) \\(&lt;\\) 50 \\(\\text{W/m}\\cdot\\text{K}\\)\n\nHint: Recuerde la correlación de Sieder-Tate y el diámetro equivalente térmico."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C14.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C14.html#solución-1",
-    "title": "IIQ2013 - Clase 14",
-    "section": "Solución",
-    "text": "Solución\n\n%%render long\nD_ci = D_t\nD_ce = D_t + 0.1*m\nD_et = (D_ce**2 - D_ci**2)/D_ci\nZ = D_t\na_c = Z*(D_ce-D_ci)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nAhora calculamos la velocidad del fluido en la chaqueta,\n\nsi.environment('default', top_level=True)\n\n\n%%render long 5\nrho_v = 0.59 * kg / m**3 # Densidad del fluido de servicio\nmu_v = 0.01*1e-3*Pa*s\nk_v = 0.025 *  W / m / K\nF = 12000/3600 * kg / s\nV = F/(rho_v*a_c)\nRe = rho_v * V * D_et / mu_v\nNusselt_chaqueta = 0.027 * Re ** 0.8\nh_c = Nusselt_chaqueta * k_v / (D_et)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto, la respuesta correcta es la c."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C14.html#pregunta-3",
-    "href": "e_clase/jupyter/IIQ2013_C14.html#pregunta-3",
-    "title": "IIQ2013 - Clase 14",
-    "section": "Pregunta 3",
-    "text": "Pregunta 3\nEstime en forma aproximada el tiempo de calentamiento. (Puede considerar que para glicerina a \\(30~\\text{°C}\\), \\(c_P = 2437~\\text{J/kg}\\cdot\\text{K}\\)).\n\n\\(t_c\\) \\(\\geq\\) 200 min\n\n150 \\(\\leq\\) \\(t_c\\) \\(&lt;\\) 200 min\n\n100 \\(\\leq\\) \\(t_c\\) \\(&lt;\\) 150 min\nd ) \\(t_c\\) \\(&lt;\\) 100 min"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C14.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C14.html#solución-2",
-    "title": "IIQ2013 - Clase 14",
-    "section": "Solución",
-    "text": "Solución\n\n%%render long\nM = V_t * rho\nc_p = 2437 * J/kg/K\nU = (1/h_o + 1/h_c)**-1 # Coeficiente global de transferencia de calor\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nAsumiendo que la chaqueta comienza en el diámetro externo del tanque, el área de transferencia de calor viene dada por\n\n%%render long\nA = pi * D_t * Z\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa diferencia de temperatura media logarítmica asumiendo que el vapor condensa por el lado de la chaqueta es\n\n%%render short\nT_i = 25 * Celsius\nT_f = 35 * Celsius\nT_s = 100 * Celsius\nDeltaT_ml = ((T_s-T_i) - (T_s-T_f))/(np.log((T_s-T_i)/(T_s-T_f)))\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nFinalmente, el tiempo de calentamiento es\n\n%%render long\nt_s = M*c_p / (U*A) * np.log((T_s-T_i)/(T_s-T_f))\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLo que es equivalente a 130.6 minutos. Por lo tanto, la respuesta correcta es la c."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C12.html",
-    "href": "e_clase/jupyter/IIQ2013_C12.html",
-    "title": "IIQ2013 - Clase 12",
-    "section": "",
-    "text": "Sea un compresor reciprocante compuesto de cuatro pistones conectados a un eje de vielas que opera a \\(125~\\text{RPM}\\). En cada pistón (\\(D = 20~\\text{cm}\\), \\(L = 13~\\text{cm}\\)) se comprime aire STP (at Standard Temperature and Pressure conditions) isoentrópicamente usando una razón de compresión \\(rc = 6\\). Responda las siguientes preguntas asumiendo que se puede despreciar el volumen de holgura de cada pistón (pistones ideales):\nLibrerias a utilizar:\nimport handcalcs.render\nfrom handcalcs import handcalc\nfrom numpy import pi"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C12.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C12.html#pregunta-1",
-    "title": "IIQ2013 - Clase 12",
-    "section": "Pregunta 1",
-    "text": "Pregunta 1\nLos valores del peso molecular (\\(MW\\)) y factor \\(\\gamma\\) para el aire son los siguientes, respectivamente:\n\n\\(MW\\approx\\) 28 g/mol y \\(\\gamma\\approx\\) 1.40\n\n\\(MW\\approx\\) 29 g/mol y \\(\\gamma\\approx\\) 1.32\n\n\\(MW\\approx\\) 29 g/mol y \\(\\gamma\\approx\\) 1.40\n\n\\(MW\\approx\\) 32 g/mol y \\(\\gamma\\approx\\) 1.40"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C12.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C12.html#solución",
-    "title": "IIQ2013 - Clase 12",
-    "section": "Solución",
-    "text": "Solución\nEl aire esta compuesto por: \\(N_2\\) en un \\(78\\%\\) y \\(O_2\\) en un \\(22\\%\\). Con \\(MW_{N_2} = 28~\\text{g/mol}\\) y \\(MW_{O_2} = 32~\\text{g/mol}\\)\n\n%%render long\nMW_N2 = 28 #g/mol\nMW_O2 = 32 #g/mol\nMW = 0.78*MW_N2 + 0.22*MW_O2\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLuego \\(MW\\approx29~\\text{g/mol}\\) y \\(\\gamma=1.4\\). Por lo tanto la alternativa correcta es la c."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C12.html#pregunta-2",
-    "href": "e_clase/jupyter/IIQ2013_C12.html#pregunta-2",
-    "title": "IIQ2013 - Clase 12",
-    "section": "Pregunta 2",
-    "text": "Pregunta 2\nEl flujo masico de aire comprimido (\\(m\\)) descargado por el compresor es el siguiente:\n\n\\(m\\) &gt; 2 kg/min de aire\n\n1.5 &lt; \\(m\\) ≤ 2 kg/min de aire\n\n1.0 &lt; \\(m\\) ≤ 1.5 kg/min de aire\n\n\\(m\\) ≤ 1 kg/min de aire\n\nHint: Puede estimar dicho flujo masico considerando el volumen especifico del aire STP y el volumen total barrido por los cuatro pistones operando a 125 rpm."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C12.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C12.html#solución-1",
-    "title": "IIQ2013 - Clase 12",
-    "section": "Solución",
-    "text": "Solución\nYa que en el enunciado nos dicen que el aire se comprime a STD, la presión es \\(100~\\text{kPa}\\) y la temperatura es \\(273.15~\\text{K}\\). Ya que no hay holgura \\(c=0\\):\n\\[\nV_{total} = 4V_{c+l} = 4\\frac{\\pi(D)^2}{4}L\n\\]\n\n%%render long\nD = 0.2 #m\nL = 0.13 #L\nV = 4*((pi*D**2)/(4))*L #m$^3$\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPara obtener la masa por ciclo, podemos separar el volumen másico \\(v~\\text{m}^3\\text{/kg}\\) desde la ecuación de los gases ideales:\n\\[\nPv = \\frac{RT}{MW} \\Rightarrow PV = \\frac{mRT}{MW}\n\\]\n\n%%render long\nR = 8.314 #J/mol$\\cdot$K\nT = 273.15 #K\nP = 100000 #Pa\nm_cic = (P*V*MW/1000)/(R*T) #kg/ciclo\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nComo nos indica el Hint, podemos calcular el flujo másico a partir de las revoluciones por minuto.\n\n%%render long\nRPM = 125 #rpm\nf_m = m_cic*RPM #kg/min\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto, la alternativa correcta es la a."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C12.html#pregunta-3",
-    "href": "e_clase/jupyter/IIQ2013_C12.html#pregunta-3",
-    "title": "IIQ2013 - Clase 12",
-    "section": "Pregunta 3",
-    "text": "Pregunta 3\nLa temperatura de expulsión del aire comprimido (\\(T_2\\)) del compresor es la siguiente:\n\n\\(T_2\\) &gt; 300 °C\n\n200 &lt; \\(T_2\\) ≤ 300 °C\n\n100 &lt; \\(T_2\\) ≤ 200 °C\n\n\\(T_2\\) ≤ 100 °C"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C12.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C12.html#solución-2",
-    "title": "IIQ2013 - Clase 12",
-    "section": "Solución",
-    "text": "Solución\nSabemos que\n\\[\np_1v_1^\\gamma = p_2v_2^\\gamma \\Rightarrow \\left(\\frac{p_2}{p_1}\\right)^{\\frac{1}{\\gamma}} = \\frac{v_1}{v_2}\n\\]\nY además, para gases ideales:\n\\[\npv = RT\n\\]\nLuego reemplazando \\(v\\).\n\\[\n\\left(\\frac{p_2}{p_1}\\right)^{\\frac{1}{\\gamma}} = \\frac{RT_1P_2}{RT_2P_1} \\Rightarrow \\frac{T_2}{T_1} = \\left(\\frac{p_2}{p_1}\\right)^{\\frac{\\gamma-1}{\\gamma}}\n\\]\nSabemos que \\(p_2/p_1\\) es el factor de compresión e igual a \\(6\\). Despejamos \\(T_2\\).\n\n%%render long\nrc = 6\ngamma = 1.4\nT_2 = T*(rc)**((gamma-1)/gamma) #K\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLuego \\(T_2 = 455.75~\\text{K} = 182.6\\text{°C}\\). Entonces, la alternativa correcta es la c."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C12.html#pregunta-4",
-    "href": "e_clase/jupyter/IIQ2013_C12.html#pregunta-4",
-    "title": "IIQ2013 - Clase 12",
-    "section": "Pregunta 4",
-    "text": "Pregunta 4\nLa potencia (\\(W\\)) que se debe entregar al aire para comprimirlo hasta \\(p_2 = 6~\\text{atm}\\) es la siguiente:\n\n\\(W\\) &gt; 50 kW\n\n5 &lt; \\(W\\) ≤ 50 kW\n\n0.5 &lt; \\(W\\) ≤ 5.0 kW\n\n\\(W\\) ≤ 0.5 kW"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C12.html#solución-3",
-    "href": "e_clase/jupyter/IIQ2013_C12.html#solución-3",
-    "title": "IIQ2013 - Clase 12",
-    "section": "Solución",
-    "text": "Solución\nAsumiendo que el compresor opera de manera de manera idea, obtenemos la potencia a partir de la relación con el trabajo.\n\\[\n\\dot{W}_{rev} = \\frac{\\gamma}{\\gamma-1}p_1\\dot{V}_1\\left(\\left(\\frac{p_2}{p_1}\\right)^{\\frac{\\gamma-1}{\\gamma}}-1\\right)\n\\]\nAsumiendo que \\(\\rho\\approx1~\\text{kg/m}^3\\):\n\n%%render long\nV_1dot = f_m/60 #m$^3$/s\nW_dot = gamma/(gamma-1)*P*V_1dot*(rc**((gamma-1)/gamma)-1) #W\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nYa que \\(W = 10.13~\\text{kW}\\), la alternativa correcta es la b."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C10.html",
-    "href": "e_clase/jupyter/IIQ2013_C10.html",
-    "title": "IIQ2013 - Clase 10",
-    "section": "",
-    "text": "Se bombea hidrógeno \\(\\left(\\mathrm{H}_2\\right)\\) desde un depósito a \\(\\mathrm{p}_1=2.6 \\mathrm{~MPa}\\), a través una cañería horizontal de acero de \\(D=\\) \\(50 \\mathrm{~mm}\\) de diámetro y \\(L=500 \\mathrm{~m}\\) de largo, y cuya rugosidad relativa es \\(\\varepsilon / \\mathrm{D}=0.001\\). Interesa conocer el flujo másico del \\(\\mathrm{H}_2\\) si las condiciones del flujo son isotérmicas (la temperatura del gas es \\(T=293 \\mathrm{~K}\\) ) y la presión de descarga es \\(\\mathrm{p}_2=2 \\mathrm{~MPa}\\) a la salida de la cañería.\nEn primer lugar se deben cargar las librerias que vamos a utilizar\nimport numpy as np\nfrom numpy import sqrt, pi\nimport handcalcs.render\nfrom handcalcs import handcalc\nimport math"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C10.html#problema-1",
-    "href": "e_clase/jupyter/IIQ2013_C10.html#problema-1",
-    "title": "IIQ2013 - Clase 10",
-    "section": "Problema 1",
-    "text": "Problema 1\nLa densidad del gas \\(\\left(\\rho_1=1 / v_1\\right)\\) en el depósito es la siguiente:\n\n\\(\\rho_1&gt;10 \\mathrm{~kg} / \\mathrm{m}^3\\)\n\\(1&lt;\\rho_1 \\leq 10 \\mathrm{~kg} / \\mathrm{m}^3\\)\n\\(0.1&lt;\\rho_1 \\leq 1.0 \\mathrm{~kg} / \\mathrm{m}^3\\)\n\\(\\rho_1 \\leq 0.1 \\mathrm{~kg} / \\mathrm{m}^3\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C10.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C10.html#solución",
-    "title": "IIQ2013 - Clase 10",
-    "section": "Solución",
-    "text": "Solución\nOcupando la ecuación del gas ideal:\n\\[\nP v=\\frac{R T}{M_W} \\Rightarrow \\frac{1}{v}=\\rho=\\frac{p \\cdot M_W}{R T}\n\\]\n\n%%render long\np_1 = 2.6E6 # Pa\nM_w = 0.002 # kg/mol\nR = 8.314 # J/molK\nT = 293 #K\nrho_1 = p_1*M_w/(R*T) # kg/m$^3$\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es la b."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C10.html#problema-2",
-    "href": "e_clase/jupyter/IIQ2013_C10.html#problema-2",
-    "title": "IIQ2013 - Clase 10",
-    "section": "Problema 2",
-    "text": "Problema 2\nUn valor aproximado para el valor del factor de fricción de Fanning \\((f)\\) en la tubería es el siguiente:\n\n\\(f&gt;0.0065\\)\n\\(0.0055&lt;f \\leq 0.0065\\)\n\\(0.0045&lt;f \\leq 0.0055\\)\n\\(f \\leq 0.0045\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C10.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C10.html#solución-1",
-    "title": "IIQ2013 - Clase 10",
-    "section": "Solución",
-    "text": "Solución\nSe utilizará la ecuación de Nevers asumiendo que el Número de Reynolds tiene a \\(\\infty\\).\n\n%%render long\neps_d = 0.001\nRe = math.inf\nf = 0.001375 * (1 + (2e4 * eps_d + 1e6/Re)**(1/3))\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es la c."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C10.html#problema-3",
-    "href": "e_clase/jupyter/IIQ2013_C10.html#problema-3",
-    "title": "IIQ2013 - Clase 10",
-    "section": "Problema 3",
-    "text": "Problema 3\nUn valor aproximado para el flujo másico del gas por unidad de área transversal de la tubería (G/A) es el siguiente:\n\n\\(G / A&gt;50 \\mathrm{~kg} \\mathrm{~s}^{-1} \\mathrm{~m}^{-2}\\)\n\\(5&lt;\\mathrm{G} / \\mathrm{A} \\leq 50 \\mathrm{~kg} \\mathrm{~s}^{-1} \\mathrm{~m}^{-2}\\)\n\\(0.5&lt;\\mathrm{G} / \\mathrm{A} \\leq 5 \\mathrm{~kg} \\mathrm{~s}^{-1} \\mathrm{~m}^{-2}\\)\n\\(G / A \\leq 0.5 \\mathrm{~kg} \\mathrm{~s}^{-1} \\mathrm{~m}^{-2}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C10.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C10.html#solución-2",
-    "title": "IIQ2013 - Clase 10",
-    "section": "Solución",
-    "text": "Solución\nPara flujo isotérmico\n\\[\n\\int_{P_1}^{P_2} \\frac{d p}{v} \\hspace{2cm} \\rightarrow \\hspace{2cm} \\frac{p_1}{2v_1}\\left[\\left(\\frac{p_2}{p_1}\\right)^2-1\\right]\n\\]\n\\[\n\\ln\\left(\\frac{v_2}{v_1}\\right) \\hspace{2cm} \\rightarrow \\hspace{2cm} -\\ln\\left(\\frac{p_2}{p_1}\\right)\n\\]\nDe tal manera que el balance de energía queda representado de la siguiente manera.\n\\[\n\\frac{p_1}{2v_1}\\left[\\left(\\frac{p_2}{p_1}\\right)^2-1\\right] + \\left(\\frac{G}{A}\\right)^2\\left(2f\\frac{L}{D_{eq}}-\\ln\\left(\\frac{p_2}{p_1}\\right)\\right) = 0\n\\]\nPara simplificar cálculos\n\\[\nk_1 = \\frac{p_1}{2v_1}\\left[\\left(\\frac{p_2}{p_1}\\right)^2-1\\right]\n\\]\nY también\n\\[\nk_2 = \\left(2f\\frac{L}{D_{eq}}-\\ln\\left(\\frac{p_2}{p_1}\\right)\\right)\n\\]\n\n%%render long\np_2 = 2e6 #Pa\nL = 500 #m\nD = 0.05 #m\nk_1 = (p_1/(2/rho_1))*((p_2/p_1)**2-1)\nk_2 = ((2*f*L/D)-np.log(p_2/p_1))\nGA = sqrt(-k_1/k_2) #kg$\\cdot$s$^{-1}$$\\cdot$m$^{-2}$\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es la a."
+    "text": "Solución\nOcupando la aproximación del largo equivalente\n\nK = 1\nf = f_Nevers(eps, d, Re)\nL = 100 # m\nphi = (4 * f * (L/d + 40) ) * (V**2/2)\nprint(f\"La perdida de carga {1000 * phi*9.86923e-6} atm\")\n\nLa perdida de carga 0.12610053640394478 atm\n\n\nPor lo tanto la alternativa correcta es la b."
   },
   {
     "objectID": "e_clase/IIQ2013_C3.html",
@@ -1096,597 +641,100 @@
   {
     "objectID": "e_clase/jupyter/IIQ2013_C1.html",
     "href": "e_clase/jupyter/IIQ2013_C1.html",
-    "title": "IIQ2013 - Clase 1",
+    "title": "IIQ2013 - Clase 2",
     "section": "",
-    "text": "En primer lugar se deben cargar las librerias que vamos a utilizar\nimport numpy as np\nimport CoolProp.CoolProp as CP # Coolprop as the free version of REFPROP"
+    "text": "En primer lugar se deben cargar las librerias que vamos a utilizar\nimport numpy as np"
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C1.html#ecuación-de-hagen-poiseuille",
-    "href": "e_clase/jupyter/IIQ2013_C1.html#ecuación-de-hagen-poiseuille",
-    "title": "IIQ2013 - Clase 1",
-    "section": "Ecuación de Hagen-Poiseuille",
-    "text": "Ecuación de Hagen-Poiseuille\nA continuación podemos generar una función que nos ayude a calcular \\(\\mu\\) usando la ecuación de Hagen-Poiseuille\n\ndef mu_hp(P_0, P_L, R, L, w, rho):\n    return np.pi * (P_0-P_L) * R**4 / (8 * L * (w/rho))\n\nSi necesitamos recuperar alguna propiedad física de bases de datos se puede utilizar CoolProp\n\n### Properties\n\np = 1e5\nfluid = 'NH3'\n# Densidad del amoniaco\nrho_l = CP.PropsSI('D', 'P' , p , 'Q',0,fluid)\n# Viscosidad del amoniaco\nmu_l = CP.PropsSI('V','P',p,'Q',0,fluid)   \n\n\nprint(\"rho_l %.2e\"%  rho_l)\nprint(\"mu_l = %.2e Pa*s\" % mu_l)\nprint(\"mu_l = %.2e cP\" % (1000 * mu_l))\n\nrho_l 6.82e+02\nmu_l = 2.56e-04 Pa*s\nmu_l = 2.56e-01 cP"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C1.html#ejemplo-1.1",
-    "href": "e_clase/jupyter/IIQ2013_C1.html#ejemplo-1.1",
-    "title": "IIQ2013 - Clase 1",
-    "section": "Ejemplo 1.1",
-    "text": "Ejemplo 1.1\nAmoniaco líquido fluye en un tubo circular cilíndrico de 0.2 cm de diámetro y 10 cm de largo a un caudal volumétrico de 1 mL/s. La densidad del amoniaco en su punto de saturación, -33.58 C, es de 682.0 kg m^-3, y su viscosidad es 0.256 cP. Calcule la caída de presión a través del tubo.\nPara comprobar la aplicabilidad de la ecuación de Hagen-Poiseuille es necesario comprar el régimen de flujo mediante el número de Reynolds.\n\n1. Calculo del número de Reynolds\n\n# Caudal volumetrico\nvdot = 1e-6 # m^3/s\n# Diámetro de la tubería\nd = 0.2e-2\n# Area de la tuberia\nA = np.pi*d**2/4\n# Velocidad\nvz_av = vdot / A\n# Re\nRe = rho_l * vz_av * d/mu_l\nprint(\"Re = %.3f \" % Re)\n\nRe = 1698.891 \n\n\n\n\n2. Aplicación de la ecuación de Hagen-Poiseuille\n\nL = 0.1 # 10 cm\ndelta_P = 32*L*mu_l*vz_av/(d**2)\nprint(\"Delta P = %.2f Pa\" % delta_P)\n\nDelta P = 65.07 Pa"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C11.html",
-    "href": "e_clase/jupyter/IIQ2013_C11.html",
-    "title": "IIQ2013 - Clase 11",
-    "section": "",
-    "text": "Considere aire (\\(\\gamma = 1.4\\)) procedente de un depósito o estanque que fluye a través de una tubería recta de gran longitud y provista con aislación térmica (no ocurre transferencia de calor con los alrededores). La presión y temperatura en el estanque son \\(p_1 = 20~\\text{atm}\\) y \\(T_1 = 555.6~\\text{K}\\), respectivamente ($ = 12.72 ^3$). Además, se sabe que el número de Mach a la entrada de la tubería es \\(Ma_1 = 0.05\\).\nLibrerias a utilizar:\nimport handcalcs.render\nfrom handcalcs import handcalc\nfrom numpy import sqrt, log"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C11.html#problema-1",
-    "href": "e_clase/jupyter/IIQ2013_C11.html#problema-1",
-    "title": "IIQ2013 - Clase 11",
-    "section": "Problema 1",
-    "text": "Problema 1\nLa velocidad a la entrada de la tubería (\\(V_1\\)) es aproximadamente la siguiente:\n\n\\(V_1\\) &lt; 1 m/s\n\n1 m/s &lt; \\(V_1\\) ≤ 10 m/s\n\n10 m/s &lt; \\(V_1\\) ≤ 100 m/s\n\n\\(V_1\\) &gt; 100 m/s"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C11.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C11.html#solución",
-    "title": "IIQ2013 - Clase 11",
-    "section": "Solución",
-    "text": "Solución\nSabemos que:\n\\[\nMa_1 = \\frac{V_1}{c_1} \\Rightarrow V_1 = Ma_1\\sqrt{\\frac{\\gamma RT_1}{MW}}\n\\]\n\n%%render long\nMa_1 = 0.05\ngamma = 1.4\nR = 8.314 #J/mol$\\cdot$K\nT_1 = 555.6 #K\nMW = 0.028 #kg/mol\nV_1 = Ma_1*sqrt((gamma*R*T_1)/MW) #m/s\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es la c."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C11.html#problema-2",
-    "href": "e_clase/jupyter/IIQ2013_C11.html#problema-2",
-    "title": "IIQ2013 - Clase 11",
-    "section": "Problema 2",
-    "text": "Problema 2\n¿Cuáles son los valores de la temperatura (\\(T^*\\)) y presión (\\(P^*\\)) al momento de alcanzarse la velocidad sónica en la tubería?\n\n\\(T^* \\approx\\) 350 K y \\(p^* \\approx\\) 0,5 atm\n\n\\(T^* \\approx\\) 450 K y \\(p^* \\approx\\) 1 atm\n\n\\(T^* \\approx\\) 550 K y \\(p^* \\approx\\) 1,5 atm\n\n\\(T^* \\approx\\) 650 K y \\(p^* \\approx\\) 2 atm"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C11.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C11.html#solución-1",
-    "title": "IIQ2013 - Clase 11",
-    "section": "Solución",
-    "text": "Solución\nYa que nos encontramos frente a un flujo adiabático:\n\\[\n\\frac{T}{T^*} = \\frac{\\gamma+1}{2+(\\gamma-1)Ma^2}\n\\]\n\\[\n\\frac{p}{p^*} = \\frac{1}{Ma}\\sqrt{\\frac{\\gamma+1}{2+(\\gamma-1)Ma^2}}\n\\]\n\n%%render long\np_1 = 20 #atm\nrho = 12.72 #kg/m$^3$\nT = T_1 * ((gamma+1)/(2+(gamma-1)*Ma_1**2))**-1 #K\nP = p_1 * (1/Ma_1 * sqrt((gamma+1)/(2+(gamma-1)*Ma_1**2)))**-1 #atm\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa anternativa más cercana a nuestros resultados es la b."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C11.html#problema-3",
-    "href": "e_clase/jupyter/IIQ2013_C11.html#problema-3",
-    "title": "IIQ2013 - Clase 11",
-    "section": "Problema 3",
-    "text": "Problema 3\nDado un valor \\(4 f L^*/D = 400\\), el flux de aire (\\(G/A\\)) a la entrada del conducto es aproximadamente la siguiente:\n\n\\(G/A\\) &lt; 280 kg/s\\(\\cdot\\)m\\(^2\\)\n\n280 &lt; \\(G/A\\) ≤ 380 kg/s\\(\\cdot\\)m\\(^2\\)\n\n380 &lt; \\(G/A\\) ≤ 480 kg/s\\(\\cdot\\)m\\(^2\\)\n\n\\(G/A\\) ≤ 480 kg/s\\(\\cdot\\)m\\(^2\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C11.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C11.html#solución-2",
-    "title": "IIQ2013 - Clase 11",
-    "section": "Solución",
-    "text": "Solución\nNotamos que la razón de presiones es alta. Comparando con las condiciones de flujo máximo, se itera \\(Ma\\) para encontrar las condiciones en que se cumpla:\n\\[\n400 = \\frac{1-Ma^2}{\\gamma Ma^2} + \\left(\\frac{\\gamma+1}{2\\gamma}\\right)\\ln\\left(\\frac{2(\\gamma+1)Ma^2}{2+(\\gamma-1)Ma^2}\\right)\n\\]\nComo estimación inicial, utilizamos la condición del enunciado \\(Ma = 0.05\\).\n\n%%render long\nMa = 0.05\nfLD_estimado = (1-Ma**2)/(gamma*Ma**2) + ((gamma+1)/(2*gamma))*log((2*(gamma+1)*Ma**2)/(2+(gamma-1)*Ma**2))\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nSegunda estimación \\(Ma = 0.04\\).\n\n%%render long\nMa = 0.04\nfLD_estimado = (1-Ma**2)/(gamma*Ma**2) + ((gamma+1)/(2*gamma))*log((2*(gamma+1)*Ma**2)/(2+(gamma-1)*Ma**2))\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nTercera estimación \\(Ma = 0.042\\).\n\n%%render long\nMa = 0.042\nfLD_estimado = (1-Ma**2)/(gamma*Ma**2) + ((gamma+1)/(2*gamma))*log((2*(gamma+1)*Ma**2)/(2+(gamma-1)*Ma**2))\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nEstamos lo suficientemente cerca del resultado correcto, entonces calculamos.\n\\[\n\\left(\\frac{G'}{A}\\right)_{max} = \\rho_1c_1Ma\n\\]\n\n%%render long\nGA_max = rho*sqrt((gamma*R*T_1)/MW)*Ma #kg/m$^2\\cdot$s\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto la alternativa correcta es la a."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C13.html",
-    "href": "e_clase/jupyter/IIQ2013_C13.html",
-    "title": "IIQ2013 - Clase 13",
-    "section": "",
-    "text": "Se usa un intercambiador de calor de doble tubo (ICDT) para enfriar el aceite lubricante del motor de una turbina de gas industrial grande de \\(T_{a,e} = 100~\\text{°C}\\) a \\(T_{a,s} = 60~\\text{°C}\\). El agua de enfriamiento (\\(F_{ag} = 0.2~\\text{kg/s}\\); \\(T_{ag,e} = 30~\\text{°C}\\)) fluye a contracorrientes a través del tubo interno (\\(D_i = 25~\\text{mm}\\)), mientras que el aceite (\\(0.1~\\text{kg/s}\\)) fluye por la zona anular (\\(D_{i,e} = 45~\\text{mm}\\)). La tabla adjunta presenta las propiedades termofísicas del aceite y el agua a sus correspondientes temperaturas promedio.\n```hbqjoggecnpl Propiedades termofísicas del aceite y el agua. :header-rows: 1 :name: tabla-EC14 :align: center\nLibrerias a utilizar:\nimport handcalcs.render\nfrom handcalcs import handcalc\nfrom numpy import pi, log"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C13.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C13.html#pregunta-1",
-    "title": "IIQ2013 - Clase 13",
+    "objectID": "e_clase/jupyter/IIQ2013_C1.html#pregunta-1",
+    "href": "e_clase/jupyter/IIQ2013_C1.html#pregunta-1",
+    "title": "IIQ2013 - Clase 2",
     "section": "Pregunta 1",
-    "text": "Pregunta 1\nDetermine la diferencia de temperatura relevante (\\(\\Delta T_{ml}\\)) para este caso\n\n\\(\\Delta T_{ml}\\) &lt; 30 °C\n\n30 &lt; \\(\\Delta T_{ml}\\) &lt; 40 °C\n\n40 &lt; \\(\\Delta T_{ml}\\) &lt; 50 °C\n\n\\(\\Delta T_{ml}\\) &gt; 50 °C"
+    "text": "Pregunta 1\n¿Cuál es el régimen de flujo en una tubería de 10 in de diámetro nominal (D= 254,5 mm) cuando a travús de ella se hacen circular Q= 0.1 m3/s de agua?\n\nLaminar\nTurbulento\nTransición de laminar a turbulento\nSe necesita mas información"
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C13.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C13.html#solución",
-    "title": "IIQ2013 - Clase 13",
+    "objectID": "e_clase/jupyter/IIQ2013_C1.html#solución",
+    "href": "e_clase/jupyter/IIQ2013_C1.html#solución",
+    "title": "IIQ2013 - Clase 2",
     "section": "Solución",
-    "text": "Solución\nDel enuniciado sabemos que nuestro sistema se encuentra a contracorriente, luego la diferencia de temperatura relevante esta dada por:\n\\[\n\\Delta T_{ml} = \\frac{(T_{h,e} - T_{c,s}) - (T_{h,s} - T_{c,e})}{\\ln\\left(((T_{h,e} - T_{c,s})/(T_{h,s} - T_{c,e})\\right)}\n\\]\nDonde el subíndice \\(h\\) indica las temperaturas del fluido caliente y \\(c\\) las temperaturas pertenecientes las del fluido frio.\nPara otener la temperatura de salida del agua utilizamos el balance global de energía:\n\\[\nq = \\dot{m}_hc_{P,h}(T_{h,e}-T_{h,s}) = \\dot{m}_cc_{P,c}(T_{c,s}-T_{c,e})\n\\]\n\n%%render params\nT_he = 100+273.15 #K\nT_hs = 60+273.15 #K\nT_ce = 30+273.15 #K\nm_h = 0.1 #kg/s\nm_c = 0.2 #kg/s\nc_Ph = 2131 #J/kg$\\cdot$K\nc_Pc = 4178 #J/kg$\\cdot$K\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render long\nq = m_h*c_Ph*(T_he-T_hs) #J\nT_cs = q/(m_c*c_Pc)+T_ce #K\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nFinalmente, calculamos lo pedido.\n\n%%render long\nDT_ml = ((T_he-T_cs)-(T_hs-T_ce))/(log((T_he-T_cs)/(T_hs-T_ce))) #C o K\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es la c."
+    "text": "Solución\n\n# 1\nd = 254.5e-3\nQ = 0.1 # m^3/s\nV = Q/(np.pi*d**2/4) # Calculamos la velocidad \nrho = 1000\nmu = 0.001\nRe = rho*V*d/mu\nprint(\"El número de Reynlosd es igual a Re = %.3e\" % Re)\n\nEl número de Reynlosd es igual a Re = 5.003e+05\n\n\nPor lo tanto, el regimen de flujo es turbulento y la alternativa correcta es la b."
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C13.html#pregunta-2",
-    "href": "e_clase/jupyter/IIQ2013_C13.html#pregunta-2",
-    "title": "IIQ2013 - Clase 13",
+    "objectID": "e_clase/jupyter/IIQ2013_C1.html#pregunta-2",
+    "href": "e_clase/jupyter/IIQ2013_C1.html#pregunta-2",
+    "title": "IIQ2013 - Clase 2",
     "section": "Pregunta 2",
-    "text": "Pregunta 2\nDetermine el valor del número de Reynolds para el fluido que circula por el tubo (\\(Re_D\\))\n\n\\(Re_D\\) \\(&lt;\\) \\(10^4\\)\n\n\\(10^4\\) \\(\\leq\\) \\(Re_D\\) \\(&lt;\\) \\(4\\times10^4\\)\n\n\\(4\\times10^4\\) \\(\\leq\\) \\(Re_D\\) \\(&lt;\\) \\(10^5\\)\n\n\\(10^5\\) \\(\\geq\\) \\(Re_D\\)"
+    "text": "Pregunta 2\nConsiderando que la tubería es de acero comercial, el factor de fricción de Fanning (\\(f_F\\)) en el caso bajo análisis es aproximadamente el siguiente:\n\n\\(f_F &gt;\\) 0.010\n0.005 \\(&lt; f_F &lt;\\) 0.010\n0.002 \\(&lt; f_F &lt;\\) 0.005\n\\(f_F \\leq\\) 0.010\n\nPara los cómputos considere usar el diagrama de Moody o una correlación adecuada."
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C13.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C13.html#solución-1",
-    "title": "IIQ2013 - Clase 13",
+    "objectID": "e_clase/jupyter/IIQ2013_C1.html#solución-1",
+    "href": "e_clase/jupyter/IIQ2013_C1.html#solución-1",
+    "title": "IIQ2013 - Clase 2",
     "section": "Solución",
-    "text": "Solución\nPara Reynolds, sabemos que:\n\\[\nRe_D  = \\frac{D_{eq}\\cdot\\dot{m}}{A_{t}\\cdot\\mu}\n\\]\nPara el flujo que circula en el tubo interno, el diámetro equivalente es el diámetro interno del tubo y el área transversal será:\n\\[\nA_t = \\pi\\left(\\frac{D}{2}\\right)^2\n\\]\n\n%%render params sci_not 2\nD = 25/1000 #m\nmu_c = 7.25e-4 #Pa$\\cdot$s\nA_t = pi*(D/2)**2 #m$^2$\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render long\nRe_D = (D*m_c)/(A_t*mu_c)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es la b."
+    "text": "Solución\nGeneramos funciones para el calculo utilizando la correlacion de Nevers y Schacham\n\n\ndef f_Nevers(eps, D, Re):\n    return 0.001375 * (1 + (2e4 * eps/D + 1e6/Re)**(1/3))\n\ndef f_Schacham(eps, D, Re):\n    rhs = -1.737 * np.log(0.269 * eps/D - 2.185/Re * \\\n                         np.log(0.269 * eps/D + 14.5/Re))\n    return (1/rhs)**2\n\neps = 0.046*1e-3\nprint(f\"El factor de fricción con la ecuación de Nevers es: {f_Nevers(eps, d, Re)}\")\nprint(f\"El factor de fricción con la ecuación de Schacham es: {f_Schacham(eps, d, Re)}\")\n\n\n\nEl factor de fricción con la ecuación de Nevers es: 0.003818735654783344\nEl factor de fricción con la ecuación de Schacham es: 0.0038187535955500397\n\n\nPor lo tanto la alternativa correcta es la c."
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C13.html#pregunta-3",
-    "href": "e_clase/jupyter/IIQ2013_C13.html#pregunta-3",
-    "title": "IIQ2013 - Clase 13",
+    "objectID": "e_clase/jupyter/IIQ2013_C1.html#pregunta-3",
+    "href": "e_clase/jupyter/IIQ2013_C1.html#pregunta-3",
+    "title": "IIQ2013 - Clase 2",
     "section": "Pregunta 3",
-    "text": "Pregunta 3\nDetermine el coeficiente de transferencia de calor para el fluido que circula por el tubo (\\(h_{ag}\\)) usando una correlación adecuada para el régimen de flujo determinado a partir de (2), que considere que el agua se está calentando, y que se baste con los datos de propiedades termofísicas de la tabla de más arriba:\n\n\\(h_{ag}\\) \\(&lt;\\) 1000 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n1000 \\(\\leq\\) \\(h_{ag}\\) \\(&lt;\\) 1500 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n1500 \\(\\leq\\) \\(h_{ag}\\) \\(&lt;\\) 2500 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(h_{ag}\\) \\(\\geq\\) 2500 \\(\\text{W/m}^2\\cdot\\text{K}\\)"
+    "text": "Pregunta 3\nEl valor de las pérdidas por fricción (\\(\\Phi\\)) en un tramo horizontal de L= 100 m de la tubería bajo análisis es aproximadamente el siguiente:\n\n\\(\\Phi &gt;\\) 50 (m/s)\\(^2\\)\n25 \\(&lt; \\Phi \\leq\\) 50 (m/s)\\(^2\\)\n14 \\(&lt; \\Phi \\leq\\) 25 (m/s)\\(^2\\)\n\\(\\Phi \\leq\\) 14 (m/s)\\(^2\\)"
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C13.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C13.html#solución-2",
-    "title": "IIQ2013 - Clase 13",
+    "objectID": "e_clase/jupyter/IIQ2013_C1.html#solución-2",
+    "href": "e_clase/jupyter/IIQ2013_C1.html#solución-2",
+    "title": "IIQ2013 - Clase 2",
     "section": "Solución",
-    "text": "Solución\nPara elegir con mayor detalle la ecuación que ocuparemos para calcular el número de Nusselt, nos fijamos que nuestro número de Prandtl para el agua y el número de Reynolds se encuentran en rango apropiado para utilizar la ecuación de Dittus-Boelter.\n\n%%render long\nPr = 4.85\nn = 0.4 #El agua se está calentando\nNuD = 0.023*Re_D**0.8*Pr**n\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPodemos despejar el coeficiente de trasnferencia de calor desde la definición del número de Nusselt\n\\[\nNu_D = \\frac{hD}{k}\n\\]\n\n%%render long\nk = 0.625\nh = (k*NuD)/D #W/m$^2\\cdot$K\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto, la alternativa correcta es la c."
+    "text": "Solución\nSiguiendo con el factor calculado con Nevers\n\nf = f_Nevers(eps, d, Re)\nL = 100 # m\nphi = 4 * f * (L/d) * (V**2/2)\nprint(f\"El valor de la caída de presión por fricción es: {phi} (m/s)^2\")\n\nEl valor de la caída de presión por fricción es: 11.596605830597086 (m/s)^2\n\n\nPor lo tanto la alternativa correcta es la d."
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C13.html#pregunta-4",
-    "href": "e_clase/jupyter/IIQ2013_C13.html#pregunta-4",
-    "title": "IIQ2013 - Clase 13",
-    "section": "Pregunta 4",
-    "text": "Pregunta 4\nSi coeficiente de transferencia de calor para el aceite fuese \\(h_a = 44.3~\\text{W/m}^2\\cdot\\text{K}\\) y se pudiese despreciar la resistencia a la transferencia de calor de la pared del tubo, determine el coeficiente global de transferencia de calor (U) requerido para diseñar el equipo:\n\nU \\(&lt;\\) 40 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n40 \\(\\leq\\) U \\(&lt;\\) 50 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n50 \\(\\leq\\) U \\(&lt;\\) 60 \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\nU \\(\\geq\\) 60 \\(\\text{W/m}^2\\cdot\\text{K}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C13.html#solución-3",
-    "href": "e_clase/jupyter/IIQ2013_C13.html#solución-3",
-    "title": "IIQ2013 - Clase 13",
-    "section": "Solución",
-    "text": "Solución\nAsumiendo que no hay resistencia a la transferencia de calor dado por la pared, el coeficiente de transferencia global será:\n\\[\nU = \\left(\\frac{D_i}{D_{i,e}h_a}+\\frac{1}{h_{ag}}\\right)^{-1}\n\\]\n\n%%render long\nh_a = 44.3 #W/m$^2\\cdot$K\nD_ie = 45e-3 #m\nU = (D/(D_ie*h) + 1/h_a)**-1 #W/m$^2\\cdot$K\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto, la respuesta correcta es la b."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C13.html#pregunta-5",
-    "href": "e_clase/jupyter/IIQ2013_C13.html#pregunta-5",
-    "title": "IIQ2013 - Clase 13",
-    "section": "Pregunta 5",
-    "text": "Pregunta 5\nDetermine el largo requerido del intercambiador de calor (L):\n\nL \\(&lt;\\) 50 m\n\n50 \\(\\leq\\) L \\(&lt;\\) 65 m\n\n65 \\(\\leq\\) L \\(&lt;\\) 80 m\n\nL \\(\\geq\\) 80 m"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C13.html#solución-4",
-    "href": "e_clase/jupyter/IIQ2013_C13.html#solución-4",
-    "title": "IIQ2013 - Clase 13",
-    "section": "Solución",
-    "text": "Solución\nDesde la ecuación de diseño se obtiene el largo.\n\\[\nQ = UA\\Delta T_{ml}\n\\]\nDonde \\(A\\) es el área donde ocurre la transferencia de calor y es:\n\\[\nA = L\\pi D_i\n\\]\n\n%%render long\nL = q/(U*pi*D*DT_ml) #m\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nEntonces, la alternativa correcta es la b."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C15.html",
-    "href": "e_clase/jupyter/IIQ2013_C15.html",
-    "title": "IIQ2013 - Clase 15",
-    "section": "",
-    "text": "Se utilizaron los siguientes paquetes.\nimport handcalcs.render\nfrom numpy import log, sqrt"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C15.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C15.html#pregunta-1",
-    "title": "IIQ2013 - Clase 15",
-    "section": "Pregunta 1",
-    "text": "Pregunta 1\nDetermine el factor de corrección \\(F_T\\) para el caso de un intercambiador de calor de tubos y carcasa (ICTC) tipo 1-2n en el que se enfrían \\(1500~\\text{kg/h}\\) de agua a \\(80~\\text{°C}\\) usando \\(2200~\\text{kg/h}\\) de agua a \\(18~\\text{°C}\\) como líquido refrigerante, el cual se puede calentar hasta \\(42~\\text{°C}\\):\n\n\\(F_T \\leq 0.80\\)\n\n\\(0.80 &lt; F_T \\leq 0.82\\)\n\n\\(0.82 &lt; F_T \\leq 0.85\\)\n\n\\(FT &gt; 0.85\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C15.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C15.html#solución",
-    "title": "IIQ2013 - Clase 15",
-    "section": "Solución",
-    "text": "Solución\nA partir de la razón de temperaturas, tenemos que en este caso en particular.\n\\[\nZ = \\frac{T_{h,e}-T_{h,s}}{T_{c,s}-T_{c,e}} = \\frac{\\dot{m}_c}{\\dot{m}_h}\n\\]\nLuego la temperatura de salida será:\n\\[\nT_{h,s} = T_{h,e} - Z(T_{c,s}-T_{c,e})\n\\]\n\n%%render params\nm_c = 2200 #kg/h\nT_ce = 18+273.15 #K\nT_cs = 42+273.15 #K\nm_h = 1500 #kg/h\nT_he = 80+273.15 #K\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render long\nZ = m_c/m_h\nT_hs = T_he - Z*(T_cs-T_ce)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLuego la eficiencia de temperatura.\n\\[\n\\eta_H = \\frac{T_{c,s}-T_{c,e}}{T_{h,e}-T_{c,e}}\n\\]\nEn donde el factor de corrección es:\n\\[\nF_T = \\frac{\\sqrt{Z^2+1}\\ln\\left(\\frac{1-\\eta_H}{1-\\eta_HZ}\\right)}{(Z-1)\\ln\\left(\\frac{2-\\eta_H\\left(Z+1-\\sqrt{Z^2+1}\\right)}{2-\\eta_H\\left(Z+1+\\sqrt{Z^2+1}\\right)}\\right)}\n\\]\n\n%%render long\neta_H = (T_cs-T_ce)/(T_he-T_ce)\nF_T = (sqrt(Z**2+1)*log((1-eta_H)/(1-eta_H*Z)))/((Z-1)*log((2-eta_H*(Z+1-sqrt(Z**2+1)))/(2-eta_H*(Z+1+sqrt(Z**2+1)))))\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto, la alternativa correcta es la c."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C15.html#pregunta-2",
-    "href": "e_clase/jupyter/IIQ2013_C15.html#pregunta-2",
-    "title": "IIQ2013 - Clase 15",
-    "section": "Pregunta 2",
-    "text": "Pregunta 2\nSe pretende enfriar \\(1500~\\text{kg/h}\\) de agua a \\(80~\\text{°C}\\) usando \\(2200~\\text{kg/h}\\) de agua a \\(18~\\text{°C}\\) como líquido refrigerante. Discuta con su compañero por qué no es posible hacer esto en un ICTC tipo 1-2n cuando el agua de enfriamiento se calienta a \\(50~\\text{°C}\\)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C15.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C15.html#solución-1",
-    "title": "IIQ2013 - Clase 15",
-    "section": "Solución",
-    "text": "Solución\nLos flujos se mantienen constantes, por lo tanto, nuestra razón de temperaturas es constante también. Podemos entonces calcular el nuevo \\(\\eta_H\\) y buscar el factor de corrección.\n\n%%render long\nT_cs = 50+273.15 #K\nT_hs = T_he - Z*(T_cs-T_ce)\neta_H = (T_cs-T_ce)/(T_he-T_ce)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nNotamos que en la gráfica, el \\(0.5\\) se encuentra después de la curva donde \\(Z\\approx1.4\\) por lo tanto, el valor del factor de corrección no existe y el diseño de este intercambiador es imposible."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C15.html#pregunta-3",
-    "href": "e_clase/jupyter/IIQ2013_C15.html#pregunta-3",
-    "title": "IIQ2013 - Clase 15",
-    "section": "Pregunta 3",
-    "text": "Pregunta 3\nDetermine la máxima temperatura a la cual se puede calentar el agua de enfriamiento, y para la cual dicho intercambiador de calor opera marginalmente. ¿Qué valor de \\(F_T\\) se debe asumir en estos casos? Utilice las curvas para el factor de corrección, \\(F_T\\) de la temperatura media logarítmica para contacto a contracorrientes, \\((\\Delta T_{ml})_{CC}\\) , para un ICTC tipo 1-2n.\n\n\\(T_{cs} \\approx 36~\\text{°C}\\)\n\n\\(T_{cs} \\approx 40~\\text{°C}\\)\n\n\\(T_{cs} \\approx 44~\\text{°C}\\)\n\n\\(T_{cs} \\approx 48~\\text{°C}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C15.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C15.html#solución-2",
-    "title": "IIQ2013 - Clase 15",
-    "section": "Solución",
-    "text": "Solución\nAproximando \\(Z\\approx 1.4\\) utilizamos el gráfico, notamos que el valor máximo que puede tomar la eficiencia de temperaturas es de \\(\\eta_H\\approx0.425\\) Cuando \\(F_T\\) toma su mínimo valor de 0.75. Bajo estos supuestos podemos obtener \\(T_{c,s}\\)\n\n%%render long\neta_H = 0.425\nT_cs = T_ce + eta_H*(T_he-T_ce) - 273.15 #$^\\circ$C\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto, la alternativa correcta es la c."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C17.html",
-    "href": "e_clase/jupyter/IIQ2013_C17.html",
-    "title": "IIQ2013 - Clase 17",
-    "section": "",
-    "text": "import handcalcs.render\nimport forallpeople\nimport numpy as np\nimport forallpeople as si"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C17.html#cuantificar-el-efecto-de-aumentar-el-número-de-pasos-por-los-tubos-de-2-a-4",
-    "href": "e_clase/jupyter/IIQ2013_C17.html#cuantificar-el-efecto-de-aumentar-el-número-de-pasos-por-los-tubos-de-2-a-4",
-    "title": "IIQ2013 - Clase 17",
-    "section": "1. Cuantificar el efecto de aumentar el número de pasos por los tubos de 2 a 4",
-    "text": "1. Cuantificar el efecto de aumentar el número de pasos por los tubos de 2 a 4\nLa caída de presión por el lado de la carcasa es menor que la caída de presión por los tubos. Se pretende realizar modificaciones al diseño para disminuir la diferencia de caídas de presión.\n\nsi.environment('default', top_level=True)\n\n\n%%render\nF_h = 20*1e3/3600 * kg / s\nF_c = 120*1e3/3600 * kg / s\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nDefiniendo \\(N\\) como el número de tubos multiplicado por el número de pasadas por los tubos, \\(N = N_t \\times N_{p,t}\\), la caída de presión inicial es\n\n%%render params\nf = 7.04e-3\nG_t = 689.8 * kg / m**2 / s\nmu = 9.59e-4 * Pa * s\nmu_s = 9.59e-4 * Pa * s\nN = 252\nN_p = 2 # N de pasadas\nL = 5 * m\nD_e = 0.0254 * m\nD_i = 0.0221 * m\nrho = 998 * kg / m**3\npi = np.pi\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render\na_t = N/2 * pi*D_i**2/4\nG_tc = F_c/a_t\nRe = G_t * D_i / mu\nDelta_p_t_1 = (4 * f * ((L*N_p)/D_i) + 4 * N_p) * (G_t**2/(2*rho)) * (mu_s/mu)**0.14\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nEl 4 proviene de las pérdidas por singularidad mediante inversión de flujo, entrada y salida. Ahora repetiremos el cálculo de caída de presión con dos pasadas.\n\n%%render\nN_p = 4\nDelta_p_t_2 = (4 * f * ((L*N_p)/D_i) + 4 * N_p) * (G_t**2/(2*rho)) * (mu_s/mu)**0.14\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa caída de presión por el lado de los tubos al aumentar el número de pasadas aumenta linealmente con el número de pasadas. No hay ningún otro parámetro que influya esta caída de presión asociado al número de pasadas. El flujo másico dentro del ICTC se mantiene constante.\n\n%%render\nper = Delta_p_t_2 / Delta_p_t_1 - 1\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa caída de presión por el lado de la carcasa se mantiene inalterada, mientras que la caída de presión por el lado de los tubos aumenta en un 100%\n\nTransferencia de calor\nEl aumento en el número de pasadas por los tubos no alterará el número de Reynolds ni los coeficientes de transferencia de calor en los lados del tubo y de la carcasa. Lo único que cambiará es el cálculo del coeficiente global de transferencia de calor, ya que el área de transferencia aumentará al doble.\n\\(Q_1 = Q_2\\)\n\\[U_1 A_1 (F_T \\Delta T_{ml})_1 = U_2 A_2 (F_T \\Delta T_{ml})_2 \\]\nAsumiendo que las variaciones de \\(F_T \\Delta T_{ml}\\) serán despreciables,\n\\[ \\frac{U_2}{U_1} = \\frac{A_1}{A_2} = \\frac{1 \\times N_t \\times \\pi \\times D_e \\times L}{2 \\times N_t \\times \\pi \\times D_e \\times L} = 1/2 \\]\n\n%%render\nR = F_c/F_h\n\nT_ci = 17.1 * C\nT_co = 25.1 * C\nT_hi = 80.8 * C\nT_ho = 32.8 * C\n\neta_h = (T_co-T_ci)/(T_hi-T_ci)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nUtilizando la tabla, \\(F_T = 0.9\\) para el IC 1-2n. Si se aumenta sólo el núemro de tubos, no cambia el factor de corrección. Por lo tanto el coeficiente global de transferencia de calor disminuirá en un 50%."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C17.html#duplicar-el-espaciamiento-de-deflectores",
-    "href": "e_clase/jupyter/IIQ2013_C17.html#duplicar-el-espaciamiento-de-deflectores",
-    "title": "IIQ2013 - Clase 17",
-    "section": "2. Duplicar el espaciamiento de deflectores",
-    "text": "2. Duplicar el espaciamiento de deflectores\nCaso inicial\n\n%%render\nD_c = 0.625\nB_1 = 0.125\nP_t = 1.25*D_e\na_c1 = D_c * B_1 * (P_t - D_e) / P_t\n\nB_2 = 2*B_1\na_c2 = D_c * B_2 * (P_t - D_e) / P_t\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nAl duplicar el espaciamiento entre deflectores, el área de flujo por la carcasa se duplica.\n\n%%render\nG_c1 = F_h/a_c1\nG_c2 = F_h/a_c2\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nComo los diámetros equivalentes son los mismos ya que no se modifica ningún elemento del arreglo de tubos, tenemos que\n\\(Re_1\\) es conocido\n\\[ (\\frac{G_c D}{\\mu})_1 = 18273 \\] \\[ \\frac{Re_2}{Re_1} = \\frac{G_{c2}}{G_{c1}}\\]\n\n%%render\nRe_c1 = 18273\nRe_c2 = Re_c1 * G_c2/G_c1\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nCon esto podemos calcular el coeficiente de Colburn\n\n%%render\nj_hc2 = 0.36 * Re_c2**0.55 \n\n&lt;IPython.core.display.Latex object&gt;\n\n\nya que \\(Pr\\) y \\(\\mu\\) son los mismos en ambos casos, tenemos que\n\\[ \\frac{Nu_2}{Nu_1} = \\frac{j_{hc2}}{j_{hc1}}\\]\n\n%%render\nj_hc1 = 79.5\nNusselt_1 = 116.5\nNusselt_2 = j_hc2/j_hc1 * Nusselt_1\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nCalculamos el diámetro equivalente de la carcasa\n\n%%render\nmu_c1 = 4.89e-4\nD_e = Re_c1*mu/G_c1\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\\[ \\frac{h_c2}{h_c1} = \\frac{Nu_2 D_{e2}}{k_2} \\frac{k_1}{Nu_1 D_{e1}} = Nu_2/Nu_1 \\]\n\n%%render\nh_c1 = 3013 * W / m**2/K\nh_c2 = Nusselt_2/Nusselt_1 * h_c1\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render\nh_t = 3192 * W / (m**2 * K)\nA_o = 100.5 * m**2\nA_i = 87.5 * m**2\nU_1 = (1/h_c1 + A_o/A_i * 1/h_t)**-1\nU_2 = (1/h_c2 + A_o/A_i * 1/h_t)**-1\ndelta_U = 100 * (U_2/U_1 - 1)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto el coeficiente globala de transferencia de calor disminuirá en un 18.22%. Ahora procederemos al cálculo de caída de presión. Notando que ahora el espaciamiento de la carcasa se duplico, asumiremos que \\(N_b = 20\\). Asumiendo que no hay gran variación en los factores de fricción para la disminuicón del número de Reynolds, \\(f_1 = f_2\\), tenemos que\n\\[ \\frac{\\Delta p_2}{\\Delta p_1} = \\frac{(N_{b1} + 1)(G_{c1}^2)}{(N_{b2} + 1)(G_{c2}^2)} \\]\n\n%%render\nN_b1 = 39\nN_b2 = 19\nf_1 = 0.276\nf_2 = 0.3\ndp2dp1 = ((N_b2+1)*G_c2**2)/((N_b1 + 1)*G_c1**2) * (f_2/f_1)\ndp1 = 17610 * Pa\nDelta_p2 = dp2dp1 * dp1\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nQue es aproximadamente la mitad de la caida de presión por el lado de los tubos. El beneficio de esta modificación es que ahora el fluido por el lado de los tubos tiene mayor presión.\n\nPregunta 3\nEl cambio anterior se recomienda, sin embargo una solución óptima se puede encontrar con un mayor número de deflectores,\n\n%%render\nB = L/(N_b1+1)\nN_b1 = L/B-1\nB3 = 1.6 * B\nN_b3 = L/(B3)-1\nG_c3 = G_c1 * B/B3\ndp2dp1 = ((N_b3+1)*G_c3**2)/((N_b1 + 1)*G_c1**2) * (f_2/f_1)\nDelta_p2 = dp1*dp2dp1\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nCalculamos el nuevo coeficiente de transferencia de calor tomando la razón de los caudales elevado a 0.55,\n\n%%render\nh_c3 = (G_c3/G_c1)**0.55 * h_c1\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nFinalmente, calculamos el cambio en el coeficiente global de transferencia de calor para la nueva configuración.\n\n%%render params\nh_t = 3192 * W/(m**2 * K)\nA_o = 100.5 * m**2\nA_i = 87.5 * m**2\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render\nU_1 = (1/h_c1 + A_o/A_i * 1/h_t)**-1\nU_2 = (1/h_c3 + A_o/A_i * 1/h_t)**-1\ndelta_U = 100* (U_2/U_1 - 1) #%\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nEsta opción obtiene similares caídas de presión, y tan solo una disminución de 12.4% en el coeficiente global de transferencia de calor."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C19.html",
-    "href": "e_clase/jupyter/IIQ2013_C19.html",
-    "title": "IIQ2013 - Clase 19",
-    "section": "",
-    "text": "Con el propósito de mejorar la disipación de calor de una corriente de aire que atraviesa una rendija de \\(L = 12~\\text{mm}\\) de alto, \\(W = 20~\\text{cm}\\) de ancho, y \\(D = 10~\\text{cm}\\) de profundidad (en la dirección del flujo del aire), se propone colocar \\(n = 50\\) aletas longitudinales de aluminio (Al) de \\(L = 12~\\text{mm}\\) de alto y \\(t = 0.45~\\text{mm}\\) de espesor cada una, según muestra la figura adjunta.\n```oaobcwwv ./images/img_EC-19.png :align: center :name: figura_EC-19\nArreglo de aletas\n:::"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C19.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C19.html#pregunta-1",
-    "title": "IIQ2013 - Clase 19",
-    "section": "Pregunta 1",
-    "text": "Pregunta 1\nEl valor del diámetro equivalente (\\(D_e\\)) para los conductos por los que circula el aire es aproximadamente el siguiente:\n\n\\(D_e\\) \\(&lt;\\) \\(4.8\\) \\(\\text{mm}\\)\n\n\\(4.8\\) \\(\\leq\\) \\(D_e\\) \\(&lt;\\) \\(5.4\\) \\(\\text{mm}\\)\n\n\\(5.4\\) \\(\\leq\\) \\(D_e\\) \\(&lt;\\) \\(6.0\\) \\(\\text{mm}\\)\n\n\\(D_e\\) \\(\\geq\\) \\(6.0\\) \\(\\text{mm}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C19.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C19.html#solución",
-    "title": "IIQ2013 - Clase 19",
-    "section": "Solución",
-    "text": "Solución\nPrimero, definimos todos los parámetros requeridos\n\n%%render params\nL = 12e-3 #m\nw = 20e-2 #m\nD = 10e-2 #m\nn = 50\nt = 0.45e-3 #m\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nRecordamos que el diámetro equivalente es cuatro veces el área divida el perímetro mojado.\nEl ancho (\\(w\\)) de una rendija viene dada por:\n\n%%render sci_not 3\nw_rendija = (w - n*t)/(n-1) #m\n#A = 2* (L*D + L)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render long sci_not 3\nP = (2*w_rendija + 2*L) * (n-1) #m\nA = (w_rendija * L) * (n-1) #m$^2$\nD_eq = 4* A / P #m\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nEl diámetro equivalente del conducto son \\(5.57~\\text{mm}\\), alternativa c)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C19.html#pregunta-2",
-    "href": "e_clase/jupyter/IIQ2013_C19.html#pregunta-2",
-    "title": "IIQ2013 - Clase 19",
-    "section": "Pregunta 2",
-    "text": "Pregunta 2\nEn caso de hacer atravesar \\(F = 48~\\text{kg/min}\\) de aire a \\(T_\\infty = 400~\\text{K}\\) a través de las rendijas, el coeficiente de convección para el fluido (\\(h\\)) es aproximadamente el siguiente:\n\n\\(h\\) \\(&lt;\\) \\(800\\) \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(800\\) \\(\\leq\\) \\(h\\) \\(&lt;\\) \\(1000\\) \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(1000\\) \\(\\leq\\) \\(h\\) \\(&lt;\\) \\(1200\\) \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(h\\) \\(\\geq\\) \\(1200\\) \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\nPropiedades físicas del aire a \\(400~K\\): \\(\\mu = 2.304\\times 10^{−5}~\\text{Pa}\\cdot\\text{s}\\), \\(\\rho = 0.871~\\text{kg/m}^3\\), \\(Pr = 0.7\\), \\(k = 0.033~\\text{W/m}\\cdot\\text{K}.\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C19.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C19.html#solución-1",
-    "title": "IIQ2013 - Clase 19",
-    "section": "Solución",
-    "text": "Solución\nCálculo de coeficiente de convección por convección forzada. Primero calculamos el régimen de flujo,\n\n%%render params sci_not\nT_inf = 400 #K\nmu_air = 2.304e-5 #Pa$\\cdot$s\nrho_air = 0.871 #kg/m$^3$\nPr = 0.7\nk_air = 0.033 #W/m$\\cdot$K\nF = 48/60  #kg/s\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render long\nG = F / ( (n-1) * w_rendija * L) #kg/s$\\cdot$m$^2$$~~~$Flux másico\nRe = G * D_eq / mu_air\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nEl flujo es claramente turbulento. Ahora utilizamos una ecuación apropiada del formulario en el contexto de transferencia de calor para flujo interno en tuberías. Este conducto no es exactamente una tubería, pero si corresponde al flujo en un canal cerrado y por lo tanto las correlaciones son aplicables.\n\n%%render long\nj_h  = 0.027 * Re**0.8\nNusselt_D = j_h * Pr**(1/3)\nh = Nusselt_D * k_air / D_eq #W/m$^2\\cdot$K\n\n&lt;IPython.core.display.Latex object&gt;"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C19.html#pregunta-3",
-    "href": "e_clase/jupyter/IIQ2013_C19.html#pregunta-3",
-    "title": "IIQ2013 - Clase 19",
-    "section": "Pregunta 3",
-    "text": "Pregunta 3\nConsiderando que la temperatura de ambas bases es igual (\\(T_o = T_L = 300~K\\)), y que la conductividad térmica del Al a \\(300~K\\) es \\(k = 225~\\text{W/m}\\cdot\\text{K}\\), la eficiencia de cada aleta del arreglo (\\(\\eta_f\\)) es aproximadamente la siguiente:\n\n\\(\\eta_f\\) \\(&lt;\\) \\(70\\) \\(\\%\\)\n\n\\(70\\) \\(\\leq\\) \\(\\eta_f\\) \\(&lt;\\) \\(80\\) \\(\\%\\)\n\n\\(80\\) \\(\\leq\\) \\(\\eta_f\\) \\(&lt;\\) \\(90\\) \\(\\%\\)\nd ) \\(\\eta_f\\) \\(\\geq\\) \\(90\\) \\(\\%\\)\n\nHint: Considere la situación de simetría para la transferencia de calor en cada aleta para determinar su “largo”, en el cómputo."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C19.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C19.html#solución-2",
-    "title": "IIQ2013 - Clase 19",
-    "section": "Solución",
-    "text": "Solución\nPara calcular la eficiencia del arreglo, tenemos que estimar el largo de la aleta. Nótese que en este caso, dado que hay dos superficies enfriándose, el largo de la aleta es igual a la mitad del espacio que separa las dos placas, \\(L_{aleta} = L/2\\)\n\n%%render sci_not\nL_c = L/2 + t/2 #m Largo de la aleta\nP = 2*(D+t) #m Perimetro de la aleta\nA_c = D * t #m$^2$ Área de la punta de la aleta\nk_al = 225 #W/m$^2\\cdot$K\nm_aleta = sqrt( (h * P) / (k_al*A_c))\neta_f = tanh(m_aleta*L_c) / (m_aleta *L_c)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto la eficiencia de la aleta es \\(75.97~\\%\\). La alternativa correcta es la b)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C19.html#pregunta-4",
-    "href": "e_clase/jupyter/IIQ2013_C19.html#pregunta-4",
-    "title": "IIQ2013 - Clase 19",
-    "section": "Pregunta 4",
-    "text": "Pregunta 4\nLa eficiencia global del arreglo de aletas (\\(\\eta_o\\)) es aproximadamente la siguiente:\n\n\\(\\eta_o\\) \\(&lt;\\) \\(65\\) \\(\\%\\)\n\n\\(65\\) \\(\\leq\\) \\(\\eta_o\\) \\(&lt;\\) \\(75\\) \\(\\%\\)\n\n\\(75\\) \\(\\leq\\) \\(\\eta_o\\) \\(&lt;\\) \\(85\\) \\(\\%\\)\n\n\\(\\eta_o\\) \\(\\geq\\) \\(85\\) \\(\\%\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C19.html#solución-3",
-    "href": "e_clase/jupyter/IIQ2013_C19.html#solución-3",
-    "title": "IIQ2013 - Clase 19",
-    "section": "Solución",
-    "text": "Solución\n\n%%render\neta_0 = 1 - L/(w/n - t + L) * (1-eta_f)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto la eficiencia del arreglo de aletas es \\(81.3~\\%\\). La alternativa correcta es la c)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C20.html",
-    "href": "e_clase/jupyter/IIQ2013_C20.html",
-    "title": "IIQ2013 - Clase 20",
-    "section": "",
-    "text": "Se hacen circular \\(6~\\text{kg/s}\\) de aire a \\(1~\\text{atm}\\) y \\(450~\\text{K}\\) a través de un intercambiador de calor compacto (ICC) modelo CF-8.72(c) de \\(0.6\\times0.8~\\text{m}^2\\) de área frontal y \\(0.6~\\text{m}\\) de largo. Por el lado de los tubos (\\(L = 0.8~\\text{m}\\)) circulan \\(10~\\text{kg/s}\\) de agua a \\(310~\\text{K}\\).\nimport handcalcs.render\nimport forallpeople\nimport numpy as np\nimport forallpeople as si\nfrom CoolProp.CoolProp import PropsSI\nsi.environment('default', top_level=True)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C20.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C20.html#pregunta-1",
-    "title": "IIQ2013 - Clase 20",
-    "section": "Pregunta 1",
-    "text": "Pregunta 1\nEl valor del número de Reynolds para la corriente de aire (\\(Re_{aire}\\)) es aproximadamente:\n\n\\(Re_{aire}\\) \\(&lt;\\) \\(1000\\)\n\n\\(1000\\) \\(\\leq\\) \\(Re_{aire}\\) \\(&lt;\\) \\(2500\\)\n\n\\(2500\\) \\(\\leq\\) \\(Re_{aire}\\) \\(&lt;\\) \\(5000\\)\n\n\\(Re_{aire}\\) \\(\\geq\\) \\(5000\\)\n\nConsidere que \\(\\beta_{frontal} = 446 \\text{m}^2\\text{/m}^3\\), en que \\(\\beta_{frontal}\\) corresponde a la cara del ICC a travésde la cual ingresa (y sale) el aire. Propiedades termo-físicas: \\(\\mu_{aire} = 2.512 \\times 10^{−5}~\\text{Pa}\\cdot\\text{s}.\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C20.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C20.html#solución",
-    "title": "IIQ2013 - Clase 20",
-    "section": "Solución",
-    "text": "Solución\nDefinimos las propiedades termofísicas del agua y el aire,\n\n%%render params sci_not\ncp_agua = PropsSI('C', 'P', 1e5, 'T', 310, 'water') * J / kg / K\nmu_aire = PropsSI('viscosity', 'P', 1e5, 'T', 450, 'air')\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render params\nF_ic = 6 * kg / s\nA_ic = 0.6*0.8 * m**2 # Área frontal ICC\nL_ic = 0.6 * m # Largo ICC\n\nL_t = 0.8 * m # Largo tubos\nF_t = 10 * kg / s\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPara calcular Reynolds, necesitamos el diámetro equivalente del ICC. Para el modelo cf-8.72(c),\n\n%%render\nsigma = 0.494\nbeta = 446 \nD_h = 0.443*1e-2* m\nmu_aire = mu_aire * Pa * s\nG_ic = F_ic / A_ic\nRe = G_ic * D_h /mu_aire\nA_fr = A_ic\nG_max = F_ic/(sigma*A_fr)\nRe_nax = G_max * D_h /mu_aire\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nNotar que el número de Reynolds relevante para cálculos de pérdida de carga y transferencia de calor es \\(Re_{max}\\).\nPor lo tanto, la alternativa correcta es c)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C20.html#pregunta-2",
-    "href": "e_clase/jupyter/IIQ2013_C20.html#pregunta-2",
-    "title": "IIQ2013 - Clase 20",
-    "section": "Pregunta 2",
-    "text": "Pregunta 2\nEl coeficiente de transferencia de calor por convección para el aire (\\(h_{aire}\\)) es aproximadamente:\n\n\\(h_{aire}\\) \\(&lt;\\) \\(200\\) \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(200\\) \\(\\leq\\) \\(h_{aire}\\) \\(&lt;\\) \\(500\\) \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(500\\) \\(\\leq\\) \\(h_{aire}\\) \\(&lt;\\) \\(1000\\) \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(h_{aire}\\) \\(\\geq\\) \\(1000\\) \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\nPropiedades termo-físicas: \\(c_{p,~aire} = 1021.105~\\text{J/kg}\\cdot\\text{K}\\), \\(Pr_{aire} = 0.7\\)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C20.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C20.html#solución-1",
-    "title": "IIQ2013 - Clase 20",
-    "section": "Solución",
-    "text": "Solución\nPrimero calculamos el Factor de Colburn \\(j_H\\). Desde el gráfico y para la superficie CF-8.72(c), tenemos que\n\n%%render\nj_H = 0.007\ncp_aire = PropsSI('C', 'P', 1e5, 'T', 450, 'air')\nPr_aire = PropsSI('Prandtl', 'P', 1e5, 'T', 450, 'air')\ncp_aire = cp_aire * J / kg / K\nh_aire = G_max * cp_aire * j_H / Pr_aire**(2/3)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto la alternativa correcta es b)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C20.html#pregunta-3",
-    "href": "e_clase/jupyter/IIQ2013_C20.html#pregunta-3",
-    "title": "IIQ2013 - Clase 20",
-    "section": "Pregunta 3",
-    "text": "Pregunta 3\nSi \\(h_{agua} = 200~\\text{W/m}^2\\cdot\\text{K}\\) y la eficiencia del arreglo del ICC es de \\(\\eta_o = 0.91\\), el valor del coeficiente global de transferencia de calor (\\(U\\)) es aproximadamente el siguiente:\n\n\\(U\\) \\(&lt;\\) \\(200\\) \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(200\\) \\(\\leq\\) \\(U\\) \\(&lt;\\) \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(500\\) \\(\\leq\\) \\(U\\) \\(&lt;\\) \\(1000\\) \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\n\\(U\\) \\(\\geq\\) \\(1000\\) \\(\\text{W/m}^2\\cdot\\text{K}\\)\n\nConsidere que \\(\\beta_{lateral} = 59.2~\\text{m}^2\\text{/m}^3\\), en que \\(\\beta_{lateral}\\) corresponde a la cara del ICC a través de la cual ingresa (y sale) agua. Para reflexión posterior. ¿Cómo haría para estimar hagua a partir de los datos?"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C20.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C20.html#solución-2",
-    "title": "IIQ2013 - Clase 20",
-    "section": "Solución",
-    "text": "Solución\nCalcularemos el coeficiente global de transferencia de calor despreciando el ensuciamiento. CF-8.72 es un arreglo de tubos con aletas.\nLa razón entre el área de flujo externo del aire y el área de flujo interno del agua es simplemente la razón de las áreas superficiales por unidad de volumen,\n\\[ \\frac{A_o}{A_i} = \\frac{V \\beta}{V \\beta_{lat}} = \\frac{\\beta}{\\beta_{lat}}\\]\nEsto se debe a que la configuración de intercambiadores de calor compactos es a flujo cruzado.\n\n%%render\neta_0 = 0.91\nbeta_lat = 59.2\nh_agua = 200 * W / m**2 / K\nAf_a = 0.876\n# Aproximación al área de los tubos\nA_b = 1 - Af_a\nU = ( 1/(eta_0 * h_aire) * (beta_lat/beta) + 1 / h_agua)**(-1)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto la alternativa correcta es a)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C20.html#pregunta-4",
-    "href": "e_clase/jupyter/IIQ2013_C20.html#pregunta-4",
-    "title": "IIQ2013 - Clase 20",
-    "section": "Pregunta 4",
-    "text": "Pregunta 4\nLa temperatura del agua a la salida del ICC (\\(T_{agua,~o}\\)) es aproximadamente la siguiente:\n\n\\(T_{agua,~o}\\) \\(&lt;\\) \\(328\\) \\(\\text{K}\\)\n\n\\(328\\) \\(\\leq\\) \\(T_{agua,~o}\\) \\(&lt;\\) \\(340\\) \\(\\text{K}\\)\n\n\\(340\\) \\(\\leq\\) \\(T_{agua,~o}\\) \\(&lt;\\) \\(350\\) \\(\\text{K}\\)\n\n\\(T_{agua,~o}\\) \\(\\geq\\) \\(350\\) \\(\\text{K}\\)\n\nPropiedades termo-físicas: \\(c_{p,~agua} = 4178.2~\\text{J/kg}\\cdot\\text{K}\\)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C20.html#solución-3",
-    "href": "e_clase/jupyter/IIQ2013_C20.html#solución-3",
-    "title": "IIQ2013 - Clase 20",
-    "section": "Solución",
-    "text": "Solución\nPara calcular la temperatura de salida del ICC, podemos buscar el factor de corrección para un flujo perfectamente mezclado y el otro fluido sin mezclar.\nUtilizaremos el método de efectividad NTU, utilizando las fórmulas de la clase 20. Para un IC de flujo cruzado, con un fluido mezclado y el otro sin mezclar, tenemos que.\n\n%%render\nC_c = F_t * cp_agua\nC_h = F_ic * cp_aire\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nEl agua tiene una mayor capacidad, por lo tanto\n\n%%render\nC_r = C_h/C_c\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nNotemos que calculamos el coeficiente global de transferencia de calor basado en área interna. Por lo tanto, para el calculo de NTU utilizaremos esa área.\n\n%%render\nA_i = beta_lat * (A_ic * L_ic) / m\nNTU = (U*A_i)/C_h\nepsilon = 1 - np.exp( (np.exp(-C_r*NTU)-1) / C_r)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPrimero calculamos la temperatura del aire a la salida\n\n%%render\nT_hi = 450 * K\nT_ci = 310 * K\nT_ho = T_hi - epsilon * (T_hi-T_ci)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nAhora pudemos calcular la temperatura del fluido frío mediante balance de energía\n\n%%render\nT_co = (T_hi-T_ho) * C_r + T_ci\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nEl agua tan solo cambia levemente su temperatura. Nótese que en estricto rigor deberíamos re-evaluar las propiedades termofísicas de ambas corrientes a la temperatura promedio.\n\nMétodo 2: \\(F_t\\)\nNotar que ya calculamos la efectividad. Ah\nEn este caso, el fluido que se calienta (agua) tiene mayor capacidad que el fluido que se enfría. Por lo tanto, la razón entre el cambio de temperatura del fluido que se enfría y el que se calienta es igual a \\(1/C_r\\).\n\n%%render\nZ = 1/C_r\nP = (T_co - T_ci)/(T_hi-T_ci)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPara estas condiciones, $F_T $\n\n%%render\ndT_ml = ((T_hi-T_co) - (T_ho-T_ci)) / np.log((T_hi-T_co)/(T_ho-T_ci))\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n\nChequeo\n\n%%render\nF_t = 0.99\nQ = U*A_i * dT_ml * F_t\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\n%%render\nT_co2 = T_ci + Q/C_c\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto, el método efectividad-NTU entregó excelentes resultados que son consistentes con el método \\(\\Delta T_{ml}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C22.html",
-    "href": "e_clase/jupyter/IIQ2013_C22.html",
-    "title": "IIQ2013 - Clase 22",
-    "section": "",
-    "text": "¿Cuál de los siguientes ordenamientos es correcto al clasificar los equipos de evaporación según su capacidad de trabajar con fluidos de viscosidad decreciente?\n\nPelícula agitada \\(&gt;\\) película ascendente \\(&gt;\\) convección forzada \\(&gt;\\) tubos cortos verticales\n\nPelícula agitada \\(&gt;\\) convección forzada \\(&gt;\\) película ascendente \\(&gt;\\) tubos cortos verticales\n\nConvección forzada \\(&gt;\\) película agitada \\(&gt;\\) tubos cortos verticales \\(&gt;\\) película ascendente\n\nConvección forzada \\(&gt;\\) película agitada \\(&gt;\\) película ascendente \\(&gt;\\) tubos cortos verticales"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C22.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C22.html#pregunta-1",
-    "title": "IIQ2013 - Clase 22",
-    "section": "",
-    "text": "¿Cuál de los siguientes ordenamientos es correcto al clasificar los equipos de evaporación según su capacidad de trabajar con fluidos de viscosidad decreciente?\n\nPelícula agitada \\(&gt;\\) película ascendente \\(&gt;\\) convección forzada \\(&gt;\\) tubos cortos verticales\n\nPelícula agitada \\(&gt;\\) convección forzada \\(&gt;\\) película ascendente \\(&gt;\\) tubos cortos verticales\n\nConvección forzada \\(&gt;\\) película agitada \\(&gt;\\) tubos cortos verticales \\(&gt;\\) película ascendente\n\nConvección forzada \\(&gt;\\) película agitada \\(&gt;\\) película ascendente \\(&gt;\\) tubos cortos verticales"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C22.html#pregunta-2",
-    "href": "e_clase/jupyter/IIQ2013_C22.html#pregunta-2",
-    "title": "IIQ2013 - Clase 22",
-    "section": "Pregunta 2",
-    "text": "Pregunta 2\nSe puede afirmar lo siguiente sobre equipos de evaporación química:\n\nLos evaporadores de un solo efecto son recomendables para concentrar materiales termosensibles.\n\nEn el caso de fluidos poco viscosos la mejora que otorga la circulación forzada no compensa los costos adicionales del bombeo con respecto a circulación natural.\n\nAmbas (a) y (b) son estrictamente verdaderas.\n\nNi (a) ni (b) son estrictamente verdaderas."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C22.html#preguntas-3-6",
-    "href": "e_clase/jupyter/IIQ2013_C22.html#preguntas-3-6",
-    "title": "IIQ2013 - Clase 22",
-    "section": "Preguntas 3-6",
-    "text": "Preguntas 3-6\nSe desea concentrar 30 ton/h de una solución acuosa con 5% (w/w) de hidróxido de sodio (NaOH) y a 100 °C usando un evaporador de tubos cortos verticales. Las figuras adjuntas representan la elevación del punto de ebullición (izquierda) y la entalpia (derecha) de las soluciones acuosas de NaOH.\n\nimport handcalcs.render\nimport forallpeople\nimport numpy as np\nimport forallpeople as si\nfrom CoolProp.CoolProp import PropsSI\n\n\nsi.environment('default', top_level=True)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C22.html#pregunta-3",
-    "href": "e_clase/jupyter/IIQ2013_C22.html#pregunta-3",
-    "title": "IIQ2013 - Clase 22",
-    "section": "Pregunta 3",
-    "text": "Pregunta 3\nSi el evaporador concentra la hasta \\(40~\\%\\) (w/w) de NaOH, éste produce aproximadamente:\n\n\\(P\\) \\(&gt;\\) \\(5\\) \\(\\text{ton/h}\\) de solución concentrada de NaOH\n\n\\(4\\) \\(&lt;\\) \\(P\\) \\(\\leq\\) \\(5\\) \\(\\text{ton/h}\\) de solución concentrada de NaOH\n\n\\(3\\) \\(&lt;\\) \\(P\\) \\(\\leq\\) \\(4\\) \\(\\text{ton/h}\\) de solución concentrada de NaOH\n\n\\(P\\) \\(\\leq\\) \\(3\\) \\(\\text{ton/h}\\) de solución concentrada de NaOH"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C22.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C22.html#solución",
-    "title": "IIQ2013 - Clase 22",
-    "section": "Solución",
-    "text": "Solución\nEl flujo másico de producto se puede calcular directamente del balance de masa de soluto.\n\n%%render\nF = 30 * 1000 / 3600 * kg / s\nw_F = 0.05\nw_L = 0.4\nL = F*(w_F/w_L)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nEscribimos esta cantidad en toneladas por hora multiplicando por 3600/1000\n\nP = L.value * 3600 / 1000\nprint('El flujo de producto es P = %.3f ton/h' % P)\n\nEl flujo de producto es P = 3.750 ton/h\n\n\nPor lo tanto, la alternativa correcta es c)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C22.html#pregunta-4",
-    "href": "e_clase/jupyter/IIQ2013_C22.html#pregunta-4",
-    "title": "IIQ2013 - Clase 22",
-    "section": "Pregunta 4",
-    "text": "Pregunta 4\nSi el evaporador opera a \\(p = 0.135~\\text{bar}\\) \\(\\left[~T_v(p) = 52~\\text{°C};~\\lambda_{lv}(p) = 567.9~\\text{kcal/kg}~\\right]\\), la temperatura de operación del mismo es aproximadamente la siguiente:\n\n\\(T\\) \\(&gt;\\) \\(75\\) \\(\\text{°C}\\)\n\n\\(65\\) \\(&lt;\\) \\(T\\) \\(\\leq\\) \\(75\\) \\(\\text{°C}\\)\n\n\\(55\\) \\(&lt;\\) \\(T\\) \\(\\leq\\) \\(65\\) \\(\\text{°C}\\)\n\n\\(T\\) \\(\\leq\\) \\(55\\) \\(\\text{°C}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C22.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C22.html#solución-1",
-    "title": "IIQ2013 - Clase 22",
-    "section": "Solución",
-    "text": "Solución\nDel gráfico obtenemos la elevación del punto de ebullición en el evaporador. Para esto, utilizamos la curva de elevación de la temperatura de ebullición de la solución para una concentración de 40%. Considerando una temperatura de ebullición del agua pura igual a 52°C, \\(\\Delta T_e\\) es aproximadamente 27.5°C.\n\n%%render\np = 0.135\nT_v = 52 * K\nlambda_lvT = 567.9 * J / kg \nT = T_v + 27.5 * K\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPor lo tanto la temperatura de operación del evaporador es 79.5°C (alternativa a)."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C22.html#pregunta-5",
-    "href": "e_clase/jupyter/IIQ2013_C22.html#pregunta-5",
-    "title": "IIQ2013 - Clase 22",
-    "section": "Pregunta 5",
-    "text": "Pregunta 5\nSi el evaporador usa vapor saturado a \\(9.32~\\text{bar}\\) \\(\\left(~T_S = 177~\\text{°C}; \\lambda_S = 483.4~\\text{kcal/kg}~\\right)\\) como medio calefactor, el requerimiento de vapor de este es aproximadamente la siguiente:\n\n\\(S\\) \\(&gt;\\) \\(30\\) \\(\\text{ton/h}\\) de vapor\n\n\\(25\\) \\(&lt;\\) \\(S\\) \\(\\leq\\) \\(30\\) \\(\\text{ton/h}\\) de vapor\n\n\\(20\\) \\(&lt;\\) \\(S\\) \\(\\leq\\) \\(25\\) \\(\\text{ton/h}\\) de vapor\n\n\\(S\\) \\(\\leq\\) \\(20\\) \\(\\text{ton/h}\\) de vapor\n\nHint: Para el cálculo de la entalpía de la corriente de vapor sobrecalentado que se desprende del evaporador, note que se usa \\(T_{ref} = 0~\\text{°C}\\) (agua en fase líquida) como estado de referencia en la construcción del diagrama entalpía−composición para las soluciones acuosas de NaOH, y use los siguientes valores para las capacidades caloríficas: \\(c_{p,l} = 1~\\text{kcal/kg}\\cdot\\text{°C}\\) para agua en fase líquida, y \\(c_{p,g} = 0.45~\\text{kcal/kg}\\cdot\\text{°C}\\) para vapor de agua."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C22.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C22.html#solución-2",
-    "title": "IIQ2013 - Clase 22",
-    "section": "Solución",
-    "text": "Solución\nRealizando un balance de energía en el evaporador, tenemos que\n\\[ S \\Delta H_{s} = V H_V + L H_L - F H_F \\]\nPara este ejercicio, resolveremos el balance de energía completo considerando el sobrecalentaimiento del vapour que se desprende del evaporador.\n\n%%render params\nT_F = 100 * K\nT_s = 177  * K\np_s = 9.32 # Pa\nlambda_s = 483.4 * J/kg \ncp_l = 1 * J / kg / K # agua\ncp_g = 0.45 * J / kg / K  # vapor\n\n# H_L cp_l * (T)\n# H_F = cp_l * (T_F)\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nPrimero calculamos el flujo de vapor utilizando un balance de masa, y encontramos las entalpías de entrada y salida de la solución acuosa utilizando el gráfico de la derecha del enunciado.\n\n%%render\nV = F*(1-w_F/w_L) \nH_V = cp_l * (T_v) + lambda_lvT + cp_g*(T-T_v)\nH_F = 96 * J/ kg \nH_L = 88  * J / kg \nS = (V*H_V + L*H_L - F*H_F)/lambda_s\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\nprint(\"S = %.3f ton/h\" % (S.value*3600/1000))\n\nS = 29.059 ton/h\n\n\nPor lo tanto la alternativa correcta es a)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C22.html#pregunta-6",
-    "href": "e_clase/jupyter/IIQ2013_C22.html#pregunta-6",
-    "title": "IIQ2013 - Clase 22",
-    "section": "Pregunta 6",
-    "text": "Pregunta 6\nSi el equipo está constituido de un haz de \\(N_t = 1200\\) tubos de \\(L = 1~\\text{m}\\) de alto y \\(D_o = 2.5~\\text{cm}\\) de diámetro, el coeficiente global de transferencia de calor es aproximadamente el siguiente:\n\n\\(U\\) \\(&gt;\\) \\(1500\\) \\(\\text{kcal/h}\\cdot\\text{m}^2\\cdot\\text{°C}\\)\n\n\\(1250\\) \\(&lt;\\) \\(U\\) \\(\\leq\\) \\(1500\\) \\(\\text{kcal/h}\\cdot\\text{m}^2\\cdot\\text{°C}\\)\n\n\\(1000\\) \\(&lt;\\) \\(U\\) \\(\\leq\\) \\(1250\\) \\(\\text{kcal/h}\\cdot\\text{m}^2\\cdot\\text{°C}\\)\n\n\\(U\\) \\(\\leq\\) \\(1000\\) \\(\\text{kcal/h}\\cdot\\text{m}^2\\cdot\\text{°C}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C22.html#solución-3",
-    "href": "e_clase/jupyter/IIQ2013_C22.html#solución-3",
-    "title": "IIQ2013 - Clase 22",
-    "section": "Solución",
-    "text": "Solución\nEn esta pregunta recordamos que el calor total cedido por el vapor es aproximadamente \\(Q = S \\lambda_s\\). Considerando que la transferencia de calor ocurre de manera isotérmica entre los tubos y el licor, la diferencia de temperatura relevante es constante e igual a \\(T_s - T\\). Finalmente, podemos obtener el coeficiente global de transferencia de calor con la fórmula $ U = $\n\nfrom math import pi\n\n\n%%render\nN_t = 1200\nL_t = 1 * m\nD_o = 0.025 * m\nA = N_t * pi * D_o * L_t \nU = (S*lambda_s)/(A*(T_s-T))\n\n&lt;IPython.core.display.Latex object&gt;\n\n\n\nU_kcal_h = U.value * 3600\nprint(\"U = %.3f kcal h^-1 m^-2 °C^-1\" % U_kcal_h)\n\nU = 1528.673 kcal h^-1 m^-2 °C^-1\n\n\nPor lo tanto, la alternativa correcta es a)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C4.html",
-    "href": "e_clase/jupyter/IIQ2013_C4.html",
+    "objectID": "e_clase/jupyter/IIQ2013_C3.html",
+    "href": "e_clase/jupyter/IIQ2013_C3.html",
     "title": "IIQ2013 - Clase 4",
     "section": "",
     "text": "En primer lugar se deben cargar las librerias que vamos a utilizar\nimport numpy as np"
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C4.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C4.html#pregunta-1",
+    "objectID": "e_clase/jupyter/IIQ2013_C3.html#pregunta-1",
+    "href": "e_clase/jupyter/IIQ2013_C3.html#pregunta-1",
     "title": "IIQ2013 - Clase 4",
     "section": "Pregunta 1",
     "text": "Pregunta 1\nResponda las siguientes preguntas en relación con las curvas características de la bomba centrífugas con un rodete C (6.75 in de diámetro) disponible en el formulario:\n\n\\(h_B\\) / \\((h_B)_{teórico} &lt;\\) 40 %\n40 \\(\\leq h_B\\) / \\((h_B)_{teórico} &lt;\\) 60 %\n60 \\(\\leq h_B\\) / \\((h_B)_{teórico} &lt;\\) 80 %\n\\(h_B\\) / \\((h_B)_{teórico} \\geq\\) 80 %"
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C4.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C4.html#solución",
+    "objectID": "e_clase/jupyter/IIQ2013_C3.html#solución",
+    "href": "e_clase/jupyter/IIQ2013_C3.html#solución",
     "title": "IIQ2013 - Clase 4",
     "section": "Solución",
     "text": "Solución\nSi \\(\\beta\\) = 90° entonces tan \\(\\beta\\) = \\(\\infty\\). Luego (ghB,teórico) \\(\\approx\\) r32w2 y hB se puede obtener directamente del gráfico de la página 9 del formulario para una descarga nula\n\ng = 9.81 # aceleracion de gravedad m/s^2\nw = 2*np.pi*1750/60 # 2 * Pi * RPM / 60 para dejar la velocidad en rad/s\nr_3 = (6.75/2)*2.54*0.01 # Diametro / 2 y el cambio de unidades de in a metros.\n\nh_b_teorico = (w*r_3)**2 / g \nh_b = 13.75 # Desde el gráfico del formulario\nfraccion = h_b / h_b_teorico\nprint(f\"La fracción de la carga teórica alcanzada para la carga nula es {100 * fraccion} %\")\n\nLa fracción de la carga teórica alcanzada para la carga nula es 54.654180235193 %\n\n\nPor lo tanto la alternativa correcta es la c."
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C4.html#pregunta-2",
-    "href": "e_clase/jupyter/IIQ2013_C4.html#pregunta-2",
+    "objectID": "e_clase/jupyter/IIQ2013_C3.html#pregunta-2",
+    "href": "e_clase/jupyter/IIQ2013_C3.html#pregunta-2",
     "title": "IIQ2013 - Clase 4",
     "section": "Pregunta 2",
     "text": "Pregunta 2\nPara la misma combinación de rodete y carcasa de (1) pero con una bomba operando a 3500 rpm, el valor de la carga real en la condición de máxima carga es aproximadamente el siguiente:\n\n\\(h_B &lt;\\) 30 m\n30 \\(\\leq h_B &lt;\\) 45 m\n45 \\(\\leq h_B &lt;\\) 60 m\n\\(h_B \\geq\\) 60 m"
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C4.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C4.html#solución-1",
+    "objectID": "e_clase/jupyter/IIQ2013_C3.html#solución-1",
+    "href": "e_clase/jupyter/IIQ2013_C3.html#solución-1",
     "title": "IIQ2013 - Clase 4",
     "section": "Solución",
     "text": "Solución\nUtilizando la siguiente relación de proporcionalidad Q1/2 \\(\\propto\\) \\(\\omega\\)1/2r33/2. Haciendo un poco de algebra con las proporcionalidades Q1/2\\(\\omega\\) / hb3/4 = constante. Luego si planteamos esta proporcionalidad utilizando la altura de descarga mínima se obtiene:\n\nh_b_1 = h_b\nw_2 = 2*np.pi*3500/60\nh_b_2 = h_b_1*(w_2/w)**2\nh_b_2\nprint(f\"El valor de la carga real en la condició de máaxima carga es {h_b_2} m\")\n\nEl valor de la carga real en la condició de máaxima carga es 55.0 m\n\n\nPor lo tanto la alternativa correcta es la c."
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C4.html#pregunta-3",
-    "href": "e_clase/jupyter/IIQ2013_C4.html#pregunta-3",
+    "objectID": "e_clase/jupyter/IIQ2013_C3.html#pregunta-3",
+    "href": "e_clase/jupyter/IIQ2013_C3.html#pregunta-3",
     "title": "IIQ2013 - Clase 4",
     "section": "Pregunta 3",
     "text": "Pregunta 3\nConsidere ahora que la bomba se instala en el sistema de la Figura 1, a una distancia \\(Z_a\\) = 2 m por encima de un depósito abierto al ambiente (\\(P_{atm}\\) = 101325 Pa. El diámetro del ducto de succión igualada al del ducto de entrada de la bomba (D= 1.5 in) y por el circulan \\(Q\\) = 5.5 L/s de agua a 25 °C (\\(P_{v}\\) = 3170 Pa, \\(\\rho\\) = 997 kg/m3, \\(\\mu\\) = 1 mPa s). Si las pérdidas por fricción y singularidades del ducto de succión son \\(\\Phi\\) = 35 m2/s2 el valor del NPSHd para el sistema anterior es aproximandamente el siguiente:\n\nNPSHd$&lt; $ 1 m\n1 \\(\\leq\\) NPSHd \\(&lt;\\) 2 m\n2 \\(\\leq\\) NPSHd \\(\\leq\\) 3 m\nNPSHd &gt; $ 3 m"
   },
   {
-    "objectID": "e_clase/jupyter/IIQ2013_C4.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C4.html#solución-2",
+    "objectID": "e_clase/jupyter/IIQ2013_C3.html#solución-2",
+    "href": "e_clase/jupyter/IIQ2013_C3.html#solución-2",
     "title": "IIQ2013 - Clase 4",
     "section": "Solución",
     "text": "Solución\nPrimero generamos una función para el cálculo de el NPSH disponible en el sistema.\n\n#\ndef NPSH_d(Patm, Pv,rho, z_succion, phi):\n    return ((Patm-Pv)/(rho*9.81)) - z_succion - phi\n\n\nEn segundo lugar calculamos \\(\\Phi\\) incluyendo pérdidas por fricción y singularidades y luego aplicamos la formula del NPSH disponible.\n\ng = 9.81 # aceleracion de gravedad m/s^2\nD = 1.5*2.54*0.01 #m\nQ = 5.5/1000 #m3/s \nrho = 997 # kg/m3\nP_v = 3170 # Pa\nP_atm = 101325 #Pa\nz = 2\nphi_real = ((8*Q**2) / (np.pi**2*D**4) + 35)/g #incluye fricción y singularidades\n\nNPSH = NPSH_d(P_atm,P_v,rho,z,phi_real)\nprint(f\"El valor del NPSH disponible es {NPSH} m\")\n\n\nEl valor del NPSH disponible es 3.281756309047579 m\n\n\nPor lo tanto la alternativa correcta es la d."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C7.html",
-    "href": "e_clase/jupyter/IIQ2013_C7.html",
-    "title": "IIQ2013 - Clase 7",
-    "section": "",
-    "text": "Un compañero desea emprender creando un innovador SPA que utiliza un aceite esencial especial con harina disuelta como exfoliante. Esta suspensión es un fluido newtoniano con una viscosidad de \\(8000\\hspace{1mm}cP\\) y una densidad \\(\\rho=880\\hspace{1mm}(kg/m^3)\\).\nEn primer lugar se deben cargar las librerias que vamos a utilizar\nimport numpy as np\nfrom numpy import sqrt, pi\nimport handcalcs.render\nfrom handcalcs import handcalc"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C7.html#pregunta-1",
-    "href": "e_clase/jupyter/IIQ2013_C7.html#pregunta-1",
-    "title": "IIQ2013 - Clase 7",
-    "section": "Pregunta 1",
-    "text": "Pregunta 1\nPara el primer salón, su compañero necesita impulsar \\(50\\hspace{1mm}mL/s\\) de esta suspensión a través de una tubería rectangular de \\(1/2\\hspace{1mm}pulgadas\\) de ancho por \\(1/4\\hspace{1mm}pulgadas\\) de largo. ¿Qué bomba le sugeriría a su compañero utilizar en su SPA?\n\nBomba de doble diafragma\nBomba centrífuga de voluta\nBomba peristáltica\nBomba de pistones"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C7.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C7.html#solución",
-    "title": "IIQ2013 - Clase 7",
-    "section": "Solución",
-    "text": "Solución\nComo el volumen es pequeño, debemos usar una bomba de desplazamiento positivo. La bomba de pistones no es adecuada para suspenciones. También, la bomba de diafragma, si bien puede se utilizada, tiene la desventaja de tener un flujo pulsante. Por lo tanto, se recomienda utilizar una bomba peristáltica.\nLa alternativa correcta es la c."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C7.html#pregunta-2",
-    "href": "e_clase/jupyter/IIQ2013_C7.html#pregunta-2",
-    "title": "IIQ2013 - Clase 7",
-    "section": "Pregunta 2",
-    "text": "Pregunta 2\nSu compañero encontró que es mucho más barato preparar la suspensión en lugar de comprarla. Para ello, se encuentra seleccionando estanques y agitadores. Para un tanque de \\(3\\hspace{1mm}m^3\\), ¿qué agitador le recomendaría?\n\nTurbina\nHélice\nAncla\nPaleta"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C7.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C7.html#solución-1",
-    "title": "IIQ2013 - Clase 7",
-    "section": "Solución",
-    "text": "Solución\nDel gráfico:"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C7.html#jqavcglh-.imagesimg_ec-7.png",
-    "href": "e_clase/jupyter/IIQ2013_C7.html#jqavcglh-.imagesimg_ec-7.png",
-    "title": "IIQ2013 - Clase 7",
-    "section": "```jqavcglh ./images/img_EC-7.png",
-    "text": "```jqavcglh ./images/img_EC-7.png\nname: figura-EC7 scale: 60% align: center —\nGráfico de selección.\n\nPor lo tanto, la alternativa correcta es la **a**.\n\n## Pregunta 3\n\nSi la altura del estanque cilíndrico es de $2\\hspace{1mm}(m)$, la razón entre el diámetro del agitador y el diámetro del estanque es $S1 = D/T = 0.2$, y el número del flujo del agitador es $NQ = 0.87$, ¿Cuál es el caudal volumétrico descargado del borde del agitador operando a $120\\hspace{1mm}RPM$?\n\n(a) Q $&lt;$ 0.15 m$^3$/s\n\n(b) 0.15 m$^3$/s $\\leq$ Q $&lt;$ 0.20 m$^3$/s\n\n(c) 0.12 m$^3$/s $\\leq$ Q $&lt;$ 0.25 m$^3$/s\n\n(d) Q $\\geq$ 0.25 m$^3$/s\n\n## Solución\n\n::: {#ba37ae93-5f58-452d-b8ec-21cde352ee1b .cell execution_count=15}\n``` {.python .cell-code}\n%%render long\nH = 2 #m\nV = 3 #m$^3$\nS_1 = 0.2\nD_t = sqrt(4*V/(pi*H)) #m\nD_a = D_t*S_1 #m\nNQ = 0.87\nN = 120 #RPM\nQ = NQ*(N/60)*D_a**3 #m$^3$/s\n\n&lt;IPython.core.display.Latex object&gt;\n\n:::\nLa alternativa correcta es la a."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C7.html#pregunta-4",
-    "href": "e_clase/jupyter/IIQ2013_C7.html#pregunta-4",
-    "title": "IIQ2013 - Clase 7",
-    "section": "Pregunta 4",
-    "text": "Pregunta 4\nEl fabricante del agitador reporta que para un diámetro del agitador de \\(0.3\\hspace{1mm}m\\), la potencia requerida para \\(180\\hspace{1mm}RPM\\) es de \\(5.5 \\hspace{1mm}kW\\). ¿Qué potencia requiere el agitador diseñado en la pregunta 3?\n\nP \\(&lt;\\) 0.15 kW\n0.5 kW \\(\\leq\\) P \\(&lt;\\) 1.5 kW\n1.5 kW \\(\\leq\\) P \\(&lt;\\) 2.5 kW\nP \\(\\geq\\) 2.5 kW"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C7.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C7.html#solución-2",
-    "title": "IIQ2013 - Clase 7",
-    "section": "Solución",
-    "text": "Solución\nSe debe cumplir que el número de potencia es equivalente.\n\\[\nN_{p,1} = N_{p,2} \\Rightarrow \\frac{P_1}{\\rho_1N_1^3D_{a,1}^5} = \\frac{P_2}{\\rho_2N_2^3D_{a,2}^5}\n\\]\n\n%%render long\nN_1 = 180 #RPM\nN_2 = N #RPM\nP_1 = 5.5 #kW\nD_a1 = 0.3 #m\nD_a2 = D_a #m\nP_2 = P_1*((N_2/60)**3*D_a2**5)/((N_1/60)**3*D_a1**5) #kW\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es la b."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C9.html",
-    "href": "e_clase/jupyter/IIQ2013_C9.html",
-    "title": "IIQ2013 - Clase 9",
-    "section": "",
-    "text": "Se efectúa un experimento en un estanque de laboratorio con configuración estándar de \\(10 \\mathrm{~L}\\) de capacidad \\((H / D_T=1)\\) y equipado con una turbina de seis palas. Experimentalmente se determina que el tiempo de mezclado para alcanzar una uniformidad superior a \\(99.99 \\%\\) en una solución \\(\\left[\\rho=1000 \\mathrm{~kg} / \\mathrm{m}^3, \\mu=60 \\mathrm{~cp}\\right]\\) es aproximadamente \\(t_{\\mathrm{m}}=1 \\mathrm{~min}\\) al operar a \\(500 \\mathrm{~rpm}\\). Interesa usar dichos datos para dimensionar un estanque industrial para mezclar \\(100 \\mathrm{~m}^3\\) de solución.\nEn primer lugar se deben cargar las librerias que vamos a utilizar\nimport numpy as np\nfrom numpy import sqrt, pi\nimport handcalcs.render\nfrom handcalcs import handcalc"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C9.html#problema-1",
-    "href": "e_clase/jupyter/IIQ2013_C9.html#problema-1",
-    "title": "IIQ2013 - Clase 9",
-    "section": "Problema 1",
-    "text": "Problema 1\nSi para una configuración estándar de estanque agitado con turbina \\(D_T / D_a=4\\), entonces el diámetro de agitador industrial \\((D_a)\\) es el siguiente:\n\n\\(D&gt;120 \\mathrm{~cm}\\)\n\\(80&lt;D \\leq 120 \\mathrm{~cm}\\)\n\\(40&lt;D \\leq 80 \\mathrm{~cm}\\)\n\\(D \\leq 40 \\mathrm{~cm}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C9.html#solución",
-    "href": "e_clase/jupyter/IIQ2013_C9.html#solución",
-    "title": "IIQ2013 - Clase 9",
-    "section": "Solución",
-    "text": "Solución\nSabemos el volumen, luego despejamos para \\(D_t\\) del agitador de laboratorio.\n\\[\nD_t = \\sqrt[3]{\\frac{4V}{\\pi}}\n\\]\n\n%%render long\n#Para volumen laboratorio\nV = 0.01 #m$^3$\nS_1 = 1/4\nD_Tm = ((4*V)/pi)**(1/3) #m\nD_am = D_Tm*S_1 #m\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nluego para el agitador de industrial.\n\n%%render long\n#Para volumen laboratorio\nV = 100 #m$^3$\nS_1 = 1/4\nD_Tp = ((4*V)/pi)**(1/3) #m\nD_ap = D_Tp*S_1 #m\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es la a."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C9.html#problema-2",
-    "href": "e_clase/jupyter/IIQ2013_C9.html#problema-2",
-    "title": "IIQ2013 - Clase 9",
-    "section": "Problema 2",
-    "text": "Problema 2\nSi la calidad del mezclado depende principalmente de la velocidad de punta del agitador, la velocidad a la que debe operar el agitador industrial \\((N)\\) es la siguiente:\n\n\\(N&gt;270 \\mathrm{rpm}\\)\n\\(90&lt;N \\leq 270 \\mathrm{rpm}\\)\n\\(30&lt;N \\leq 90 \\mathrm{rpm}\\)\n\\(N \\leq 30 \\mathrm{rpm}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C9.html#solución-1",
-    "href": "e_clase/jupyter/IIQ2013_C9.html#solución-1",
-    "title": "IIQ2013 - Clase 9",
-    "section": "Solución",
-    "text": "Solución\nUtilizando el criterio de ND constante,\n\\[\nN_m D_{d, m}=N_p D_{a, p} \\Rightarrow N_p=N_m \\frac{D_{T, m}}{D_{T, p}}\n\\]\n\n%%render long\nNm = 500 #RPM\nNp = Nm*D_Tm/D_Tp #RPM\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es la d."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C9.html#problema-3",
-    "href": "e_clase/jupyter/IIQ2013_C9.html#problema-3",
-    "title": "IIQ2013 - Clase 9",
-    "section": "Problema 3",
-    "text": "Problema 3\nEl régimen de flujo en el estanque industrial es el siguiente:\n\nLaminar\nDe transición de laminar a turbulento\nTurbulento\nNo existe suficiente información para determinar el régimen de flujo"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C9.html#solución-2",
-    "href": "e_clase/jupyter/IIQ2013_C9.html#solución-2",
-    "title": "IIQ2013 - Clase 9",
-    "section": "Solución",
-    "text": "Solución\nPara esto calculamos el número de Reynolds\n\\[\nRe=\\frac{\\rho_p N_p D_{a, p}^2}{\\mu_p}\n\\]\n\n%%render long\nrho = 1000 #kg/m$^3$\nmu = 0.06 #Pa$\\cdot$s\nRe = (rho*(Np/60)*D_ap**2)/mu\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es la c, régimen turbulento."
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C9.html#problema-4",
-    "href": "e_clase/jupyter/IIQ2013_C9.html#problema-4",
-    "title": "IIQ2013 - Clase 9",
-    "section": "Problema 4",
-    "text": "Problema 4\nSi en las pruebas de laboratorio se determina que \\(K_{\\mathrm{L}}=65\\) y \\(K_{\\mathrm{T}}=5.75\\), entonces el consumo de potencia del agitador industrial \\((P)\\) es aproximadamente el siguiente:\n\n\\(P&gt;25 \\mathrm{~kW}\\)\n\\(5&lt;P \\leq 25 \\mathrm{~kW}\\)\n\\(1&lt;P \\leq 5 \\mathrm{~kW}\\)\n\\(P \\leq 1 \\mathrm{~kW}\\)"
-  },
-  {
-    "objectID": "e_clase/jupyter/IIQ2013_C9.html#solución-3",
-    "href": "e_clase/jupyter/IIQ2013_C9.html#solución-3",
-    "title": "IIQ2013 - Clase 9",
-    "section": "Solución",
-    "text": "Solución\n\n%%render long\nK_T = 5.75\nP = K_T*rho*(Np/60)**3*D_ap**5/1000 #kW\n\n&lt;IPython.core.display.Latex object&gt;\n\n\nLa alternativa correcta es la c."
   },
   {
     "objectID": "e_prop/00_bernoulli/e00_2.html",
@@ -1950,7 +998,7 @@
     "href": "e_prop/08_evaporadores/e08_2.html#solución",
     "title": "Ejercicio 2: Evaporador considerando entalpía de dilución",
     "section": "Solución",
-    "text": "Solución\n\nMostrar solución\n\n\n\nInciso 1\n\n\nCódigo\nimport handcalcs.render\nhandcalcs.set_option(\"custom_symbols\",{\"dEPE\": \"\\Delta EPE\", \"dotm\": \"\\dot m\", \"lambda\": \"\\lambda\", \"Tebs\": \"T^eb\", \"dT\": \"\\Delta T\"})\nhandcalcs.set_option(\"latex_block_start\", \"$$\")\nhandcalcs.set_option(\"latex_block_end\", \"$$\")\n\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_15048\\1935075477.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_15048\\1935075477.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_15048\\1935075477.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_15048\\1935075477.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n\n\nSe debe cumplir la conservación de masa, tal que\n\\[\nw_F\\cdot F = w_L\\cdot L\n\\]\n\n\nCódigo\n%%render params\ndotm_F = 9070 #kg/h\nw_F = 0.2 \nw_L = 0.5\n\n\n\\[\n\\begin{aligned}\n\\dot m_{F} &= 9070 \\; \\;\\textrm{(kg/h)}\n&w_{F} &= 0.200 \\;\n&w_{L} &= 0.500 \\;\n\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render short\ndotm_L = dotm_F*(w_F/w_L) #kg/h\n\n\n\\[\n\\begin{aligned}\n\\dot m_{L} &= \\dot m_{F} \\cdot \\left( \\frac{ w_{F} }{ w_{L} } \\right)  = 9070 \\cdot \\left( \\frac{ 0.200 }{ 0.500 } \\right) &= 3628.000 \\; \\;\\textrm{(kg/h)}\n\\end{aligned}\n\\]\n\n\nPor balance de masa se despeja \\(\\dot{m}_V\\).\n\n\nCódigo\n%%render short 0\ndotm_V = dotm_F-dotm_L #kg/h\n\n\n\\[\n\\begin{aligned}\n\\dot m_{V} &= \\dot m_{F} - \\dot m_{L}  = 9070 - 3628 &= 5442 \\; \\;\\textrm{(kg/h)}\n\\end{aligned}\n\\]\n\n\n\n\nInciso 2\nSe debe despejar \\(\\dot{m}_s\\) a partir del balance de energía.\n\\[\n\\dot{m}_s\\cdot\\lambda_s = \\dot{m}_v\\cdot H_v + \\dot{m}_L\\cdot H_L - \\dot{m}_F\\cdot H_F\n\\]\n\n\nCódigo\n%%render params\nTebs_sol = 91.67 #$^\\circ$C\nTebs_w = 51.11 #$^\\circ$C\nlambda_s = 2184.11 #kJ/kg\n\n\n\\[\n\\begin{aligned}\n\\mathrm{T^eb}_{sol} &= 91.670 \\; \\;\\textrm{($^\\circ$C)}\n&\\mathrm{T^eb}_{w} &= 51.110 \\; \\;\\textrm{($^\\circ$C)}\n&\\lambda_{s} &= 2184.110 \\; \\;\\textrm{(kJ/kg)}\n\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nPor definición, el \\(\\Delta\\text{EPE}\\) es la diferencia entre las temperaturas de ebullición de la solución y el agua pura. Ya que la fórmula para \\(H_v\\) se encuentra en función de la temperatura en Farenheit, hacemos el cambio de unidades.\n\n\nCódigo\n%%render short 0\nTebs_solF = Tebs_sol*9/5 +32 #$^\\circ$F\nTebs_wF = Tebs_w*9/5 +32 #$^\\circ$F\ndEPE = Tebs_solF-Tebs_wF #$^\\circ$F\nH_V = 1116+0.45*dEPE #Btu/lb\n\n\n\\[\n\\begin{aligned}\n\\mathrm{T^eb}_{solF} &= \\mathrm{T^eb}_{sol} \\cdot \\frac{ 9 }{ 5 } + 32  = 92 \\cdot \\frac{ 9 }{ 5 } + 32 &= 197 \\; \\;\\textrm{($^\\circ$F)}\n\\\\[10pt]\n\\mathrm{T^eb}_{wF} &= \\mathrm{T^eb}_{w} \\cdot \\frac{ 9 }{ 5 } + 32  = 51 \\cdot \\frac{ 9 }{ 5 } + 32 &= 124 \\; \\;\\textrm{($^\\circ$F)}\n\\\\[10pt]\n\\Delta EPE &= \\mathrm{T^eb}_{solF} - \\mathrm{T^eb}_{wF}  = 197 - 124 &= 73 \\; \\;\\textrm{($^\\circ$F)}\n\\\\[10pt]\nH_{V} &= 1116 + 0.45 \\cdot \\Delta EPE  = 1116 + 0.45 \\cdot 73 &= 1149 \\; \\;\\textrm{(Btu/lb)}\n\\end{aligned}\n\\]\n\n\nLas otras entalpías las encontramos de forma gráfica:\n\\(H_F:~20~\\%~\\text{sólidos a}~100~\\text{°F}\\) \\(\\rightarrow\\) \\(55~\\text{Btu/lb}\\)\n\\(H_L:~50~\\%~\\text{sólidos a}~197~\\text{°F}\\) \\(\\rightarrow\\) \\(221~\\text{Btu/lb}\\)\n\n\nCódigo\n%%render short\nH_V = 1149*2.326 # kJ/kg\nH_F = 55*2.326 # kJ/kg\nH_L = 221*2.326 # kJ/kg\n\n\n\\[\n\\begin{aligned}\nH_{V} &= 1149 \\cdot 2.326 &= 2672.574 \\; \\;\\textrm{(kJ/kg)}\n\\\\[10pt]\nH_{F} &= 55 \\cdot 2.326 &= 127.930 \\; \\;\\textrm{(kJ/kg)}\n\\\\[10pt]\nH_{L} &= 221 \\cdot 2.326 &= 514.046 \\; \\;\\textrm{(kJ/kg)}\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render long\nq = dotm_V*H_V + dotm_L*H_L - dotm_F*H_F # kJ/h\ndotm_s = q/lambda_s #kg/h\n\n\n\\[\n\\begin{aligned}\nq &= \\dot m_{V} \\cdot H_{V} + \\dot m_{L} \\cdot H_{L} - \\dot m_{F} \\cdot H_{F} \\\\&= 5442.000 \\cdot 2672.574 + 3628.000 \\cdot 514.046 - 9070 \\cdot 127.930 \\\\&= 15248781.496 \\; \\;\\textrm{(kJ/h)}\\\\[10pt]\n\\\\[10pt]\n\\dot m_{s} &= \\frac{ q }{ \\lambda_{s} } \\\\&= \\frac{ 15248781.496 }{ 2184.110 } \\\\&= 6981.691 \\; \\;\\textrm{(kg/h)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nInciso 3\n\n\nCódigo\n%%render 2\nE = dotm_V/dotm_s #kg/kg\n\n\n\\[\n\\begin{aligned}\nE &= \\frac{ \\dot m_{V} }{ \\dot m_{s} }  = \\frac{ 5442.00 }{ 6981.69 } &= 0.78 \\; \\;\\textrm{(kg/kg)}\n\\end{aligned}\n\\]\n\n\n\n\nInciso 4\nLa ecuación de diseño de un evaporador será:\n\\[\nq = U\\cdot A\\cdot\\Delta T\n\\]\nDonde la diferencia de temperaturas \\(\\Delta T\\) será la temperatura en el flujo de vapor \\(\\text{S}\\) y la temperatura de ebullición de la solución en el evaporador.\n\n\nCódigo\n%%render long\nU = 1400 #W/m$^2\\cdot^\\circ$C\nq = q*(1000/3600) #W\ndT = 126.1-91.67\nA = q/(U*dT) #m$^2$\n\n\n\\[\n\\begin{aligned}\nU &= 1400 \\; \\;\\textrm{(W/m$^2\\cdot^\\circ$C)}\n\\\\[10pt]\nq &= q \\cdot \\left( \\frac{ 1000 }{ 3600 } \\right) \\\\&= 4235772.638 \\cdot \\left( \\frac{ 1000 }{ 3600 } \\right) \\\\&= 4235772.638 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\n\\Delta T &= 126.1 - 91.67 &= 34.430  \n\\\\[10pt]\nA &= \\frac{ q }{ U \\cdot \\Delta T } \\\\&= \\frac{ 4235772.638 }{ 1400 \\cdot 34.430 } \\\\&= 87.875 \\; \\;\\textrm{(m$^2$)}\\\\[10pt]\n\\end{aligned}\n\\]",
+    "text": "Solución\n\nMostrar solución\n\n\n\nInciso 1\n\n\nCódigo\nimport handcalcs.render\nhandcalcs.set_option(\"custom_symbols\",{\"dEPE\": \"\\Delta EPE\", \"dotm\": \"\\dot m\", \"lambda\": \"\\lambda\", \"Tebs\": \"T^eb\", \"dT\": \"\\Delta T\"})\nhandcalcs.set_option(\"latex_block_start\", \"$$\")\nhandcalcs.set_option(\"latex_block_end\", \"$$\")\n\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\n&lt;&gt;:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_17476\\1935075477.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_17476\\1935075477.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\d'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_17476\\1935075477.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\l'\n\nC:\\Users\\nfgaj\\AppData\\Local\\Temp\\ipykernel_17476\\1935075477.py:2: SyntaxWarning:\n\ninvalid escape sequence '\\D'\n\n\n\nSe debe cumplir la conservación de masa, tal que\n\\[\nw_F\\cdot F = w_L\\cdot L\n\\]\n\n\nCódigo\n%%render params\ndotm_F = 9070 #kg/h\nw_F = 0.2 \nw_L = 0.5\n\n\n\\[\n\\begin{aligned}\n\\dot m_{F} &= 9070 \\; \\;\\textrm{(kg/h)}\n&w_{F} &= 0.200 \\;\n&w_{L} &= 0.500 \\;\n\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render short\ndotm_L = dotm_F*(w_F/w_L) #kg/h\n\n\n\\[\n\\begin{aligned}\n\\dot m_{L} &= \\dot m_{F} \\cdot \\left( \\frac{ w_{F} }{ w_{L} } \\right)  = 9070 \\cdot \\left( \\frac{ 0.200 }{ 0.500 } \\right) &= 3628.000 \\; \\;\\textrm{(kg/h)}\n\\end{aligned}\n\\]\n\n\nPor balance de masa se despeja \\(\\dot{m}_V\\).\n\n\nCódigo\n%%render short 0\ndotm_V = dotm_F-dotm_L #kg/h\n\n\n\\[\n\\begin{aligned}\n\\dot m_{V} &= \\dot m_{F} - \\dot m_{L}  = 9070 - 3628 &= 5442 \\; \\;\\textrm{(kg/h)}\n\\end{aligned}\n\\]\n\n\n\n\nInciso 2\nSe debe despejar \\(\\dot{m}_s\\) a partir del balance de energía.\n\\[\n\\dot{m}_s\\cdot\\lambda_s = \\dot{m}_v\\cdot H_v + \\dot{m}_L\\cdot H_L - \\dot{m}_F\\cdot H_F\n\\]\n\n\nCódigo\n%%render params\nTebs_sol = 91.67 #$^\\circ$C\nTebs_w = 51.11 #$^\\circ$C\nlambda_s = 2184.11 #kJ/kg\n\n\n\\[\n\\begin{aligned}\n\\mathrm{T^eb}_{sol} &= 91.670 \\; \\;\\textrm{($^\\circ$C)}\n&\\mathrm{T^eb}_{w} &= 51.110 \\; \\;\\textrm{($^\\circ$C)}\n&\\lambda_{s} &= 2184.110 \\; \\;\\textrm{(kJ/kg)}\n\\\\[10pt]\n\\end{aligned}\n\\]\n\n\nPor definición, el \\(\\Delta\\text{EPE}\\) es la diferencia entre las temperaturas de ebullición de la solución y el agua pura. Ya que la fórmula para \\(H_v\\) se encuentra en función de la temperatura en Farenheit, hacemos el cambio de unidades.\n\n\nCódigo\n%%render short 0\nTebs_solF = Tebs_sol*9/5 +32 #$^\\circ$F\nTebs_wF = Tebs_w*9/5 +32 #$^\\circ$F\ndEPE = Tebs_solF-Tebs_wF #$^\\circ$F\nH_V = 1116+0.45*dEPE #Btu/lb\n\n\n\\[\n\\begin{aligned}\n\\mathrm{T^eb}_{solF} &= \\mathrm{T^eb}_{sol} \\cdot \\frac{ 9 }{ 5 } + 32  = 92 \\cdot \\frac{ 9 }{ 5 } + 32 &= 197 \\; \\;\\textrm{($^\\circ$F)}\n\\\\[10pt]\n\\mathrm{T^eb}_{wF} &= \\mathrm{T^eb}_{w} \\cdot \\frac{ 9 }{ 5 } + 32  = 51 \\cdot \\frac{ 9 }{ 5 } + 32 &= 124 \\; \\;\\textrm{($^\\circ$F)}\n\\\\[10pt]\n\\Delta EPE &= \\mathrm{T^eb}_{solF} - \\mathrm{T^eb}_{wF}  = 197 - 124 &= 73 \\; \\;\\textrm{($^\\circ$F)}\n\\\\[10pt]\nH_{V} &= 1116 + 0.45 \\cdot \\Delta EPE  = 1116 + 0.45 \\cdot 73 &= 1149 \\; \\;\\textrm{(Btu/lb)}\n\\end{aligned}\n\\]\n\n\nLas otras entalpías las encontramos de forma gráfica:\n\\(H_F:~20~\\%~\\text{sólidos a}~100~\\text{°F}\\) \\(\\rightarrow\\) \\(55~\\text{Btu/lb}\\)\n\\(H_L:~50~\\%~\\text{sólidos a}~197~\\text{°F}\\) \\(\\rightarrow\\) \\(221~\\text{Btu/lb}\\)\n\n\nCódigo\n%%render short\nH_V = 1149*2.326 # kJ/kg\nH_F = 55*2.326 # kJ/kg\nH_L = 221*2.326 # kJ/kg\n\n\n\\[\n\\begin{aligned}\nH_{V} &= 1149 \\cdot 2.326 &= 2672.574 \\; \\;\\textrm{(kJ/kg)}\n\\\\[10pt]\nH_{F} &= 55 \\cdot 2.326 &= 127.930 \\; \\;\\textrm{(kJ/kg)}\n\\\\[10pt]\nH_{L} &= 221 \\cdot 2.326 &= 514.046 \\; \\;\\textrm{(kJ/kg)}\n\\end{aligned}\n\\]\n\n\n\n\nCódigo\n%%render long\nq = dotm_V*H_V + dotm_L*H_L - dotm_F*H_F # kJ/h\ndotm_s = q/lambda_s #kg/h\n\n\n\\[\n\\begin{aligned}\nq &= \\dot m_{V} \\cdot H_{V} + \\dot m_{L} \\cdot H_{L} - \\dot m_{F} \\cdot H_{F} \\\\&= 5442.000 \\cdot 2672.574 + 3628.000 \\cdot 514.046 - 9070 \\cdot 127.930 \\\\&= 15248781.496 \\; \\;\\textrm{(kJ/h)}\\\\[10pt]\n\\\\[10pt]\n\\dot m_{s} &= \\frac{ q }{ \\lambda_{s} } \\\\&= \\frac{ 15248781.496 }{ 2184.110 } \\\\&= 6981.691 \\; \\;\\textrm{(kg/h)}\\\\[10pt]\n\\end{aligned}\n\\]\n\n\n\n\nInciso 3\n\n\nCódigo\n%%render 2\nE = dotm_V/dotm_s #kg/kg\n\n\n\\[\n\\begin{aligned}\nE &= \\frac{ \\dot m_{V} }{ \\dot m_{s} }  = \\frac{ 5442.00 }{ 6981.69 } &= 0.78 \\; \\;\\textrm{(kg/kg)}\n\\end{aligned}\n\\]\n\n\n\n\nInciso 4\nLa ecuación de diseño de un evaporador será:\n\\[\nq = U\\cdot A\\cdot\\Delta T\n\\]\nDonde la diferencia de temperaturas \\(\\Delta T\\) será la temperatura en el flujo de vapor \\(\\text{S}\\) y la temperatura de ebullición de la solución en el evaporador.\n\n\nCódigo\n%%render long\nU = 1400 #W/m$^2\\cdot^\\circ$C\nq = q*(1000/3600) #W\ndT = 126.1-91.67\nA = q/(U*dT) #m$^2$\n\n\n\\[\n\\begin{aligned}\nU &= 1400 \\; \\;\\textrm{(W/m$^2\\cdot^\\circ$C)}\n\\\\[10pt]\nq &= q \\cdot \\left( \\frac{ 1000 }{ 3600 } \\right) \\\\&= 4235772.638 \\cdot \\left( \\frac{ 1000 }{ 3600 } \\right) \\\\&= 4235772.638 \\; \\;\\textrm{(W)}\\\\[10pt]\n\\\\[10pt]\n\\Delta T &= 126.1 - 91.67 &= 34.430  \n\\\\[10pt]\nA &= \\frac{ q }{ U \\cdot \\Delta T } \\\\&= \\frac{ 4235772.638 }{ 1400 \\cdot 34.430 } \\\\&= 87.875 \\; \\;\\textrm{(m$^2$)}\\\\[10pt]\n\\end{aligned}\n\\]",
     "crumbs": [
       "Evaporadores",
       "Ejercicio 2: Evaporador considerando entalpía de dilución"

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>IIQ2013 - Clase 3</title>
+<title>IIQ2013 - Clase 4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -161,7 +161,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">IIQ2013 - Clase 3</h1>
+<h1 class="title">IIQ2013 - Clase 4</h1>
 </div>
 
 
@@ -179,104 +179,100 @@ window.Quarto = {
 
 
 <p>En primer lugar se deben cargar las librerias que vamos a utilizar</p>
-<div id="cell-3" class="cell" data-execution_count="26">
+<div id="cell-3" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
-<p>La pérdida de carga (<span class="math inline">\(\Delta p/L\)</span>) al transportar <span class="math inline">\(Q\)</span> = 100 L/s de agua por una tubería horizontal de acero comercial de 10 in de diámetro nominal (D= 254,5 mm) es la siguiente:</p>
+<p>Responda las siguientes preguntas en relación con las curvas características de la bomba centrífugas con un rodete <strong>C</strong> (6.75 in de diámetro) disponible en el formulario:</p>
 <ol type="a">
-<li><p><span class="math inline">\(\Delta p/L &gt;\)</span> 0.13 atm/100 m</p></li>
-<li><p>0.12 <span class="math inline">\(&lt; \Delta p/L \leq\)</span> 0.13 atm/100 m</p></li>
-<li><p>0.11 <span class="math inline">\(&lt; \Delta p/L \leq\)</span> 0.12 atm/100 m</p></li>
-<li><p><span class="math inline">\(\Delta p/L \leq\)</span> 0.11 atm/100 m</p></li>
+<li><p><span class="math inline">\(h_B\)</span> / <span class="math inline">\((h_B)_{teórico} &lt;\)</span> 40 %</p></li>
+<li><p>40 <span class="math inline">\(\leq h_B\)</span> / <span class="math inline">\((h_B)_{teórico} &lt;\)</span> 60 %</p></li>
+<li><p>60 <span class="math inline">\(\leq h_B\)</span> / <span class="math inline">\((h_B)_{teórico} &lt;\)</span> 80 %</p></li>
+<li><p><span class="math inline">\(h_B\)</span> / <span class="math inline">\((h_B)_{teórico} \geq\)</span> 80 %</p></li>
 </ol>
-<p>Considere las propiedades físicas del agua a 20 °C [<span class="math inline">\(\rho\)</span>= 1000 kg/m<span class="math inline">\(^3\)</span>, <span class="math inline">\(\mu\)</span>= 0.001 Pa s].</p>
 </section>
 <section id="solución" class="level2">
 <h2 class="anchored" data-anchor-id="solución">Solución</h2>
-<p>Comenzamos recordando el ejercicio de la clase anterior …</p>
-<div id="cell-6" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fl">254.5e-3</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> <span class="fl">0.1</span> <span class="co"># m^3/s</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> Q<span class="op">/</span>(np.pi<span class="op">*</span>d<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">4</span>) <span class="co"># Calculamos la velocidad </span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="fl">0.001</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Re <span class="op">=</span> rho<span class="op">*</span>V<span class="op">*</span>d<span class="op">/</span>mu</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">0.046</span><span class="op">*</span><span class="fl">1e-3</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_Nevers(eps, D, Re):</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.001375</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> (<span class="fl">2e4</span> <span class="op">*</span> eps<span class="op">/</span>D <span class="op">+</span> <span class="fl">1e6</span><span class="op">/</span>Re)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> f_Nevers(eps, d, Re)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="dv">100</span> <span class="co"># m</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>phi <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> f <span class="op">*</span> (L<span class="op">/</span>d) <span class="op">*</span> (V<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"La perdida de carga por unidad de largo es </span><span class="sc">{</span><span class="dv">1000</span> <span class="op">*</span> phi<span class="op">/</span>L<span class="sc">}</span><span class="ss"> Pa/m"</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Si <span class="math inline">\(\beta\)</span> = 90° entonces tan <span class="math inline">\(\beta\)</span> = <span class="math inline">\(\infty\)</span>. Luego (gh<sub>B,teórico</sub>) <span class="math inline">\(\approx\)</span> r<sub>3</sub><sup>2</sup>w<sup>2</sup> y h<sub>B</sub> se puede obtener directamente del gráfico de la página 9 del formulario para una descarga nula</p>
+<div id="cell-6" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span> <span class="co"># aceleracion de gravedad m/s^2</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="dv">1750</span><span class="op">/</span><span class="dv">60</span> <span class="co"># 2 * Pi * RPM / 60 para dejar la velocidad en rad/s</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>r_3 <span class="op">=</span> (<span class="fl">6.75</span><span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="fl">2.54</span><span class="op">*</span><span class="fl">0.01</span> <span class="co"># Diametro / 2 y el cambio de unidades de in a metros.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>h_b_teorico <span class="op">=</span> (w<span class="op">*</span>r_3)<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> g </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>h_b <span class="op">=</span> <span class="fl">13.75</span> <span class="co"># Desde el gráfico del formulario</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>fraccion <span class="op">=</span> h_b <span class="op">/</span> h_b_teorico</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"La fracción de la carga teórica alcanzada para la carga nula es </span><span class="sc">{</span><span class="dv">100</span> <span class="op">*</span> fraccion<span class="sc">}</span><span class="ss"> %"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>La perdida de carga por unidad de largo es 115.96605830597088 Pa/m</code></pre>
-</div>
-</div>
-<p>Realizando el cambio de unidades</p>
-<div id="cell-8" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"La perdida de carga por unidad de largo es </span><span class="sc">{</span><span class="dv">100000</span> <span class="op">*</span> phi<span class="op">/</span>L<span class="op">*</span><span class="fl">9.86923e-6</span><span class="sc">}</span><span class="ss"> atm/100 m"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>La perdida de carga por unidad de largo es 0.11444957016150369 atm/100 m</code></pre>
+<pre><code>La fracción de la carga teórica alcanzada para la carga nula es 54.654180235193 %</code></pre>
 </div>
 </div>
 <p>Por lo tanto la alternativa correcta es la <strong>c</strong>.</p>
 </section>
 <section id="pregunta-2" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-2">Pregunta 2</h2>
-<p>La pérdida de carga en un tramo de 100 metros de la tubería de (1) que inclute una válvula de compuerta abierta en un 75%, estimada usando el valor tabulado de coeficiente de pérdida de energía para la válvula, es la siguiente:</p>
+<p>Para la misma combinación de rodete y carcasa de (1) pero con una bomba operando a 3500 rpm, el valor de la carga real en la condición de máxima carga es aproximadamente el siguiente:</p>
 <ol type="a">
-<li><p><span class="math inline">\(\Delta p &gt;\)</span> 0.13 atm</p></li>
-<li><p>0.12 <span class="math inline">\(&lt; \Delta p \leq\)</span> 0.13 atm</p></li>
-<li><p>0.11 <span class="math inline">\(&lt; \Delta p \leq\)</span> 0.12 atm</p></li>
-<li><p><span class="math inline">\(\Delta p \leq\)</span> 0.11 atm</p></li>
+<li><p><span class="math inline">\(h_B &lt;\)</span> 30 m</p></li>
+<li><p>30 <span class="math inline">\(\leq h_B &lt;\)</span> 45 m</p></li>
+<li><p>45 <span class="math inline">\(\leq h_B &lt;\)</span> 60 m</p></li>
+<li><p><span class="math inline">\(h_B \geq\)</span> 60 m</p></li>
 </ol>
 </section>
 <section id="solución-1" class="level2">
 <h2 class="anchored" data-anchor-id="solución-1">Solución</h2>
-<p>Necesitamos sumar el coeficiente de fricción con el coeficiente de fricción por singularidad. Para una válvula de compuerta abierta en un 75% utilizamos un valor de K = 1</p>
-<div id="cell-12" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> f_Nevers(eps, d, Re)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="dv">100</span> <span class="co"># m</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>phi <span class="op">=</span> (<span class="dv">4</span> <span class="op">*</span> f <span class="op">*</span> (L<span class="op">/</span>d) <span class="op">+</span> K) <span class="op">*</span> (V<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"La perdida de carga </span><span class="sc">{</span><span class="dv">1000</span> <span class="op">*</span> phi<span class="op">*</span><span class="fl">9.86923e-6</span><span class="sc">}</span><span class="ss"> atm"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Utilizando la siguiente relación de proporcionalidad Q<sup>1/2</sup> <span class="math inline">\(\propto\)</span> <span class="math inline">\(\omega\)</span><sup>1/2</sup>r<sub>3</sub><sup>3/2</sup>. Haciendo un poco de algebra con las proporcionalidades Q<sup>1/2</sup><span class="math inline">\(\omega\)</span> / h<sub>b</sub><sup>3/4</sup> = constante. Luego si planteamos esta proporcionalidad utilizando la altura de descarga mínima se obtiene:</p>
+<div id="cell-10" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>h_b_1 <span class="op">=</span> h_b</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>w_2 <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="dv">3500</span><span class="op">/</span><span class="dv">60</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>h_b_2 <span class="op">=</span> h_b_1<span class="op">*</span>(w_2<span class="op">/</span>w)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>h_b_2</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"El valor de la carga real en la condició de máaxima carga es </span><span class="sc">{</span>h_b_2<span class="sc">}</span><span class="ss"> m"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>La perdida de carga 0.1335183263148772 atm</code></pre>
+<pre><code>El valor de la carga real en la condició de máaxima carga es 55.0 m</code></pre>
 </div>
 </div>
-<p>Por lo tanto la alternativa correcta es la <strong>a</strong>.</p>
+<p>Por lo tanto la alternativa correcta es la <strong>c</strong>.</p>
 </section>
 <section id="pregunta-3" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
-<p>El valor de la pérdida de carga (2), pero evaluado considerando que el largo equivalente (<span class="math inline">\(L_e\)</span>/D) de una válvula de compuerta abierta en un 75% es 40, es el siguiente:</p>
+<p>Considere ahora que la bomba se instala en el sistema de la Figura 1, a una distancia <span class="math inline">\(Z_a\)</span> = 2 m por encima de un depósito abierto al ambiente (<span class="math inline">\(P_{atm}\)</span> = 101325 Pa. El diámetro del ducto de succión igualada al del ducto de entrada de la bomba (D= 1.5 in) y por el circulan <span class="math inline">\(Q\)</span> = 5.5 L/s de agua a 25 °C (<span class="math inline">\(P_{v}\)</span> = 3170 Pa, <span class="math inline">\(\rho\)</span> = 997 kg/m<sup>3</sup>, <span class="math inline">\(\mu\)</span> = 1 mPa s). Si las pérdidas por fricción y singularidades del ducto de succión son <span class="math inline">\(\Phi\)</span> = 35 m<sup>2</sup>/s<sup>2</sup> el valor del NPSH<sub>d</sub> para el sistema anterior es aproximandamente el siguiente:</p>
 <ol type="a">
-<li><p><span class="math inline">\(\Delta p &gt;\)</span> 0.13 atm</p></li>
-<li><p>0.12 <span class="math inline">\(&lt; \Delta p \leq\)</span> 0.13 atm</p></li>
-<li><p>0.11 <span class="math inline">\(&lt; \Delta p \leq\)</span> 0.12 atm</p></li>
-<li><p><span class="math inline">\(\Delta p \leq\)</span> 0.11 atm</p></li>
+<li><p>NPSH<sub>d</sub>$&lt; $ 1 m</p></li>
+<li><p>1 <span class="math inline">\(\leq\)</span> NPSH<sub>d</sub> <span class="math inline">\(&lt;\)</span> 2 m</p></li>
+<li><p>2 <span class="math inline">\(\leq\)</span> NPSH<sub>d</sub> <span class="math inline">\(\leq\)</span> 3 m</p></li>
+<li><p>NPSH<sub>d</sub> &gt; $ 3 m</p></li>
 </ol>
 </section>
 <section id="solución-2" class="level2">
 <h2 class="anchored" data-anchor-id="solución-2">Solución</h2>
-<p>Ocupando la aproximación del largo equivalente</p>
-<div id="cell-16" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> f_Nevers(eps, d, Re)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="dv">100</span> <span class="co"># m</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>phi <span class="op">=</span> (<span class="dv">4</span> <span class="op">*</span> f <span class="op">*</span> (L<span class="op">/</span>d <span class="op">+</span> <span class="dv">40</span>) ) <span class="op">*</span> (V<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"La perdida de carga </span><span class="sc">{</span><span class="dv">1000</span> <span class="op">*</span> phi<span class="op">*</span><span class="fl">9.86923e-6</span><span class="sc">}</span><span class="ss"> atm"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Primero generamos una función para el cálculo de el NPSH disponible en el sistema.</p>
+<div id="cell-14" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> NPSH_d(Patm, Pv,rho, z_succion, phi):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ((Patm<span class="op">-</span>Pv)<span class="op">/</span>(rho<span class="op">*</span><span class="fl">9.81</span>)) <span class="op">-</span> z_succion <span class="op">-</span> phi</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En segundo lugar calculamos <span class="math inline">\(\Phi\)</span> incluyendo pérdidas por fricción y singularidades y luego aplicamos la formula del NPSH disponible.</p>
+<div id="cell-16" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span> <span class="co"># aceleracion de gravedad m/s^2</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fl">1.5</span><span class="op">*</span><span class="fl">2.54</span><span class="op">*</span><span class="fl">0.01</span> <span class="co">#m</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> <span class="fl">5.5</span><span class="op">/</span><span class="dv">1000</span> <span class="co">#m3/s </span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="dv">997</span> <span class="co"># kg/m3</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>P_v <span class="op">=</span> <span class="dv">3170</span> <span class="co"># Pa</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>P_atm <span class="op">=</span> <span class="dv">101325</span> <span class="co">#Pa</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>phi_real <span class="op">=</span> ((<span class="dv">8</span><span class="op">*</span>Q<span class="op">**</span><span class="dv">2</span>) <span class="op">/</span> (np.pi<span class="op">**</span><span class="dv">2</span><span class="op">*</span>D<span class="op">**</span><span class="dv">4</span>) <span class="op">+</span> <span class="dv">35</span>)<span class="op">/</span>g <span class="co">#incluye fricción y singularidades</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>NPSH <span class="op">=</span> NPSH_d(P_atm,P_v,rho,z,phi_real)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"El valor del NPSH disponible es </span><span class="sc">{</span>NPSH<span class="sc">}</span><span class="ss"> m"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>La perdida de carga 0.12610053640394478 atm</code></pre>
+<pre><code>El valor del NPSH disponible es 3.281756309047579 m</code></pre>
 </div>
 </div>
-<p>Por lo tanto la alternativa correcta es la <strong>b</strong>.</p>
+<p>Por lo tanto la alternativa correcta es la <strong>d</strong>.</p>
 
 
 </section>

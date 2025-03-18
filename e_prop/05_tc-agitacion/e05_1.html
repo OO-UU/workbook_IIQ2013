@@ -524,7 +524,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e05_1-sol" class="collapse multi-collapse">
-<div id="46bdba5e" class="cell" data-execution_count="1">
+<div id="f403ccde" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
@@ -537,7 +537,7 @@ Mostrar solución
 <section id="inciso-1" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
 <p>Escribimos todas las propiedades termofísicas del enunciado.</p>
-<div id="14b6c6b8" class="cell" data-execution_count="2">
+<div id="3e1deb8c" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -572,7 +572,7 @@ c_{Ph} &amp;= 2052.210 \; \;\textrm{(J/kg$\cdot$K)}
 <p><span class="math display">\[
 V = \pi\left(\frac{D_t}{2}\right)^2H
 \]</span></p>
-<div id="3349d564" class="cell" data-execution_count="3">
+<div id="85c05062" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -593,7 +593,7 @@ D_{t} &amp;= 2 \cdot \sqrt { \frac{ V }{ \pi \cdot H } } \\&amp;= 2 \cdot \sqrt 
 </div>
 </div>
 <p>Con esta información, podemos también obtener el diámetro del estanque para luego obtener el número de Reynolds.</p>
-<div id="96e32777" class="cell" data-execution_count="4">
+<div id="411de5ee" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -623,7 +623,7 @@ N &amp;= 15 \; \;\textrm{(RPM)}
 <p><span class="math display">\[
 Nu_D = 0.17\left(Re_D\right)^{0.67}Pr^{0.37}\left(\frac{D_a}{D_t}\right)^{0.1}\left(\frac{d}{D_t}\right)^{0.5}
 \]</span></p>
-<div id="3e58dd43" class="cell" data-execution_count="5">
+<div id="c275cb7b" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -643,7 +643,7 @@ d &amp;= \frac{ 1 }{ 100 } &amp;= 0.010 \; \;\textrm{(m)}
 <p><span class="math display">\[
 h_o = \frac{Nu_Dk_h}{d}
 \]</span></p>
-<div id="45b32ae5" class="cell" data-execution_count="6">
+<div id="88df92e1" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -664,7 +664,7 @@ h_{o} &amp;= \frac{ \mathrm{Nusselt}_{D} \cdot k_{h} }{ d } \\&amp;= \frac{ 111.
 <p><span class="math display">\[
 Re_D = \frac{d \dot{m}_c}{\mu A}
 \]</span></p>
-<div id="dc1a6952" class="cell" data-execution_count="7">
+<div id="f97e29d2" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> <span class="dv">6</span></span>
@@ -702,7 +702,7 @@ FC = 1 + 1.75\frac{d}{r_s}
 <p><span class="math display">\[
 h_s = FC\frac{Nu_Dk_c}{d}
 \]</span></p>
-<div id="be617b0d" class="cell" data-execution_count="8">
+<div id="b9ef83d0" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -740,7 +740,7 @@ h_{s} &amp;= \mathrm{FC} \cdot \frac{ \mathrm{Nusselt}_{D} \cdot k_{c} }{ d } \\
 A_t = \pi d\left(\sqrt{4\pi^2n^2r_s^2 + H_s^2}\right)
 \]</span></p>
 <p>Del enunciado recuperamos los parámetros de dimensionamiento del serpentín.</p>
-<div id="49ff3f8a" class="cell" data-execution_count="9">
+<div id="c4bf09b5" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -756,7 +756,7 @@ H_{s} &amp;= 0.800 \; \;\textrm{(m)}
 \]</span></p>
 </div>
 </div>
-<div id="b0a71083" class="cell" data-execution_count="10">
+<div id="1229b216" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -784,7 +784,7 @@ K_{ME} = exp\left(-\frac{UA}{\dot{m}_cc_{P,c}}\right)
 t = \frac{Mc_{P,h}/c_{P,c}}{\dot{m}_c\left(1-K_{ME}\right)}\ln\left(\frac{T_0-T_{ce}}{T-T_{ce}}\right)
 \]</span></p>
 <p>Procedemos a calcular lo pedido.</p>
-<div id="3d3322bd" class="cell" data-execution_count="11">
+<div id="72f76dea" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -807,7 +807,7 @@ T_{cs} &amp;= 313.150 \; \;\textrm{(K)}
 \]</span></p>
 </div>
 </div>
-<div id="9b3765e0" class="cell" data-execution_count="12">
+<div id="386732b1" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> <span class="dv">5</span></span>

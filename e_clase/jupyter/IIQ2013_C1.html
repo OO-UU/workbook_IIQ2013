@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>IIQ2013 - Clase 1</title>
+<title>IIQ2013 - Clase 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -147,12 +147,12 @@ window.Quarto = {
     <h2 id="toc-title">Contenido</h2>
    
   <ul>
-  <li><a href="#ecuación-de-hagen-poiseuille" id="toc-ecuación-de-hagen-poiseuille" class="nav-link active" data-scroll-target="#ecuación-de-hagen-poiseuille">Ecuación de Hagen-Poiseuille</a></li>
-  <li><a href="#ejemplo-1.1" id="toc-ejemplo-1.1" class="nav-link" data-scroll-target="#ejemplo-1.1">Ejemplo 1.1</a>
-  <ul class="collapse">
-  <li><a href="#calculo-del-número-de-reynolds" id="toc-calculo-del-número-de-reynolds" class="nav-link" data-scroll-target="#calculo-del-número-de-reynolds">1. Calculo del número de Reynolds</a></li>
-  <li><a href="#aplicación-de-la-ecuación-de-hagen-poiseuille" id="toc-aplicación-de-la-ecuación-de-hagen-poiseuille" class="nav-link" data-scroll-target="#aplicación-de-la-ecuación-de-hagen-poiseuille">2. Aplicación de la ecuación de Hagen-Poiseuille</a></li>
-  </ul></li>
+  <li><a href="#pregunta-1" id="toc-pregunta-1" class="nav-link active" data-scroll-target="#pregunta-1">Pregunta 1</a></li>
+  <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
+  <li><a href="#pregunta-2" id="toc-pregunta-2" class="nav-link" data-scroll-target="#pregunta-2">Pregunta 2</a></li>
+  <li><a href="#solución-1" id="toc-solución-1" class="nav-link" data-scroll-target="#solución-1">Solución</a></li>
+  <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">Pregunta 3</a></li>
+  <li><a href="#solución-2" id="toc-solución-2" class="nav-link" data-scroll-target="#solución-2">Solución</a></li>
   </ul>
 </nav>
     </div>
@@ -161,7 +161,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">IIQ2013 - Clase 1</h1>
+<h1 class="title">IIQ2013 - Clase 2</h1>
 </div>
 
 
@@ -179,75 +179,97 @@ window.Quarto = {
 
 
 <p>En primer lugar se deben cargar las librerias que vamos a utilizar</p>
-<div id="cell-3" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> CoolProp.CoolProp <span class="im">as</span> CP <span class="co"># Coolprop as the free version of REFPROP</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-3" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="ecuación-de-hagen-poiseuille" class="level2">
-<h2 class="anchored" data-anchor-id="ecuación-de-hagen-poiseuille">Ecuación de Hagen-Poiseuille</h2>
-<p>A continuación podemos generar una función que nos ayude a calcular <span class="math inline">\(\mu\)</span> usando la ecuación de Hagen-Poiseuille</p>
-<div id="cell-5" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mu_hp(P_0, P_L, R, L, w, rho):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.pi <span class="op">*</span> (P_0<span class="op">-</span>P_L) <span class="op">*</span> R<span class="op">**</span><span class="dv">4</span> <span class="op">/</span> (<span class="dv">8</span> <span class="op">*</span> L <span class="op">*</span> (w<span class="op">/</span>rho))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Si necesitamos recuperar alguna propiedad física de bases de datos se puede utilizar CoolProp</p>
-<div id="cell-7" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Properties</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">1e5</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>fluid <span class="op">=</span> <span class="st">'NH3'</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Densidad del amoniaco</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>rho_l <span class="op">=</span> CP.PropsSI(<span class="st">'D'</span>, <span class="st">'P'</span> , p , <span class="st">'Q'</span>,<span class="dv">0</span>,fluid)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Viscosidad del amoniaco</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>mu_l <span class="op">=</span> CP.PropsSI(<span class="st">'V'</span>,<span class="st">'P'</span>,p,<span class="st">'Q'</span>,<span class="dv">0</span>,fluid)   </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-8" class="cell" data-scrolled="true" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"rho_l </span><span class="sc">%.2e</span><span class="st">"</span><span class="op">%</span>  rho_l)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mu_l = </span><span class="sc">%.2e</span><span class="st"> Pa*s"</span> <span class="op">%</span> mu_l)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mu_l = </span><span class="sc">%.2e</span><span class="st"> cP"</span> <span class="op">%</span> (<span class="dv">1000</span> <span class="op">*</span> mu_l))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>rho_l 6.82e+02
-mu_l = 2.56e-04 Pa*s
-mu_l = 2.56e-01 cP</code></pre>
-</div>
-</div>
+<section id="pregunta-1" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
+<p>¿Cuál es el régimen de flujo en una tubería de 10 in de diámetro nominal (D= 254,5 mm) cuando a travús de ella se hacen circular Q= 0.1 m3/s de agua?</p>
+<ol type="a">
+<li><p>Laminar</p></li>
+<li><p>Turbulento</p></li>
+<li><p>Transición de laminar a turbulento</p></li>
+<li><p>Se necesita mas información</p></li>
+</ol>
 </section>
-<section id="ejemplo-1.1" class="level2">
-<h2 class="anchored" data-anchor-id="ejemplo-1.1">Ejemplo 1.1</h2>
-<p>Amoniaco líquido fluye en un tubo circular cilíndrico de 0.2 cm de diámetro y 10 cm de largo a un caudal volumétrico de 1 mL/s. La densidad del amoniaco en su punto de saturación, -33.58 C, es de 682.0 kg m^-3, y su viscosidad es 0.256 cP. Calcule la caída de presión a través del tubo.</p>
-<p>Para comprobar la aplicabilidad de la ecuación de Hagen-Poiseuille es necesario comprar el régimen de flujo mediante el número de Reynolds.</p>
-<section id="calculo-del-número-de-reynolds" class="level3">
-<h3 class="anchored" data-anchor-id="calculo-del-número-de-reynolds">1. Calculo del número de Reynolds</h3>
-<div id="cell-12" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Caudal volumetrico</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>vdot <span class="op">=</span> <span class="fl">1e-6</span> <span class="co"># m^3/s</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Diámetro de la tubería</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fl">0.2e-2</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Area de la tuberia</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.pi<span class="op">*</span>d<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">4</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Velocidad</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>vz_av <span class="op">=</span> vdot <span class="op">/</span> A</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Re</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>Re <span class="op">=</span> rho_l <span class="op">*</span> vz_av <span class="op">*</span> d<span class="op">/</span>mu_l</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Re = </span><span class="sc">%.3f</span><span class="st"> "</span> <span class="op">%</span> Re)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="solución" class="level2">
+<h2 class="anchored" data-anchor-id="solución">Solución</h2>
+<div id="cell-6" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fl">254.5e-3</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> <span class="fl">0.1</span> <span class="co"># m^3/s</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> Q<span class="op">/</span>(np.pi<span class="op">*</span>d<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">4</span>) <span class="co"># Calculamos la velocidad </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="fl">0.001</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Re <span class="op">=</span> rho<span class="op">*</span>V<span class="op">*</span>d<span class="op">/</span>mu</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"El número de Reynlosd es igual a Re = </span><span class="sc">%.3e</span><span class="st">"</span> <span class="op">%</span> Re)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Re = 1698.891 </code></pre>
+<pre><code>El número de Reynlosd es igual a Re = 5.003e+05</code></pre>
 </div>
 </div>
+<p>Por lo tanto, el regimen de flujo es turbulento y la alternativa correcta es la <strong>b</strong>.</p>
 </section>
-<section id="aplicación-de-la-ecuación-de-hagen-poiseuille" class="level3">
-<h3 class="anchored" data-anchor-id="aplicación-de-la-ecuación-de-hagen-poiseuille">2. Aplicación de la ecuación de Hagen-Poiseuille</h3>
-<div id="cell-14" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="fl">0.1</span> <span class="co"># 10 cm</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>delta_P <span class="op">=</span> <span class="dv">32</span><span class="op">*</span>L<span class="op">*</span>mu_l<span class="op">*</span>vz_av<span class="op">/</span>(d<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Delta P = </span><span class="sc">%.2f</span><span class="st"> Pa"</span> <span class="op">%</span> delta_P)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="pregunta-2" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-2">Pregunta 2</h2>
+<p>Considerando que la tubería es de acero comercial, el factor de fricción de Fanning (<span class="math inline">\(f_F\)</span>) en el caso bajo análisis es aproximadamente el siguiente:</p>
+<ol type="a">
+<li><p><span class="math inline">\(f_F &gt;\)</span> 0.010</p></li>
+<li><p>0.005 <span class="math inline">\(&lt; f_F &lt;\)</span> 0.010</p></li>
+<li><p>0.002 <span class="math inline">\(&lt; f_F &lt;\)</span> 0.005</p></li>
+<li><p><span class="math inline">\(f_F \leq\)</span> 0.010</p></li>
+</ol>
+<p>Para los cómputos considere usar el diagrama de Moody o una correlación adecuada.</p>
+</section>
+<section id="solución-1" class="level2">
+<h2 class="anchored" data-anchor-id="solución-1">Solución</h2>
+<p>Generamos funciones para el calculo utilizando la correlacion de Nevers y Schacham</p>
+<div id="cell-9" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_Nevers(eps, D, Re):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.001375</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> (<span class="fl">2e4</span> <span class="op">*</span> eps<span class="op">/</span>D <span class="op">+</span> <span class="fl">1e6</span><span class="op">/</span>Re)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_Schacham(eps, D, Re):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    rhs <span class="op">=</span> <span class="op">-</span><span class="fl">1.737</span> <span class="op">*</span> np.log(<span class="fl">0.269</span> <span class="op">*</span> eps<span class="op">/</span>D <span class="op">-</span> <span class="fl">2.185</span><span class="op">/</span>Re <span class="op">*</span> <span class="op">\</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                         np.log(<span class="fl">0.269</span> <span class="op">*</span> eps<span class="op">/</span>D <span class="op">+</span> <span class="fl">14.5</span><span class="op">/</span>Re))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (<span class="dv">1</span><span class="op">/</span>rhs)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">0.046</span><span class="op">*</span><span class="fl">1e-3</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"El factor de fricción con la ecuación de Nevers es: </span><span class="sc">{</span>f_Nevers(eps, d, Re)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"El factor de fricción con la ecuación de Schacham es: </span><span class="sc">{</span>f_Schacham(eps, d, Re)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Delta P = 65.07 Pa</code></pre>
+<pre><code>El factor de fricción con la ecuación de Nevers es: 0.003818735654783344
+El factor de fricción con la ecuación de Schacham es: 0.0038187535955500397</code></pre>
 </div>
 </div>
+<p>Por lo tanto la alternativa correcta es la <strong>c</strong>.</p>
+</section>
+<section id="pregunta-3" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
+<p>El valor de las pérdidas por fricción (<span class="math inline">\(\Phi\)</span>) en un tramo horizontal de L= 100 m de la tubería bajo análisis es aproximadamente el siguiente:</p>
+<ol type="a">
+<li><p><span class="math inline">\(\Phi &gt;\)</span> 50 (m/s)<span class="math inline">\(^2\)</span></p></li>
+<li><p>25 <span class="math inline">\(&lt; \Phi \leq\)</span> 50 (m/s)<span class="math inline">\(^2\)</span></p></li>
+<li><p>14 <span class="math inline">\(&lt; \Phi \leq\)</span> 25 (m/s)<span class="math inline">\(^2\)</span></p></li>
+<li><p><span class="math inline">\(\Phi \leq\)</span> 14 (m/s)<span class="math inline">\(^2\)</span></p></li>
+</ol>
+</section>
+<section id="solución-2" class="level2">
+<h2 class="anchored" data-anchor-id="solución-2">Solución</h2>
+<p>Siguiendo con el factor calculado con Nevers</p>
+<div id="cell-13" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> f_Nevers(eps, d, Re)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="dv">100</span> <span class="co"># m</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>phi <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> f <span class="op">*</span> (L<span class="op">/</span>d) <span class="op">*</span> (V<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"El valor de la caída de presión por fricción es: </span><span class="sc">{</span>phi<span class="sc">}</span><span class="ss"> (m/s)^2"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>El valor de la caída de presión por fricción es: 11.596605830597086 (m/s)^2</code></pre>
+</div>
+</div>
+<p>Por lo tanto la alternativa correcta es la <strong>d</strong>.</p>
 
 
-</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Volver arriba</a></main> <!-- /main -->
