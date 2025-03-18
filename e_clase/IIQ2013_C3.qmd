@@ -7,7 +7,7 @@ format:
       code-links: 
         - text: "Descargar Jupyter (.ipynb)"
           icon: github
-          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C4.ipynb
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C3.ipynb
 
 execute: 
   echo: true
