@@ -1,0 +1,154 @@
+---
+title: 'Ejercicio clase 4'
+format:
+    html: 
+      code-copy: true
+      code-fold: false
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C4.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+
+Considere aire ($\gamma = 1.4$) procedente de un depósito o estanque que fluye a través de una tubería recta de gran longitud y provista con aislación térmica (no ocurre transferencia de calor con los alrededores). La presión y temperatura en el estanque son $p_1 = 20~\text{atm}$ y $T_1 = 555.6~\text{K}$, respectivamente ($\rho = 12.72 \text{~kg/m}^3$). Además, se sabe que el número de Mach a la entrada de la tubería es $Ma_1 = 0.05$.
+
+Librerias a utilizar:
+
+```{python}
+import handcalcs.render
+from handcalcs import handcalc
+from numpy import sqrt, log
+```
+
+## Problema 1
+
+La velocidad a la entrada de la tubería ($V_1$) es aproximadamente la siguiente:
+
+(a) $V_1$ < 1 m/s \
+(b) 1 m/s < $V_1$ ≤ 10 m/s \
+(c) 10 m/s < $V_1$ ≤ 100 m/s \
+(d) $V_1$ > 100 m/s
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_2-1-sol .collapse .multi-collapse}
+
+Sabemos que:
+
+$$
+Ma_1 = \frac{V_1}{c_1} \Rightarrow V_1 = Ma_1\sqrt{\frac{\gamma RT_1}{MW}}
+$$
+
+```{python}
+%%render long
+Ma_1 = 0.05
+gamma = 1.4
+R = 8.314 #J/mol$\cdot$K
+T_1 = 555.6 #K
+MW = 0.028 #kg/mol
+V_1 = Ma_1*sqrt((gamma*R*T_1)/MW) #m/s
+```
+
+La alternativa correcta es la **c**.
+
+:::
+
+## Problema 2
+
+¿Cuáles son los valores de la temperatura ($T^*$) y presión ($P^*$) al momento de alcanzarse la velocidad sónica en la tubería?
+
+(a) $T^* \approx$ 350 K y $p^* \approx$ 0,5 atm \
+(b) $T^* \approx$ 450 K y $p^* \approx$ 1 atm \
+(c) $T^* \approx$ 550 K y $p^* \approx$ 1,5 atm \
+(d) $T^* \approx$ 650 K y $p^* \approx$ 2 atm
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_2-1-sol .collapse .multi-collapse}
+
+Ya que nos encontramos frente a un flujo adiabático:
+
+$$
+\frac{T}{T^*} = \frac{\gamma+1}{2+(\gamma-1)Ma^2}
+$$
+
+$$
+\frac{p}{p^*} = \frac{1}{Ma}\sqrt{\frac{\gamma+1}{2+(\gamma-1)Ma^2}}
+$$
+
+```{python}
+%%render long
+p_1 = 20 #atm
+rho = 12.72 #kg/m$^3$
+T = T_1 * ((gamma+1)/(2+(gamma-1)*Ma_1**2))**-1 #K
+P = p_1 * (1/Ma_1 * sqrt((gamma+1)/(2+(gamma-1)*Ma_1**2)))**-1 #atm
+```
+
+La anternativa más cercana a nuestros resultados es la **b**.
+
+:::
+
+## Problema 3
+
+Dado un valor $4 f L^*/D = 400$, el flux de aire ($G/A$) a la entrada del conducto es aproximadamente la siguiente:
+
+(a) $G/A$ < 280 kg/s$\cdot$m$^2$ \
+(b) 280 < $G/A$ ≤ 380 kg/s$\cdot$m$^2$ \
+(c) 380 < $G/A$ ≤ 480 kg/s$\cdot$m$^2$ \
+(d) $G/A$ ≤ 480 kg/s$\cdot$m$^2$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_2-1-sol .collapse .multi-collapse}
+
+Notamos que la razón de presiones es alta. Comparando con las condiciones de flujo máximo, se itera $Ma$ para encontrar las condiciones en que se cumpla:
+
+$$
+400 = \frac{1-Ma^2}{\gamma Ma^2} + \left(\frac{\gamma+1}{2\gamma}\right)\ln\left(\frac{2(\gamma+1)Ma^2}{2+(\gamma-1)Ma^2}\right)
+$$
+
+Como estimación inicial, utilizamos la condición del enunciado $Ma = 0.05$.
+
+```{python}
+%%render long
+Ma = 0.05
+fLD_estimado = (1-Ma**2)/(gamma*Ma**2) + ((gamma+1)/(2*gamma))*log((2*(gamma+1)*Ma**2)/(2+(gamma-1)*Ma**2))
+```
+
+Segunda estimación $Ma = 0.04$.
+
+```{python}
+%%render long
+Ma = 0.04
+fLD_estimado = (1-Ma**2)/(gamma*Ma**2) + ((gamma+1)/(2*gamma))*log((2*(gamma+1)*Ma**2)/(2+(gamma-1)*Ma**2))
+```
+
+Tercera estimación $Ma = 0.042$.
+
+```{python}
+%%render long
+Ma = 0.042
+fLD_estimado = (1-Ma**2)/(gamma*Ma**2) + ((gamma+1)/(2*gamma))*log((2*(gamma+1)*Ma**2)/(2+(gamma-1)*Ma**2))
+```
+
+Estamos lo suficientemente cerca del resultado correcto, entonces calculamos.
+
+$$
+\left(\frac{G'}{A}\right)_{max} = \rho_1c_1Ma
+$$
+
+```{python}
+%%render long
+GA_max = rho*sqrt((gamma*R*T_1)/MW)*Ma #kg/m$^2\cdot$s
+```
+
+Por lo tanto la alternativa correcta es la **a**.
+:::
+
+

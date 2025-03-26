@@ -71,6 +71,8 @@ website:
           - ./e_clase/IIQ2013_C1.qmd
           - ./e_clase/IIQ2013_C2.qmd
           - ./e_clase/IIQ2013_C3.qmd
+          - ./e_clase/IIQ2013_C4.qmd
+          - ./e_clase/IIQ2013_C5.qmd
 
 format:
   html:

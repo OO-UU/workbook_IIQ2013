@@ -1,0 +1,180 @@
+---
+title: 'Ejercicio clase 5'
+format:
+    html: 
+      code-copy: true
+      code-fold: false
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C5.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+
+Sea un compresor reciprocante compuesto de cuatro pistones conectados a un eje de vielas que opera a $125~\text{RPM}$. En cada pistón ($D = 20~\text{cm}$, $L = 13~\text{cm}$) se comprime aire STP (at Standard Temperature and Pressure conditions) isoentrópicamente usando una razón de compresión $rc = 6$. Responda las siguientes preguntas asumiendo que se puede despreciar el volumen de holgura de cada pistón (pistones ideales):
+
+Librerias a utilizar:
+
+```{python}
+import handcalcs.render
+from handcalcs import handcalc
+from numpy import pi
+```
+
+## Pregunta 1
+
+Los valores del peso molecular ($MW$) y factor $\gamma$ para el aire son los siguientes, respectivamente:
+
+(a) $MW\approx$ 28 g/mol y $\gamma\approx$ 1.40 \
+(b) $MW\approx$ 29 g/mol y $\gamma\approx$ 1.32 \
+(c) $MW\approx$ 29 g/mol y $\gamma\approx$ 1.40 \
+(d) $MW\approx$ 32 g/mol y $\gamma\approx$ 1.40
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_2-1-sol .collapse .multi-collapse}
+
+El aire esta compuesto por: $N_2$ en un $78\%$ y $O_2$ en un $22\%$. Con $MW_{N_2} = 28~\text{g/mol}$ y $MW_{O_2} = 32~\text{g/mol}$
+
+```{python}
+%%render long
+MW_N2 = 28 #g/mol
+MW_O2 = 32 #g/mol
+MW = 0.78*MW_N2 + 0.22*MW_O2
+```
+
+Luego $MW\approx29~\text{g/mol}$ y $\gamma=1.4$. Por lo tanto la alternativa correcta es la **c**.
+:::
+
+## Pregunta 2
+
+El flujo masico de aire comprimido ($m$) descargado por el compresor es el siguiente:
+
+(a) $m$ > 2 kg/min de aire \
+(b) 1.5 < $m$ ≤ 2 kg/min de aire \
+(c) 1.0 < $m$ ≤ 1.5 kg/min de aire \
+(d) $m$ ≤ 1 kg/min de aire
+
+*Hint: Puede estimar dicho flujo masico considerando el volumen especifico del aire STP y el volumen total barrido por los cuatro pistones operando a 125 rpm.*
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_2-1-sol .collapse .multi-collapse}
+
+Ya que en el enunciado nos dicen que el aire se comprime a STD, la presión es $100~\text{kPa}$ y la temperatura es $273.15~\text{K}$. Ya que no hay holgura $c=0$:
+
+$$
+V_{total} = 4V_{c+l} = 4\frac{\pi(D)^2}{4}L
+$$
+
+```{python}
+%%render long
+D = 0.2 #m
+L = 0.13 #L
+V = 4*((pi*D**2)/(4))*L #m$^3$
+```
+
+Para obtener la masa por ciclo, podemos separar el volumen másico $v~\text{m}^3\text{/kg}$ desde la ecuación de los gases ideales:
+
+$$
+Pv = \frac{RT}{MW} \Rightarrow PV = \frac{mRT}{MW}
+$$
+
+```{python}
+%%render long
+R = 8.314 #J/mol$\cdot$K
+T = 273.15 #K
+P = 100000 #Pa
+m_cic = (P*V*MW/1000)/(R*T) #kg/ciclo
+```
+
+Como nos indica el *Hint*, podemos calcular el flujo másico a partir de las revoluciones por minuto.
+
+```{python}
+%%render long
+RPM = 125 #rpm
+f_m = m_cic*RPM #kg/min
+```
+
+Por lo tanto, la alternativa correcta es la **a**.
+:::
+
+## Pregunta 3
+
+La temperatura de expulsión del aire comprimido ($T_2$) del compresor es la siguiente:
+
+(a) $T_2$ > 300 °C \
+(b) 200 < $T_2$ ≤ 300 °C \
+(c) 100 < $T_2$ ≤ 200 °C \
+(d) $T_2$ ≤ 100 °C
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_2-1-sol .collapse .multi-collapse}
+
+Sabemos que
+
+$$
+p_1v_1^\gamma = p_2v_2^\gamma \Rightarrow \left(\frac{p_2}{p_1}\right)^{\frac{1}{\gamma}} = \frac{v_1}{v_2}
+$$
+
+Y además, para gases ideales:
+
+$$
+pv = RT
+$$
+
+Luego reemplazando $v$.
+
+$$
+\left(\frac{p_2}{p_1}\right)^{\frac{1}{\gamma}} = \frac{RT_1P_2}{RT_2P_1} \Rightarrow \frac{T_2}{T_1} = \left(\frac{p_2}{p_1}\right)^{\frac{\gamma-1}{\gamma}}
+$$
+
+Sabemos que $p_2/p_1$ es el factor de compresión e igual a $6$. Despejamos $T_2$.
+
+```{python}
+%%render long
+rc = 6
+gamma = 1.4
+T_2 = T*(rc)**((gamma-1)/gamma) #K
+```
+
+Luego $T_2 = 455.75~\text{K} = 182.6\text{°C}$. Entonces, la alternativa correcta es la **c**.
+:::
+
+## Pregunta 4
+
+La potencia ($W$) que se debe entregar al aire para comprimirlo hasta $p_2 = 6~\text{atm}$ es la siguiente:
+
+(a) $W$ > 50 kW \
+(b) 5 < $W$ ≤ 50 kW \
+(c) 0.5 < $W$ ≤ 5.0 kW \
+(d) $W$ ≤ 0.5 kW
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_2-1-sol .collapse .multi-collapse}
+
+Asumiendo que el compresor opera de manera de manera idea, obtenemos la potencia a partir de la relación con el trabajo.
+
+$$
+\dot{W}_{rev} = \frac{\gamma}{\gamma-1}p_1\dot{V}_1\left(\left(\frac{p_2}{p_1}\right)^{\frac{\gamma-1}{\gamma}}-1\right)
+$$
+
+Asumiendo que $\rho\approx1~\text{kg/m}^3$:
+
+```{python}
+%%render long
+V_1dot = f_m/60 #m$^3$/s
+W_dot = gamma/(gamma-1)*P*V_1dot*(rc**((gamma-1)/gamma)-1) #W
+```
+
+Ya que $W = 10.13~\text{kW}$, la alternativa correcta es la **b**.
+:::
+
+
