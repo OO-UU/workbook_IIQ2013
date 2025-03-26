@@ -425,6 +425,18 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 3</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_clase/IIQ2013_C4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_clase/IIQ2013_C5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 5</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -482,7 +494,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e08_1-sol" class="collapse multi-collapse">
-<div id="0e47a4f7" class="cell" data-execution_count="1">
+<div id="a653fda2" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
@@ -507,11 +519,11 @@ invalid escape sequence '\D'
 
 invalid escape sequence '\l'
 
-C:\Users\nfgaj\AppData\Local\Temp\ipykernel_10016\1925453529.py:2: SyntaxWarning:
+C:\Users\nfgaj\AppData\Local\Temp\ipykernel_2808\1925453529.py:2: SyntaxWarning:
 
 invalid escape sequence '\D'
 
-C:\Users\nfgaj\AppData\Local\Temp\ipykernel_10016\1925453529.py:2: SyntaxWarning:
+C:\Users\nfgaj\AppData\Local\Temp\ipykernel_2808\1925453529.py:2: SyntaxWarning:
 
 invalid escape sequence '\l'
 </code></pre>
@@ -529,7 +541,7 @@ F\cdot w_F = L\cdot w_L
 <p><span class="math display">\[
 F = V + F\cdot\left(\frac{w_F}{w_L}\right) \rightarrow V = F\left(1-\frac{w_F}{w_L}\right)
 \]</span></p>
-<div id="a89eea62" class="cell" data-execution_count="2">
+<div id="4cc1f273" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -548,7 +560,7 @@ V &amp;= 25000 \; \;\textrm{(kg/h)}
 \]</span></p>
 </div>
 </div>
-<div id="30bdfcab" class="cell" data-execution_count="3">
+<div id="8d70da2b" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -566,7 +578,7 @@ F &amp;= \frac{ V }{ 1 - \frac{ w_{F} }{ w_{L} } } \\&amp;= \frac{ 25000 }{ 1 - 
 <p><span class="math display">\[
 q = F\cdot c_{p,w}\left(T^{eb}_w-T_F\right) + V\cdot \lambda_V
 \]</span></p>
-<div id="a2a188c8" class="cell" data-execution_count="4">
+<div id="42736b39" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -592,7 +604,7 @@ c_{pw} &amp;= 3894 \; \;\textrm{(J/kg$\cdot^\circ$C)}
 \]</span></p>
 </div>
 </div>
-<div id="5c3980c4" class="cell" data-execution_count="5">
+<div id="673df659" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -611,7 +623,7 @@ q &amp;= \frac{ F }{ 3600 } \cdot c_{pw} \cdot \left( \mathrm{T^eb}_{w} - T_{F} 
 q = U\cdot A\cdot\Delta T
 \]</span></p>
 <p>Donde la diferencia de temperaturas <span class="math inline">\(\Delta T\)</span> será la temperatura en el flujo de vapor <span class="math inline">\(\text{S}\)</span> y la temperatura de ebullición de la solución en el evaporador.</p>
-<div id="4fde9a9b" class="cell" data-execution_count="6">
+<div id="c9227f09" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -635,7 +647,7 @@ A &amp;= \frac{ q }{ U \cdot \Delta T } \\&amp;= \frac{ 17895704.365 }{ 1700 \cd
 <p><span class="math display">\[
 q = S\cdot \lambda_S
 \]</span></p>
-<div id="98cedb55" class="cell" data-execution_count="7">
+<div id="d330bf8f" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
