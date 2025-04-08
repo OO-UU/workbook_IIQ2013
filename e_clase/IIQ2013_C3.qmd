@@ -35,9 +35,9 @@ Responda las siguientes preguntas en relación con las curvas características d
 
 (d) $h_B$ / $(h_B)_{teórico} \geq$ 80 \% 
 
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_3-1-sol" aria-expanded="false">Mostrar solución</button>
 
-::: {#ec_2-1-sol .collapse .multi-collapse}
+::: {#ec_3-1-sol .collapse .multi-collapse}
 
 Si $\beta$ = 90° entonces tan $\beta$ = $\infty$. Luego (gh<sub>B,teórico</sub>) $\approx$ r<sub>3</sub><sup>2</sup>w<sup>2</sup> y h<sub>B</sub> se puede obtener directamente del gráfico de la página 9 del formulario para una descarga nula
 
@@ -69,9 +69,9 @@ Para la misma combinación de rodete y carcasa de (1) pero con una bomba operand
 (d)  $h_B \geq$ 60 m
 
 
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_3-2-sol" aria-expanded="false">Mostrar solución</button>
 
-::: {#ec_2-1-sol .collapse .multi-collapse}
+::: {#ec_3-2-sol .collapse .multi-collapse}
 
 Utilizando la siguiente relación de proporcionalidad Q<sup>1/2</sup> $\propto$ $\omega$<sup>1/2</sup>r<sub>3</sub><sup>3/2</sup>. Haciendo un poco de algebra con las proporcionalidades Q<sup>1/2</sup>$\omega$ / h<sub>b</sub><sup>3/4</sup> = constante. Luego si planteamos esta proporcionalidad utilizando la altura de descarga mínima se obtiene:
 
@@ -99,9 +99,9 @@ Considere ahora que la bomba se instala en el sistema de la Figura 1, a una dist
 
 (d) NPSH<sub>d</sub> > $ 3 m 
 
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_3-3-sol" aria-expanded="false">Mostrar solución</button>
 
-::: {#ec_2-1-sol .collapse .multi-collapse}
+::: {#ec_3-3-sol .collapse .multi-collapse}
 
 Primero generamos una función para el cálculo de el NPSH disponible en el sistema.
 

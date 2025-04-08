@@ -40,18 +40,12 @@ Su compañero encontró que es mucho más barato preparar la suspensión en luga
 
 (d) Paleta
 
-::: {#ec_2-1-sol .collapse .multi-collapse}
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_6-1-sol" aria-expanded="false">Mostrar solución</button>
 
-```{figure} ./images/img_EC-7.png
----
-name: figura-EC7
-scale: 60%
-align: center
----
+::: {#ec_6-1-sol .collapse .multi-collapse}
 
-Gráfico de selección.
-```
 
+![Gráfico de selección.](./images/img_EC-7.png){#fig-EC6-1 fig-align="center"}
 
 Del gráfico:
 Por lo tanto, la alternativa correcta es la **a**.
@@ -70,7 +64,9 @@ Si la altura del estanque cilíndrico es de $2\hspace{1mm}(m)$, la razón entre 
 
 (d) Q $\geq$ 0.25 m$^3$/s
 
-::: {#ec_2-1-sol .collapse .multi-collapse}
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_6-2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_6-2-sol .collapse .multi-collapse}
 
 
 ```{python}
@@ -101,7 +97,9 @@ El fabricante del agitador reporta que para un diámetro del agitador de $0.3\hs
 
 (d) P $\geq$ 2.5 kW
 
-::: {#ec_2-1-sol .collapse .multi-collapse}
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_6-3-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_6-3-sol .collapse .multi-collapse}
 
 Se debe cumplir que el número de potencia es equivalente.
 

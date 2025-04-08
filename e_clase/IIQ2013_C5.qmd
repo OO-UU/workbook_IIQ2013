@@ -35,9 +35,9 @@ Los valores del peso molecular ($MW$) y factor $\gamma$ para el aire son los sig
 (c) $MW\approx$ 29 g/mol y $\gamma\approx$ 1.40 \
 (d) $MW\approx$ 32 g/mol y $\gamma\approx$ 1.40
 
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_5-1-sol" aria-expanded="false">Mostrar solución</button>
 
-::: {#ec_2-1-sol .collapse .multi-collapse}
+::: {#ec_5-1-sol .collapse .multi-collapse}
 
 El aire esta compuesto por: $N_2$ en un $78\%$ y $O_2$ en un $22\%$. Con $MW_{N_2} = 28~\text{g/mol}$ y $MW_{O_2} = 32~\text{g/mol}$
 
@@ -62,9 +62,9 @@ El flujo masico de aire comprimido ($m$) descargado por el compresor es el sigui
 
 *Hint: Puede estimar dicho flujo masico considerando el volumen especifico del aire STP y el volumen total barrido por los cuatro pistones operando a 125 rpm.*
 
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_5-2-sol" aria-expanded="false">Mostrar solución</button>
 
-::: {#ec_2-1-sol .collapse .multi-collapse}
+::: {#ec_5-2-sol .collapse .multi-collapse}
 
 Ya que en el enunciado nos dicen que el aire se comprime a STD, la presión es $100~\text{kPa}$ y la temperatura es $273.15~\text{K}$. Ya que no hay holgura $c=0$:
 
@@ -113,9 +113,9 @@ La temperatura de expulsión del aire comprimido ($T_2$) del compresor es la sig
 (c) 100 < $T_2$ ≤ 200 °C \
 (d) $T_2$ ≤ 100 °C
 
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_5-3-sol" aria-expanded="false">Mostrar solución</button>
 
-::: {#ec_2-1-sol .collapse .multi-collapse}
+::: {#ec_5-3-sol .collapse .multi-collapse}
 
 Sabemos que
 
@@ -156,9 +156,9 @@ La potencia ($W$) que se debe entregar al aire para comprimirlo hasta $p_2 = 6~\
 (c) 0.5 < $W$ ≤ 5.0 kW \
 (d) $W$ ≤ 0.5 kW
 
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_5-4-sol" aria-expanded="false">Mostrar solución</button>
 
-::: {#ec_2-1-sol .collapse .multi-collapse}
+::: {#ec_5-4-sol .collapse .multi-collapse}
 
 Asumiendo que el compresor opera de manera de manera idea, obtenemos la potencia a partir de la relación con el trabajo.
 

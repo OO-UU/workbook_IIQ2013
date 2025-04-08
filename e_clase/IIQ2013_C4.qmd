@@ -35,9 +35,9 @@ La velocidad a la entrada de la tubería ($V_1$) es aproximadamente la siguiente
 (c) 10 m/s < $V_1$ ≤ 100 m/s \
 (d) $V_1$ > 100 m/s
 
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_4-1-sol" aria-expanded="false">Mostrar solución</button>
 
-::: {#ec_2-1-sol .collapse .multi-collapse}
+::: {#ec_4-1-sol .collapse .multi-collapse}
 
 Sabemos que:
 
@@ -68,9 +68,9 @@ La alternativa correcta es la **c**.
 (c) $T^* \approx$ 550 K y $p^* \approx$ 1,5 atm \
 (d) $T^* \approx$ 650 K y $p^* \approx$ 2 atm
 
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_4-2-sol" aria-expanded="false">Mostrar solución</button>
 
-::: {#ec_2-1-sol .collapse .multi-collapse}
+::: {#ec_4-2-sol .collapse .multi-collapse}
 
 Ya que nos encontramos frente a un flujo adiabático:
 
@@ -103,9 +103,9 @@ Dado un valor $4 f L^*/D = 400$, el flux de aire ($G/A$) a la entrada del conduc
 (c) 380 < $G/A$ ≤ 480 kg/s$\cdot$m$^2$ \
 (d) $G/A$ ≤ 480 kg/s$\cdot$m$^2$
 
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">Mostrar solución</button>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_4-3-sol" aria-expanded="false">Mostrar solución</button>
 
-::: {#ec_2-1-sol .collapse .multi-collapse}
+::: {#ec_4-3-sol .collapse .multi-collapse}
 
 Notamos que la razón de presiones es alta. Comparando con las condiciones de flujo máximo, se itera $Ma$ para encontrar las condiciones en que se cumpla:
 
