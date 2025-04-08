@@ -486,7 +486,7 @@ window.Quarto = {
 
 
 <p>En primer lugar se deben cargar las librerias que vamos a utilizar</p>
-<div id="1ae84a8f" class="cell" data-execution_count="1">
+<div id="8d975d8b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
@@ -503,7 +503,7 @@ Mostrar solución
 </button>
 <div id="ec_3-1-sol" class="collapse multi-collapse">
 <p>Si <span class="math inline">\(\beta\)</span> = 90° entonces tan <span class="math inline">\(\beta\)</span> = <span class="math inline">\(\infty\)</span>. Luego (gh<sub>B,teórico</sub>) <span class="math inline">\(\approx\)</span> r<sub>3</sub><sup>2</sup>w<sup>2</sup> y h<sub>B</sub> se puede obtener directamente del gráfico de la página 9 del formulario para una descarga nula</p>
-<div id="c81624fe" class="cell" data-execution_count="2">
+<div id="d72539bf" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span> <span class="co"># aceleracion de gravedad m/s^2</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="dv">1750</span><span class="op">/</span><span class="dv">60</span> <span class="co"># 2 * Pi * RPM / 60 para dejar la velocidad en rad/s</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>r_3 <span class="op">=</span> (<span class="fl">6.75</span><span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="fl">2.54</span><span class="op">*</span><span class="fl">0.01</span> <span class="co"># Diametro / 2 y el cambio de unidades de in a metros.</span></span>
@@ -533,7 +533,7 @@ Mostrar solución
 </button>
 <div id="ec_3-2-sol" class="collapse multi-collapse">
 <p>Utilizando la siguiente relación de proporcionalidad Q<sup>1/2</sup> <span class="math inline">\(\propto\)</span> <span class="math inline">\(\omega\)</span><sup>1/2</sup>r<sub>3</sub><sup>3/2</sup>. Haciendo un poco de algebra con las proporcionalidades Q<sup>1/2</sup><span class="math inline">\(\omega\)</span> / h<sub>b</sub><sup>3/4</sup> = constante. Luego si planteamos esta proporcionalidad utilizando la altura de descarga mínima se obtiene:</p>
-<div id="1d5cbad9" class="cell" data-execution_count="3">
+<div id="e8146aab" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>h_b_1 <span class="op">=</span> h_b</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>w_2 <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="dv">3500</span><span class="op">/</span><span class="dv">60</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>h_b_2 <span class="op">=</span> h_b_1<span class="op">*</span>(w_2<span class="op">/</span>w)<span class="op">**</span><span class="dv">2</span></span>
@@ -560,13 +560,13 @@ Mostrar solución
 </button>
 <div id="ec_3-3-sol" class="collapse multi-collapse">
 <p>Primero generamos una función para el cálculo de el NPSH disponible en el sistema.</p>
-<div id="e3557cd7" class="cell" data-execution_count="4">
+<div id="5375ec1e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> NPSH_d(Patm, Pv,rho, z_succion, phi):</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ((Patm<span class="op">-</span>Pv)<span class="op">/</span>(rho<span class="op">*</span><span class="fl">9.81</span>)) <span class="op">-</span> z_succion <span class="op">-</span> phi</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>En segundo lugar calculamos <span class="math inline">\(\Phi\)</span> incluyendo pérdidas por fricción y singularidades y luego aplicamos la formula del NPSH disponible.</p>
-<div id="f70eb27f" class="cell" data-execution_count="5">
+<div id="ecc086b4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span> <span class="co"># aceleracion de gravedad m/s^2</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fl">1.5</span><span class="op">*</span><span class="fl">2.54</span><span class="op">*</span><span class="fl">0.01</span> <span class="co">#m</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> <span class="fl">5.5</span><span class="op">/</span><span class="dv">1000</span> <span class="co">#m3/s </span></span>

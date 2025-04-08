@@ -486,11 +486,13 @@ window.Quarto = {
 
 <p>Un compañero desea emprender creando un innovador SPA que utiliza un aceite esencial especial con harina disuelta como exfoliante. Esta suspensión es un fluido newtoniano con una viscosidad de <span class="math inline">\(8000\hspace{1mm}cP\)</span> y una densidad <span class="math inline">\(\rho=880\hspace{1mm}(kg/m^3)\)</span>.</p>
 <p>En primer lugar se deben cargar las librerias que vamos a utilizar</p>
-<div id="f502155a" class="cell" data-execution_count="1">
+<div id="fc857af0" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt, pi</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
@@ -531,7 +533,7 @@ Figura&nbsp;1: Gráfico de selección.
 Mostrar solución
 </button>
 <div id="ec_6-2-sol" class="collapse multi-collapse">
-<div id="5a08f530" class="cell" data-execution_count="2">
+<div id="f42e267a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> <span class="dv">2</span> <span class="co">#m</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">3</span> <span class="co">#m$^3$</span></span>
@@ -541,8 +543,26 @@ Mostrar solución
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>NQ <span class="op">=</span> <span class="fl">0.87</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">120</span> <span class="co">#RPM</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> NQ<span class="op">*</span>(N<span class="op">/</span><span class="dv">60</span>)<span class="op">*</span>D_a<span class="op">**</span><span class="dv">3</span> <span class="co">#m$^3$/s</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+H &amp;= 2 \; \;\textrm{(m)}
+\\[10pt]
+V &amp;= 3 \; \;\textrm{(m$^3$)}
+\\[10pt]
+S_{1} &amp;= 0.200 \;
+\\[10pt]
+D_{t} &amp;= \sqrt { 4 \cdot \frac{ V }{ \pi \cdot H } } \\&amp;= \sqrt { 4 \cdot \frac{ 3 }{ 3.142 \cdot 2 } } \\&amp;= 1.382 \; \;\textrm{(m)}\\[10pt]
+\\[10pt]
+D_{a} &amp;= D_{t} \cdot S_{1} \\&amp;= 1.382 \cdot 0.200 \\&amp;= 0.276 \; \;\textrm{(m)}\\[10pt]
+\\[10pt]
+\mathrm{NQ} &amp;= 0.870 \;
+\\[10pt]
+N &amp;= 120 \; \;\textrm{(RPM)}
+\\[10pt]
+Q &amp;= \mathrm{NQ} \cdot \left( \frac{ N }{ 60 } \right) \cdot \left( D_{a} \right) ^{ 3 } \\&amp;= 0.870 \cdot \left( \frac{ 120 }{ 60 } \right) \cdot \left( 0.276 \right) ^{ 3 } \\&amp;= 0.037 \; \;\textrm{(m$^3$/s)}\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>La alternativa correcta es la <strong>a</strong>.</p>
@@ -565,16 +585,30 @@ Mostrar solución
 <p><span class="math display">\[
 N_{p,1} = N_{p,2} \Rightarrow \frac{P_1}{\rho_1N_1^3D_{a,1}^5} = \frac{P_2}{\rho_2N_2^3D_{a,2}^5}
 \]</span></p>
-<div id="c4af070b" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>N_1 <span class="op">=</span> <span class="dv">180</span> <span class="co">#RPM</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>N_2 <span class="op">=</span> N <span class="co">#RPM</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>P_1 <span class="op">=</span> <span class="fl">5.5</span> <span class="co">#kW</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>D_a1 <span class="op">=</span> <span class="fl">0.3</span> <span class="co">#m</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>D_a2 <span class="op">=</span> D_a <span class="co">#m</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>P_2 <span class="op">=</span> P_1<span class="op">*</span>((N_2<span class="op">/</span><span class="dv">60</span>)<span class="op">**</span><span class="dv">3</span><span class="op">*</span>D_a2<span class="op">**</span><span class="dv">5</span>)<span class="op">/</span>((N_1<span class="op">/</span><span class="dv">60</span>)<span class="op">**</span><span class="dv">3</span><span class="op">*</span>D_a1<span class="op">**</span><span class="dv">5</span>) <span class="co">#kW</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="e984ef14" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>N_1 <span class="op">=</span> <span class="dv">180</span> <span class="co">#RPM</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>N_2 <span class="op">=</span> N <span class="co">#RPM</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>P_1 <span class="op">=</span> <span class="fl">5.5</span> <span class="co">#kW</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>D_a1 <span class="op">=</span> <span class="fl">0.3</span> <span class="co">#m</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>D_a2 <span class="op">=</span> D_a <span class="co">#m</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>P_2 <span class="op">=</span> P_1<span class="op">*</span>((N_2<span class="op">/</span><span class="dv">60</span>)<span class="op">**</span><span class="dv">3</span><span class="op">*</span>D_a2<span class="op">**</span><span class="dv">5</span>)<span class="op">/</span>((N_1<span class="op">/</span><span class="dv">60</span>)<span class="op">**</span><span class="dv">3</span><span class="op">*</span>D_a1<span class="op">**</span><span class="dv">5</span>) <span class="co">#kW</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+N_{1} &amp;= 180 \; \;\textrm{(RPM)}
+\\[10pt]
+N_{2} &amp;= 120 \; \;\textrm{(RPM)}
+\\[10pt]
+P_{1} &amp;= 5.500 \; \;\textrm{(kW)}
+\\[10pt]
+D_{a1} &amp;= 0.300 \; \;\textrm{(m)}
+\\[10pt]
+D_{a2} &amp;= 0.276 \; \;\textrm{(m)}
+\\[10pt]
+P_{2} &amp;= P_{1} \cdot \frac{ \left( \frac{ N_{2} }{ 60 } \right) ^{ 3 } \cdot \left( D_{a2} \right) ^{ 5 } }{ \left( \frac{ N_{1} }{ 60 } \right) ^{ 3 } \cdot \left( D_{a1} \right) ^{ 5 } } \\&amp;= 5.500 \cdot \frac{ \left( \frac{ 120 }{ 60 } \right) ^{ 3 } \cdot \left( 0.276 \right) ^{ 5 } }{ \left( \frac{ 180 }{ 60 } \right) ^{ 3 } \cdot \left( 0.300 \right) ^{ 5 } } \\&amp;= 1.082 \; \;\textrm{(kW)}\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>La alternativa correcta es la <strong>b</strong>.</p>

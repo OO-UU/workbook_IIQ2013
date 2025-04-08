@@ -487,10 +487,12 @@ window.Quarto = {
 
 <p>Considere aire (<span class="math inline">\(\gamma = 1.4\)</span>) procedente de un depósito o estanque que fluye a través de una tubería recta de gran longitud y provista con aislación térmica (no ocurre transferencia de calor con los alrededores). La presión y temperatura en el estanque son <span class="math inline">\(p_1 = 20~\text{atm}\)</span> y <span class="math inline">\(T_1 = 555.6~\text{K}\)</span>, respectivamente (<span class="math inline">\(\rho = 12.72 \text{~kg/m}^3\)</span>). Además, se sabe que el número de Mach a la entrada de la tubería es <span class="math inline">\(Ma_1 = 0.05\)</span>.</p>
 <p>Librerias a utilizar:</p>
-<div id="4a54ed6f" class="cell" data-execution_count="1">
+<div id="89a59d0a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt, log</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt, log</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="problema-1" class="level2">
 <h2 class="anchored" data-anchor-id="problema-1">Problema 1</h2>
@@ -512,7 +514,7 @@ Mostrar solución
 <p><span class="math display">\[
 Ma_1 = \frac{V_1}{c_1} \Rightarrow V_1 = Ma_1\sqrt{\frac{\gamma RT_1}{MW}}
 \]</span></p>
-<div id="fea5575f" class="cell" data-execution_count="2">
+<div id="6157c372" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Ma_1 <span class="op">=</span> <span class="fl">0.05</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.4</span></span>
@@ -520,8 +522,22 @@ Ma_1 = \frac{V_1}{c_1} \Rightarrow V_1 = Ma_1\sqrt{\frac{\gamma RT_1}{MW}}
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>T_1 <span class="op">=</span> <span class="fl">555.6</span> <span class="co">#K</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>MW <span class="op">=</span> <span class="fl">0.028</span> <span class="co">#kg/mol</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>V_1 <span class="op">=</span> Ma_1<span class="op">*</span>sqrt((gamma<span class="op">*</span>R<span class="op">*</span>T_1)<span class="op">/</span>MW) <span class="co">#m/s</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{Ma}_{1} &amp;= 0.050 \;
+\\[10pt]
+\gamma &amp;= 1.400 \;
+\\[10pt]
+R &amp;= 8.314 \; \;\textrm{(J/mol$\cdot$K)}
+\\[10pt]
+T_{1} &amp;= 555.600 \; \;\textrm{(K)}
+\\[10pt]
+\mathrm{MW} &amp;= 0.028 \; \;\textrm{(kg/mol)}
+\\[10pt]
+V_{1} &amp;= \mathrm{Ma}_{1} \cdot \sqrt { \frac{ \gamma \cdot R \cdot T_{1} }{ \mathrm{MW} } } \\&amp;= 0.050 \cdot \sqrt { \frac{ 1.400 \cdot 8.314 \cdot 555.600 }{ 0.028 } } \\&amp;= 24.029 \; \;\textrm{(m/s)}\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>La alternativa correcta es la <strong>c</strong>.</p>
@@ -550,14 +566,24 @@ Mostrar solución
 <p><span class="math display">\[
 \frac{p}{p^*} = \frac{1}{Ma}\sqrt{\frac{\gamma+1}{2+(\gamma-1)Ma^2}}
 \]</span></p>
-<div id="ad016493" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>p_1 <span class="op">=</span> <span class="dv">20</span> <span class="co">#atm</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="fl">12.72</span> <span class="co">#kg/m$^3$</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> T_1 <span class="op">*</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma_1<span class="op">**</span><span class="dv">2</span>))<span class="op">**-</span><span class="dv">1</span> <span class="co">#K</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> p_1 <span class="op">*</span> (<span class="dv">1</span><span class="op">/</span>Ma_1 <span class="op">*</span> sqrt((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma_1<span class="op">**</span><span class="dv">2</span>)))<span class="op">**-</span><span class="dv">1</span> <span class="co">#atm</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="5d003f92" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p_1 <span class="op">=</span> <span class="dv">20</span> <span class="co">#atm</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="fl">12.72</span> <span class="co">#kg/m$^3$</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> T_1 <span class="op">*</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma_1<span class="op">**</span><span class="dv">2</span>))<span class="op">**-</span><span class="dv">1</span> <span class="co">#K</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> p_1 <span class="op">*</span> (<span class="dv">1</span><span class="op">/</span>Ma_1 <span class="op">*</span> sqrt((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma_1<span class="op">**</span><span class="dv">2</span>)))<span class="op">**-</span><span class="dv">1</span> <span class="co">#atm</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+p_{1} &amp;= 20 \; \;\textrm{(atm)}
+\\[10pt]
+\rho &amp;= 12.720 \; \;\textrm{(kg/m$^3$)}
+\\[10pt]
+T &amp;= T_{1} \cdot \left( \frac{ \gamma + 1 }{ 2 + \left( \gamma - 1 \right) \cdot \left( \mathrm{Ma}_{1} \right) ^{ 2 } } \right) ^{ -1 } \\&amp;= 555.600 \cdot \left( \frac{ 1.400 + 1 }{ 2 + \left( 1.400 - 1 \right) \cdot \left( 0.050 \right) ^{ 2 } } \right) ^{ -1 } \\&amp;= 463.232 \; \;\textrm{(K)}\\[10pt]
+\\[10pt]
+P &amp;= p_{1} \cdot \left( \frac{ 1 }{ \mathrm{Ma}_{1} } \cdot \sqrt { \frac{ \gamma + 1 }{ 2 + \left( \gamma - 1 \right) \cdot \left( \mathrm{Ma}_{1} \right) ^{ 2 } } } \right) ^{ -1 } \\&amp;= 20 \cdot \left( \frac{ 1 }{ 0.050 } \cdot \sqrt { \frac{ 1.400 + 1 }{ 2 + \left( 1.400 - 1 \right) \cdot \left( 0.050 \right) ^{ 2 } } } \right) ^{ -1 } \\&amp;= 0.913 \; \;\textrm{(atm)}\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>La anternativa más cercana a nuestros resultados es la <strong>b</strong>.</p>
@@ -584,41 +610,63 @@ Mostrar solución
 400 = \frac{1-Ma^2}{\gamma Ma^2} + \left(\frac{\gamma+1}{2\gamma}\right)\ln\left(\frac{2(\gamma+1)Ma^2}{2+(\gamma-1)Ma^2}\right)
 \]</span></p>
 <p>Como estimación inicial, utilizamos la condición del enunciado <span class="math inline">\(Ma = 0.05\)</span>.</p>
-<div id="2f0d5fcb" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Ma <span class="op">=</span> <span class="fl">0.05</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>fLD_estimado <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(gamma<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gamma))<span class="op">*</span>log((<span class="dv">2</span><span class="op">*</span>(gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="49a80dcb" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Ma <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fLD_estimado <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(gamma<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gamma))<span class="op">*</span>log((<span class="dv">2</span><span class="op">*</span>(gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{Ma} &amp;= 0.050 \;
+\\[10pt]
+\mathrm{fLD}_{estimado} &amp;= \frac{ 1 - \left( \mathrm{Ma} \right) ^{ 2 } }{ \gamma \cdot \left( \mathrm{Ma} \right) ^{ 2 } } + \left( \frac{ \gamma + 1 }{ 2 \cdot \gamma } \right) \cdot \ln \left( \frac{ 2 \cdot \left( \gamma + 1 \right) \cdot \left( \mathrm{Ma} \right) ^{ 2 } }{ 2 + \left( \gamma - 1 \right) \cdot \left( \mathrm{Ma} \right) ^{ 2 } } \right) \\&amp;= \frac{ 1 - \left( 0.050 \right) ^{ 2 } }{ 1.400 \cdot \left( 0.050 \right) ^{ 2 } } + \left( \frac{ 1.400 + 1 }{ 2 \cdot 1.400 } \right) \cdot \ln \left( \frac{ 2 \cdot \left( 1.400 + 1 \right) \cdot \left( 0.050 \right) ^{ 2 } }{ 2 + \left( 1.400 - 1 \right) \cdot \left( 0.050 \right) ^{ 2 } } \right) \\&amp;= 280.614  \\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Segunda estimación <span class="math inline">\(Ma = 0.04\)</span>.</p>
-<div id="8871d9ac" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Ma <span class="op">=</span> <span class="fl">0.04</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>fLD_estimado <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(gamma<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gamma))<span class="op">*</span>log((<span class="dv">2</span><span class="op">*</span>(gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="842b2e94" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Ma <span class="op">=</span> <span class="fl">0.04</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fLD_estimado <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(gamma<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gamma))<span class="op">*</span>log((<span class="dv">2</span><span class="op">*</span>(gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{Ma} &amp;= 0.040 \;
+\\[10pt]
+\mathrm{fLD}_{estimado} &amp;= \frac{ 1 - \left( \mathrm{Ma} \right) ^{ 2 } }{ \gamma \cdot \left( \mathrm{Ma} \right) ^{ 2 } } + \left( \frac{ \gamma + 1 }{ 2 \cdot \gamma } \right) \cdot \ln \left( \frac{ 2 \cdot \left( \gamma + 1 \right) \cdot \left( \mathrm{Ma} \right) ^{ 2 } }{ 2 + \left( \gamma - 1 \right) \cdot \left( \mathrm{Ma} \right) ^{ 2 } } \right) \\&amp;= \frac{ 1 - \left( 0.040 \right) ^{ 2 } }{ 1.400 \cdot \left( 0.040 \right) ^{ 2 } } + \left( \frac{ 1.400 + 1 }{ 2 \cdot 1.400 } \right) \cdot \ln \left( \frac{ 2 \cdot \left( 1.400 + 1 \right) \cdot \left( 0.040 \right) ^{ 2 } }{ 2 + \left( 1.400 - 1 \right) \cdot \left( 0.040 \right) ^{ 2 } } \right) \\&amp;= 440.946  \\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Tercera estimación <span class="math inline">\(Ma = 0.042\)</span>.</p>
-<div id="114e4901" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Ma <span class="op">=</span> <span class="fl">0.042</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>fLD_estimado <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(gamma<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gamma))<span class="op">*</span>log((<span class="dv">2</span><span class="op">*</span>(gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="fab25024" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Ma <span class="op">=</span> <span class="fl">0.042</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>fLD_estimado <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(gamma<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gamma))<span class="op">*</span>log((<span class="dv">2</span><span class="op">*</span>(gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{Ma} &amp;= 0.042 \;
+\\[10pt]
+\mathrm{fLD}_{estimado} &amp;= \frac{ 1 - \left( \mathrm{Ma} \right) ^{ 2 } }{ \gamma \cdot \left( \mathrm{Ma} \right) ^{ 2 } } + \left( \frac{ \gamma + 1 }{ 2 \cdot \gamma } \right) \cdot \ln \left( \frac{ 2 \cdot \left( \gamma + 1 \right) \cdot \left( \mathrm{Ma} \right) ^{ 2 } }{ 2 + \left( \gamma - 1 \right) \cdot \left( \mathrm{Ma} \right) ^{ 2 } } \right) \\&amp;= \frac{ 1 - \left( 0.042 \right) ^{ 2 } }{ 1.400 \cdot \left( 0.042 \right) ^{ 2 } } + \left( \frac{ 1.400 + 1 }{ 2 \cdot 1.400 } \right) \cdot \ln \left( \frac{ 2 \cdot \left( 1.400 + 1 \right) \cdot \left( 0.042 \right) ^{ 2 } }{ 2 + \left( 1.400 - 1 \right) \cdot \left( 0.042 \right) ^{ 2 } } \right) \\&amp;= 399.525  \\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Estamos lo suficientemente cerca del resultado correcto, entonces calculamos.</p>
 <p><span class="math display">\[
 \left(\frac{G'}{A}\right)_{max} = \rho_1c_1Ma
 \]</span></p>
-<div id="d99b5493" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>GA_max <span class="op">=</span> rho<span class="op">*</span>sqrt((gamma<span class="op">*</span>R<span class="op">*</span>T_1)<span class="op">/</span>MW)<span class="op">*</span>Ma <span class="co">#kg/m$^2\cdot$s</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="e5802706" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>GA_max <span class="op">=</span> rho<span class="op">*</span>sqrt((gamma<span class="op">*</span>R<span class="op">*</span>T_1)<span class="op">/</span>MW)<span class="op">*</span>Ma <span class="co">#kg/m$^2\cdot$s</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{GA}_{max} &amp;= \rho \cdot \sqrt { \frac{ \gamma \cdot R \cdot T_{1} }{ \mathrm{MW} } } \cdot \mathrm{Ma} \\&amp;= 12.720 \cdot \sqrt { \frac{ 1.400 \cdot 8.314 \cdot 555.600 }{ 0.028 } } \cdot 0.042 \\&amp;= 256.748 \; \;\textrm{(kg/m$^2\cdot$s)}\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Por lo tanto la alternativa correcta es la <strong>a</strong>.</p>

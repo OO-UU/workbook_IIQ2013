@@ -488,10 +488,12 @@ window.Quarto = {
 
 <p>Sea un compresor reciprocante compuesto de cuatro pistones conectados a un eje de vielas que opera a <span class="math inline">\(125~\text{RPM}\)</span>. En cada pistón (<span class="math inline">\(D = 20~\text{cm}\)</span>, <span class="math inline">\(L = 13~\text{cm}\)</span>) se comprime aire STP (at Standard Temperature and Pressure conditions) isoentrópicamente usando una razón de compresión <span class="math inline">\(rc = 6\)</span>. Responda las siguientes preguntas asumiendo que se puede despreciar el volumen de holgura de cada pistón (pistones ideales):</p>
 <p>Librerias a utilizar:</p>
-<div id="1c43c711" class="cell" data-execution_count="1">
+<div id="8c3f55fe" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
@@ -510,13 +512,21 @@ Mostrar solución
 </button>
 <div id="ec_5-1-sol" class="collapse multi-collapse">
 <p>El aire esta compuesto por: <span class="math inline">\(N_2\)</span> en un <span class="math inline">\(78\%\)</span> y <span class="math inline">\(O_2\)</span> en un <span class="math inline">\(22\%\)</span>. Con <span class="math inline">\(MW_{N_2} = 28~\text{g/mol}\)</span> y <span class="math inline">\(MW_{O_2} = 32~\text{g/mol}\)</span></p>
-<div id="900d2134" class="cell" data-execution_count="2">
+<div id="7287fa9b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>MW_N2 <span class="op">=</span> <span class="dv">28</span> <span class="co">#g/mol</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>MW_O2 <span class="op">=</span> <span class="dv">32</span> <span class="co">#g/mol</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>MW <span class="op">=</span> <span class="fl">0.78</span><span class="op">*</span>MW_N2 <span class="op">+</span> <span class="fl">0.22</span><span class="op">*</span>MW_O2</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{MW}_{N2} &amp;= 28 \; \;\textrm{(g/mol)}
+\\[10pt]
+\mathrm{MW}_{O2} &amp;= 32 \; \;\textrm{(g/mol)}
+\\[10pt]
+\mathrm{MW} &amp;= 0.78 \cdot \mathrm{MW}_{N2} + 0.22 \cdot \mathrm{MW}_{O2} \\&amp;= 0.78 \cdot 28 + 0.22 \cdot 32 \\&amp;= 28.880  \\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Luego <span class="math inline">\(MW\approx29~\text{g/mol}\)</span> y <span class="math inline">\(\gamma=1.4\)</span>. Por lo tanto la alternativa correcta es la <strong>c</strong>.</p>
@@ -543,36 +553,60 @@ Mostrar solución
 <p><span class="math display">\[
 V_{total} = 4V_{c+l} = 4\frac{\pi(D)^2}{4}L
 \]</span></p>
-<div id="526140d6" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fl">0.2</span> <span class="co">#m</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="fl">0.13</span> <span class="co">#L</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">4</span><span class="op">*</span>((pi<span class="op">*</span>D<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">4</span>))<span class="op">*</span>L <span class="co">#m$^3$</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="5a101ed1" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fl">0.2</span> <span class="co">#m</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="fl">0.13</span> <span class="co">#L</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">4</span><span class="op">*</span>((pi<span class="op">*</span>D<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">4</span>))<span class="op">*</span>L <span class="co">#m$^3$</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+D &amp;= 0.200 \; \;\textrm{(m)}
+\\[10pt]
+L &amp;= 0.130 \; \;\textrm{(L)}
+\\[10pt]
+V &amp;= 4 \cdot \left( \frac{ \pi \cdot \left( D \right) ^{ 2 } }{ 4 } \right) \cdot L \\&amp;= 4 \cdot \left( \frac{ 3.142 \cdot \left( 0.200 \right) ^{ 2 } }{ 4 } \right) \cdot 0.130 \\&amp;= 0.016 \; \;\textrm{(m$^3$)}\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Para obtener la masa por ciclo, podemos separar el volumen másico <span class="math inline">\(v~\text{m}^3\text{/kg}\)</span> desde la ecuación de los gases ideales:</p>
 <p><span class="math display">\[
 Pv = \frac{RT}{MW} \Rightarrow PV = \frac{mRT}{MW}
 \]</span></p>
-<div id="a37ea45b" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">8.314</span> <span class="co">#J/mol$\cdot$K</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="fl">273.15</span> <span class="co">#K</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> <span class="dv">100000</span> <span class="co">#Pa</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>m_cic <span class="op">=</span> (P<span class="op">*</span>V<span class="op">*</span>MW<span class="op">/</span><span class="dv">1000</span>)<span class="op">/</span>(R<span class="op">*</span>T) <span class="co">#kg/ciclo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="fc8d43fa" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">8.314</span> <span class="co">#J/mol$\cdot$K</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="fl">273.15</span> <span class="co">#K</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> <span class="dv">100000</span> <span class="co">#Pa</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>m_cic <span class="op">=</span> (P<span class="op">*</span>V<span class="op">*</span>MW<span class="op">/</span><span class="dv">1000</span>)<span class="op">/</span>(R<span class="op">*</span>T) <span class="co">#kg/ciclo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+R &amp;= 8.314 \; \;\textrm{(J/mol$\cdot$K)}
+\\[10pt]
+T &amp;= 273.150 \; \;\textrm{(K)}
+\\[10pt]
+P &amp;= 100000 \; \;\textrm{(Pa)}
+\\[10pt]
+m_{cic} &amp;= \frac{ P \cdot V \cdot \frac{ \mathrm{MW} }{ 1000 } }{ R \cdot T } \\&amp;= \frac{ 100000 \cdot 0.016 \cdot \frac{ 28.880 }{ 1000 } }{ 8.314 \cdot 273.150 } \\&amp;= 0.021 \; \;\textrm{(kg/ciclo)}\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Como nos indica el <em>Hint</em>, podemos calcular el flujo másico a partir de las revoluciones por minuto.</p>
-<div id="c9a4cbba" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>RPM <span class="op">=</span> <span class="dv">125</span> <span class="co">#rpm</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>f_m <span class="op">=</span> m_cic<span class="op">*</span>RPM <span class="co">#kg/min</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="a911c42b" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>RPM <span class="op">=</span> <span class="dv">125</span> <span class="co">#rpm</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>f_m <span class="op">=</span> m_cic<span class="op">*</span>RPM <span class="co">#kg/min</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{RPM} &amp;= 125 \; \;\textrm{(rpm)}
+\\[10pt]
+f_{m} &amp;= m_{cic} \cdot \mathrm{RPM} \\&amp;= 0.021 \cdot 125 \\&amp;= 2.597 \; \;\textrm{(kg/min)}\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Por lo tanto, la alternativa correcta es la <strong>a</strong>.</p>
@@ -607,13 +641,21 @@ pv = RT
 \left(\frac{p_2}{p_1}\right)^{\frac{1}{\gamma}} = \frac{RT_1P_2}{RT_2P_1} \Rightarrow \frac{T_2}{T_1} = \left(\frac{p_2}{p_1}\right)^{\frac{\gamma-1}{\gamma}}
 \]</span></p>
 <p>Sabemos que <span class="math inline">\(p_2/p_1\)</span> es el factor de compresión e igual a <span class="math inline">\(6\)</span>. Despejamos <span class="math inline">\(T_2\)</span>.</p>
-<div id="a04c1188" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>rc <span class="op">=</span> <span class="dv">6</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.4</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>T_2 <span class="op">=</span> T<span class="op">*</span>(rc)<span class="op">**</span>((gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span>gamma) <span class="co">#K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="f189240b" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>rc <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.4</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>T_2 <span class="op">=</span> T<span class="op">*</span>(rc)<span class="op">**</span>((gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span>gamma) <span class="co">#K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{rc} &amp;= 6 \;
+\\[10pt]
+\gamma &amp;= 1.400 \;
+\\[10pt]
+T_{2} &amp;= T \cdot \left( \mathrm{rc} \right) ^{ \left( \frac{ \gamma - 1 }{ \gamma } \right) } \\&amp;= 273.150 \cdot \left( 6 \right) ^{ \left( \frac{ 1.400 - 1 }{ 1.400 } \right) } \\&amp;= 455.754 \; \;\textrm{(K)}\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Luego <span class="math inline">\(T_2 = 455.75~\text{K} = 182.6\text{°C}\)</span>. Entonces, la alternativa correcta es la <strong>c</strong>.</p>
@@ -640,12 +682,18 @@ Mostrar solución
 \dot{W}_{rev} = \frac{\gamma}{\gamma-1}p_1\dot{V}_1\left(\left(\frac{p_2}{p_1}\right)^{\frac{\gamma-1}{\gamma}}-1\right)
 \]</span></p>
 <p>Asumiendo que <span class="math inline">\(\rho\approx1~\text{kg/m}^3\)</span>:</p>
-<div id="e3cb3102" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>V_1dot <span class="op">=</span> f_m<span class="op">/</span><span class="dv">60</span> <span class="co">#m$^3$/s</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>W_dot <span class="op">=</span> gamma<span class="op">/</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>P<span class="op">*</span>V_1dot<span class="op">*</span>(rc<span class="op">**</span>((gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span>gamma)<span class="op">-</span><span class="dv">1</span>) <span class="co">#W</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="e01b6e8c" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>V_1dot <span class="op">=</span> f_m<span class="op">/</span><span class="dv">60</span> <span class="co">#m$^3$/s</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>W_dot <span class="op">=</span> gamma<span class="op">/</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>P<span class="op">*</span>V_1dot<span class="op">*</span>(rc<span class="op">**</span>((gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span>gamma)<span class="op">-</span><span class="dv">1</span>) <span class="co">#W</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+V_{1dot} &amp;= \frac{ f_{m} }{ 60 } \\&amp;= \frac{ 2.597 }{ 60 } \\&amp;= 0.043 \; \;\textrm{(m$^3$/s)}\\[10pt]
+\\[10pt]
+W_{dot} &amp;= \frac{ \gamma }{ \gamma - 1 } \cdot P \cdot V_{1dot} \cdot \left( \left( \mathrm{rc} \right) ^{ \left( \frac{ \gamma - 1 }{ \gamma } \right) } - 1 \right) \\&amp;= \frac{ 1.400 }{ 1.400 - 1 } \cdot 100000 \cdot 0.043 \cdot \left( \left( 6 \right) ^{ \left( \frac{ 1.400 - 1 }{ 1.400 } \right) } - 1 \right) \\&amp;= 10126.845 \; \;\textrm{(W)}\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Ya que <span class="math inline">\(W = 10.13~\text{kW}\)</span>, la alternativa correcta es la <strong>b</strong>.</p>
