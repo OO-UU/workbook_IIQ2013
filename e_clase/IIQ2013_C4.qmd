@@ -24,6 +24,8 @@ Librerias a utilizar:
 import handcalcs.render
 from handcalcs import handcalc
 from numpy import sqrt, log
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
 ```
 
 ## Problema 1

@@ -26,6 +26,8 @@ import numpy as np
 from numpy import sqrt, pi
 import handcalcs.render
 from handcalcs import handcalc
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
 ```
 
 ## Pregunta 1
