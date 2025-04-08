@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,12 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c83d7c460c2dd0eda8cb0e7a35c70823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-0d27518ea7b11f2284aee3b0d61fc55d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": true,
@@ -437,6 +437,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 5</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_clase/IIQ2013_C6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 6</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -495,7 +501,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e07_2-sol" class="collapse multi-collapse">
-<div id="933cbfad" class="cell" data-execution_count="1">
+<div id="3325e9da" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> cosh, sqrt, tanh</span>
@@ -543,7 +549,7 @@ A_f = P\cdot L + w\cdot t
 <p><span class="math display">\[
 \eta_f = \frac{\sqrt{hP}}{hP}\frac{\sqrt{kA_c}\tanh{mL}}{L} = \frac{1}{\sqrt{hP}}\frac{\sqrt{kA_c}\tanh{mL}}{L} = \frac{\tanh{mL}}{mL}
 \]</span></p>
-<div id="3a0ebf10" class="cell" data-execution_count="2">
+<div id="45b2becd" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -571,7 +577,7 @@ T_{b} &amp;= 95 \; \;\textrm{($^\circ$C)}
 \]</span></p>
 </div>
 </div>
-<div id="ec30e9bb" class="cell" data-execution_count="3">
+<div id="8e4020c1" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -598,7 +604,7 @@ m &amp;= \sqrt { \frac{ h \cdot P }{ k \cdot A_{c} } } \\&amp;= \sqrt { \frac{ 6
 <section id="inciso-2---cálculo-de-eficiencia-aleta-rectangular" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-2---cálculo-de-eficiencia-aleta-rectangular">Inciso 2 - Cálculo de eficiencia aleta rectangular</h3>
 <p>El volumen disponible vendrá dado por:</p>
-<div id="fcfeca53" class="cell" data-execution_count="4">
+<div id="48527353" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> sci_not</span>
@@ -613,7 +619,7 @@ V &amp;= w \cdot t \cdot L \\&amp;= 1.000 \times 10 ^ {-2} \cdot 1.000 \times 10
 </div>
 </div>
 <p>Luego el nuevo ancho de la aleta será:</p>
-<div id="a199877e" class="cell" data-execution_count="5">
+<div id="97abf41c" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params sci_not</span>
@@ -634,7 +640,7 @@ t &amp;= 3.000 \times 10 ^ {-3} \; \;\textrm{(m)}
 P = 2w
 \]</span></p>
 <p>Y observamos que el perímetro se mantiene constante para ambas aletas.</p>
-<div id="dd7aa0d0" class="cell" data-execution_count="6">
+<div id="6c8806b9" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -650,7 +656,7 @@ P &amp;= 0.067 \;
 \]</span></p>
 </div>
 </div>
-<div id="02bcecdf" class="cell" data-execution_count="7">
+<div id="bda36d5a" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -907,6 +913,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1017,6 +1025,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

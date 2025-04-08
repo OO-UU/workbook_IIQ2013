@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,12 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c83d7c460c2dd0eda8cb0e7a35c70823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0d27518ea7b11f2284aee3b0d61fc55d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": true,
@@ -437,6 +437,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 5</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_clase/IIQ2013_C6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 6</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -481,7 +487,7 @@ window.Quarto = {
 
 <p>Considere aire (<span class="math inline">\(\gamma = 1.4\)</span>) procedente de un depósito o estanque que fluye a través de una tubería recta de gran longitud y provista con aislación térmica (no ocurre transferencia de calor con los alrededores). La presión y temperatura en el estanque son <span class="math inline">\(p_1 = 20~\text{atm}\)</span> y <span class="math inline">\(T_1 = 555.6~\text{K}\)</span>, respectivamente (<span class="math inline">\(\rho = 12.72 \text{~kg/m}^3\)</span>). Además, se sabe que el número de Mach a la entrada de la tubería es <span class="math inline">\(Ma_1 = 0.05\)</span>.</p>
 <p>Librerias a utilizar:</p>
-<div id="605282ef" class="cell" data-execution_count="1">
+<div id="4a54ed6f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt, log</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -498,15 +504,15 @@ window.Quarto = {
 </li>
 <li><span class="math inline">\(V_1\)</span> &gt; 100 m/s</li>
 </ol>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_4-1-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="ec_2-1-sol" class="collapse multi-collapse">
+<div id="ec_4-1-sol" class="collapse multi-collapse">
 <p>Sabemos que:</p>
 <p><span class="math display">\[
 Ma_1 = \frac{V_1}{c_1} \Rightarrow V_1 = Ma_1\sqrt{\frac{\gamma RT_1}{MW}}
 \]</span></p>
-<div id="93076226" class="cell" data-execution_count="2">
+<div id="fea5575f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Ma_1 <span class="op">=</span> <span class="fl">0.05</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.4</span></span>
@@ -533,10 +539,10 @@ Ma_1 = \frac{V_1}{c_1} \Rightarrow V_1 = Ma_1\sqrt{\frac{\gamma RT_1}{MW}}
 </li>
 <li><span class="math inline">\(T^* \approx\)</span> 650 K y <span class="math inline">\(p^* \approx\)</span> 2 atm</li>
 </ol>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_4-2-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="ec_2-1-sol" class="collapse multi-collapse">
+<div id="ec_4-2-sol" class="collapse multi-collapse">
 <p>Ya que nos encontramos frente a un flujo adiabático:</p>
 <p><span class="math display">\[
 \frac{T}{T^*} = \frac{\gamma+1}{2+(\gamma-1)Ma^2}
@@ -544,7 +550,7 @@ Mostrar solución
 <p><span class="math display">\[
 \frac{p}{p^*} = \frac{1}{Ma}\sqrt{\frac{\gamma+1}{2+(\gamma-1)Ma^2}}
 \]</span></p>
-<div id="e9dbdb71" class="cell" data-execution_count="3">
+<div id="ad016493" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>p_1 <span class="op">=</span> <span class="dv">20</span> <span class="co">#atm</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="fl">12.72</span> <span class="co">#kg/m$^3$</span></span>
@@ -569,16 +575,16 @@ Mostrar solución
 </li>
 <li><span class="math inline">\(G/A\)</span> ≤ 480 kg/s<span class="math inline">\(\cdot\)</span>m<span class="math inline">\(^2\)</span></li>
 </ol>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_4-3-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="ec_2-1-sol" class="collapse multi-collapse">
+<div id="ec_4-3-sol" class="collapse multi-collapse">
 <p>Notamos que la razón de presiones es alta. Comparando con las condiciones de flujo máximo, se itera <span class="math inline">\(Ma\)</span> para encontrar las condiciones en que se cumpla:</p>
 <p><span class="math display">\[
 400 = \frac{1-Ma^2}{\gamma Ma^2} + \left(\frac{\gamma+1}{2\gamma}\right)\ln\left(\frac{2(\gamma+1)Ma^2}{2+(\gamma-1)Ma^2}\right)
 \]</span></p>
 <p>Como estimación inicial, utilizamos la condición del enunciado <span class="math inline">\(Ma = 0.05\)</span>.</p>
-<div id="593e038c" class="cell" data-execution_count="4">
+<div id="2f0d5fcb" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Ma <span class="op">=</span> <span class="fl">0.05</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>fLD_estimado <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(gamma<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gamma))<span class="op">*</span>log((<span class="dv">2</span><span class="op">*</span>(gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -587,7 +593,7 @@ Mostrar solución
 </div>
 </div>
 <p>Segunda estimación <span class="math inline">\(Ma = 0.04\)</span>.</p>
-<div id="91c9a4a9" class="cell" data-execution_count="5">
+<div id="8871d9ac" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Ma <span class="op">=</span> <span class="fl">0.04</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>fLD_estimado <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(gamma<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gamma))<span class="op">*</span>log((<span class="dv">2</span><span class="op">*</span>(gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -596,7 +602,7 @@ Mostrar solución
 </div>
 </div>
 <p>Tercera estimación <span class="math inline">\(Ma = 0.042\)</span>.</p>
-<div id="fb573aab" class="cell" data-execution_count="6">
+<div id="114e4901" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Ma <span class="op">=</span> <span class="fl">0.042</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>fLD_estimado <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(gamma<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gamma))<span class="op">*</span>log((<span class="dv">2</span><span class="op">*</span>(gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -608,7 +614,7 @@ Mostrar solución
 <p><span class="math display">\[
 \left(\frac{G'}{A}\right)_{max} = \rho_1c_1Ma
 \]</span></p>
-<div id="5001224f" class="cell" data-execution_count="7">
+<div id="d99b5493" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>GA_max <span class="op">=</span> rho<span class="op">*</span>sqrt((gamma<span class="op">*</span>R<span class="op">*</span>T_1)<span class="op">/</span>MW)<span class="op">*</span>Ma <span class="co">#kg/m$^2\cdot$s</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -848,6 +854,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -958,6 +966,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

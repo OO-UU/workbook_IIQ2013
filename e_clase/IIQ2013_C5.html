@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -64,18 +64,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../e_clase/IIQ2013_C6.html" rel="next">
 <link href="../e_clase/IIQ2013_C4.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c83d7c460c2dd0eda8cb0e7a35c70823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0d27518ea7b11f2284aee3b0d61fc55d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": true,
@@ -436,6 +437,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 5</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_clase/IIQ2013_C6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 6</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -481,7 +488,7 @@ window.Quarto = {
 
 <p>Sea un compresor reciprocante compuesto de cuatro pistones conectados a un eje de vielas que opera a <span class="math inline">\(125~\text{RPM}\)</span>. En cada pistón (<span class="math inline">\(D = 20~\text{cm}\)</span>, <span class="math inline">\(L = 13~\text{cm}\)</span>) se comprime aire STP (at Standard Temperature and Pressure conditions) isoentrópicamente usando una razón de compresión <span class="math inline">\(rc = 6\)</span>. Responda las siguientes preguntas asumiendo que se puede despreciar el volumen de holgura de cada pistón (pistones ideales):</p>
 <p>Librerias a utilizar:</p>
-<div id="d90e9d5b" class="cell" data-execution_count="1">
+<div id="1c43c711" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -498,12 +505,12 @@ window.Quarto = {
 </li>
 <li><span class="math inline">\(MW\approx\)</span> 32 g/mol y <span class="math inline">\(\gamma\approx\)</span> 1.40</li>
 </ol>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_5-1-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="ec_2-1-sol" class="collapse multi-collapse">
+<div id="ec_5-1-sol" class="collapse multi-collapse">
 <p>El aire esta compuesto por: <span class="math inline">\(N_2\)</span> en un <span class="math inline">\(78\%\)</span> y <span class="math inline">\(O_2\)</span> en un <span class="math inline">\(22\%\)</span>. Con <span class="math inline">\(MW_{N_2} = 28~\text{g/mol}\)</span> y <span class="math inline">\(MW_{O_2} = 32~\text{g/mol}\)</span></p>
-<div id="e78b28a9" class="cell" data-execution_count="2">
+<div id="900d2134" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>MW_N2 <span class="op">=</span> <span class="dv">28</span> <span class="co">#g/mol</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>MW_O2 <span class="op">=</span> <span class="dv">32</span> <span class="co">#g/mol</span></span>
@@ -528,15 +535,15 @@ Mostrar solución
 <li><span class="math inline">\(m\)</span> ≤ 1 kg/min de aire</li>
 </ol>
 <p><em>Hint: Puede estimar dicho flujo masico considerando el volumen especifico del aire STP y el volumen total barrido por los cuatro pistones operando a 125 rpm.</em></p>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_5-2-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="ec_2-1-sol" class="collapse multi-collapse">
+<div id="ec_5-2-sol" class="collapse multi-collapse">
 <p>Ya que en el enunciado nos dicen que el aire se comprime a STD, la presión es <span class="math inline">\(100~\text{kPa}\)</span> y la temperatura es <span class="math inline">\(273.15~\text{K}\)</span>. Ya que no hay holgura <span class="math inline">\(c=0\)</span>:</p>
 <p><span class="math display">\[
 V_{total} = 4V_{c+l} = 4\frac{\pi(D)^2}{4}L
 \]</span></p>
-<div id="6a420090" class="cell" data-execution_count="3">
+<div id="526140d6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fl">0.2</span> <span class="co">#m</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="fl">0.13</span> <span class="co">#L</span></span>
@@ -549,7 +556,7 @@ V_{total} = 4V_{c+l} = 4\frac{\pi(D)^2}{4}L
 <p><span class="math display">\[
 Pv = \frac{RT}{MW} \Rightarrow PV = \frac{mRT}{MW}
 \]</span></p>
-<div id="1622ce64" class="cell" data-execution_count="4">
+<div id="a37ea45b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">8.314</span> <span class="co">#J/mol$\cdot$K</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="fl">273.15</span> <span class="co">#K</span></span>
@@ -560,7 +567,7 @@ Pv = \frac{RT}{MW} \Rightarrow PV = \frac{mRT}{MW}
 </div>
 </div>
 <p>Como nos indica el <em>Hint</em>, podemos calcular el flujo másico a partir de las revoluciones por minuto.</p>
-<div id="f4817f14" class="cell" data-execution_count="5">
+<div id="c9a4cbba" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>RPM <span class="op">=</span> <span class="dv">125</span> <span class="co">#rpm</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>f_m <span class="op">=</span> m_cic<span class="op">*</span>RPM <span class="co">#kg/min</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -583,10 +590,10 @@ Pv = \frac{RT}{MW} \Rightarrow PV = \frac{mRT}{MW}
 </li>
 <li><span class="math inline">\(T_2\)</span> ≤ 100 °C</li>
 </ol>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_5-3-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="ec_2-1-sol" class="collapse multi-collapse">
+<div id="ec_5-3-sol" class="collapse multi-collapse">
 <p>Sabemos que</p>
 <p><span class="math display">\[
 p_1v_1^\gamma = p_2v_2^\gamma \Rightarrow \left(\frac{p_2}{p_1}\right)^{\frac{1}{\gamma}} = \frac{v_1}{v_2}
@@ -600,7 +607,7 @@ pv = RT
 \left(\frac{p_2}{p_1}\right)^{\frac{1}{\gamma}} = \frac{RT_1P_2}{RT_2P_1} \Rightarrow \frac{T_2}{T_1} = \left(\frac{p_2}{p_1}\right)^{\frac{\gamma-1}{\gamma}}
 \]</span></p>
 <p>Sabemos que <span class="math inline">\(p_2/p_1\)</span> es el factor de compresión e igual a <span class="math inline">\(6\)</span>. Despejamos <span class="math inline">\(T_2\)</span>.</p>
-<div id="f6bed1ea" class="cell" data-execution_count="6">
+<div id="a04c1188" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>rc <span class="op">=</span> <span class="dv">6</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.4</span></span>
@@ -624,16 +631,16 @@ pv = RT
 </li>
 <li><span class="math inline">\(W\)</span> ≤ 0.5 kW</li>
 </ol>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_5-4-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="ec_2-1-sol" class="collapse multi-collapse">
+<div id="ec_5-4-sol" class="collapse multi-collapse">
 <p>Asumiendo que el compresor opera de manera de manera idea, obtenemos la potencia a partir de la relación con el trabajo.</p>
 <p><span class="math display">\[
 \dot{W}_{rev} = \frac{\gamma}{\gamma-1}p_1\dot{V}_1\left(\left(\frac{p_2}{p_1}\right)^{\frac{\gamma-1}{\gamma}}-1\right)
 \]</span></p>
 <p>Asumiendo que <span class="math inline">\(\rho\approx1~\text{kg/m}^3\)</span>:</p>
-<div id="6f24bb4d" class="cell" data-execution_count="7">
+<div id="e3cb3102" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>V_1dot <span class="op">=</span> f_m<span class="op">/</span><span class="dv">60</span> <span class="co">#m$^3$/s</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>W_dot <span class="op">=</span> gamma<span class="op">/</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>P<span class="op">*</span>V_1dot<span class="op">*</span>(rc<span class="op">**</span>((gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span>gamma)<span class="op">-</span><span class="dv">1</span>) <span class="co">#W</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -874,6 +881,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -984,6 +993,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1216,6 +1226,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../e_clase/IIQ2013_C6.html" class="pagination-link" aria-label="Ejercicio clase 6">
+        <span class="nav-page-text">Ejercicio clase 6</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

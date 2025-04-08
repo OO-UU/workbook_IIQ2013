@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,12 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c83d7c460c2dd0eda8cb0e7a35c70823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0d27518ea7b11f2284aee3b0d61fc55d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": true,
@@ -437,6 +437,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 5</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_clase/IIQ2013_C6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 6</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -480,7 +486,7 @@ window.Quarto = {
 
 
 <p>En primer lugar se deben cargar las librerias que vamos a utilizar</p>
-<div id="a2206169" class="cell" data-execution_count="1">
+<div id="1ae84a8f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
@@ -492,12 +498,12 @@ window.Quarto = {
 <li><p>60 <span class="math inline">\(\leq h_B\)</span> / <span class="math inline">\((h_B)_{teórico} &lt;\)</span> 80 %</p></li>
 <li><p><span class="math inline">\(h_B\)</span> / <span class="math inline">\((h_B)_{teórico} \geq\)</span> 80 %</p></li>
 </ol>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_3-1-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="ec_2-1-sol" class="collapse multi-collapse">
+<div id="ec_3-1-sol" class="collapse multi-collapse">
 <p>Si <span class="math inline">\(\beta\)</span> = 90° entonces tan <span class="math inline">\(\beta\)</span> = <span class="math inline">\(\infty\)</span>. Luego (gh<sub>B,teórico</sub>) <span class="math inline">\(\approx\)</span> r<sub>3</sub><sup>2</sup>w<sup>2</sup> y h<sub>B</sub> se puede obtener directamente del gráfico de la página 9 del formulario para una descarga nula</p>
-<div id="6516dddd" class="cell" data-execution_count="2">
+<div id="c81624fe" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span> <span class="co"># aceleracion de gravedad m/s^2</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="dv">1750</span><span class="op">/</span><span class="dv">60</span> <span class="co"># 2 * Pi * RPM / 60 para dejar la velocidad en rad/s</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>r_3 <span class="op">=</span> (<span class="fl">6.75</span><span class="op">/</span><span class="dv">2</span>)<span class="op">*</span><span class="fl">2.54</span><span class="op">*</span><span class="fl">0.01</span> <span class="co"># Diametro / 2 y el cambio de unidades de in a metros.</span></span>
@@ -522,12 +528,12 @@ Mostrar solución
 <li><p>45 <span class="math inline">\(\leq h_B &lt;\)</span> 60 m</p></li>
 <li><p><span class="math inline">\(h_B \geq\)</span> 60 m</p></li>
 </ol>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_3-2-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="ec_2-1-sol" class="collapse multi-collapse">
+<div id="ec_3-2-sol" class="collapse multi-collapse">
 <p>Utilizando la siguiente relación de proporcionalidad Q<sup>1/2</sup> <span class="math inline">\(\propto\)</span> <span class="math inline">\(\omega\)</span><sup>1/2</sup>r<sub>3</sub><sup>3/2</sup>. Haciendo un poco de algebra con las proporcionalidades Q<sup>1/2</sup><span class="math inline">\(\omega\)</span> / h<sub>b</sub><sup>3/4</sup> = constante. Luego si planteamos esta proporcionalidad utilizando la altura de descarga mínima se obtiene:</p>
-<div id="e164feee" class="cell" data-execution_count="3">
+<div id="1d5cbad9" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>h_b_1 <span class="op">=</span> h_b</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>w_2 <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="dv">3500</span><span class="op">/</span><span class="dv">60</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>h_b_2 <span class="op">=</span> h_b_1<span class="op">*</span>(w_2<span class="op">/</span>w)<span class="op">**</span><span class="dv">2</span></span>
@@ -549,18 +555,18 @@ Mostrar solución
 <li><p>2 <span class="math inline">\(\leq\)</span> NPSH<sub>d</sub> <span class="math inline">\(\leq\)</span> 3 m</p></li>
 <li><p>NPSH<sub>d</sub> &gt; $ 3 m</p></li>
 </ol>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_2-1-sol" aria-expanded="false">
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_3-3-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="ec_2-1-sol" class="collapse multi-collapse">
+<div id="ec_3-3-sol" class="collapse multi-collapse">
 <p>Primero generamos una función para el cálculo de el NPSH disponible en el sistema.</p>
-<div id="c5f9951f" class="cell" data-execution_count="4">
+<div id="e3557cd7" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> NPSH_d(Patm, Pv,rho, z_succion, phi):</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ((Patm<span class="op">-</span>Pv)<span class="op">/</span>(rho<span class="op">*</span><span class="fl">9.81</span>)) <span class="op">-</span> z_succion <span class="op">-</span> phi</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>En segundo lugar calculamos <span class="math inline">\(\Phi\)</span> incluyendo pérdidas por fricción y singularidades y luego aplicamos la formula del NPSH disponible.</p>
-<div id="3cc270a3" class="cell" data-execution_count="5">
+<div id="f70eb27f" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span> <span class="co"># aceleracion de gravedad m/s^2</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fl">1.5</span><span class="op">*</span><span class="fl">2.54</span><span class="op">*</span><span class="fl">0.01</span> <span class="co">#m</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> <span class="fl">5.5</span><span class="op">/</span><span class="dv">1000</span> <span class="co">#m3/s </span></span>
@@ -809,6 +815,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -919,6 +927,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

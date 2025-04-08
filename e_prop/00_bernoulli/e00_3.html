@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,12 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c83d7c460c2dd0eda8cb0e7a35c70823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-0d27518ea7b11f2284aee3b0d61fc55d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": true,
@@ -437,6 +437,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 5</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_clase/IIQ2013_C6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 6</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -501,7 +507,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e00_3-sol" class="collapse multi-collapse">
-<div id="d5eca2a8" class="cell" data-execution_count="1">
+<div id="ff7dba2e" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
@@ -511,30 +517,14 @@ Mostrar solución
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>&lt;&gt;:2: SyntaxWarning:
-
-invalid escape sequence '\e'
-
-&lt;&gt;:2: SyntaxWarning:
-
-invalid escape sequence '\d'
-
-&lt;&gt;:2: SyntaxWarning:
-
-invalid escape sequence '\e'
-
-&lt;&gt;:2: SyntaxWarning:
-
-invalid escape sequence '\d'
-
-C:\Users\nfgaj\AppData\Local\Temp\ipykernel_37408\815821512.py:2: SyntaxWarning:
-
-invalid escape sequence '\e'
-
-C:\Users\nfgaj\AppData\Local\Temp\ipykernel_37408\815821512.py:2: SyntaxWarning:
-
-invalid escape sequence '\d'
-</code></pre>
+<pre><code>&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\e'
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\d'
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\e'
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\d'
+/tmp/ipykernel_25345/815821512.py:2: SyntaxWarning: invalid escape sequence '\e'
+  handcalcs.set_option("custom_symbols",{"ap": "a'", "bp": "b'", "eta": "\eta ", "dotm": "\dot m"})
+/tmp/ipykernel_25345/815821512.py:2: SyntaxWarning: invalid escape sequence '\d'
+  handcalcs.set_option("custom_symbols",{"ap": "a'", "bp": "b'", "eta": "\eta ", "dotm": "\dot m"})</code></pre>
 </div>
 </div>
 <section id="inciso-1" class="level3">
@@ -578,7 +568,7 @@ invalid escape sequence '\d'
 <p><span class="math display">\[
 \eta W_p = g\cdot Z_{b'} + \left(1 + K \right)\frac{8Q^2}{\pi^2D^4} + g\cdot h_f
 \]</span></p>
-<div id="9695e5f0" class="cell" data-execution_count="2">
+<div id="85f863d6" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -611,7 +601,7 @@ Q &amp;= 0.003 \; \;\textrm{(m$^3$/s)}
 \]</span></p>
 </div>
 </div>
-<div id="57cb62ff" class="cell" data-execution_count="3">
+<div id="a9524b00" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -625,7 +615,7 @@ Q &amp;= 0.003 \; \;\textrm{(m$^3$/s)}
 \]</span></p>
 </div>
 </div>
-<div id="34ebe467" class="cell" data-execution_count="4">
+<div id="4f796b65" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -647,7 +637,7 @@ h_{B} &amp;= \frac{ \eta W_{p} }{ g } \\&amp;= \frac{ 108.176 }{ 9.810 } \\&amp;
 <p><span class="math display">\[
 P_B = \dot{m}W_p
 \]</span></p>
-<div id="fc1f0381" class="cell" data-execution_count="5">
+<div id="defb3f56" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -675,7 +665,7 @@ P_{B} &amp;= \dot m \cdot \frac{ \eta W_{p} }{ \eta  } \\&amp;= 2.643 \cdot \fra
 <p><span class="math display">\[
 \text{NPSH}_d = \frac{P_{a'}-P_v}{\rho g} - z_a - \left(1 + K \right)\frac{8Q^2}{g\pi^2D^4} - h_{f,a'-a}
 \]</span></p>
-<div id="c741e4ec" class="cell" data-execution_count="6">
+<div id="4c460007" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -696,7 +686,7 @@ h_{f} &amp;= 2 \; \;\textrm{(m)}
 \]</span></p>
 </div>
 </div>
-<div id="610b50c3" class="cell" data-execution_count="7">
+<div id="5b9eca04" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -944,6 +934,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1054,6 +1046,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
