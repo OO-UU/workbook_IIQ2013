@@ -442,6 +442,24 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 6</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_clase/IIQ2013_C7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 7</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_clase/IIQ2013_C8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 8</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_clase/IIQ2013_C10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 10</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -485,7 +503,7 @@ window.Quarto = {
 
 
 <p>En primer lugar se deben cargar las librerias que vamos a utilizar</p>
-<div id="88d189ab" class="cell" data-execution_count="1">
+<div id="2483e50d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
@@ -501,7 +519,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="ec_1-1-sol" class="collapse multi-collapse">
-<div id="8327209d" class="cell" data-execution_count="2">
+<div id="545ce4e5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fl">254.5e-3</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> <span class="fl">0.1</span> <span class="co"># m^3/s</span></span>
@@ -532,7 +550,7 @@ Mostrar solución
 </button>
 <div id="ec_1-2-sol" class="collapse multi-collapse">
 <p>Generamos funciones para el calculo utilizando la correlacion de Nevers y Schacham</p>
-<div id="40c131ee" class="cell" data-execution_count="3">
+<div id="bf200b86" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_Nevers(eps, D, Re):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.001375</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> (<span class="fl">2e4</span> <span class="op">*</span> eps<span class="op">/</span>D <span class="op">+</span> <span class="fl">1e6</span><span class="op">/</span>Re)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -566,7 +584,7 @@ Mostrar solución
 </button>
 <div id="ec_1-3-sol" class="collapse multi-collapse">
 <p>Siguiendo con el factor calculado con Nevers</p>
-<div id="267a5b2b" class="cell" data-execution_count="4">
+<div id="cf5f864a" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> f_Nevers(eps, d, Re)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="dv">100</span> <span class="co"># m</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>phi <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> f <span class="op">*</span> (L<span class="op">/</span>d) <span class="op">*</span> (V<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span>)</span>
