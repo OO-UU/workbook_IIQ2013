@@ -1,0 +1,231 @@
+---
+title: 'Ejercicio clase 10'
+format:
+    html: 
+      code-copy: true
+      code-fold: false
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C10.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+
+Se usa un intercambiador de calor de doble tubo (**ICDT**) para enfriar el aceite lubricante del motor de una turbina de gas industrial grande de $T_{a,e} = 100~\text{°C}$ a $T_{a,s} = 60~\text{°C}$. El agua de enfriamiento ($F_{ag} = 0.2~\text{kg/s}$; $T_{ag,e} = 30~\text{°C}$) fluye a contracorrientes a través del tubo interno ($D_i = 25~\text{mm}$), mientras que el aceite ($0.1~\text{kg/s}$) fluye por la zona anular ($D_{i,e} = 45~\text{mm}$). La tabla adjunta presenta las propiedades termofísicas del aceite y el agua a sus correspondientes temperaturas promedio.
+
+| Fluido | T (K) | c$_p$ (J/kg$\cdot$K) | μ (Pa$\cdot$s)      | Pr   | k (W/m$\cdot$K) |
+|:------:|:-----:|:--------------------:|:-------------------:|:----:|:---------------:|
+| Aceite | 353   | 2131                 | 3.25$\times10^{-2}$ | —    | 0.138           |
+| Agua   | 308   | 4178                 | 7.25$\times10^{-4}$ | 4.85 | 0.625           |
+
+Librerias a utilizar:
+
+```{python}
+import handcalcs.render
+from handcalcs import handcalc
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+from numpy import pi, log
+```
+
+## Pregunta 1
+
+Determine la diferencia de temperatura relevante ($\Delta T_{ml}$) para este caso
+
+(a) $\Delta T_{ml}$ < 30 °C\
+(b) 30 < $\Delta T_{ml}$ < 40 °C\
+(c) 40 < $\Delta T_{ml}$ < 50 °C\
+(d) $\Delta T_{ml}$ > 50 °C
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_10-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_10-1-sol .collapse .multi-collapse}
+
+Del enuniciado sabemos que nuestro sistema se encuentra a contracorriente, luego la diferencia de temperatura relevante esta dada por:
+
+$$
+\Delta T_{ml} = \frac{(T_{h,e} - T_{c,s}) - (T_{h,s} - T_{c,e})}{\ln\left(((T_{h,e} - T_{c,s})/(T_{h,s} - T_{c,e})\right)}
+$$
+
+Donde el subíndice $h$ indica las temperaturas del fluido caliente y $c$ las temperaturas pertenecientes las del fluido frio.
+
+Para otener la temperatura de salida del agua utilizamos el balance global de energía:
+
+$$
+q = \dot{m}_hc_{P,h}(T_{h,e}-T_{h,s}) = \dot{m}_cc_{P,c}(T_{c,s}-T_{c,e})
+$$
+
+```{python}
+%%render params
+T_he = 100+273.15 #K
+T_hs = 60+273.15 #K
+T_ce = 30+273.15 #K
+m_h = 0.1 #kg/s
+m_c = 0.2 #kg/s
+c_Ph = 2131 #J/kg$\cdot$K
+c_Pc = 4178 #J/kg$\cdot$K
+```
+
+```{python}
+%%render long
+q = m_h*c_Ph*(T_he-T_hs) #J
+T_cs = q/(m_c*c_Pc)+T_ce #K
+```
+
+Finalmente, calculamos lo pedido.
+
+```{python}
+%%render long
+DT_ml = ((T_he-T_cs)-(T_hs-T_ce))/(log((T_he-T_cs)/(T_hs-T_ce))) #C o K
+```
+
+La alternativa correcta es la **c**.
+
+:::
+
+## Pregunta 2
+
+Determine el valor del número de Reynolds para el fluido que circula por el tubo ($Re_D$)
+
+(a) $Re_D$ $<$ $10^4$\
+(b) $10^4$ $\leq$ $Re_D$ $<$ $4\times10^4$\
+(c) $4\times10^4$ $\leq$ $Re_D$ $<$ $10^5$\
+(d) $10^5$ $\geq$ $Re_D$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_10-2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_10-2-sol .collapse .multi-collapse}
+
+Para Reynolds, sabemos que:
+
+$$
+Re_D  = \frac{D_{eq}\cdot\dot{m}}{A_{t}\cdot\mu}
+$$
+
+Para el flujo que circula en el tubo interno, el diámetro equivalente es el diámetro interno del tubo y el área transversal será:
+
+$$
+A_t = \pi\left(\frac{D}{2}\right)^2
+$$
+
+```{python}
+%%render params sci_not 2
+D = 25/1000 #m
+mu_c = 7.25e-4 #Pa$\cdot$s
+A_t = pi*(D/2)**2 #m$^2$
+```
+
+```{python}
+%%render long
+Re_D = (D*m_c)/(A_t*mu_c)
+```
+
+La alternativa correcta es la **b**.
+
+:::
+
+## Pregunta 3
+
+Determine el coeficiente de transferencia de calor para el fluido que circula por el tubo ($h_{ag}$) usando una correlación adecuada para el régimen de flujo determinado a partir de (2), que considere que el agua se está calentando, y que se baste con los datos de propiedades termofísicas de la tabla de más arriba:
+
+(a)	$h_{ag}$ $<$ 1000 $\text{W/m}^2\cdot\text{K}$\
+(b)	1000 $\leq$ $h_{ag}$ $<$ 1500 $\text{W/m}^2\cdot\text{K}$\
+(c)	1500 $\leq$ $h_{ag}$ $<$ 2500 $\text{W/m}^2\cdot\text{K}$\
+(d)	$h_{ag}$ $\geq$ 2500 $\text{W/m}^2\cdot\text{K}$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_10-3-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_10-3-sol .collapse .multi-collapse}
+
+Para elegir con mayor detalle la ecuación que ocuparemos para calcular el número de Nusselt, nos fijamos que nuestro número de Prandtl para el agua y el número de Reynolds se encuentran en rango apropiado para utilizar la ecuación de Dittus-Boelter.
+
+```{python}
+%%render long
+Pr = 4.85
+n = 0.4 #El agua se está calentando
+NuD = 0.023*Re_D**0.8*Pr**n
+```
+
+Podemos despejar el coeficiente de trasnferencia de calor desde la definición del número de Nusselt
+
+$$
+Nu_D = \frac{hD}{k}
+$$
+
+```{python}
+%%render long
+k = 0.625
+h = (k*NuD)/D #W/m$^2\cdot$K
+```
+
+Por lo tanto, la alternativa correcta es la **c**.
+
+:::
+
+## Pregunta 4
+
+Si coeficiente de transferencia de calor para el aceite fuese $h_a = 44.3~\text{W/m}^2\cdot\text{K}$ y se pudiese despreciar la resistencia a la transferencia de calor de la pared del tubo, determine el coeficiente global de transferencia de calor (U) requerido para diseñar el equipo:
+
+(a) U $<$ 40 $\text{W/m}^2\cdot\text{K}$\
+(b) 40 $\leq$ U $<$ 50 $\text{W/m}^2\cdot\text{K}$\
+(c) 50 $\leq$ U $<$ 60 $\text{W/m}^2\cdot\text{K}$\
+(d) U $\geq$ 60 $\text{W/m}^2\cdot\text{K}$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_10-4-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_10-4-sol .collapse .multi-collapse}
+
+Asumiendo que no hay resistencia a la transferencia de calor dado por la pared, el coeficiente de transferencia global será:
+
+$$
+U = \left(\frac{D_i}{D_{i,e}h_a}+\frac{1}{h_{ag}}\right)^{-1}
+$$
+
+```{python}
+%%render long
+h_a = 44.3 #W/m$^2\cdot$K
+D_ie = 45e-3 #m
+U = (D/(D_ie*h) + 1/h_a)**-1 #W/m$^2\cdot$K
+```
+
+Por lo tanto, la respuesta correcta es la **b**.
+
+:::
+
+## Pregunta 5
+
+Determine el largo requerido del intercambiador de calor (L):
+
+(a) L $<$ 50 m \
+(b) 50 $\leq$ L $<$ 65 m \
+(c) 65 $\leq$ L $<$ 80 m \
+(d) L $\geq$ 80 m
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_10-5-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_10-5-sol .collapse .multi-collapse}
+Desde la ecuación de diseño se obtiene el largo.
+
+$$
+Q = UA\Delta T_{ml}
+$$
+
+Donde $A$ es el área donde ocurre la transferencia de calor y es:
+
+$$
+A = L\pi D_i
+$$
+
+```{python}
+%%render long
+L = q/(U*pi*D*DT_ml) #m
+```
+
+Entonces, la alternativa correcta es la **b**.
+
+:::
