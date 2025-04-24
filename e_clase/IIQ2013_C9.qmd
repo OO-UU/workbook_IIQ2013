@@ -160,9 +160,9 @@ considere que la glicerina se está calentando (considere que $= 0.207~\mathrm{P
 
 <button class="btn btn-success" data-bs-toggle="collapse" href="#ec_9-5-sol" aria-expanded="false">Mostrar solución</button>
 
-Asumiendo que $Re<2300$ a partir de los resultados del inciso anterior; el flujo será laminar.
-
 ::: {#ec_9-5-sol .collapse .multi-collapse}
+
+Asumiendo que $Re<2300$ a partir de los resultados del inciso anterior; el flujo será laminar.
 
 ```{python}
 %%render long
