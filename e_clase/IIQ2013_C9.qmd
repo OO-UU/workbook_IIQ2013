@@ -1,0 +1,177 @@
+---
+title: 'Ejercicio clase 9'
+format:
+    html: 
+      code-copy: true
+      code-fold: false
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C9.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+El transformador de potencia eléctrica cilíndrico de la figura adjunta disipa $q=1~\mathrm{kW}$.
+
+![Esquema transformador eléctrico.](./images/img_EC-9.png){#fig-EC9-1 fig-align="center"}
+
+Librerías a utilizar:
+
+```{python}
+import handcalcs.render
+from handcalcs import handcalc
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+from numpy import pi, log
+```
+
+## Pregunta 1
+
+Si se desea mantener la temperatura superficial del transformador a $T_S=47~^\circ\mathrm{C}$ sumistrando un refrigerante (glicerina) a $T_{m,i}=24~^\circ\mathrm{C}$ por una tubería de pared delgada de 20 mm de diámetro soldada a la superficie lateral del transformador, la diferencia de temperatura relevante ($\Delta T_{ml}$) si la temperatura de la glicerina se puede elevar hasta un máximo de $T_{m,o}=30~^\circ\mathrm{C}$ es aproximadamente la siguiente:
+
+(a) $\Delta T_{ml} \leq 15~^\circ\mathrm{C}$ \
+(b) $15~^\circ\mathrm{C}<\Delta T_{ml} \leq 18~^\circ\mathrm{C}$ \
+(c) $18~^\circ\mathrm{C}<\Delta T_{ml} \leq 20~^\circ\mathrm{C}$ \
+(d) $\Delta T_{ml} \geq 20~^\circ\mathrm{C}$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_9-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_9-1-sol .collapse .multi-collapse}
+
+```{python}
+%%render params
+d = 20*10**(-3) #m
+T_S = 47 #$^\circ$C
+T_mi = 24 #$^\circ$C
+T_mo = 30 #$^\circ$C
+```
+
+```{python}
+%%render long
+DT_ml = ((T_S-T_mi)-(T_S-T_mo))/log((T_S-T_mi)/(T_S-T_mo)) # $^\circ$C o K
+```
+
+La alternativa correcta es la **c**.
+
+:::
+
+## Pregunta 2
+
+Considerando $c_P = 2.427~\mathrm{kJ}\cdot\mathrm{kg}^{-1}\cdot^\circ\mathrm{C}^{-1}$ para el refrigerante (glicerina), el flujo másico de refrigerante ($F$) requerido es aproxidamente el siguiente:
+
+(a) $F < 1.0~\mathrm{kg/min}$ \
+(b) $1.0 \leq F < 2.0~\mathrm{kg/min}$ \
+(c) $2.0 \leq F < 3.5~\mathrm{kg/min}$ \
+(d) $F \geq 3.5~\mathrm{kg/min}$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_9-2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_9-2-sol .collapse .multi-collapse}
+
+Se despeja $F$ a partir de:
+
+$$
+Q = \left[Fc_P\Delta T\right]_c
+$$
+
+```{python}
+%%render params
+Q = 1 #kW
+c_P = 2.427 # kJ/kg$\cdot^\circ$C
+```
+
+```{python}
+%%render long
+F = Q/(c_P*(T_mo-T_mi)) # kg/s
+F_min = F*60 #kg/min
+```
+
+La alternativa correcta es la **d**.
+
+:::
+
+## Pregunta 3
+
+Asumiendo un largo de tubería de $L=4.5~\mathrm{m}$, el coeficiente de transferencia de calor por convección ($h$) de la glicerina es el siguiente:
+
+(a) $h < 100~\mathrm{W}\cdot\mathrm{m}^{-2}\cdot\mathrm{K}^{-1}$ \
+(b) $100 \leq h < 140~\mathrm{W}\cdot\mathrm{m}^{-2}\cdot\mathrm{K}^{-1}$ \
+(c) $140 \leq h < 180~\mathrm{W}\cdot\mathrm{m}^{-2}\cdot\mathrm{K}^{-1}$ \
+(d) $h \geq 180~\mathrm{W}\cdot\mathrm{m}^{-2}\cdot\mathrm{K}^{-1}$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_9-3-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_9-3-sol .collapse .multi-collapse}
+
+Desde la ecuación de diseño:
+
+$$
+Q = UA\Delta T_{ml}
+$$
+
+```{python}
+%%render long
+L = 4.5 #m
+U = Q/(pi*d*4.5*DT_ml)*1000 #W/m$^2\cdot$K
+```
+
+En este caso, $U=h_i$, entonces la alternativa correcta es la **c**.
+
+:::
+
+## Pregunta 4
+
+Considerando $\rho=1259.9~\mathrm{kg}\cdot\mathrm{m}^{-3}$, $\mu=0.799~\mathrm{Pa}\cdot\mathrm{s}$, $k=0.286~\mathrm{W}\cdot\mathrm{m}^{-1}\cdot\mathrm{K}^{-1}$ y $Pr=6780$ para el refrigerante (glicerina), determine el valor del número de Reynolds para el fluido que circula por el tubo ($Re_D$):
+
+(a) $Re_D < 10$ \
+(b) $10 \leq Re_D < 100$ \
+(c) $100 \leq Re_D < 1000$ \
+(d) $Re_D \geq 1000$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_9-4-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_9-4-sol .collapse .multi-collapse}
+
+```{python}
+%%render long
+rho = 1259.9 #kg/m$^3$
+mu = 0.799 #Pa$\cdot$s
+Re_D = (4*F)/(mu*pi*d)
+```
+
+La alternativa correcta es la **a**.
+
+:::
+
+## Pregunta 5
+
+Determine el coeficiente de transferencia de calor para el fluido que circula por el tubo ($h_{ag}$)
+usando una correlación adecuada para el régimen de flujo determinado a partir de (4), que
+considere que la glicerina se está calentando (considere que $= 0.207~\mathrm{Pa}\cdot\mathrm{s}$ para glicerina a $47~^\circ\mathrm{C}$):
+
+(a) $h_{ag} < 100~\mathrm{W}\cdot\mathrm{m}^{-2}\cdot\mathrm{K}^{-1}$ \
+(b) $100 \leq h_{ag} < 140~\mathrm{W}\cdot\mathrm{m}^{-2}\cdot\mathrm{K}^{-1}$ \
+(c) $140 \leq h_{ag} < 180~\mathrm{W}\cdot\mathrm{m}^{-2}\cdot\mathrm{K}^{-1}$ \
+(d) $h_{ag} \geq 180~\mathrm{W}\cdot\mathrm{m}^{-2}\cdot\mathrm{K}^{-1}$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_9-5-sol" aria-expanded="false">Mostrar solución</button>
+
+Asumiendo que $Re<2300$ a partir de los resultados del inciso anterior; el flujo será laminar.
+
+::: {#ec_9-5-sol .collapse .multi-collapse}
+
+```{python}
+%%render long
+Pr = 6780
+k = 0.286 #W/m$\cdot$K
+Nu_D = Pr**(1/3)*1.86*(d/L)**(1/3)*Re_D**(1/3)
+h = (Nu_D*k)/d #W/m$^2\cdot$K
+```
+
+La alternativa correcta es la **c**.
+
+:::
