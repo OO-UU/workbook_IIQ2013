@@ -550,7 +550,7 @@ window.Quarto = {
 </tbody>
 </table>
 <p>Librerias a utilizar:</p>
-<div id="8e447983" class="cell" data-execution_count="1">
+<div id="a255bbe4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
@@ -582,7 +582,7 @@ Mostrar solución
 <p><span class="math display">\[
 q = \dot{m}_hc_{P,h}(T_{h,e}-T_{h,s}) = \dot{m}_cc_{P,c}(T_{c,s}-T_{c,e})
 \]</span></p>
-<div id="fc0d32e3" class="cell" data-execution_count="2">
+<div id="2a18a9ef" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>T_he <span class="op">=</span> <span class="dv">100</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>T_hs <span class="op">=</span> <span class="dv">60</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
@@ -607,7 +607,7 @@ c_{Pc} &amp;= 4178 \; \;\textrm{(J/kg$\cdot$K)}
 \]</span></p>
 </div>
 </div>
-<div id="2c2bf95d" class="cell" data-execution_count="3">
+<div id="068c52b1" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> m_h<span class="op">*</span>c_Ph<span class="op">*</span>(T_he<span class="op">-</span>T_hs) <span class="co">#J</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>T_cs <span class="op">=</span> q<span class="op">/</span>(m_c<span class="op">*</span>c_Pc)<span class="op">+</span>T_ce <span class="co">#K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -622,7 +622,7 @@ T_{cs} &amp;= \frac{ q }{ m_{c} \cdot c_{Pc} } + T_{ce} \\&amp;= \frac{ 8524.000
 </div>
 </div>
 <p>Finalmente, calculamos lo pedido.</p>
-<div id="47a1c597" class="cell" data-execution_count="4">
+<div id="79d18dfa" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>DT_ml <span class="op">=</span> ((T_he<span class="op">-</span>T_cs)<span class="op">-</span>(T_hs<span class="op">-</span>T_ce))<span class="op">/</span>(log((T_he<span class="op">-</span>T_cs)<span class="op">/</span>(T_hs<span class="op">-</span>T_ce))) <span class="co">#C o K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -660,7 +660,7 @@ Re_D  = \frac{D_{eq}\cdot\dot{m}}{A_{t}\cdot\mu}
 <p><span class="math display">\[
 A_t = \pi\left(\frac{D}{2}\right)^2
 \]</span></p>
-<div id="51ebb23e" class="cell" data-execution_count="5">
+<div id="907994e8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params sci_not <span class="dv">2</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="dv">25</span><span class="op">/</span><span class="dv">1000</span> <span class="co">#m</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mu_c <span class="op">=</span> <span class="fl">7.25e-4</span> <span class="co">#Pa$\cdot$s</span></span>
@@ -676,7 +676,7 @@ D &amp;= 2.50 \times 10 ^ {-2} \; \;\textrm{(m)}
 \]</span></p>
 </div>
 </div>
-<div id="bf46d3ad" class="cell" data-execution_count="6">
+<div id="d2f1109c" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Re_D <span class="op">=</span> (D<span class="op">*</span>m_c)<span class="op">/</span>(A_t<span class="op">*</span>mu_c)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -707,7 +707,7 @@ Mostrar solución
 </button>
 <div id="ec_10-3-sol" class="collapse multi-collapse">
 <p>Para elegir con mayor detalle la ecuación que ocuparemos para calcular el número de Nusselt, nos fijamos que nuestro número de Prandtl para el agua y el número de Reynolds se encuentran en rango apropiado para utilizar la ecuación de Dittus-Boelter.</p>
-<div id="f6ad43ef" class="cell" data-execution_count="7">
+<div id="60587a30" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Pr <span class="op">=</span> <span class="fl">4.85</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="fl">0.4</span> <span class="co">#El agua se está calentando</span></span>
@@ -728,7 +728,7 @@ n &amp;= 0.400 \; \;\textrm{(El agua se está calentando)}
 <p><span class="math display">\[
 Nu_D = \frac{hD}{k}
 \]</span></p>
-<div id="f1045f1f" class="cell" data-execution_count="8">
+<div id="61de563c" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="fl">0.625</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> (k<span class="op">*</span>NuD)<span class="op">/</span>D <span class="co">#W/m$^2\cdot$K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -765,7 +765,7 @@ Mostrar solución
 <p><span class="math display">\[
 U = \left(\frac{D_i}{D_{i,e}h_a}+\frac{1}{h_{ag}}\right)^{-1}
 \]</span></p>
-<div id="6fb27757" class="cell" data-execution_count="9">
+<div id="2ca1d5ef" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>h_a <span class="op">=</span> <span class="fl">44.3</span> <span class="co">#W/m$^2\cdot$K</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>D_ie <span class="op">=</span> <span class="fl">45e-3</span> <span class="co">#m</span></span>
@@ -809,7 +809,7 @@ Q = UA\Delta T_{ml}
 <p><span class="math display">\[
 A = L\pi D_i
 \]</span></p>
-<div id="1504c1e1" class="cell" data-execution_count="10">
+<div id="f5b63dc2" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> q<span class="op">/</span>(U<span class="op">*</span>pi<span class="op">*</span>D<span class="op">*</span>DT_ml) <span class="co">#m</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
