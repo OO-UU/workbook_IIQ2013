@@ -1,0 +1,133 @@
+---
+title: 'Ejercicio clase 11'
+format:
+    html: 
+      code-copy: true
+      code-fold: false
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C11.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+Librerias a utilizar:
+
+```{python}
+import handcalcs.render
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+from numpy import log, sqrt
+```
+
+## Pregunta 1
+
+Determine el factor de corrección $F_T$ para el caso de un intercambiador de calor de tubos y carcasa (**ICTC**) tipo 1-2n en el que se enfrían $1500~\text{kg/h}$ de agua a $80~\text{°C}$ usando $2200~\text{kg/h}$ de agua a $18~\text{°C}$ como líquido refrigerante, el cual se puede calentar hasta $42~\text{°C}$:
+
+(a) $F_T \leq 0.80$ \
+(b) $0.80 < F_T \leq 0.82$ \
+(c) $0.82 < F_T \leq 0.85$ \
+(d) $FT > 0.85$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_11-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_11-1-sol .collapse .multi-collapse}
+
+A partir de la razón de temperaturas, tenemos que en este caso en particular.
+
+$$
+Z = \frac{T_{h,e}-T_{h,s}}{T_{c,s}-T_{c,e}} = \frac{\dot{m}_c}{\dot{m}_h}
+$$
+
+Luego la temperatura de salida será:
+
+$$
+T_{h,s} = T_{h,e} - Z(T_{c,s}-T_{c,e})
+$$
+
+```{python}
+%%render params
+m_c = 2200 #kg/h
+T_ce = 18+273.15 #K
+T_cs = 42+273.15 #K
+m_h = 1500 #kg/h
+T_he = 80+273.15 #K
+```
+
+```{python}
+%%render long
+Z = m_c/m_h
+T_hs = T_he - Z*(T_cs-T_ce)
+```
+
+Luego la eficiencia de temperatura.
+
+$$
+\eta_H = \frac{T_{c,s}-T_{c,e}}{T_{h,e}-T_{c,e}}
+$$
+
+En donde el factor de corrección es:
+
+$$
+F_T = \frac{\sqrt{Z^2+1}\ln\left(\frac{1-\eta_H}{1-\eta_HZ}\right)}{(Z-1)\ln\left(\frac{2-\eta_H\left(Z+1-\sqrt{Z^2+1}\right)}{2-\eta_H\left(Z+1+\sqrt{Z^2+1}\right)}\right)}
+$$
+
+```{python}
+%%render long
+eta_H = (T_cs-T_ce)/(T_he-T_ce)
+F_T = (sqrt(Z**2+1)*log((1-eta_H)/(1-eta_H*Z)))/((Z-1)*log((2-eta_H*(Z+1-sqrt(Z**2+1)))/(2-eta_H*(Z+1+sqrt(Z**2+1)))))
+```
+
+Por lo tanto, la alternativa correcta es la **c**.
+
+:::
+
+## Pregunta 2
+
+Se pretende enfriar $1500~\text{kg/h}$ de agua a $80~\text{°C}$ usando $2200~\text{kg/h}$ de agua a $18~\text{°C}$ como líquido refrigerante. Discuta con su compañero por qué no es posible hacer esto en un ICTC tipo 1-2n cuando el agua de enfriamiento se calienta a $50~\text{°C}$.
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_11-2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_11-2-sol .collapse .multi-collapse}
+
+Los flujos se mantienen constantes, por lo tanto, nuestra razón de temperaturas es constante también. Podemos entonces calcular el nuevo $\eta_H$ y buscar el factor de corrección.
+
+```{python}
+%%render long
+T_cs = 50+273.15 #K
+T_hs = T_he - Z*(T_cs-T_ce)
+eta_H = (T_cs-T_ce)/(T_he-T_ce)
+```
+
+Notamos que en la gráfica, el $0.5$ se encuentra después de la curva donde $Z\approx1.4$ por lo tanto, el valor del factor de corrección no existe y el diseño de este intercambiador es imposible.
+
+:::
+
+## Pregunta 3
+
+Determine la máxima temperatura a la cual se puede calentar el agua de enfriamiento, y para la cual dicho intercambiador de calor opera marginalmente. ¿Qué valor de $F_T$ se debe asumir en estos casos? Utilice las curvas para el factor de corrección, $F_T$ de la temperatura media logarítmica para contacto a contracorrientes, $(\Delta T_{ml})_{CC}$ , para un ICTC tipo 1-2n.
+
+(a) $T_{cs} \approx 36~\text{°C}$\
+(b) $T_{cs} \approx 40~\text{°C}$\
+(c) $T_{cs} \approx 44~\text{°C}$\
+(d) $T_{cs} \approx 48~\text{°C}$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_11-3-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_11-3-sol .collapse .multi-collapse}
+
+Aproximando $Z\approx 1.4$ utilizamos el gráfico, notamos que el valor máximo que puede tomar la eficiencia de temperaturas es de $\eta_H\approx0.425$ Cuando $F_T$ toma su mínimo valor de 0.75. Bajo estos supuestos podemos obtener $T_{c,s}$
+
+```{python}
+%%render long
+eta_H = 0.425
+T_cs = T_ce + eta_H*(T_he-T_ce) - 273.15 #$^\circ$C
+```
+
+Por lo tanto, la alternativa correcta es la **c**.
+
+:::

@@ -68,3 +68,8 @@ Aquí podrán encontrar ejercicios sobre la mayoría de los tópicos del curso. 
 * [Clase 4](./e_clase/IIQ2013_C4.qmd)
 * [Clase 5](./e_clase/IIQ2013_C5.qmd)
 * [Clase 6](./e_clase/IIQ2013_C6.qmd)
+* [Clase 7](./e_clase/IIQ2013_C7.qmd)
+* [Clase 8](./e_clase/IIQ2013_C8.qmd)
+* [Clase 9](./e_clase/IIQ2013_C9.qmd)
+* [Clase 10](./e_clase/IIQ2013_C10.qmd)
+* [Clase 11](./e_clase/IIQ2013_C11.qmd)
