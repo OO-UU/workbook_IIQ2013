@@ -2,19 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://OO-UU.github.io/workbook_IIQ2013/index.html</loc>
-    <lastmod>2025-04-08T15:24:56.674Z</lastmod>
+    <lastmod>2025-05-13T15:19:38.388Z</lastmod>
   </url>
   <url>
     <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/IIQ2013_C2.html</loc>
     <lastmod>2025-04-08T15:24:56.671Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/IIQ2013_C6.html</loc>
-    <lastmod>2025-04-08T16:28:05.167Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/IIQ2013_C3.html</loc>
+    <lastmod>2025-04-08T15:30:09.591Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C6.html</loc>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C5.html</loc>
     <lastmod>2025-04-08T15:24:56.674Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C11.html</loc>
+    <lastmod>2025-05-13T15:15:32.970Z</lastmod>
   </url>
   <url>
     <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C10.html</loc>
@@ -217,12 +221,16 @@
     <lastmod>2025-04-22T19:58:33.112Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C5.html</loc>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/jupyter/IIQ2013_C6.html</loc>
     <lastmod>2025-04-08T15:24:56.674Z</lastmod>
   </url>
   <url>
-    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/IIQ2013_C3.html</loc>
-    <lastmod>2025-04-08T15:30:09.591Z</lastmod>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/IIQ2013_C6.html</loc>
+    <lastmod>2025-04-08T16:28:05.167Z</lastmod>
+  </url>
+  <url>
+    <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/IIQ2013_C11.html</loc>
+    <lastmod>2025-05-13T15:18:15.277Z</lastmod>
   </url>
   <url>
     <loc>https://OO-UU.github.io/workbook_IIQ2013/e_clase/IIQ2013_C9.html</loc>

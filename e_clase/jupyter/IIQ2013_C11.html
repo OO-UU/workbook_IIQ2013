@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>IIQ2013 - Clase 10</title>
+<title>IIQ2013 - Clase 11</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,10 +153,6 @@ window.Quarto = {
   <li><a href="#solución-1" id="toc-solución-1" class="nav-link" data-scroll-target="#solución-1">Solución</a></li>
   <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">Pregunta 3</a></li>
   <li><a href="#solución-2" id="toc-solución-2" class="nav-link" data-scroll-target="#solución-2">Solución</a></li>
-  <li><a href="#pregunta-4" id="toc-pregunta-4" class="nav-link" data-scroll-target="#pregunta-4">Pregunta 4</a></li>
-  <li><a href="#solución-3" id="toc-solución-3" class="nav-link" data-scroll-target="#solución-3">Solución</a></li>
-  <li><a href="#pregunta-5" id="toc-pregunta-5" class="nav-link" data-scroll-target="#pregunta-5">Pregunta 5</a></li>
-  <li><a href="#solución-4" id="toc-solución-4" class="nav-link" data-scroll-target="#solución-4">Solución</a></li>
   </ul>
 </nav>
     </div>
@@ -165,7 +161,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">IIQ2013 - Clase 10</h1>
+<h1 class="title">IIQ2013 - Clase 11</h1>
 </div>
 
 
@@ -182,237 +178,115 @@ window.Quarto = {
 </header>
 
 
-<p>Se usa un intercambiador de calor de doble tubo (<strong>ICDT</strong>) para enfriar el aceite lubricante del motor de una turbina de gas industrial grande de <span class="math inline">\(T_{a,e} = 100~\text{°C}\)</span> a <span class="math inline">\(T_{a,s} = 60~\text{°C}\)</span>. El agua de enfriamiento (<span class="math inline">\(F_{ag} = 0.2~\text{kg/s}\)</span>; <span class="math inline">\(T_{ag,e} = 30~\text{°C}\)</span>) fluye a contracorrientes a través del tubo interno (<span class="math inline">\(D_i = 25~\text{mm}\)</span>), mientras que el aceite (<span class="math inline">\(0.1~\text{kg/s}\)</span>) fluye por la zona anular (<span class="math inline">\(D_{i,e} = 45~\text{mm}\)</span>). La tabla adjunta presenta las propiedades termofísicas del aceite y el agua a sus correspondientes temperaturas promedio.</p>
-<p>```rjuwzxgyodrd Propiedades termofísicas del aceite y el agua. :header-rows: 1 :name: tabla-EC14 :align: center</p>
-<ul>
-<li><ul>
-<li>Fluido</li>
-<li><span class="math inline">\(T~\text{(K)}\)</span></li>
-<li><span class="math inline">\(c_P~\text{(J/kg}\cdot\text{K)}\)</span></li>
-<li><span class="math inline">\(\mu~\text{(Pa}\cdot\text{s)}\)</span></li>
-<li><span class="math inline">\(Pr\)</span></li>
-<li><span class="math inline">\(k~\text{(W/m}\cdot\text{K)}\)</span></li>
-</ul></li>
-<li><ul>
-<li>Aceite</li>
-<li>353</li>
-<li>2131</li>
-<li>3.25$<span class="math inline">\(10\)</span>^{-2}$</li>
-<li><br>
-</li>
-<li>0.138</li>
-</ul></li>
-<li><ul>
-<li>Agua</li>
-<li>308</li>
-<li>4178</li>
-<li>7.25$<span class="math inline">\(10\)</span>^{-4}$</li>
-<li>4.85</li>
-<li>0.625 ```</li>
-</ul></li>
-</ul>
-<p>Librerias a utilizar:</p>
-<div id="d7b8385f-21cf-4dd9-8cad-c8da3f5d98e4" class="cell" data-execution_count="1">
+<p>Se utilizaron los siguientes paquetes.</p>
+<div id="33cd4aea-d626-474d-a906-ea40c1da67a1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi, log</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> log, sqrt</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
-<p>Determine la diferencia de temperatura relevante (<span class="math inline">\(\Delta T_{ml}\)</span>) para este caso</p>
+<p>Determine el factor de corrección <span class="math inline">\(F_T\)</span> para el caso de un intercambiador de calor de tubos y carcasa (<strong>ICTC</strong>) tipo 1-2n en el que se enfrían <span class="math inline">\(1500~\text{kg/h}\)</span> de agua a <span class="math inline">\(80~\text{°C}\)</span> usando <span class="math inline">\(2200~\text{kg/h}\)</span> de agua a <span class="math inline">\(18~\text{°C}\)</span> como líquido refrigerante, el cual se puede calentar hasta <span class="math inline">\(42~\text{°C}\)</span>:</p>
 <ol type="a">
-<li><span class="math inline">\(\Delta T_{ml}\)</span> &lt; 30 °C<br>
+<li><span class="math inline">\(F_T \leq 0.80\)</span><br>
 </li>
-<li>30 &lt; <span class="math inline">\(\Delta T_{ml}\)</span> &lt; 40 °C<br>
+<li><span class="math inline">\(0.80 &lt; F_T \leq 0.82\)</span><br>
 </li>
-<li>40 &lt; <span class="math inline">\(\Delta T_{ml}\)</span> &lt; 50 °C<br>
+<li><span class="math inline">\(0.82 &lt; F_T \leq 0.85\)</span><br>
 </li>
-<li><span class="math inline">\(\Delta T_{ml}\)</span> &gt; 50 °C</li>
+<li><span class="math inline">\(FT &gt; 0.85\)</span></li>
 </ol>
 </section>
 <section id="solución" class="level2">
 <h2 class="anchored" data-anchor-id="solución">Solución</h2>
-<p>Del enuniciado sabemos que nuestro sistema se encuentra a contracorriente, luego la diferencia de temperatura relevante esta dada por:</p>
+<p>A partir de la razón de temperaturas, tenemos que en este caso en particular.</p>
 <p><span class="math display">\[
-\Delta T_{ml} = \frac{(T_{h,e} - T_{c,s}) - (T_{h,s} - T_{c,e})}{\ln\left(((T_{h,e} - T_{c,s})/(T_{h,s} - T_{c,e})\right)}
+Z = \frac{T_{h,e}-T_{h,s}}{T_{c,s}-T_{c,e}} = \frac{\dot{m}_c}{\dot{m}_h}
 \]</span></p>
-<p>Donde el subíndice <span class="math inline">\(h\)</span> indica las temperaturas del fluido caliente y <span class="math inline">\(c\)</span> las temperaturas pertenecientes las del fluido frio.</p>
-<p>Para otener la temperatura de salida del agua utilizamos el balance global de energía:</p>
+<p>Luego la temperatura de salida será:</p>
 <p><span class="math display">\[
-q = \dot{m}_hc_{P,h}(T_{h,e}-T_{h,s}) = \dot{m}_cc_{P,c}(T_{c,s}-T_{c,e})
+T_{h,s} = T_{h,e} - Z(T_{c,s}-T_{c,e})
 \]</span></p>
-<div id="ca872048-6908-4dc1-af6e-f8ed530dabc2" class="cell" data-execution_count="2">
+<div id="85cd4df6-55cf-4fa2-b5cd-c3ba62a1e06a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>T_he <span class="op">=</span> <span class="dv">100</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>T_hs <span class="op">=</span> <span class="dv">60</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>T_ce <span class="op">=</span> <span class="dv">30</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>m_h <span class="op">=</span> <span class="fl">0.1</span> <span class="co">#kg/s</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>m_c <span class="op">=</span> <span class="fl">0.2</span> <span class="co">#kg/s</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>c_Ph <span class="op">=</span> <span class="dv">2131</span> <span class="co">#J/kg$\cdot$K</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>c_Pc <span class="op">=</span> <span class="dv">4178</span> <span class="co">#J/kg$\cdot$K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m_c <span class="op">=</span> <span class="dv">2200</span> <span class="co">#kg/h</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>T_ce <span class="op">=</span> <span class="dv">18</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>T_cs <span class="op">=</span> <span class="dv">42</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>m_h <span class="op">=</span> <span class="dv">1500</span> <span class="co">#kg/h</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>T_he <span class="op">=</span> <span class="dv">80</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
-<div id="bca96118-8468-4ba7-be8c-0bacd27b099f" class="cell" data-execution_count="3">
+<div id="b1d594d6-ab20-4b4d-93c2-1fc5a02ef73e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> m_h<span class="op">*</span>c_Ph<span class="op">*</span>(T_he<span class="op">-</span>T_hs) <span class="co">#J</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>T_cs <span class="op">=</span> q<span class="op">/</span>(m_c<span class="op">*</span>c_Pc)<span class="op">+</span>T_ce <span class="co">#K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> m_c<span class="op">/</span>m_h</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>T_hs <span class="op">=</span> T_he <span class="op">-</span> Z<span class="op">*</span>(T_cs<span class="op">-</span>T_ce)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
-<p>Finalmente, calculamos lo pedido.</p>
-<div id="7f158742-a6fe-4032-8893-b139b202cd15" class="cell" data-execution_count="4">
+<p>Luego la eficiencia de temperatura.</p>
+<p><span class="math display">\[
+\eta_H = \frac{T_{c,s}-T_{c,e}}{T_{h,e}-T_{c,e}}
+\]</span></p>
+<p>En donde el factor de corrección es:</p>
+<p><span class="math display">\[
+F_T = \frac{\sqrt{Z^2+1}\ln\left(\frac{1-\eta_H}{1-\eta_HZ}\right)}{(Z-1)\ln\left(\frac{2-\eta_H\left(Z+1-\sqrt{Z^2+1}\right)}{2-\eta_H\left(Z+1+\sqrt{Z^2+1}\right)}\right)}
+\]</span></p>
+<div id="aac3bf27-38a7-4e21-9fc8-a9ba2b54bea6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>DT_ml <span class="op">=</span> ((T_he<span class="op">-</span>T_cs)<span class="op">-</span>(T_hs<span class="op">-</span>T_ce))<span class="op">/</span>(log((T_he<span class="op">-</span>T_cs)<span class="op">/</span>(T_hs<span class="op">-</span>T_ce))) <span class="co">#C o K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
-</div>
-</div>
-<p>La alternativa correcta es la <strong>c</strong>.</p>
-</section>
-<section id="pregunta-2" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-2">Pregunta 2</h2>
-<p>Determine el valor del número de Reynolds para el fluido que circula por el tubo (<span class="math inline">\(Re_D\)</span>)</p>
-<ol type="a">
-<li><span class="math inline">\(Re_D\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(10^4\)</span><br>
-</li>
-<li><span class="math inline">\(10^4\)</span> <span class="math inline">\(\leq\)</span> <span class="math inline">\(Re_D\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(4\times10^4\)</span><br>
-</li>
-<li><span class="math inline">\(4\times10^4\)</span> <span class="math inline">\(\leq\)</span> <span class="math inline">\(Re_D\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(10^5\)</span><br>
-</li>
-<li><span class="math inline">\(10^5\)</span> <span class="math inline">\(\geq\)</span> <span class="math inline">\(Re_D\)</span></li>
-</ol>
-</section>
-<section id="solución-1" class="level2">
-<h2 class="anchored" data-anchor-id="solución-1">Solución</h2>
-<p>Para Reynolds, sabemos que:</p>
-<p><span class="math display">\[
-Re_D  = \frac{D_{eq}\cdot\dot{m}}{A_{t}\cdot\mu}
-\]</span></p>
-<p>Para el flujo que circula en el tubo interno, el diámetro equivalente es el diámetro interno del tubo y el área transversal será:</p>
-<p><span class="math display">\[
-A_t = \pi\left(\frac{D}{2}\right)^2
-\]</span></p>
-<div id="13943d5e-638b-4af8-808a-f4e295a773a8" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params sci_not <span class="dv">2</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="dv">25</span><span class="op">/</span><span class="dv">1000</span> <span class="co">#m</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>mu_c <span class="op">=</span> <span class="fl">7.25e-4</span> <span class="co">#Pa$\cdot$s</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>A_t <span class="op">=</span> pi<span class="op">*</span>(D<span class="op">/</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span> <span class="co">#m$^2$</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
-</div>
-</div>
-<div id="0b897858-68eb-49c8-80e5-19a7fc3a374d" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Re_D <span class="op">=</span> (D<span class="op">*</span>m_c)<span class="op">/</span>(A_t<span class="op">*</span>mu_c)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
-</div>
-</div>
-<p>La alternativa correcta es la <strong>b</strong>.</p>
-</section>
-<section id="pregunta-3" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
-<p>Determine el coeficiente de transferencia de calor para el fluido que circula por el tubo (<span class="math inline">\(h_{ag}\)</span>) usando una correlación adecuada para el régimen de flujo determinado a partir de (2), que considere que el agua se está calentando, y que se baste con los datos de propiedades termofísicas de la tabla de más arriba:</p>
-<ol type="a">
-<li><span class="math inline">\(h_{ag}\)</span> <span class="math inline">\(&lt;\)</span> 1000 <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span><br>
-</li>
-<li>1000 <span class="math inline">\(\leq\)</span> <span class="math inline">\(h_{ag}\)</span> <span class="math inline">\(&lt;\)</span> 1500 <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span><br>
-</li>
-<li>1500 <span class="math inline">\(\leq\)</span> <span class="math inline">\(h_{ag}\)</span> <span class="math inline">\(&lt;\)</span> 2500 <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span><br>
-</li>
-<li><span class="math inline">\(h_{ag}\)</span> <span class="math inline">\(\geq\)</span> 2500 <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span></li>
-</ol>
-</section>
-<section id="solución-2" class="level2">
-<h2 class="anchored" data-anchor-id="solución-2">Solución</h2>
-<p>Para elegir con mayor detalle la ecuación que ocuparemos para calcular el número de Nusselt, nos fijamos que nuestro número de Prandtl para el agua y el número de Reynolds se encuentran en rango apropiado para utilizar la ecuación de Dittus-Boelter.</p>
-<div id="85d74b14-aec7-4d49-9c5d-30d0d76f7627" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>Pr <span class="op">=</span> <span class="fl">4.85</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="fl">0.4</span> <span class="co">#El agua se está calentando</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>NuD <span class="op">=</span> <span class="fl">0.023</span><span class="op">*</span>Re_D<span class="op">**</span><span class="fl">0.8</span><span class="op">*</span>Pr<span class="op">**</span>n</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
-</div>
-</div>
-<p>Podemos despejar el coeficiente de trasnferencia de calor desde la definición del número de Nusselt</p>
-<p><span class="math display">\[
-Nu_D = \frac{hD}{k}
-\]</span></p>
-<div id="717cd98b-4ca7-491c-b976-c5bc45c6acd5" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="fl">0.625</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> (k<span class="op">*</span>NuD)<span class="op">/</span>D <span class="co">#W/m$^2\cdot$K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>eta_H <span class="op">=</span> (T_cs<span class="op">-</span>T_ce)<span class="op">/</span>(T_he<span class="op">-</span>T_ce)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>F_T <span class="op">=</span> (sqrt(Z<span class="op">**</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>log((<span class="dv">1</span><span class="op">-</span>eta_H)<span class="op">/</span>(<span class="dv">1</span><span class="op">-</span>eta_H<span class="op">*</span>Z)))<span class="op">/</span>((Z<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>log((<span class="dv">2</span><span class="op">-</span>eta_H<span class="op">*</span>(Z<span class="op">+</span><span class="dv">1</span><span class="op">-</span>sqrt(Z<span class="op">**</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span>)))<span class="op">/</span>(<span class="dv">2</span><span class="op">-</span>eta_H<span class="op">*</span>(Z<span class="op">+</span><span class="dv">1</span><span class="op">+</span>sqrt(Z<span class="op">**</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span>)))))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
 <p>Por lo tanto, la alternativa correcta es la <strong>c</strong>.</p>
 </section>
-<section id="pregunta-4" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-4">Pregunta 4</h2>
-<p>Si coeficiente de transferencia de calor para el aceite fuese <span class="math inline">\(h_a = 44.3~\text{W/m}^2\cdot\text{K}\)</span> y se pudiese despreciar la resistencia a la transferencia de calor de la pared del tubo, determine el coeficiente global de transferencia de calor (U) requerido para diseñar el equipo:</p>
-<ol type="a">
-<li>U <span class="math inline">\(&lt;\)</span> 40 <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span><br>
-</li>
-<li>40 <span class="math inline">\(\leq\)</span> U <span class="math inline">\(&lt;\)</span> 50 <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span><br>
-</li>
-<li>50 <span class="math inline">\(\leq\)</span> U <span class="math inline">\(&lt;\)</span> 60 <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span><br>
-</li>
-<li>U <span class="math inline">\(\geq\)</span> 60 <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span></li>
-</ol>
+<section id="pregunta-2" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-2">Pregunta 2</h2>
+<p>Se pretende enfriar <span class="math inline">\(1500~\text{kg/h}\)</span> de agua a <span class="math inline">\(80~\text{°C}\)</span> usando <span class="math inline">\(2200~\text{kg/h}\)</span> de agua a <span class="math inline">\(18~\text{°C}\)</span> como líquido refrigerante. Discuta con su compañero por qué no es posible hacer esto en un ICTC tipo 1-2n cuando el agua de enfriamiento se calienta a <span class="math inline">\(50~\text{°C}\)</span>.</p>
+<p><br><br> <br><br> <br><br> <br><br></p>
 </section>
-<section id="solución-3" class="level2">
-<h2 class="anchored" data-anchor-id="solución-3">Solución</h2>
-<p>Asumiendo que no hay resistencia a la transferencia de calor dado por la pared, el coeficiente de transferencia global será:</p>
-<p><span class="math display">\[
-U = \left(\frac{D_i}{D_{i,e}h_a}+\frac{1}{h_{ag}}\right)^{-1}
-\]</span></p>
-<div id="4b367135-12c1-4a34-b763-cbf5cf1fed61" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>h_a <span class="op">=</span> <span class="fl">44.3</span> <span class="co">#W/m$^2\cdot$K</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>D_ie <span class="op">=</span> <span class="fl">45e-3</span> <span class="co">#m</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> (D<span class="op">/</span>(D_ie<span class="op">*</span>h) <span class="op">+</span> <span class="dv">1</span><span class="op">/</span>h_a)<span class="op">**-</span><span class="dv">1</span> <span class="co">#W/m$^2\cdot$K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="solución-1" class="level2">
+<h2 class="anchored" data-anchor-id="solución-1">Solución</h2>
+<p>Los flujos se mantienen constantes, por lo tanto, nuestra razón de temperaturas es constante también. Podemos entonces calcular el nuevo <span class="math inline">\(\eta_H\)</span> y buscar el factor de corrección.</p>
+<div id="f02a6185-652d-467e-a323-ed2797ef229b" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>T_cs <span class="op">=</span> <span class="dv">50</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>T_hs <span class="op">=</span> T_he <span class="op">-</span> Z<span class="op">*</span>(T_cs<span class="op">-</span>T_ce)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>eta_H <span class="op">=</span> (T_cs<span class="op">-</span>T_ce)<span class="op">/</span>(T_he<span class="op">-</span>T_ce)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
-<p>Por lo tanto, la respuesta correcta es la <strong>b</strong>.</p>
+<p>Notamos que en la gráfica, el <span class="math inline">\(0.5\)</span> se encuentra después de la curva donde <span class="math inline">\(Z\approx1.4\)</span> por lo tanto, el valor del factor de corrección no existe y el diseño de este intercambiador es imposible.</p>
 </section>
-<section id="pregunta-5" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-5">Pregunta 5</h2>
-<p>Determine el largo requerido del intercambiador de calor (L):</p>
+<section id="pregunta-3" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
+<p>Determine la máxima temperatura a la cual se puede calentar el agua de enfriamiento, y para la cual dicho intercambiador de calor opera marginalmente. ¿Qué valor de <span class="math inline">\(F_T\)</span> se debe asumir en estos casos? Utilice las curvas para el factor de corrección, <span class="math inline">\(F_T\)</span> de la temperatura media logarítmica para contacto a contracorrientes, <span class="math inline">\((\Delta T_{ml})_{CC}\)</span> , para un ICTC tipo 1-2n.</p>
 <ol type="a">
-<li>L <span class="math inline">\(&lt;\)</span> 50 m<br>
+<li><span class="math inline">\(T_{cs} \approx 36~\text{°C}\)</span><br>
 </li>
-<li>50 <span class="math inline">\(\leq\)</span> L <span class="math inline">\(&lt;\)</span> 65 m<br>
+<li><span class="math inline">\(T_{cs} \approx 40~\text{°C}\)</span><br>
 </li>
-<li>65 <span class="math inline">\(\leq\)</span> L <span class="math inline">\(&lt;\)</span> 80 m<br>
+<li><span class="math inline">\(T_{cs} \approx 44~\text{°C}\)</span><br>
 </li>
-<li>L <span class="math inline">\(\geq\)</span> 80 m</li>
+<li><span class="math inline">\(T_{cs} \approx 48~\text{°C}\)</span></li>
 </ol>
 </section>
-<section id="solución-4" class="level2">
-<h2 class="anchored" data-anchor-id="solución-4">Solución</h2>
-<p>Desde la ecuación de diseño se obtiene el largo.</p>
-<p><span class="math display">\[
-Q = UA\Delta T_{ml}
-\]</span></p>
-<p>Donde <span class="math inline">\(A\)</span> es el área donde ocurre la transferencia de calor y es:</p>
-<p><span class="math display">\[
-A = L\pi D_i
-\]</span></p>
-<div id="300cad3d-61c9-4b04-bc7f-b99ac4e1662f" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> q<span class="op">/</span>(U<span class="op">*</span>pi<span class="op">*</span>D<span class="op">*</span>DT_ml) <span class="co">#m</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="solución-2" class="level2">
+<h2 class="anchored" data-anchor-id="solución-2">Solución</h2>
+<p>Aproximando <span class="math inline">\(Z\approx 1.4\)</span> utilizamos el gráfico, notamos que el valor máximo que puede tomar la eficiencia de temperaturas es de <span class="math inline">\(\eta_H\approx0.425\)</span> Cuando <span class="math inline">\(F_T\)</span> toma su mínimo valor de 0.75. Bajo estos supuestos podemos obtener <span class="math inline">\(T_{c,s}\)</span></p>
+<div id="a1ea3d6e-3550-4ed2-a8f1-041f598baba4" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>eta_H <span class="op">=</span> <span class="fl">0.425</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>T_cs <span class="op">=</span> T_ce <span class="op">+</span> eta_H<span class="op">*</span>(T_he<span class="op">-</span>T_ce) <span class="op">-</span> <span class="fl">273.15</span> <span class="co">#$^\circ$C</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
-<p>Entonces, la alternativa correcta es la <strong>b</strong>.</p>
+<p>Por lo tanto, la alternativa correcta es la <strong>c</strong>.</p>
 
 
 </section>
