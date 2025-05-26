@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>IIQ2013 - Clase 6</title>
+<title>IIQ2013 - Clase 14</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -147,11 +147,12 @@ window.Quarto = {
     <h2 id="toc-title">Contenido</h2>
    
   <ul>
-  <li><a href="#pregunta-1" id="toc-pregunta-1" class="nav-link active" data-scroll-target="#pregunta-1">Pregunta 1</a></li>
+  <li><a href="#pregunta-1" id="toc-pregunta-1" class="nav-link active" data-scroll-target="#pregunta-1">Pregunta 1:</a></li>
   <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
-  <li><a href="#wclbulmb-.imagesimg_ec-7.png" id="toc-wclbulmb-.imagesimg_ec-7.png" class="nav-link" data-scroll-target="#wclbulmb-.imagesimg_ec-7.png">```wclbulmb ./images/img_EC-7.png</a></li>
-  <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">Pregunta 3</a></li>
+  <li><a href="#pregunta-2" id="toc-pregunta-2" class="nav-link" data-scroll-target="#pregunta-2">Pregunta 2</a></li>
   <li><a href="#solución-1" id="toc-solución-1" class="nav-link" data-scroll-target="#solución-1">Solución</a></li>
+  <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">Pregunta 3</a></li>
+  <li><a href="#solución-2" id="toc-solución-2" class="nav-link" data-scroll-target="#solución-2">Solución</a></li>
   </ul>
 </nav>
     </div>
@@ -160,7 +161,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">IIQ2013 - Clase 6</h1>
+<h1 class="title">IIQ2013 - Clase 14</h1>
 </div>
 
 
@@ -177,95 +178,168 @@ window.Quarto = {
 </header>
 
 
-<p>Un compañero desea emprender creando un innovador SPA que utiliza un aceite esencial especial con harina disuelta como exfoliante. Esta suspensión es un fluido newtoniano con una viscosidad de <span class="math inline">\(8000\hspace{1mm}cP\)</span> y una densidad <span class="math inline">\(\rho=880\hspace{1mm}(kg/m^3)\)</span>.</p>
-<p>En primer lugar se deben cargar las librerias que vamos a utilizar</p>
-<div id="b969ad8d-e008-44ed-86fe-5ec6182fa5c7" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt, pi</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Interesa evaluar el tiempo que demora calentar <span class="math inline">\(V = 10~\text{m}^3\)</span> de glicerina de <span class="math inline">\(T_i = 25~\text{°C}\)</span> a <span class="math inline">\(T_f = 35~\text{°C}\)</span> en un estanque agitado de configuración estándar (<span class="math inline">\(D_a/D_t = 1/3\)</span>, <span class="math inline">\(H/D_t = 1\)</span>) equipado con un impulsor de ancla que opera a <span class="math inline">\(N = 32~\text{RPM}\)</span>, y una camisa con deflectores (ancho, <span class="math inline">\(w = 10~\text{cm}\)</span>) por la que circulan <span class="math inline">\(F = 12000~\text{kg/h}\)</span> de vapor de agua a <span class="math inline">\(T_{hi} = 100~\text{°C}\)</span>.</p>
+<p>Librerias a utilizar</p>
+<div id="d59faf30" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople <span class="im">as</span> si</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>si.environment(<span class="st">'default'</span>, top_level<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
-<p>Su compañero encontró que es mucho más barato preparar la suspensión en lugar de comprarla. Para ello, se encuentra seleccionando estanques y agitadores. Para un tanque de <span class="math inline">\(3\hspace{1mm}m^3\)</span>, ¿qué agitador le recomendaría?</p>
+<h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1:</h2>
+<p>Estime el coeficiente de transferencia de calor para glicerina en el estanque (considere los siguientes valores de las propiedades físicas de la glicerina a <span class="math inline">\(30~\text{°C}\)</span>: <span class="math inline">\(r = 1260~\text{kg/m}^3\)</span>; <span class="math inline">\(\mu = 0.656~\text{Pa}\cdot\text{s}\)</span>; <span class="math inline">\(k = 0.286~\text{W/m}\cdot\text{K}\)</span>; y <span class="math inline">\(Pr = 5590\)</span>)</p>
 <ol type="a">
-<li><p>Turbina</p></li>
-<li><p>Hélice</p></li>
-<li><p>Ancla</p></li>
-<li><p>Paleta</p></li>
+<li><span class="math inline">\(h_o\)</span> <span class="math inline">\(&gt;\)</span> 60 <span class="math inline">\(\text{W/m}\cdot\text{K}\)</span><br>
+</li>
+<li>50 <span class="math inline">\(\leq\)</span> <span class="math inline">\(h_o\)</span> <span class="math inline">\(&lt;\)</span> 60 <span class="math inline">\(\text{W/m}\cdot\text{K}\)</span><br>
+</li>
+<li>40 <span class="math inline">\(\leq\)</span> <span class="math inline">\(h_o\)</span> <span class="math inline">\(&lt;\)</span> 50 <span class="math inline">\(\text{W/m}\cdot\text{K}\)</span><br>
+</li>
+<li><span class="math inline">\(h_o\)</span> <span class="math inline">\(&lt;\)</span> 40 <span class="math inline">\(\text{W/m}\cdot\text{K}\)</span></li>
 </ol>
 </section>
 <section id="solución" class="level2">
 <h2 class="anchored" data-anchor-id="solución">Solución</h2>
-<p>Del gráfico:</p>
-</section>
-<section id="wclbulmb-.imagesimg_ec-7.png" class="level2">
-<h2 class="anchored" data-anchor-id="wclbulmb-.imagesimg_ec-7.png">```wclbulmb ./images/img_EC-7.png</h2>
-<p>name: figura-EC7 scale: 60% align: center —</p>
-<p>Gráfico de selección.</p>
-<pre><code>
-Por lo tanto, la alternativa correcta es la **a**.
-
-## Pregunta 2
-
-Si la altura del estanque cilíndrico es de $2\hspace{1mm}(m)$, la razón entre el diámetro del agitador y el diámetro del estanque es $S1 = D/T = 0.2$, y el número del flujo del agitador es $NQ = 0.87$, ¿Cuál es el caudal volumétrico descargado del borde del agitador operando a $120\hspace{1mm}RPM$?
-
-(a) Q $&lt;$ 0.15 m$^3$/s
-
-(b) 0.15 m$^3$/s $\leq$ Q $&lt;$ 0.20 m$^3$/s
-
-(c) 0.12 m$^3$/s $\leq$ Q $&lt;$ 0.25 m$^3$/s
-
-(d) Q $\geq$ 0.25 m$^3$/s
-
-## Solución
-
-::: {#ba37ae93-5f58-452d-b8ec-21cde352ee1b .cell execution_count=15}
-``` {.python .cell-code}
-%%render long
-H = 2 #m
-V = 3 #m$^3$
-S_1 = 0.2
-D_t = sqrt(4*V/(pi*H)) #m
-D_a = D_t*S_1 #m
-NQ = 0.87
-N = 120 #RPM
-Q = NQ*(N/60)*D_a**3 #m$^3$/s</code></pre>
+<div id="c8f0eb8d" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="dv">1260</span> <span class="op">*</span> kg<span class="op">/</span>m<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">32</span><span class="op">/</span><span class="dv">60</span> <span class="op">*</span> <span class="dv">1</span><span class="op">/</span>s</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>D_a <span class="op">=</span> <span class="fl">0.778</span> <span class="op">*</span> m</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="fl">0.656</span> <span class="op">*</span> Pa <span class="op">*</span> s</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
-<p>:::</p>
-<p>La alternativa correcta es la <strong>a</strong>.</p>
+</div>
+<div id="4556f53c" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Re <span class="op">=</span> rho<span class="op">*</span>N<span class="op">*</span>D_a<span class="op">**</span><span class="dv">2</span><span class="op">/</span>mu</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+</div>
+</div>
+<p>Ahora calculamos el diámetro del estanque y del agitador</p>
+<div id="72989570" class="cell" data-scrolled="true" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>V_t <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> m <span class="op">**</span><span class="dv">3</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>pi <span class="op">=</span> np.pi</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>D_t <span class="op">=</span> (<span class="dv">4</span><span class="op">*</span>V_t<span class="op">/</span>pi)<span class="op">**</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>D_a <span class="op">=</span> D_t<span class="op">/</span><span class="dv">3</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+</div>
+</div>
+<p>Ahora calculamos el coeficiente de convección por el lado del fluido agitado</p>
+<div id="589aea84" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Pr <span class="op">=</span> <span class="dv">5590</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Nusselt_t <span class="op">=</span> <span class="fl">0.36</span> <span class="op">*</span> (Re)<span class="op">**</span><span class="fl">0.67</span> <span class="op">*</span> Pr<span class="op">**</span>(<span class="fl">0.33</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="fl">0.286</span> <span class="op">*</span> W <span class="op">/</span> m <span class="op">/</span> K</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>h_o <span class="op">=</span> Nusselt_t<span class="op">*</span>k<span class="op">/</span>D_t</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+</div>
+</div>
+<p>Por lo tanto, la alternativa correcta es la <strong>b</strong>.</p>
 </section>
-<section id="pregunta-3" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
-<p>El fabricante del agitador reporta que para un diámetro del agitador de <span class="math inline">\(0.3\hspace{1mm}m\)</span>, la potencia requerida para <span class="math inline">\(180\hspace{1mm}RPM\)</span> es de <span class="math inline">\(5.5 \hspace{1mm}kW\)</span>. ¿Qué potencia requiere el agitador diseñado en la pregunta anterior?</p>
+<section id="pregunta-2" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-2">Pregunta 2</h2>
+<p>En base al diámetro equivalente para el fluido que circula por la chaqueta, estime el coeficiente de transferencia de calor por convección para el vapor de agua de calefacción. Asuma que el vapor de agua no cambia de fase y se mantiene a temperatura constante. Considere <span class="math inline">\(\rho = 0.59~\text{kg/m}^3\)</span>, <span class="math inline">\(\mu = 0.01~\text{cP}\)</span>, <span class="math inline">\(k = 0.025~\text{W/m}\cdot\text{K}\)</span>, <span class="math inline">\(Pr = 1\)</span>.</p>
 <ol type="a">
-<li><p>P <span class="math inline">\(&lt;\)</span> 0.15 kW</p></li>
-<li><p>0.5 kW <span class="math inline">\(\leq\)</span> P <span class="math inline">\(&lt;\)</span> 1.5 kW</p></li>
-<li><p>1.5 kW <span class="math inline">\(\leq\)</span> P <span class="math inline">\(&lt;\)</span> 2.5 kW</p></li>
-<li><p>P <span class="math inline">\(\geq\)</span> 2.5 kW</p></li>
+<li><span class="math inline">\(h_c\)</span> <span class="math inline">\(\geq\)</span> 150 <span class="math inline">\(\text{W/m}\cdot\text{K}\)</span><br>
+</li>
+<li>100 <span class="math inline">\(\leq\)</span> <span class="math inline">\(h_c\)</span> <span class="math inline">\(&lt;\)</span> 150 <span class="math inline">\(\text{W/m}\cdot\text{K}\)</span><br>
+</li>
+<li>50 <span class="math inline">\(\leq\)</span> <span class="math inline">\(h_c\)</span> <span class="math inline">\(&lt;\)</span> 100 <span class="math inline">\(\text{W/m}\cdot\text{K}\)</span><br>
+d ) <span class="math inline">\(h_c\)</span> <span class="math inline">\(&lt;\)</span> 50 <span class="math inline">\(\text{W/m}\cdot\text{K}\)</span></li>
 </ol>
+<p><em>Hint: Recuerde la correlación de Sieder-Tate y el diámetro equivalente térmico.</em></p>
 </section>
 <section id="solución-1" class="level2">
 <h2 class="anchored" data-anchor-id="solución-1">Solución</h2>
-<p>Se debe cumplir que el número de potencia es equivalente.</p>
-<p><span class="math display">\[
-N_{p,1} = N_{p,2} \Rightarrow \frac{P_1}{\rho_1N_1^3D_{a,1}^5} = \frac{P_2}{\rho_2N_2^3D_{a,2}^5}
-\]</span></p>
-<div id="8dc87b76-568d-4408-ac62-0a321e12d118" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>N_1 <span class="op">=</span> <span class="dv">180</span> <span class="co">#RPM</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>N_2 <span class="op">=</span> N <span class="co">#RPM</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>P_1 <span class="op">=</span> <span class="fl">5.5</span> <span class="co">#kW</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>D_a1 <span class="op">=</span> <span class="fl">0.3</span> <span class="co">#m</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>D_a2 <span class="op">=</span> D_a <span class="co">#m</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>P_2 <span class="op">=</span> P_1<span class="op">*</span>((N_2<span class="op">/</span><span class="dv">60</span>)<span class="op">**</span><span class="dv">3</span><span class="op">*</span>D_a2<span class="op">**</span><span class="dv">5</span>)<span class="op">/</span>((N_1<span class="op">/</span><span class="dv">60</span>)<span class="op">**</span><span class="dv">3</span><span class="op">*</span>D_a1<span class="op">**</span><span class="dv">5</span>) <span class="co">#kW</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5e4253d9" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>D_ci <span class="op">=</span> D_t</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>D_ce <span class="op">=</span> D_t <span class="op">+</span> <span class="fl">0.1</span><span class="op">*</span>m</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>D_et <span class="op">=</span> (D_ce<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> D_ci<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>D_ci</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> D_t</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>a_c <span class="op">=</span> Z<span class="op">*</span>(D_ce<span class="op">-</span>D_ci)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
-<p>La alternativa correcta es la <strong>b</strong>.</p>
+<p>Ahora calculamos la velocidad del fluido en la chaqueta,</p>
+<div id="aa0d8e05" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>si.environment(<span class="st">'default'</span>, top_level<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="38b601f4" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> <span class="dv">5</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>rho_v <span class="op">=</span> <span class="fl">0.59</span> <span class="op">*</span> kg <span class="op">/</span> m<span class="op">**</span><span class="dv">3</span> <span class="co"># Densidad del fluido de servicio</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>mu_v <span class="op">=</span> <span class="fl">0.01</span><span class="op">*</span><span class="fl">1e-3</span><span class="op">*</span>Pa<span class="op">*</span>s</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>k_v <span class="op">=</span> <span class="fl">0.025</span> <span class="op">*</span>  W <span class="op">/</span> m <span class="op">/</span> K</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>F <span class="op">=</span> <span class="dv">12000</span><span class="op">/</span><span class="dv">3600</span> <span class="op">*</span> kg <span class="op">/</span> s</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> F<span class="op">/</span>(rho_v<span class="op">*</span>a_c)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>Re <span class="op">=</span> rho_v <span class="op">*</span> V <span class="op">*</span> D_et <span class="op">/</span> mu_v</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>Nusselt_chaqueta <span class="op">=</span> <span class="fl">0.027</span> <span class="op">*</span> Re <span class="op">**</span> <span class="fl">0.8</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>h_c <span class="op">=</span> Nusselt_chaqueta <span class="op">*</span> k_v <span class="op">/</span> (D_et)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+</div>
+</div>
+<p>Por lo tanto, la respuesta correcta es la <strong>c</strong>.</p>
+</section>
+<section id="pregunta-3" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
+<p>Estime en forma aproximada el tiempo de calentamiento. (Puede considerar que para glicerina a <span class="math inline">\(30~\text{°C}\)</span>, <span class="math inline">\(c_P = 2437~\text{J/kg}\cdot\text{K}\)</span>).</p>
+<ol type="a">
+<li><span class="math inline">\(t_c\)</span> <span class="math inline">\(\geq\)</span> 200 min<br>
+</li>
+<li>150 <span class="math inline">\(\leq\)</span> <span class="math inline">\(t_c\)</span> <span class="math inline">\(&lt;\)</span> 200 min<br>
+</li>
+<li>100 <span class="math inline">\(\leq\)</span> <span class="math inline">\(t_c\)</span> <span class="math inline">\(&lt;\)</span> 150 min<br>
+d ) <span class="math inline">\(t_c\)</span> <span class="math inline">\(&lt;\)</span> 100 min</li>
+</ol>
+</section>
+<section id="solución-2" class="level2">
+<h2 class="anchored" data-anchor-id="solución-2">Solución</h2>
+<div id="4afcb02a" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> V_t <span class="op">*</span> rho</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>c_p <span class="op">=</span> <span class="dv">2437</span> <span class="op">*</span> J<span class="op">/</span>kg<span class="op">/</span>K</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>h_o <span class="op">+</span> <span class="dv">1</span><span class="op">/</span>h_c)<span class="op">**-</span><span class="dv">1</span> <span class="co"># Coeficiente global de transferencia de calor</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+</div>
+</div>
+<p>Asumiendo que la chaqueta comienza en el diámetro externo del tanque, el área de transferencia de calor viene dada por</p>
+<div id="cb514df1" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> pi <span class="op">*</span> D_t <span class="op">*</span> Z</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+</div>
+</div>
+<p>La diferencia de temperatura media logarítmica asumiendo que el vapor condensa por el lado de la chaqueta es</p>
+<div id="941db03d" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>T_i <span class="op">=</span> <span class="dv">25</span> <span class="op">*</span> Celsius</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>T_f <span class="op">=</span> <span class="dv">35</span> <span class="op">*</span> Celsius</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>T_s <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> Celsius</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>DeltaT_ml <span class="op">=</span> ((T_s<span class="op">-</span>T_i) <span class="op">-</span> (T_s<span class="op">-</span>T_f))<span class="op">/</span>(np.log((T_s<span class="op">-</span>T_i)<span class="op">/</span>(T_s<span class="op">-</span>T_f)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+</div>
+</div>
+<p>Finalmente, el tiempo de calentamiento es</p>
+<div id="784ec821" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>t_s <span class="op">=</span> M<span class="op">*</span>c_p <span class="op">/</span> (U<span class="op">*</span>A) <span class="op">*</span> np.log((T_s<span class="op">-</span>T_i)<span class="op">/</span>(T_s<span class="op">-</span>T_f))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+</div>
+</div>
+<p>Lo que es equivalente a 130.6 minutos. Por lo tanto, la respuesta correcta es la <strong>c</strong>.</p>
 
 
 </section>
