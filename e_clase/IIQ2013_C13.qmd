@@ -1,0 +1,247 @@
+---
+title: 'Ejercicio clase 13'
+format:
+    html: 
+      code-copy: true
+      code-fold: false
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C13.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+Librerias a utilizar:
+
+```{python}
+import handcalcs.render
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+import forallpeople
+import numpy as np
+import forallpeople as si
+```
+
+## 1. Cuantificar el efecto de aumentar el número de pasos por los tubos de 2 a 4
+
+La caída de presión por el lado de la carcasa es menor que la caída de presión por los tubos. Se pretende realizar modificaciones al diseño para disminuir la diferencia de caídas de presión.
+
+```{python}
+si.environment('default', top_level=True)
+```
+
+```{python}
+%%render
+F_h = 20*1e3/3600 * kg / s
+F_c = 120*1e3/3600 * kg / s
+```
+
+Definiendo $N$ como el número de tubos multiplicado por el número de pasadas por los tubos, $N = N_t \times N_{p,t}$, la caída de presión inicial es
+
+```{python}
+%%render params
+f = 7.04e-3
+G_t = 689.8 * kg / m**2 / s
+mu = 9.59e-4 * Pa * s
+mu_s = 9.59e-4 * Pa * s
+N = 252
+N_p = 2 # N de pasadas
+L = 5 * m
+D_e = 0.0254 * m
+D_i = 0.0221 * m
+rho = 998 * kg / m**3
+pi = np.pi
+```
+
+```{python}
+%%render
+a_t = N/2 * pi*D_i**2/4
+G_tc = F_c/a_t
+Re = G_t * D_i / mu
+Delta_p_t_1 = (4 * f * ((L*N_p)/D_i) + 4 * N_p) * (G_t**2/(2*rho)) * (mu_s/mu)**0.14
+```
+
+El 4 proviene de las pérdidas por singularidad mediante inversión de flujo, entrada y salida. Ahora repetiremos el cálculo de caída de presión con dos pasadas.
+
+```{python}
+%%render
+N_p = 4
+Delta_p_t_2 = (4 * f * ((L*N_p)/D_i) + 4 * N_p) * (G_t**2/(2*rho)) * (mu_s/mu)**0.14
+```
+
+La caída de presión por el lado de los tubos al aumentar el número de pasadas aumenta linealmente con el número de pasadas. No hay ningún otro parámetro que influya esta caída de presión asociado al número de pasadas. El flujo másico dentro del ICTC se mantiene constante.
+
+```{python}
+%%render
+per = Delta_p_t_2 / Delta_p_t_1 - 1
+```
+
+La caída de presión por el lado de la carcasa se mantiene inalterada, mientras que la caída de presión por el lado de los tubos aumenta en un 100%
+
+### Transferencia de calor
+
+El aumento en el número de pasadas por los tubos no alterará el número de Reynolds ni los coeficientes de transferencia de calor en los lados del tubo y de la carcasa. Lo único que cambiará es el cálculo del coeficiente global de transferencia de calor, ya que el área de transferencia aumentará al doble.
+
+$Q_1 = Q_2$
+
+$$U_1 A_1 (F_T \Delta T_{ml})_1 = U_2 A_2 (F_T \Delta T_{ml})_2 $$
+
+Asumiendo que las variaciones de $F_T \Delta T_{ml}$ serán despreciables,
+
+$$ \frac{U_2}{U_1} = \frac{A_1}{A_2} = \frac{1 \times N_t \times \pi \times D_e \times L}{2 \times N_t \times \pi \times D_e \times L} = 1/2 $$
+
+```{python}
+%%render
+R = F_c/F_h
+
+T_ci = 17.1 * C
+T_co = 25.1 * C
+T_hi = 80.8 * C
+T_ho = 32.8 * C
+
+eta_h = (T_co-T_ci)/(T_hi-T_ci)
+```
+
+Utilizando la tabla, $F_T = 0.9$ para el IC 1-2n. Si se aumenta sólo el núemro de tubos, no cambia el factor de corrección. Por lo tanto el coeficiente global de transferencia de calor disminuirá en un 50%.
+
+## 2. Duplicar el espaciamiento de deflectores de $B=0.2$ a $B=0.4$
+
+Caso inicial
+
+```{python}
+%%render
+D_c = 0.625
+B_1 = 0.125
+P_t = 1.25*D_e
+a_c1 = D_c * B_1 * (P_t - D_e) / P_t
+
+B_2 = 2*B_1
+a_c2 = D_c * B_2 * (P_t - D_e) / P_t
+```
+
+Al duplicar el espaciamiento entre deflectores, el área de flujo por la carcasa se duplica.
+
+```{python}
+%%render
+G_c1 = F_h/a_c1
+G_c2 = F_h/a_c2
+```
+
+Como los diámetros equivalentes son los mismos ya que no se modifica ningún elemento del arreglo de tubos, tenemos que
+
+$Re_1$ es conocido
+
+$$ (\frac{G_c D}{\mu})_1 = 18273 $$
+$$ \frac{Re_2}{Re_1} = \frac{G_{c2}}{G_{c1}}$$
+
+```{python}
+%%render
+Re_c1 = 18273
+Re_c2 = Re_c1 * G_c2/G_c1
+```
+
+Con esto podemos calcular el coeficiente de Colburn
+
+```{python}
+%%render
+j_hc2 = 0.36 * Re_c2**0.55 
+```
+
+ya que $Pr$ y $\mu$ son los mismos en ambos casos, tenemos que
+
+$$ \frac{Nu_2}{Nu_1} = \frac{j_{hc2}}{j_{hc1}}$$
+
+```{python}
+%%render
+j_hc1 = 79.5
+Nusselt_1 = 116.5
+Nusselt_2 = j_hc2/j_hc1 * Nusselt_1
+```
+
+Calculamos el diámetro equivalente de la carcasa
+
+```{python}
+%%render
+mu_c1 = 4.89e-4
+D_e = Re_c1*mu/G_c1
+```
+
+$$ \frac{h_c2}{h_c1} = \frac{Nu_2 D_{e2}}{k_2} \frac{k_1}{Nu_1 D_{e1}} = Nu_2/Nu_1 $$
+
+```{python}
+%%render
+h_c1 = 3013 * W / m**2/K
+h_c2 = Nusselt_2/Nusselt_1 * h_c1
+```
+
+```{python}
+%%render
+h_t = 3192 * W / (m**2 * K)
+A_o = 100.5 * m**2
+A_i = 87.5 * m**2
+U_1 = (1/h_c1 + A_o/A_i * 1/h_t)**-1
+U_2 = (1/h_c2 + A_o/A_i * 1/h_t)**-1
+delta_U = 100 * (U_2/U_1 - 1)
+```
+
+Por lo tanto el coeficiente globala de transferencia de calor disminuirá en un 18.22%. Ahora procederemos al cálculo de caída de presión. Notando que ahora el espaciamiento de la carcasa se duplico, asumiremos que $N_b = 20$. Asumiendo que no hay gran variación en los factores de fricción para la disminuicón del número de Reynolds, $f_1 = f_2$, tenemos que
+
+$$ \frac{\Delta p_2}{\Delta p_1} = \frac{(N_{b1} + 1)(G_{c1}^2)}{(N_{b2} + 1)(G_{c2}^2)} $$
+
+```{python}
+%%render
+N_b1 = 39
+N_b2 = 19
+f_1 = 0.276
+f_2 = 0.3
+dp2dp1 = ((N_b2+1)*G_c2**2)/((N_b1 + 1)*G_c1**2) * (f_2/f_1)
+dp1 = 17610 * Pa
+Delta_p2 = dp2dp1 * dp1
+```
+
+Que es aproximadamente la mitad de la caida de presión por el lado de los tubos. El beneficio de esta modificación es que ahora el fluido por el lado de los tubos tiene mayor presión.
+
+### 3. ¿Recomienda alguna de las modificaciones anteriores?
+
+El cambio anterior se recomienda, sin embargo una solución óptima se puede encontrar con un mayor número de deflectores,
+
+```{python}
+%%render
+B = L/(N_b1+1)
+N_b1 = L/B-1
+B3 = 1.6 * B
+N_b3 = L/(B3)-1
+G_c3 = G_c1 * B/B3
+dp2dp1 = ((N_b3+1)*G_c3**2)/((N_b1 + 1)*G_c1**2) * (f_2/f_1)
+Delta_p2 = dp1*dp2dp1
+```
+
+Calculamos el nuevo coeficiente de transferencia de calor tomando la razón de los caudales elevado a 0.55, 
+
+```{python}
+%%render
+h_c3 = (G_c3/G_c1)**0.55 * h_c1
+```
+
+Finalmente, calculamos el cambio en el coeficiente global de transferencia de calor para la nueva configuración.
+
+```{python}
+%%render params
+h_t = 3192 * W/(m**2 * K)
+A_o = 100.5 * m**2
+A_i = 87.5 * m**2
+```
+
+```{python}
+%%render
+U_1 = (1/h_c1 + A_o/A_i * 1/h_t)**-1
+U_2 = (1/h_c3 + A_o/A_i * 1/h_t)**-1
+delta_U = 100* (U_2/U_1 - 1) #%
+```
+
+Esta opción obtiene similares caídas de presión, y tan solo una disminución de 12.4% en el coeficiente global de transferencia de calor.
+
