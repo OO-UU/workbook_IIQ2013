@@ -183,7 +183,7 @@ Entonces la alternativa correcta es la **c**.
 
 ## Pregunta 4
 
-Calcule la caida de presión por el lado del fluido frio y determine si supera o no la caída de presión máxima permitida.
+Calcule la caida de presión por el lado del fluido frio y determine esta supera la caída de presión máxima permitida.
 
 (a) $(\Delta p_t)_c \leq 30$ psi \
 (b) $30 < (\Delta p_t)_c \leq 40$ psi \
