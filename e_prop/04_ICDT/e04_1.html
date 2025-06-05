@@ -491,6 +491,18 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 14</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_clase/IIQ2013_C15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 15</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_clase/IIQ2013_C16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 16</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -584,7 +596,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e04_1-sol" class="collapse multi-collapse">
-<div id="785567ad" class="cell" data-execution_count="1">
+<div id="adb9e4ae" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
@@ -601,7 +613,7 @@ Mostrar solución
 q = \dot{m}_hc_{P,h}(T_{h,e}-T_{h,s}) = \dot{m}_cc_{P,c}(T_{c,s}-T_{c,e})
 \]</span></p>
 <p>Para este ejercicio, el fluido caliente (tolueno) con subíndice <span class="math inline">\(h\)</span> pasa por el tubo, mientras que el fluido de enfriamiento (agua) con subíndice <span class="math inline">\(c\)</span> pasa por el ánulo. Del enunciado recuperamos todas las variables relevantes.</p>
-<div id="dd90d57e" class="cell" data-execution_count="2">
+<div id="b1a0c2f5" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params sci_not</span>
@@ -638,7 +650,7 @@ c_{Ph} &amp;= 1.917 \times 10 ^ {3} \; \;\textrm{(J/kg$\cdot$K)}
 \]</span></p>
 </div>
 </div>
-<div id="94e3751f" class="cell" data-execution_count="3">
+<div id="d3dc7be8" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -671,7 +683,7 @@ Re_D = \frac{D_{térmico}\cdot\dot{m}}{A_t\cdot\mu}
 D_{térmico} = \frac{D_{a}^2-D_{i,e}^2}{D_{i,e}}
 \]</span></p>
 <p>Luego, podemos calcular los números de Prandtl y de Reynolds para ambos flujos.</p>
-<div id="b459ca9a" class="cell" data-execution_count="4">
+<div id="7cf3f869" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -697,7 +709,7 @@ k_{p} &amp;= 50.200 \; \;\textrm{(W/m$\cdot$K)}
 \]</span></p>
 </div>
 </div>
-<div id="33147b0f" class="cell" data-execution_count="5">
+<div id="b0ed6c8e" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -718,7 +730,7 @@ D_{t} &amp;= \frac{ \left( D_{a} \right) ^{ 2 } - \left( D_{ie} \right) ^{ 2 } }
 </div>
 </div>
 <p>Notamos que ambos flujos son turbulentos, y por lo tanto, se cosidera que la mejor ecuación para encontrar el número de Nusselt será la relación de Dittus-Boelter.</p>
-<div id="e866f0ca" class="cell" data-execution_count="6">
+<div id="499477ed" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -736,7 +748,7 @@ D_{t} &amp;= \frac{ \left( D_{a} \right) ^{ 2 } - \left( D_{ie} \right) ^{ 2 } }
 </div>
 </div>
 <p>Con lo cual se puede despejar el coeficiente de transferencia de calor para ambos fluidos.</p>
-<div id="45ea5732" class="cell" data-execution_count="7">
+<div id="0879883b" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -757,7 +769,7 @@ h_{c} &amp;= \frac{ \mathrm{NuD}_{c} \cdot k_{c} }{ D_{t} } \\&amp;= \frac{ 139.
 <section id="inciso-3" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-3">Inciso 3</h3>
 <p>Primero, calculamos el coeficiente global de transferencia de calor para un intercambiador de doble tubo sin ensuciamiento.</p>
-<div id="8036af85" class="cell" data-execution_count="8">
+<div id="eada8003" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -775,7 +787,7 @@ U &amp;= \left( \frac{ D_{ie} }{ D_{i} \cdot h_{h} } + \frac{ D_{ie} }{ 2 \cdot 
 <p><span class="math display">\[
 \frac{1}{U_T} = \frac{1}{U} + R_f
 \]</span></p>
-<div id="0367cdb8" class="cell" data-execution_count="9">
+<div id="070a6ab7" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
