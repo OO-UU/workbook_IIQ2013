@@ -1,0 +1,218 @@
+---
+title: 'Ejercicio clase 16'
+format:
+    html: 
+      code-copy: true
+      code-fold: false
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C16.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+
+
+El agua fría será calentada por una corriente de aguas residuales. El agua fría con un caudal de 140 kg/s entra al intercambiador de calor de placas con empaques a 22°C y será calentada hasta 42°C. Las aguas residuales tienen el mismo caudal, entrando a 65°C y saliendo a 45°C. La caída de presión máxima permitida para cada corriente es de 50 psi.
+
+Las especificaciones del proceso son las siguientes:
+
+| Parámetro                                        | Fluido caliente (Aguas residuales) | Fluido frío (Agua de enfriamiento) |
+|--------------------------------------------------|------------------------------------|-------------------------------------|
+| Caudal $(\mathrm{kg/s})$                         | 140                                | 140                                 |
+| Temperatura de entrada $(^\circ\mathrm{C})$      | 65                                 | 22                                  |
+| Temperatura de salida $(^\circ\mathrm{C})$       | 45                                 | 42                                  |
+| Caída de presión máxima permitida $(\mathrm{psi})$ | 50                              | 50                                  |
+| Resistencia total a la incrustación $(\mathrm{m}^2 \cdot \mathrm{K} / \mathrm{W})$ | 0.00005          | 0                                   |
+| Calor específico $(\mathrm{J} / \mathrm{kg} \cdot \mathrm{K})$   | 4183                               | 4178                                |
+| Viscosidad $(\mathrm{N} \cdot \mathrm{s} / \mathrm{m}^2)$          | $5.09 \times 10^{-4}$              | $7.66 \times 10^{-4}$               |
+| Conductividad térmica $(\mathrm{W} / \mathrm{m} \cdot \mathrm{K})$ | 0.645                            | 0.617                               |
+| Densidad $(\mathrm{kg} / \mathrm{m}^3)$                   | 985                                | 995                                 |
+| Número de Prandtl                                | 3.31                               | 5.19                                |
+
+
+Datos del fabricante del intercambiador de calor de placas propuesto
+
+| Material de placa                                          | SS304               |
+|------------------------------------------------------------|---------------------|
+| Espesor de placa $(\mathrm{mm})$                           | 0.6                 |
+| Ángulo del chevron $(^\circ)$                              | 45                  |
+| Número total de placas, $N_t$                              | 105                 |
+| Factor de ampliación, $\phi$                               | 1.25                |
+| Número de pasos                                            | Un paso / un paso   |
+| Coef. global transferencia de calor (limpio/sucio) $(\mathrm{W} / \mathrm{m}^2 \cdot \mathrm{K})$ | 8000 / 4500  |
+| Área efectiva total $(\mathrm{m}^2)$                       | 110                 |
+| Diámetro de los puertos $(\mathrm{mm})$                    | 200                 |
+| Longitud del paquete comprimido, $L_c$ $(\mathrm{m})$      | 0.38                |
+| Distancia vertical entre puertos, $L_v$ $(\mathrm{m})$     | 1.55                |
+| Distancia horizontal entre puertos, $L_h$ $(\mathrm{m})$   | 0.43                |
+| Ancho efectivo del canal, $L_{w}$ $(\mathrm{m})$           | 0.63                |
+| Conductividad térmica del material $(\mathrm{W} / \mathrm{m} \cdot \mathrm{K})$ | 17.5            |
+
+Paquetes utilizados:
+
+```{python}
+import numpy as np
+import handcalcs.render
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+from math import pi, log
+```
+
+## Pregunta 1
+Verifique que el factor de ampliación $\phi$ entregado por el fabricante sea correcto.
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_16-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_16-1-sol .collapse .multi-collapse}
+
+El factor de ampliación será la razón entre el área de transferencia de calor efectiva de una única placa $A_1$ y su área proyectada $A_{1p}$.
+
+```{python}
+%%render params
+D_p = 0.2 #m, Diámetro del puerto
+L_w = 0.63 #m, Ancho del canal
+L_v = 1.55 #m, Distancia vertical entre los puestos
+N_t = 105 #Número de placas
+A_e = 110 #m$^2$, Área efectiva de transferencia
+```
+
+```{python}
+%%render short
+## Área proyectada, A$_{1p}$
+A_1p = (L_v - D_p)*L_w #m$^2$
+## Área efectiva, A$_1$
+N_e = N_t - 2
+A_1 = A_e/N_e #m$^2$
+## Factor de ampliación superficial, $\phi$
+phi = A_1/A_1p
+```
+
+Entonces los datos entregados por el fabricante son correctos.
+
+:::
+
+## Pregunta 2
+
+Calcule el número de Reynolds para el fluido caliente y el fluido frio.
+
+(a) $Re_h \leq 10000$ y $Re_c \leq 10000$ \
+(b) $Re_h \leq 10000$ y $10000 \leq Re_c$ \
+(c) $10000 \leq Re_h$ y $Re_c \leq 10000$ \
+(d) $10000 \leq Re_h$ y $10000 \leq Re_c$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_16-2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_16-2-sol .collapse .multi-collapse}
+
+Primero se deben encontrar los flux másicos de los canales a partir de los parámetros de diseño del itnercambiador calculados en el inciso anterior.
+
+```{python}
+%%render params
+t = 0.6/1000 #m, Espesor de una placa
+L_c = 0.38 #m, Longitud del paquete comprimido
+N_p = 1 #Número de pasadas
+m = 140 #kg/s, Flujo másico igual para ambos flujos
+mu_h = 5.09e-4 #Pa$\cdot$s
+mu_c = 7.66e-4 #Pa$\cdot$s
+```
+
+```{python}
+%%render short
+p = L_c/N_t #m
+b = p - t #m
+D_h = 2*b/phi #m
+N_cp = (N_t-1)/(2*N_p)
+m_ch = m/N_cp #kg/s
+G_ch = m_ch/(b*L_w) #kg/m$^2$s
+Re_h = G_ch*D_h/mu_h
+Re_c = G_ch*D_h/mu_c
+```
+
+Entonces la alternativa correcta es la **c**.
+
+:::
+
+## Pregunta 3
+
+Encuentre el factor de limpieza definido como $CF = U_f/U_c$,
+
+(a) $CF \leq 0.4$ \
+(b) $0.4 < CF \leq 0.6$ \
+(c) $0.6 < CF \leq 0.8$ \
+(d) $0.8 < CF \leq 1$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_16-3-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_16-3-sol .collapse .multi-collapse}
+
+Se debe comparar el coeficiente global de transferencia de calor sucio respecto al limpio. Para $\beta=$ 45$^\circ$ y número de Reynolds sobre 100, tenemos que $C_h=0.3$ y $n=0.663$.
+
+```{python}
+%%render params
+k_h = 0.645 #W/m$\cdot$K, Conductividad térmica fluido caliente
+k_c = 0.617 #W/m$\cdot$K, Conductividad térmica fluido frio
+Pr_h = 3.31
+Pr_c = 5.19
+k_w = 17.5 #W/m$\cdot$K, Conductividad térmica de la placa
+R_f = 0.00005 #m$^2\cdot$K/W, Resistencia total a la incrustación
+```
+
+```{python}
+%%render long
+Nus_h = 0.3*Re_h**0.663*Pr_h**(1/3)
+Nus_c = 0.3*Re_c**0.663*Pr_c**(1/3)
+h_h = Nus_h*k_h/D_h #W/m$^2\cdot$K
+h_c = Nus_c*k_c/D_h #W/m$^2\cdot$K
+```
+
+```{python}
+%%render long
+U_c = (1/h_h + 1/h_c + t/k_w)**(-1) #W/m$^2\cdot$K
+U_f = (1/U_c + R_f)**(-1) #W/m$^2\cdot$K
+CF = U_f/U_c
+```
+
+Entonces la alternativa correcta es la **c**.
+
+:::
+
+## Pregunta 4
+
+Calcule la caida de presión por el lado del fluido frio y determine si supera o no la caída de presión máxima permitida.
+
+(a) $(\Delta p_t)_c \leq 30$ psi \
+(b) $30 < (\Delta p_t)_c \leq 40$ psi \
+(c) $40 < (\Delta p_t)_c \leq 50$ psi \
+(d) $(\Delta p_t)_c > 50$ psi
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_16-4-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_16-4-sol .collapse .multi-collapse}
+
+El factor de fricción para el mismo ángulo Chevrón y Reynolds sobre 100 será, $K_p=1.441$ y $m=0.206$.
+
+```{python}
+%%render params
+rho_c = 995 #kg/m$^3$
+```
+
+```{python}
+%%render long
+## Pérdidas en las placas
+f = 1.441/Re_c**0.206
+Dp_c = 4*f*(L_v*N_p)/D_h*(G_ch**2/(2*rho_c)) #Pa
+## Pérdidas en los conductos de puerto
+G_p = (4*m)/(pi*D_p**2) #kg/m$^2\cdot$s
+Dp_p = 1.4*N_p*G_p**2/(2*rho_c) #Pa
+## Péridas totales por el lado del fluido frio
+Dp_t = (Dp_c + Dp_p)/6895  #psi
+```
+
+Por lo tanto la alternativa correcta es la **c**.
+
+:::
