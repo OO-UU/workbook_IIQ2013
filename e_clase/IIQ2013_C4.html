@@ -503,6 +503,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 16</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_clase/IIQ2013_C17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 17</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -547,7 +553,7 @@ window.Quarto = {
 
 <p>Considere aire (<span class="math inline">\(\gamma = 1.4\)</span>) procedente de un depósito o estanque que fluye a través de una tubería recta de gran longitud y provista con aislación térmica (no ocurre transferencia de calor con los alrededores). La presión y temperatura en el estanque son <span class="math inline">\(p_1 = 20~\text{atm}\)</span> y <span class="math inline">\(T_1 = 555.6~\text{K}\)</span>, respectivamente (<span class="math inline">\(\rho = 12.72 \text{~kg/m}^3\)</span>). Además, se sabe que el número de Mach a la entrada de la tubería es <span class="math inline">\(Ma_1 = 0.05\)</span>.</p>
 <p>Librerias a utilizar:</p>
-<div id="3332b76f" class="cell" data-execution_count="1">
+<div id="072245d7" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt, log</span>
@@ -574,7 +580,7 @@ Mostrar solución
 <p><span class="math display">\[
 Ma_1 = \frac{V_1}{c_1} \Rightarrow V_1 = Ma_1\sqrt{\frac{\gamma RT_1}{MW}}
 \]</span></p>
-<div id="c8a45119" class="cell" data-execution_count="2">
+<div id="7bac74ec" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Ma_1 <span class="op">=</span> <span class="fl">0.05</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.4</span></span>
@@ -626,7 +632,7 @@ Mostrar solución
 <p><span class="math display">\[
 \frac{p}{p^*} = \frac{1}{Ma}\sqrt{\frac{\gamma+1}{2+(\gamma-1)Ma^2}}
 \]</span></p>
-<div id="eac3b1fb" class="cell" data-execution_count="3">
+<div id="4754e4c4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p_1 <span class="op">=</span> <span class="dv">20</span> <span class="co">#atm</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="fl">12.72</span> <span class="co">#kg/m$^3$</span></span>
@@ -670,7 +676,7 @@ Mostrar solución
 400 = \frac{1-Ma^2}{\gamma Ma^2} + \left(\frac{\gamma+1}{2\gamma}\right)\ln\left(\frac{2(\gamma+1)Ma^2}{2+(\gamma-1)Ma^2}\right)
 \]</span></p>
 <p>Como estimación inicial, utilizamos la condición del enunciado <span class="math inline">\(Ma = 0.05\)</span>.</p>
-<div id="c238b454" class="cell" data-execution_count="4">
+<div id="f7a8ec97" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Ma <span class="op">=</span> <span class="fl">0.05</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fLD_estimado <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(gamma<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gamma))<span class="op">*</span>log((<span class="dv">2</span><span class="op">*</span>(gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -685,7 +691,7 @@ Mostrar solución
 </div>
 </div>
 <p>Segunda estimación <span class="math inline">\(Ma = 0.04\)</span>.</p>
-<div id="fd618c74" class="cell" data-execution_count="5">
+<div id="f198cb49" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Ma <span class="op">=</span> <span class="fl">0.04</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fLD_estimado <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(gamma<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gamma))<span class="op">*</span>log((<span class="dv">2</span><span class="op">*</span>(gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -700,7 +706,7 @@ Mostrar solución
 </div>
 </div>
 <p>Tercera estimación <span class="math inline">\(Ma = 0.042\)</span>.</p>
-<div id="686e5e3f" class="cell" data-execution_count="6">
+<div id="97003e08" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Ma <span class="op">=</span> <span class="fl">0.042</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>fLD_estimado <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(gamma<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> ((gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>gamma))<span class="op">*</span>log((<span class="dv">2</span><span class="op">*</span>(gamma<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">+</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>Ma<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -718,7 +724,7 @@ Mostrar solución
 <p><span class="math display">\[
 \left(\frac{G'}{A}\right)_{max} = \rho_1c_1Ma
 \]</span></p>
-<div id="32f22b48" class="cell" data-execution_count="7">
+<div id="f91396be" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>GA_max <span class="op">=</span> rho<span class="op">*</span>sqrt((gamma<span class="op">*</span>R<span class="op">*</span>T_1)<span class="op">/</span>MW)<span class="op">*</span>Ma <span class="co">#kg/m$^2\cdot$s</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">

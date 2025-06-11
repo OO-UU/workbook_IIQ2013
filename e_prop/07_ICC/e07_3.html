@@ -503,6 +503,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 16</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_clase/IIQ2013_C17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 17</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -558,7 +564,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e07_3-sol" class="collapse multi-collapse">
-<div id="4a115121" class="cell" data-execution_count="1">
+<div id="933e7493" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
@@ -585,7 +591,7 @@ A_t = N\cdot A_f + 2\pi r_1(H-N\cdot t)
 <p><span class="math display">\[
 L_c^{\frac{3}{2}}\left(\frac{h}{kA_p}\right)^{\frac{1}{2}}
 \]</span></p>
-<div id="7a0cd6c6" class="cell" data-execution_count="2">
+<div id="d3bfcac2" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -621,7 +627,7 @@ r_{2} &amp;= 0.065 \; \;\textrm{(m)}
 </div>
 </div>
 <p>Empezando por el cálculo para la eficiencia:</p>
-<div id="f2e0dc69" class="cell" data-execution_count="3">
+<div id="2eba7634" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -648,7 +654,7 @@ x &amp;= \left( L_{c} \right) ^{ \left( \frac{ 3 }{ 2 } \right) } \cdot \left( \
 </div>
 </div>
 <p>Del gráfico obtenemos que <span class="math inline">\(\eta_f \approx 0.94\)</span>.</p>
-<div id="f62514ef" class="cell" data-execution_count="4">
+<div id="3817f439" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -675,7 +681,7 @@ q_{t} &amp;= h \cdot A_{t} \cdot \left( 1 - \frac{ N \cdot A_{f} }{ A_{t} } \cdo
 <p><span class="math display">\[
 q_w = h(2\pi r_1H)\theta_b
 \]</span></p>
-<div id="c705c288" class="cell" data-execution_count="5">
+<div id="d1028d4b" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -690,7 +696,7 @@ q_{w} &amp;= h \cdot \left( 2 \cdot \pi \cdot r_{1} \cdot H \right) \cdot \left(
 </div>
 </div>
 <p>Luego el aumento será:</p>
-<div id="4b0b1104" class="cell" data-execution_count="6">
+<div id="81f6375b" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -712,7 +718,7 @@ q_{w} &amp;= h \cdot \left( 2 \cdot \pi \cdot r_{1} \cdot H \right) \cdot \left(
 H = N(t+S)+S
 \]</span></p>
 <p>Despejando y resolviendo:</p>
-<div id="0ea17105" class="cell" data-execution_count="7">
+<div id="1da1198b" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -730,7 +736,7 @@ N &amp;= \frac{ H - S }{ t + S } \\&amp;= \frac{ 0.500 - 0.013 }{ 0.007 + 0.013 
 </div>
 </div>
 <p>Entonces el máximo de aletas posibles será <span class="math inline">\(N=24\)</span>. Repetimos los cálculos que sea necesarios.</p>
-<div id="e537f3d7" class="cell" data-execution_count="8">
+<div id="2fdc802e" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>

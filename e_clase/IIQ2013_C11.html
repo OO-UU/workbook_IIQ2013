@@ -503,6 +503,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 16</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_clase/IIQ2013_C17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 17</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -546,7 +552,7 @@ window.Quarto = {
 
 
 <p>Librerias a utilizar:</p>
-<div id="12df6c42" class="cell" data-execution_count="1">
+<div id="1eaa9785" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
@@ -576,7 +582,7 @@ Z = \frac{T_{h,e}-T_{h,s}}{T_{c,s}-T_{c,e}} = \frac{\dot{m}_c}{\dot{m}_h}
 <p><span class="math display">\[
 T_{h,s} = T_{h,e} - Z(T_{c,s}-T_{c,e})
 \]</span></p>
-<div id="c1097269" class="cell" data-execution_count="2">
+<div id="71327378" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m_c <span class="op">=</span> <span class="dv">2200</span> <span class="co">#kg/h</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>T_ce <span class="op">=</span> <span class="dv">18</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
@@ -596,7 +602,7 @@ m_{h} &amp;= 1500 \; \;\textrm{(kg/h)}
 \]</span></p>
 </div>
 </div>
-<div id="5e5cf9af" class="cell" data-execution_count="3">
+<div id="94b6a8bb" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> m_c<span class="op">/</span>m_h</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>T_hs <span class="op">=</span> T_he <span class="op">-</span> Z<span class="op">*</span>(T_cs<span class="op">-</span>T_ce)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -618,7 +624,7 @@ T_{hs} &amp;= T_{he} - Z \cdot \left( T_{cs} - T_{ce} \right) \\&amp;= 353.150 -
 <p><span class="math display">\[
 F_T = \frac{\sqrt{Z^2+1}\ln\left(\frac{1-\eta_H}{1-\eta_HZ}\right)}{(Z-1)\ln\left(\frac{2-\eta_H\left(Z+1-\sqrt{Z^2+1}\right)}{2-\eta_H\left(Z+1+\sqrt{Z^2+1}\right)}\right)}
 \]</span></p>
-<div id="f85a5be4" class="cell" data-execution_count="4">
+<div id="af6f6d55" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>eta_H <span class="op">=</span> (T_cs<span class="op">-</span>T_ce)<span class="op">/</span>(T_he<span class="op">-</span>T_ce)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>F_T <span class="op">=</span> (sqrt(Z<span class="op">**</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>log((<span class="dv">1</span><span class="op">-</span>eta_H)<span class="op">/</span>(<span class="dv">1</span><span class="op">-</span>eta_H<span class="op">*</span>Z)))<span class="op">/</span>((Z<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>log((<span class="dv">2</span><span class="op">-</span>eta_H<span class="op">*</span>(Z<span class="op">+</span><span class="dv">1</span><span class="op">-</span>sqrt(Z<span class="op">**</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span>)))<span class="op">/</span>(<span class="dv">2</span><span class="op">-</span>eta_H<span class="op">*</span>(Z<span class="op">+</span><span class="dv">1</span><span class="op">+</span>sqrt(Z<span class="op">**</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span>)))))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -643,7 +649,7 @@ Mostrar solución
 </button>
 <div id="ec_11-2-sol" class="collapse multi-collapse">
 <p>Los flujos se mantienen constantes, por lo tanto, nuestra razón de temperaturas es constante también. Podemos entonces calcular el nuevo <span class="math inline">\(\eta_H\)</span> y buscar el factor de corrección.</p>
-<div id="9872423b" class="cell" data-execution_count="5">
+<div id="c55be0a5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>T_cs <span class="op">=</span> <span class="dv">50</span><span class="op">+</span><span class="fl">273.15</span> <span class="co">#K</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>T_hs <span class="op">=</span> T_he <span class="op">-</span> Z<span class="op">*</span>(T_cs<span class="op">-</span>T_ce)</span>
@@ -680,7 +686,7 @@ Mostrar solución
 </button>
 <div id="ec_11-3-sol" class="collapse multi-collapse">
 <p>Aproximando <span class="math inline">\(Z\approx 1.4\)</span> utilizamos el gráfico, notamos que el valor máximo que puede tomar la eficiencia de temperaturas es de <span class="math inline">\(\eta_H\approx0.425\)</span> Cuando <span class="math inline">\(F_T\)</span> toma su mínimo valor de 0.75. Bajo estos supuestos podemos obtener <span class="math inline">\(T_{c,s}\)</span></p>
-<div id="e9714b0b" class="cell" data-execution_count="6">
+<div id="80141410" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>eta_H <span class="op">=</span> <span class="fl">0.425</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>T_cs <span class="op">=</span> T_ce <span class="op">+</span> eta_H<span class="op">*</span>(T_he<span class="op">-</span>T_ce) <span class="op">-</span> <span class="fl">273.15</span> <span class="co">#$^\circ$C</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ejercicio 2: Evaporador considerando entalpía de dilución</title>
+<title>Ejercicio clase 17</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,26 +57,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../e_prop/08_evaporadores/e08_3.html" rel="next">
-<link href="../../e_prop/08_evaporadores/e08_1.html" rel="prev">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../e_clase/IIQ2013_C16.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": true,
@@ -134,7 +133,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -146,7 +145,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/08_evaporadores/e08_1.html">Evaporadores</a></li><li class="breadcrumb-item"><a href="../../e_prop/08_evaporadores/e08_2.html">Ejercicio 2: Evaporador considerando entalpía de dilución</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../e_clase/IIQ2013_C1.html">Ejercicios clase a clase</a></li><li class="breadcrumb-item"><a href="../e_clase/IIQ2013_C17.html">Ejercicio clase 17</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -160,11 +159,11 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
-      <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../">IIQ2013</a> 
+      <a href="../">IIQ2013</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
 </div>
@@ -179,7 +178,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introducción</span></a>
   </div>
 </li>
@@ -198,19 +197,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/00_bernoulli/e00_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/00_bernoulli/e00_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 1: Bernoulli</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/00_bernoulli/e00_2.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/00_bernoulli/e00_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 2: Pérdidas por singularidades y fricción</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/00_bernoulli/e00_3.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/00_bernoulli/e00_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 3: Bombas y eficiencia</span></a>
   </div>
 </li>
@@ -227,7 +226,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/01_FNN/e01_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/01_FNN/e01_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 1: Fluidos pseudoplásticos y dilatantes</span></a>
   </div>
 </li>
@@ -244,13 +243,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/02_agitacion/e02_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/02_agitacion/e02_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 1: Estanques agitados</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/02_agitacion/e02_2.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/02_agitacion/e02_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 2: Escalamiento de estanques agitados</span></a>
   </div>
 </li>
@@ -267,13 +266,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/03_compresibles/e03_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/03_compresibles/e03_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 1: Fluidos compresibles en tuberías</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/03_compresibles/e03_2.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/03_compresibles/e03_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 2: Flujo compresible y compresores</span></a>
   </div>
 </li>
@@ -293,7 +292,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/04_ICDT/e04_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/04_ICDT/e04_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 1: ICDT</span></a>
   </div>
 </li>
@@ -310,7 +309,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/05_tc-agitacion/e05_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/05_tc-agitacion/e05_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 1: Agitador con serpentín</span></a>
   </div>
 </li>
@@ -327,13 +326,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/06_ICTC/e06_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/06_ICTC/e06_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 1: ICTC y haces de tubos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/06_ICTC/e06_2.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/06_ICTC/e06_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 2: Método NTU - ICTC</span></a>
   </div>
 </li>
@@ -350,19 +349,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/07_ICC/e07_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/07_ICC/e07_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 1: Aletas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/07_ICC/e07_2.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/07_ICC/e07_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 2: Aletas cuadradas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/07_ICC/e07_3.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/07_ICC/e07_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 3: Arreglos de aletas</span></a>
   </div>
 </li>
@@ -370,28 +369,28 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
  <span class="menu-text">Evaporadores</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/08_evaporadores/e08_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/08_evaporadores/e08_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 1: Evaporador de 1 efecto simple</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/08_evaporadores/e08_2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../e_prop/08_evaporadores/e08_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 2: Evaporador considerando entalpía de dilución</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_prop/08_evaporadores/e08_3.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_prop/08_evaporadores/e08_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 3: Evaporador de 2 efectos <em>backward</em></span></a>
   </div>
 </li>
@@ -400,112 +399,112 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
  <span class="menu-text">Ejercicios clase a clase</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C1.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C2.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C3.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C4.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 4</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C5.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 5</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C6.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 6</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C7.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 7</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C8.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C8.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 8</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C9.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C9.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 9</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C10.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C10.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 10</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C11.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C11.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 11</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C12.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C12.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 12</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C13.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C13.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 13</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C14.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C14.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 14</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C15.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C15.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 15</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C16.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C16.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio clase 16</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../e_clase/IIQ2013_C17.html" class="sidebar-item-text sidebar-link">
+  <a href="../e_clase/IIQ2013_C17.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Ejercicio clase 17</span></a>
   </div>
 </li>
@@ -523,17 +522,19 @@ window.Quarto = {
     <h2 id="toc-title">Contenido</h2>
    
   <ul>
-  <li><a href="#enunciado" id="toc-enunciado" class="nav-link active" data-scroll-target="#enunciado">Enunciado</a></li>
-  <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
+  <li><a href="#pregunta-1" id="toc-pregunta-1" class="nav-link active" data-scroll-target="#pregunta-1">Pregunta 1</a></li>
+  <li><a href="#pregunta-2" id="toc-pregunta-2" class="nav-link" data-scroll-target="#pregunta-2">Pregunta 2</a></li>
+  <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">Pregunta 3</a></li>
+  <li><a href="#pregunta-4" id="toc-pregunta-4" class="nav-link" data-scroll-target="#pregunta-4">Pregunta 4</a></li>
   </ul>
-<div class="quarto-code-links"><h2>Enlaces de código</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/08_evaporadores/jupyter/e08_2.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
+<div class="quarto-code-links"><h2>Enlaces de código</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C17.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../e_prop/08_evaporadores/e08_1.html">Evaporadores</a></li><li class="breadcrumb-item"><a href="../../e_prop/08_evaporadores/e08_2.html">Ejercicio 2: Evaporador considerando entalpía de dilución</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../e_clase/IIQ2013_C1.html">Ejercicios clase a clase</a></li><li class="breadcrumb-item"><a href="../e_clase/IIQ2013_C17.html">Ejercicio clase 17</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Ejercicio 2: Evaporador considerando entalpía de dilución</h1>
+<h1 class="title">Ejercicio clase 17</h1>
 </div>
 
 
@@ -550,264 +551,359 @@ window.Quarto = {
 </header>
 
 
-<section id="enunciado" class="level2">
-<h2 class="anchored" data-anchor-id="enunciado">Enunciado</h2>
-<p>Un evaporador de un efecto es utilizado para concentrar <span class="math inline">\(9070~\text{kg/h}\)</span> de una solución al <span class="math inline">\(20~\%\)</span> de hidróxido de sodio hasta alcanzar un <span class="math inline">\(50~\%\)</span> de concentración másica. La presión de manométrica del vapor saturado que entra al evaporador (<span class="math inline">\(\text{S}\)</span>) es de <span class="math inline">\(1.37~\text{atm}\)</span>; la presión en el evaporador es <span class="math inline">\(100~\text{mmHg}\)</span>. Asuma que el coeficiente global de transferencia de masa es de <span class="math inline">\(1400~\text{W/m}^2\cdot\text{°C}\)</span>, y que la temperatura del flujo de alimentación es de <span class="math inline">\(37.8~\text{°C}\)</span>.</p>
-<p>Encuentre lo siguiente:</p>
-<ol type="1">
-<li>El flujo másico de vapor saturado que sale del evaporador en la corriente <span class="math inline">\(\text{V}\)</span>.</li>
-<li>El flujo másico de vapor saturado necesario en la corriente <span class="math inline">\(\text{S}\)</span>.</li>
-<li>La economía del evaporador.</li>
-<li>El área de evaporador requerido si la temperatura de condensación del vapor a <span class="math inline">\(1.37~\text{atm}\)</span> es <span class="math inline">\(126.1~\text{°C}\)</span>.</li>
+<p>Se hacen circular <span class="math inline">\(6~\text{kg/s}\)</span> de aire a <span class="math inline">\(1~\text{atm}\)</span> y <span class="math inline">\(450~\text{K}\)</span> a través de un intercambiador de calor compacto (ICC) modelo CF-8.72(c) de <span class="math inline">\(0.6\times0.8~\text{m}^2\)</span> de área frontal y <span class="math inline">\(0.6~\text{m}\)</span> de largo. Por el lado de los tubos (<span class="math inline">\(L = 0.8~\text{m}\)</span>) circulan <span class="math inline">\(10~\text{kg/s}\)</span> de agua a <span class="math inline">\(310~\text{K}\)</span>.</p>
+<div id="3fd4f8bd" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople <span class="im">as</span> si</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> CoolProp.CoolProp <span class="im">import</span> PropsSI</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="f6595ce0" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>si.environment(<span class="st">'default'</span>, top_level<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="pregunta-1" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
+<p>El valor del número de Reynolds para la corriente de aire (<span class="math inline">\(Re_{aire}\)</span>) es aproximadamente:</p>
+<ol type="a">
+<li><span class="math inline">\(Re_{aire}\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(1000\)</span><br>
+</li>
+<li><span class="math inline">\(1000\)</span> <span class="math inline">\(\leq\)</span> <span class="math inline">\(Re_{aire}\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(2500\)</span><br>
+</li>
+<li><span class="math inline">\(2500\)</span> <span class="math inline">\(\leq\)</span> <span class="math inline">\(Re_{aire}\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(5000\)</span><br>
+</li>
+<li><span class="math inline">\(Re_{aire}\)</span> <span class="math inline">\(\geq\)</span> <span class="math inline">\(5000\)</span></li>
 </ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/img08_2-1.png" class="img-fluid figure-img" style="width:30.0%"></p>
-<figcaption>Evaporador simple</figcaption>
-</figure>
-</div>
-<p>Para sus cálculos utilice la siguiente información:<br>
-Temperatura de ebullición del agua a <span class="math inline">\(100~\text{mmHg}\)</span>: <span class="math inline">\(51.11~\text{°C}\)</span><br>
-Punto de ebullición de la solución a una concentración del <span class="math inline">\(20~\%\)</span> de NaOH: <span class="math inline">\(91.67~\text{°C}\)</span><br>
-El calor latente de vapor saturado a <span class="math inline">\(1.37~\text{atm}\)</span> es: <span class="math inline">\(2184.11~\text{kJ/kg}\)</span><br>
-La entalpía de agua sobrecalentada a <span class="math inline">\(91.67~\text{°C}\)</span> puede ser calculada como:</p>
-<p><span class="math display">\[
-H_v \text{(Btu/lb)} = 1116+0.45\cdot\Delta\text{EPE}\text{(°F)}
-\]</span></p>
-<p>Donde <span class="math inline">\(\Delta\text{EPE}\)</span> es la elevación del punto de ebullición.<br>
-Ya que tenemos una solución salina, debemos considerar la entalpía de dilución. Para esto, utilice el siguiente gráfico.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/img08_2-2.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Evaporador simple</figcaption>
-</figure>
-</div>
-</section>
-<section id="solución" class="level2">
-<h2 class="anchored" data-anchor-id="solución">Solución</h2>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#e08_2-sol" aria-expanded="false">
+<p>Considere que <span class="math inline">\(\beta_{frontal} = 446 \text{m}^2\text{/m}^3\)</span>, en que <span class="math inline">\(\beta_{frontal}\)</span> corresponde a la cara del ICC a travésde la cual ingresa (y sale) el aire. Propiedades termo-físicas: <span class="math inline">\(\mu_{aire} = 2.512 \times 10^{−5}~\text{Pa}\cdot\text{s}.\)</span></p>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_17-1-sol" aria-expanded="false">
 Mostrar solución
 </button>
-<div id="e08_2-sol" class="collapse multi-collapse">
-<section id="inciso-1" class="level3">
-<h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
-<div id="3404ba5f" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"custom_symbols"</span>,{<span class="st">"dEPE"</span>: <span class="st">"\Delta EPE"</span>, <span class="st">"dotm"</span>: <span class="st">"\dot m"</span>, <span class="st">"lambda"</span>: <span class="st">"\lambda"</span>, <span class="st">"Tebs"</span>: <span class="st">"T^eb"</span>, <span class="st">"dT"</span>: <span class="st">"\Delta T"</span>})</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\D'
-&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\d'
-&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\l'
-&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\D'
-&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\D'
-&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\d'
-&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\l'
-&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\D'
-/tmp/ipykernel_12894/1935075477.py:2: SyntaxWarning: invalid escape sequence '\D'
-  handcalcs.set_option("custom_symbols",{"dEPE": "\Delta EPE", "dotm": "\dot m", "lambda": "\lambda", "Tebs": "T^eb", "dT": "\Delta T"})
-/tmp/ipykernel_12894/1935075477.py:2: SyntaxWarning: invalid escape sequence '\d'
-  handcalcs.set_option("custom_symbols",{"dEPE": "\Delta EPE", "dotm": "\dot m", "lambda": "\lambda", "Tebs": "T^eb", "dT": "\Delta T"})
-/tmp/ipykernel_12894/1935075477.py:2: SyntaxWarning: invalid escape sequence '\l'
-  handcalcs.set_option("custom_symbols",{"dEPE": "\Delta EPE", "dotm": "\dot m", "lambda": "\lambda", "Tebs": "T^eb", "dT": "\Delta T"})
-/tmp/ipykernel_12894/1935075477.py:2: SyntaxWarning: invalid escape sequence '\D'
-  handcalcs.set_option("custom_symbols",{"dEPE": "\Delta EPE", "dotm": "\dot m", "lambda": "\lambda", "Tebs": "T^eb", "dT": "\Delta T"})</code></pre>
-</div>
-</div>
-<p>Se debe cumplir la conservación de masa, tal que</p>
-<p><span class="math display">\[
-w_F\cdot F = w_L\cdot L
-\]</span></p>
-<div id="7b0a5c78" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dotm_F <span class="op">=</span> <span class="dv">9070</span> <span class="co">#kg/h</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>w_F <span class="op">=</span> <span class="fl">0.2</span> </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>w_L <span class="op">=</span> <span class="fl">0.5</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="ec_17-1-sol" class="collapse multi-collapse">
+<p>Definimos las propiedades termofísicas del agua y el aire,</p>
+<div id="3230b3b9" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params sci_not</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>cp_agua <span class="op">=</span> PropsSI(<span class="st">'C'</span>, <span class="st">'P'</span>, <span class="fl">1e5</span>, <span class="st">'T'</span>, <span class="dv">310</span>, <span class="st">'water'</span>) <span class="op">*</span> J <span class="op">/</span> kg <span class="op">/</span> K</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mu_aire <span class="op">=</span> PropsSI(<span class="st">'viscosity'</span>, <span class="st">'P'</span>, <span class="fl">1e5</span>, <span class="st">'T'</span>, <span class="dv">450</span>, <span class="st">'air'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-\dot m_{F} &amp;= 9070 \; \;\textrm{(kg/h)}
-&amp;w_{F} &amp;= 0.200 \;
-&amp;w_{L} &amp;= 0.500 \;
+\mathrm{cp}_{agua} &amp;= 4.179 \times 10^ {3}\ \mathrm{m}^{2} \cdot \mathrm{s}^{-2} \cdot \mathrm{K}^{-1} \;
+&amp;\mu_{aire} &amp;= 2.512 \times 10 ^ {-5} \;
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<div id="06ba72cf" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>F_ic <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> kg <span class="op">/</span> s</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>A_ic <span class="op">=</span> <span class="fl">0.6</span><span class="op">*</span><span class="fl">0.8</span> <span class="op">*</span> m<span class="op">**</span><span class="dv">2</span> <span class="co"># Área frontal ICC</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>L_ic <span class="op">=</span> <span class="fl">0.6</span> <span class="op">*</span> m <span class="co"># Largo ICC</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>L_t <span class="op">=</span> <span class="fl">0.8</span> <span class="op">*</span> m <span class="co"># Largo tubos</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>F_t <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> kg <span class="op">/</span> s</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+F_{ic} &amp;= 6.000\ \mathrm{kg} \cdot \mathrm{s}^{-1} \;
+&amp;A_{ic} &amp;= 480000.000\ \mathrm{mm}^{2} \; \;\textrm{(Área frontal ICC)}
+&amp;L_{ic} &amp;= 600.000\ \mathrm{mm} \; \;\textrm{(Largo ICC)}
 \\[10pt]
+L_{t} &amp;= 800.000\ \mathrm{mm} \; \;\textrm{(Largo tubos)}
+&amp;F_{t} &amp;= 10.000\ \mathrm{kg} \cdot \mathrm{s}^{-1} \;
 \end{aligned}
 \]</span></p>
 </div>
 </div>
-<div id="7c4d50d2" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dotm_L <span class="op">=</span> dotm_F<span class="op">*</span>(w_F<span class="op">/</span>w_L) <span class="co">#kg/h</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<p>Para calcular Reynolds, necesitamos el diámetro equivalente del ICC. Para el modelo cf-8.72(c),</p>
+<div id="0811d2c3" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.494</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>beta <span class="op">=</span> <span class="dv">446</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>D_h <span class="op">=</span> <span class="fl">0.443</span><span class="op">*</span><span class="fl">1e-2</span><span class="op">*</span> m</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>mu_aire <span class="op">=</span> mu_aire <span class="op">*</span> Pa <span class="op">*</span> s</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>G_ic <span class="op">=</span> F_ic <span class="op">/</span> A_ic</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>Re <span class="op">=</span> G_ic <span class="op">*</span> D_h <span class="op">/</span>mu_aire</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>A_fr <span class="op">=</span> A_ic</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>G_max <span class="op">=</span> F_ic<span class="op">/</span>(sigma<span class="op">*</span>A_fr)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>Re_nax <span class="op">=</span> G_max <span class="op">*</span> D_h <span class="op">/</span>mu_aire</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-\dot m_{L} &amp;= \dot m_{F} \cdot \left( \frac{ w_{F} }{ w_{L} } \right)  = 9070 \cdot \left( \frac{ 0.200 }{ 0.500 } \right) &amp;= 3628.000 \; \;\textrm{(kg/h)}
+\sigma &amp;= 0.494 \;
+\\[10pt]
+\beta &amp;= 446 \;
+\\[10pt]
+D_{h} &amp;= 0.443 \cdot 1 \times 10 ^ {-2} \cdot m  = 0.443 \cdot 1 \times 10 ^ {-2} \cdot m &amp;= 4.430\ \mathrm{mm}  
+\\[10pt]
+\mu_{aire} &amp;= \mu_{aire} \cdot \mathrm{Pa} \cdot s \\&amp;= 0.000\ \mathrm{kg} \cdot \mathrm{m}^{-1} \cdot \mathrm{s}^{-1} \cdot Pa \cdot s \\&amp;= 0.000\ \mathrm{kg} \cdot \mathrm{m}^{-1} \cdot \mathrm{s}^{-1}  \\[10pt]
+\\[10pt]
+G_{ic} &amp;= \frac{ F_{ic} }{ A_{ic} }  = \frac{ 6.000\ \mathrm{kg} \cdot \mathrm{s}^{-1} }{ 480000.000\ \mathrm{mm}^{2} } &amp;= 12.500\ \mathrm{kg} \cdot \mathrm{m}^{-2} \cdot \mathrm{s}^{-1}  
+\\[10pt]
+\mathrm{Re} &amp;= G_{ic} \cdot \frac{ D_{h} }{ \mu_{aire} }  = 12.500\ \mathrm{kg} \cdot \mathrm{m}^{-2} \cdot \mathrm{s}^{-1} \cdot \frac{ 4.430\ \mathrm{mm} }{ 0.000\ \mathrm{kg} \cdot \mathrm{m}^{-1} \cdot \mathrm{s}^{-1} } &amp;= 2204.083  
+\\[10pt]
+A_{fr} &amp;= 480000.000\ \mathrm{mm}^{2} \;
+\\[10pt]
+G_{max} &amp;= \frac{ F_{ic} }{ \sigma \cdot A_{fr} }  = \frac{ 6.000\ \mathrm{kg} \cdot \mathrm{s}^{-1} }{ 0.494 \cdot 480000.000\ \mathrm{mm}^{2} } &amp;= 25.304\ \mathrm{kg} \cdot \mathrm{m}^{-2} \cdot \mathrm{s}^{-1}  
+\\[10pt]
+\mathrm{Re}_{nax} &amp;= G_{max} \cdot \frac{ D_{h} }{ \mu_{aire} }  = 25.304\ \mathrm{kg} \cdot \mathrm{m}^{-2} \cdot \mathrm{s}^{-1} \cdot \frac{ 4.430\ \mathrm{mm} }{ 0.000\ \mathrm{kg} \cdot \mathrm{m}^{-1} \cdot \mathrm{s}^{-1} } &amp;= 4461.706  
 \end{aligned}
 \]</span></p>
 </div>
 </div>
-<p>Por balance de masa se despeja <span class="math inline">\(\dot{m}_V\)</span>.</p>
-<div id="eccbd17e" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short <span class="dv">0</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dotm_V <span class="op">=</span> dotm_F<span class="op">-</span>dotm_L <span class="co">#kg/h</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<p>Notar que el número de Reynolds relevante para cálculos de pérdida de carga y transferencia de calor es <span class="math inline">\(Re_{max}\)</span>.</p>
+<p>Por lo tanto, la alternativa correcta es <strong>c</strong></p>
+</div>
+</section>
+<section id="pregunta-2" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-2">Pregunta 2</h2>
+<p>El coeficiente de transferencia de calor por convección para el aire (<span class="math inline">\(h_{aire}\)</span>) es aproximadamente:</p>
+<ol type="a">
+<li><span class="math inline">\(h_{aire}\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(200\)</span> <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span><br>
+</li>
+<li><span class="math inline">\(200\)</span> <span class="math inline">\(\leq\)</span> <span class="math inline">\(h_{aire}\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(500\)</span> <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span><br>
+</li>
+<li><span class="math inline">\(500\)</span> <span class="math inline">\(\leq\)</span> <span class="math inline">\(h_{aire}\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(1000\)</span> <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span><br>
+</li>
+<li><span class="math inline">\(h_{aire}\)</span> <span class="math inline">\(\geq\)</span> <span class="math inline">\(1000\)</span> <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span></li>
+</ol>
+<p>Propiedades termo-físicas: <span class="math inline">\(c_{p,~aire} = 1021.105~\text{J/kg}\cdot\text{K}\)</span>, <span class="math inline">\(Pr_{aire} = 0.7\)</span>.</p>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_17-2-sol" aria-expanded="false">
+Mostrar solución
+</button>
+<div id="ec_17-2-sol" class="collapse multi-collapse">
+<p>Primero calculamos el Factor de Colburn <span class="math inline">\(j_H\)</span>. Desde el gráfico y para la superficie CF-8.72(c), tenemos que</p>
+<div id="1329e5d7" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>j_H <span class="op">=</span> <span class="fl">0.007</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>cp_aire <span class="op">=</span> PropsSI(<span class="st">'C'</span>, <span class="st">'P'</span>, <span class="fl">1e5</span>, <span class="st">'T'</span>, <span class="dv">450</span>, <span class="st">'air'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>Pr_aire <span class="op">=</span> PropsSI(<span class="st">'Prandtl'</span>, <span class="st">'P'</span>, <span class="fl">1e5</span>, <span class="st">'T'</span>, <span class="dv">450</span>, <span class="st">'air'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>cp_aire <span class="op">=</span> cp_aire <span class="op">*</span> J <span class="op">/</span> kg <span class="op">/</span> K</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>h_aire <span class="op">=</span> G_max <span class="op">*</span> cp_aire <span class="op">*</span> j_H <span class="op">/</span> Pr_aire<span class="op">**</span>(<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-\dot m_{V} &amp;= \dot m_{F} - \dot m_{L}  = 9070 - 3628 &amp;= 5442 \; \;\textrm{(kg/h)}
+j_{H} &amp;= 0.007 \;
+\\[10pt]
+\mathrm{cp}_{aire} &amp;= 1021.105\ \mathrm{m}^{2} \cdot \mathrm{s}^{-2} \cdot \mathrm{K}^{-1} \;
+\\[10pt]
+\mathrm{Pr}_{aire} &amp;= 0.698 \;
+\\[10pt]
+\mathrm{cp}_{aire} &amp;= \mathrm{cp}_{aire} \cdot \frac{ J }{ \mathrm{kg} } \cdot \frac{1} { K }  = 1021.105\ \mathrm{m}^{2} \cdot \mathrm{s}^{-2} \cdot \mathrm{K}^{-1} \cdot \frac{ J }{ kg } \cdot \frac{1} { K } &amp;= 1021.105\ \mathrm{m}^{2} \cdot \mathrm{s}^{-2} \cdot \mathrm{K}^{-1}  
+\\[10pt]
+h_{aire} &amp;= G_{max} \cdot \mathrm{cp}_{aire} \cdot \frac{ j_{H} }{ \left( \mathrm{Pr}_{aire} \right) ^{ \left( \frac{ 2 }{ 3 } \right) } } \\&amp;= 25.304\ \mathrm{kg} \cdot \mathrm{m}^{-2} \cdot \mathrm{s}^{-1} \cdot 1021.105\ \mathrm{m}^{2} \cdot \mathrm{s}^{-2} \cdot \mathrm{K}^{-1} \cdot \frac{ 0.007 }{ \left( 0.698 \right) ^{ \left( \frac{ 2 }{ 3 } \right) } } \\&amp;= 229.877\ \mathrm{kg} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1}  \\[10pt]
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Por lo tanto la alternativa correcta es <strong>b</strong>.</p>
+</div>
+</section>
+<section id="pregunta-3" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
+<p>Si <span class="math inline">\(h_{agua} = 200~\text{W/m}^2\cdot\text{K}\)</span> y la eficiencia del arreglo del ICC es de <span class="math inline">\(\eta_o = 0.91\)</span>, el valor del coeficiente global de transferencia de calor (<span class="math inline">\(U\)</span>) es aproximadamente el siguiente:</p>
+<ol type="a">
+<li><span class="math inline">\(U\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(200\)</span> <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span><br>
+</li>
+<li><span class="math inline">\(200\)</span> <span class="math inline">\(\leq\)</span> <span class="math inline">\(U\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span><br>
+</li>
+<li><span class="math inline">\(500\)</span> <span class="math inline">\(\leq\)</span> <span class="math inline">\(U\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(1000\)</span> <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span><br>
+</li>
+<li><span class="math inline">\(U\)</span> <span class="math inline">\(\geq\)</span> <span class="math inline">\(1000\)</span> <span class="math inline">\(\text{W/m}^2\cdot\text{K}\)</span></li>
+</ol>
+<p>Considere que <span class="math inline">\(\beta_{lateral} = 59.2~\text{m}^2\text{/m}^3\)</span>, en que <span class="math inline">\(\beta_{lateral}\)</span> corresponde a la cara del ICC a través de la cual ingresa (y sale) agua. Para reflexión posterior. ¿Cómo haría para estimar hagua a partir de los datos?</p>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_17-3-sol" aria-expanded="false">
+Mostrar solución
+</button>
+<div id="ec_17-3-sol" class="collapse multi-collapse">
+<p>Calcularemos el coeficiente global de transferencia de calor despreciando el ensuciamiento. CF-8.72 es un arreglo de tubos con aletas.</p>
+<p>La razón entre el área de flujo externo del aire y el área de flujo interno del agua es simplemente la razón de las áreas superficiales por unidad de volumen,</p>
+<p><span class="math display">\[ \frac{A_o}{A_i} = \frac{V \beta}{V \beta_{lat}} = \frac{\beta}{\beta_{lat}}\]</span></p>
+<p>Esto se debe a que la configuración de intercambiadores de calor compactos es a flujo cruzado.</p>
+<div id="a75ff91a" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>eta_0 <span class="op">=</span> <span class="fl">0.91</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>beta_lat <span class="op">=</span> <span class="fl">59.2</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>h_agua <span class="op">=</span> <span class="dv">200</span> <span class="op">*</span> W <span class="op">/</span> m<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> K</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>Af_a <span class="op">=</span> <span class="fl">0.876</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Aproximación al área de los tubos</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>A_b <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> Af_a</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> ( <span class="dv">1</span><span class="op">/</span>(eta_0 <span class="op">*</span> h_aire) <span class="op">*</span> (beta_lat<span class="op">/</span>beta) <span class="op">+</span> <span class="dv">1</span> <span class="op">/</span> h_agua)<span class="op">**</span>(<span class="op">-</span><span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\eta_{0} &amp;= 0.910 \;
+\\[10pt]
+\beta_{lat} &amp;= 59.200 \;
+\\[10pt]
+h_{agua} &amp;= 200 \cdot \frac{ W }{ \left( m \right) ^{ 2 } } \cdot \frac{1} { K }  = 200 \cdot \frac{ W }{ \left( m \right) ^{ 2 } } \cdot \frac{1} { K } &amp;= 200.000\ \mathrm{kg} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1}  
+\\[10pt]
+\mathrm{Af}_{a} &amp;= 0.876 \;
+\\[10pt]
+A_{b} &amp;= 1 - \mathrm{Af}_{a}  = 1 - 0.876 &amp;= 0.124  
+\\[10pt]
+U &amp;= \left( \frac{ 1 }{ \eta_{0} \cdot h_{aire} } \cdot \left( \frac{ \beta_{lat} }{ \beta } \right) + \frac{ 1 }{ h_{agua} } \right) ^{ \left( - 1 \right) } \\&amp;= \left( \frac{ 1 }{ 0.910 \cdot 229.877\ \mathrm{kg} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1} } \cdot \left( \frac{ 59.200 }{ 446 } \right) + \frac{ 1 }{ 200.000\ \mathrm{kg} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1} } \right) ^{ \left( - 1 \right) } \\&amp;= 177.477\ \mathrm{kg} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1}  \\[10pt]
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Por lo tanto la alternativa correcta es <strong>a</strong>.</p>
+</div>
+</section>
+<section id="pregunta-4" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-4">Pregunta 4</h2>
+<p>La temperatura del agua a la salida del ICC (<span class="math inline">\(T_{agua,~o}\)</span>) es aproximadamente la siguiente:</p>
+<ol type="a">
+<li><span class="math inline">\(T_{agua,~o}\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(328\)</span> <span class="math inline">\(\text{K}\)</span><br>
+</li>
+<li><span class="math inline">\(328\)</span> <span class="math inline">\(\leq\)</span> <span class="math inline">\(T_{agua,~o}\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(340\)</span> <span class="math inline">\(\text{K}\)</span><br>
+</li>
+<li><span class="math inline">\(340\)</span> <span class="math inline">\(\leq\)</span> <span class="math inline">\(T_{agua,~o}\)</span> <span class="math inline">\(&lt;\)</span> <span class="math inline">\(350\)</span> <span class="math inline">\(\text{K}\)</span><br>
+</li>
+<li><span class="math inline">\(T_{agua,~o}\)</span> <span class="math inline">\(\geq\)</span> <span class="math inline">\(350\)</span> <span class="math inline">\(\text{K}\)</span></li>
+</ol>
+<p>Propiedades termo-físicas: <span class="math inline">\(c_{p,~agua} = 4178.2~\text{J/kg}\cdot\text{K}\)</span>.</p>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_17-4-sol" aria-expanded="false">
+Mostrar solución
+</button>
+<div id="ec_17-4-sol" class="collapse multi-collapse">
+<p>Para calcular la temperatura de salida del ICC, podemos buscar el factor de corrección para un flujo perfectamente mezclado y el otro fluido sin mezclar.</p>
+<p>Utilizaremos el método de efectividad NTU, utilizando las fórmulas de la clase 20. Para un IC de flujo cruzado, con un fluido mezclado y el otro sin mezclar, tenemos que.</p>
+<div id="c5925967" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>C_c <span class="op">=</span> F_t <span class="op">*</span> cp_agua</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>C_h <span class="op">=</span> F_ic <span class="op">*</span> cp_aire</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+C_{c} &amp;= F_{t} \cdot \mathrm{cp}_{agua} \\&amp;= 10.000\ \mathrm{kg} \cdot \mathrm{s}^{-1} \cdot 4179.245\ \mathrm{m}^{2} \cdot \mathrm{s}^{-2} \cdot \mathrm{K}^{-1} \\&amp;= 41792.449\ \mathrm{kg} \cdot \mathrm{m}^{2} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1}  \\[10pt]
+\\[10pt]
+C_{h} &amp;= F_{ic} \cdot \mathrm{cp}_{aire} \\&amp;= 6.000\ \mathrm{kg} \cdot \mathrm{s}^{-1} \cdot 1021.105\ \mathrm{m}^{2} \cdot \mathrm{s}^{-2} \cdot \mathrm{K}^{-1} \\&amp;= 6126.629\ \mathrm{kg} \cdot \mathrm{m}^{2} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1}  \\[10pt]
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>El agua tiene una mayor capacidad, por lo tanto</p>
+<div id="ac8ba8d0" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>C_r <span class="op">=</span> C_h<span class="op">/</span>C_c</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+C_{r} &amp;= \frac{ C_{h} }{ C_{c} }  = \frac{ 6126.629\ \mathrm{kg} \cdot \mathrm{m}^{2} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1} }{ 41792.449\ \mathrm{kg} \cdot \mathrm{m}^{2} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1} } &amp;= 0.147  
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Notemos que calculamos el coeficiente global de transferencia de calor basado en área interna. Por lo tanto, para el calculo de NTU utilizaremos esa área.</p>
+<div id="2a741677" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>A_i <span class="op">=</span> beta_lat <span class="op">*</span> (A_ic <span class="op">*</span> L_ic) <span class="op">/</span> m</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>NTU <span class="op">=</span> (U<span class="op">*</span>A_i)<span class="op">/</span>C_h</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> np.exp( (np.exp(<span class="op">-</span>C_r<span class="op">*</span>NTU)<span class="op">-</span><span class="dv">1</span>) <span class="op">/</span> C_r)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+A_{i} &amp;= \beta_{lat} \cdot \frac{ A_{ic} \cdot L_{ic} }{ m }  = 59.200 \cdot \frac{ 480000.000\ \mathrm{mm}^{2} \cdot 600.000\ \mathrm{mm} }{ m } &amp;= 17.050\ \mathrm{m}^{2}  
+\\[10pt]
+\mathrm{NTU} &amp;= \frac{ U \cdot A_{i} }{ C_{h} }  = \frac{ 177.477\ \mathrm{kg} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1} \cdot 17.050\ \mathrm{m}^{2} }{ 6126.629\ \mathrm{kg} \cdot \mathrm{m}^{2} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1} } &amp;= 0.494  
+\\[10pt]
+\epsilon &amp;= 1 - \mathrm{np.exp} \left( \frac{ \mathrm{np.exp} \left( \left( - C_{r} \right) \cdot \mathrm{NTU} \right) - 1 }{ C_{r} } \right)  = 1 - np.exp \left( \frac{ np.exp \left( \left( - 0.147 \right) \cdot 0.494 \right) - 1 }{ 0.147 } \right) &amp;= 0.379  
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Primero calculamos la temperatura del aire a la salida</p>
+<div id="792754aa" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>T_hi <span class="op">=</span> <span class="dv">450</span> <span class="op">*</span> K</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>T_ci <span class="op">=</span> <span class="dv">310</span> <span class="op">*</span> K</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>T_ho <span class="op">=</span> T_hi <span class="op">-</span> epsilon <span class="op">*</span> (T_hi<span class="op">-</span>T_ci)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+T_{hi} &amp;= 450 \cdot K  = 450 \cdot K &amp;= 450.000\ \mathrm{°C}  
+\\[10pt]
+T_{ci} &amp;= 310 \cdot K  = 310 \cdot K &amp;= 310.000\ \mathrm{°C}  
+\\[10pt]
+T_{ho} &amp;= T_{hi} - \epsilon \cdot \left( T_{hi} - T_{ci} \right)  = 450.000\ \mathrm{°C} - 0.379 \cdot \left( 450.000\ \mathrm{°C} - 310.000\ \mathrm{°C} \right) &amp;= 396.939\ \mathrm{°C}  
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Ahora pudemos calcular la temperatura del fluido frío mediante balance de energía</p>
+<div id="6c99b574" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>T_co <span class="op">=</span> (T_hi<span class="op">-</span>T_ho) <span class="op">*</span> C_r <span class="op">+</span> T_ci</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+T_{co} &amp;= \left( T_{hi} - T_{ho} \right) \cdot C_{r} + T_{ci}  = \left( 450.000\ \mathrm{°C} - 396.939\ \mathrm{°C} \right) \cdot 0.147 + 310.000\ \mathrm{°C} &amp;= 317.779\ \mathrm{°C}  
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>El agua tan solo cambia levemente su temperatura. Nótese que en estricto rigor deberíamos re-evaluar las propiedades termofísicas de ambas corrientes a la temperatura promedio.</p>
+<section id="método-2-f_t" class="level3">
+<h3 class="anchored" data-anchor-id="método-2-f_t">Método 2: <span class="math inline">\(F_t\)</span></h3>
+<p>Notar que ya calculamos la efectividad. Ah</p>
+<p>En este caso, el fluido que se calienta (agua) tiene mayor capacidad que el fluido que se enfría. Por lo tanto, la razón entre el cambio de temperatura del fluido que se enfría y el que se calienta es igual a <span class="math inline">\(1/C_r\)</span>.</p>
+<div id="a2292c9d" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>C_r</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> (T_co <span class="op">-</span> T_ci)<span class="op">/</span>(T_hi<span class="op">-</span>T_ci)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+Z &amp;= \frac{ 1 }{ C_{r} }  = \frac{ 1 }{ 0.147 } &amp;= 6.821  
+\\[10pt]
+P &amp;= \frac{ T_{co} - T_{ci} }{ T_{hi} - T_{ci} }  = \frac{ 317.779\ \mathrm{°C} - 310.000\ \mathrm{°C} }{ 450.000\ \mathrm{°C} - 310.000\ \mathrm{°C} } &amp;= 0.056  
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Para estas condiciones, $F_T $</p>
+<div id="4f23f84b" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>dT_ml <span class="op">=</span> ((T_hi<span class="op">-</span>T_co) <span class="op">-</span> (T_ho<span class="op">-</span>T_ci)) <span class="op">/</span> np.log((T_hi<span class="op">-</span>T_co)<span class="op">/</span>(T_ho<span class="op">-</span>T_ci))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{dT}_{ml} &amp;= \frac{ \left( T_{hi} - T_{co} \right) - \left( T_{ho} - T_{ci} \right) }{ \mathrm{np.log} \left( \frac{ T_{hi} - T_{co} }{ T_{ho} - T_{ci} } \right) } \\&amp;= \frac{ \left( 450.000\ \mathrm{°C} - 317.779\ \mathrm{°C} \right) - \left( 396.939\ \mathrm{°C} - 310.000\ \mathrm{°C} \right) }{ np.log \left( \frac{ 450.000\ \mathrm{°C} - 317.779\ \mathrm{°C} }{ 396.939\ \mathrm{°C} - 310.000\ \mathrm{°C} } \right) } \\&amp;= 108.002\ \mathrm{°C}  \\[10pt]
 \end{aligned}
 \]</span></p>
 </div>
 </div>
 </section>
-<section id="inciso-2" class="level3">
-<h3 class="anchored" data-anchor-id="inciso-2">Inciso 2</h3>
-<p>Se debe despejar <span class="math inline">\(\dot{m}_s\)</span> a partir del balance de energía.</p>
-<p><span class="math display">\[
-\dot{m}_s\cdot\lambda_s = \dot{m}_v\cdot H_v + \dot{m}_L\cdot H_L - \dot{m}_F\cdot H_F
-\]</span></p>
-<div id="15f1c861" class="cell" data-execution_count="5">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Tebs_sol <span class="op">=</span> <span class="fl">91.67</span> <span class="co">#$^\circ$C</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Tebs_w <span class="op">=</span> <span class="fl">51.11</span> <span class="co">#$^\circ$C</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>lambda_s <span class="op">=</span> <span class="fl">2184.11</span> <span class="co">#kJ/kg</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<section id="chequeo" class="level3">
+<h3 class="anchored" data-anchor-id="chequeo">Chequeo</h3>
+<div id="34d708e6" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>F_t <span class="op">=</span> <span class="fl">0.99</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> U<span class="op">*</span>A_i <span class="op">*</span> dT_ml <span class="op">*</span> F_t</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-\mathrm{T^eb}_{sol} &amp;= 91.670 \; \;\textrm{($^\circ$C)}
-&amp;\mathrm{T^eb}_{w} &amp;= 51.110 \; \;\textrm{($^\circ$C)}
-&amp;\lambda_{s} &amp;= 2184.110 \; \;\textrm{(kJ/kg)}
+F_{t} &amp;= 0.990 \;
 \\[10pt]
+Q &amp;= U \cdot A_{i} \cdot \mathrm{dT}_{ml} \cdot F_{t} \\&amp;= 177.477\ \mathrm{kg} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1} \cdot 17.050\ \mathrm{m}^{2} \cdot 108.002\ \mathrm{°C} \cdot 0.990 \\&amp;= 323.538\ \mathrm{kW}  \\[10pt]
 \end{aligned}
 \]</span></p>
 </div>
 </div>
-<p>Por definición, el <span class="math inline">\(\Delta\text{EPE}\)</span> es la diferencia entre las temperaturas de ebullición de la solución y el agua pura. Ya que la fórmula para <span class="math inline">\(H_v\)</span> se encuentra en función de la temperatura en Farenheit, hacemos el cambio de unidades.</p>
-<div id="dadfb679" class="cell" data-execution_count="6">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short <span class="dv">0</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Tebs_solF <span class="op">=</span> Tebs_sol<span class="op">*</span><span class="dv">9</span><span class="op">/</span><span class="dv">5</span> <span class="op">+</span><span class="dv">32</span> <span class="co">#$^\circ$F</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Tebs_wF <span class="op">=</span> Tebs_w<span class="op">*</span><span class="dv">9</span><span class="op">/</span><span class="dv">5</span> <span class="op">+</span><span class="dv">32</span> <span class="co">#$^\circ$F</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>dEPE <span class="op">=</span> Tebs_solF<span class="op">-</span>Tebs_wF <span class="co">#$^\circ$F</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>H_V <span class="op">=</span> <span class="dv">1116</span><span class="op">+</span><span class="fl">0.45</span><span class="op">*</span>dEPE <span class="co">#Btu/lb</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="54e4bd22" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>T_co2 <span class="op">=</span> T_ci <span class="op">+</span> Q<span class="op">/</span>C_c</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-\mathrm{T^eb}_{solF} &amp;= \mathrm{T^eb}_{sol} \cdot \frac{ 9 }{ 5 } + 32  = 92 \cdot \frac{ 9 }{ 5 } + 32 &amp;= 197 \; \;\textrm{($^\circ$F)}
-\\[10pt]
-\mathrm{T^eb}_{wF} &amp;= \mathrm{T^eb}_{w} \cdot \frac{ 9 }{ 5 } + 32  = 51 \cdot \frac{ 9 }{ 5 } + 32 &amp;= 124 \; \;\textrm{($^\circ$F)}
-\\[10pt]
-\Delta EPE &amp;= \mathrm{T^eb}_{solF} - \mathrm{T^eb}_{wF}  = 197 - 124 &amp;= 73 \; \;\textrm{($^\circ$F)}
-\\[10pt]
-H_{V} &amp;= 1116 + 0.45 \cdot \Delta EPE  = 1116 + 0.45 \cdot 73 &amp;= 1149 \; \;\textrm{(Btu/lb)}
+T_{co2} &amp;= T_{ci} + \frac{ Q }{ C_{c} }  = 310.000\ \mathrm{°C} + \frac{ 323.538\ \mathrm{kW} }{ 41792.449\ \mathrm{kg} \cdot \mathrm{m}^{2} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1} } &amp;= 317.742\ \mathrm{°C}  
 \end{aligned}
 \]</span></p>
 </div>
 </div>
-<p>Las otras entalpías las encontramos de forma gráfica:<br>
-<span class="math inline">\(H_F:~20~\%~\text{sólidos a}~100~\text{°F}\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(55~\text{Btu/lb}\)</span><br>
-<span class="math inline">\(H_L:~50~\%~\text{sólidos a}~197~\text{°F}\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(221~\text{Btu/lb}\)</span></p>
-<div id="3198fd98" class="cell" data-execution_count="7">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>H_V <span class="op">=</span> <span class="dv">1149</span><span class="op">*</span><span class="fl">2.326</span> <span class="co"># kJ/kg</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>H_F <span class="op">=</span> <span class="dv">55</span><span class="op">*</span><span class="fl">2.326</span> <span class="co"># kJ/kg</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>H_L <span class="op">=</span> <span class="dv">221</span><span class="op">*</span><span class="fl">2.326</span> <span class="co"># kJ/kg</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-H_{V} &amp;= 1149 \cdot 2.326 &amp;= 2672.574 \; \;\textrm{(kJ/kg)}
-\\[10pt]
-H_{F} &amp;= 55 \cdot 2.326 &amp;= 127.930 \; \;\textrm{(kJ/kg)}
-\\[10pt]
-H_{L} &amp;= 221 \cdot 2.326 &amp;= 514.046 \; \;\textrm{(kJ/kg)}
-\end{aligned}
-\]</span></p>
-</div>
-</div>
-<div id="d33f6822" class="cell" data-execution_count="8">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> dotm_V<span class="op">*</span>H_V <span class="op">+</span> dotm_L<span class="op">*</span>H_L <span class="op">-</span> dotm_F<span class="op">*</span>H_F <span class="co"># kJ/h</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>dotm_s <span class="op">=</span> q<span class="op">/</span>lambda_s <span class="co">#kg/h</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-q &amp;= \dot m_{V} \cdot H_{V} + \dot m_{L} \cdot H_{L} - \dot m_{F} \cdot H_{F} \\&amp;= 5442.000 \cdot 2672.574 + 3628.000 \cdot 514.046 - 9070 \cdot 127.930 \\&amp;= 15248781.496 \; \;\textrm{(kJ/h)}\\[10pt]
-\\[10pt]
-\dot m_{s} &amp;= \frac{ q }{ \lambda_{s} } \\&amp;= \frac{ 15248781.496 }{ 2184.110 } \\&amp;= 6981.691 \; \;\textrm{(kg/h)}\\[10pt]
-\end{aligned}
-\]</span></p>
-</div>
-</div>
-</section>
-<section id="inciso-3" class="level3">
-<h3 class="anchored" data-anchor-id="inciso-3">Inciso 3</h3>
-<div id="ea87cf22" class="cell" data-execution_count="9">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="dv">2</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> dotm_V<span class="op">/</span>dotm_s <span class="co">#kg/kg</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-E &amp;= \frac{ \dot m_{V} }{ \dot m_{s} }  = \frac{ 5442.00 }{ 6981.69 } &amp;= 0.78 \; \;\textrm{(kg/kg)}
-\end{aligned}
-\]</span></p>
-</div>
-</div>
-</section>
-<section id="inciso-4" class="level3">
-<h3 class="anchored" data-anchor-id="inciso-4">Inciso 4</h3>
-<p>La ecuación de diseño de un evaporador será:</p>
-<p><span class="math display">\[
-q = U\cdot A\cdot\Delta T
-\]</span></p>
-<p>Donde la diferencia de temperaturas <span class="math inline">\(\Delta T\)</span> será la temperatura en el flujo de vapor <span class="math inline">\(\text{S}\)</span> y la temperatura de ebullición de la solución en el evaporador.</p>
-<div id="9ea7468b" class="cell" data-execution_count="10">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> <span class="dv">1400</span> <span class="co">#W/m$^2\cdot^\circ$C</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> q<span class="op">*</span>(<span class="dv">1000</span><span class="op">/</span><span class="dv">3600</span>) <span class="co">#W</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="fl">126.1</span><span class="op">-</span><span class="fl">91.67</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> q<span class="op">/</span>(U<span class="op">*</span>dT) <span class="co">#m$^2$</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[
-\begin{aligned}
-U &amp;= 1400 \; \;\textrm{(W/m$^2\cdot^\circ$C)}
-\\[10pt]
-q &amp;= q \cdot \left( \frac{ 1000 }{ 3600 } \right) \\&amp;= 4235772.638 \cdot \left( \frac{ 1000 }{ 3600 } \right) \\&amp;= 4235772.638 \; \;\textrm{(W)}\\[10pt]
-\\[10pt]
-\Delta T &amp;= 126.1 - 91.67 &amp;= 34.430  
-\\[10pt]
-A &amp;= \frac{ q }{ U \cdot \Delta T } \\&amp;= \frac{ 4235772.638 }{ 1400 \cdot 34.430 } \\&amp;= 87.875 \; \;\textrm{(m$^2$)}\\[10pt]
-\end{aligned}
-\]</span></p>
-</div>
-</div>
+<p>Por lo tanto, el método efectividad-NTU entregó excelentes resultados que son consistentes con el método <span class="math inline">\(\Delta T_{ml}\)</span></p>
 </section>
 </div>
 
@@ -1381,14 +1477,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../../e_prop/08_evaporadores/e08_1.html" class="pagination-link" aria-label="Ejercicio 1: Evaporador de 1 efecto simple">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Ejercicio 1: Evaporador de 1 efecto simple</span>
+      <a href="../e_clase/IIQ2013_C16.html" class="pagination-link" aria-label="Ejercicio clase 16">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Ejercicio clase 16</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../e_prop/08_evaporadores/e08_3.html" class="pagination-link" aria-label="Ejercicio 3: Evaporador de 2 efectos *backward*">
-        <span class="nav-page-text">Ejercicio 3: Evaporador de 2 efectos <em>backward</em></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
