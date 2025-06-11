@@ -1,0 +1,250 @@
+---
+title: 'Ejercicio clase 17'
+format:
+    html: 
+      code-copy: true
+      code-fold: false
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C17.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+
+Se hacen circular $6~\text{kg/s}$ de aire a $1~\text{atm}$ y $450~\text{K}$ a través de un intercambiador de calor compacto (ICC) modelo CF-8.72(c) de $0.6\times0.8~\text{m}^2$ de área frontal y $0.6~\text{m}$ de largo. Por el lado de los tubos ($L = 0.8~\text{m}$) circulan $10~\text{kg/s}$ de agua a $310~\text{K}$.
+
+```{python}
+import handcalcs.render
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+import forallpeople
+import numpy as np
+import forallpeople as si
+from CoolProp.CoolProp import PropsSI
+```
+
+```{python}
+si.environment('default', top_level=True)
+```
+
+## Pregunta 1
+
+El valor del número de Reynolds para la corriente de aire ($Re_{aire}$) es aproximadamente:
+
+(a) $Re_{aire}$ $<$ $1000$ \
+(b) $1000$ $\leq$ $Re_{aire}$ $<$ $2500$ \
+(c) $2500$ $\leq$ $Re_{aire}$ $<$ $5000$ \
+(d) $Re_{aire}$ $\geq$ $5000$
+
+Considere que $\beta_{frontal} = 446 \text{m}^2\text{/m}^3$, en que $\beta_{frontal}$ corresponde a la cara del ICC a travésde la cual ingresa (y sale) el aire. Propiedades termo-físicas: $\mu_{aire} = 2.512 \times 10^{−5}~\text{Pa}\cdot\text{s}.$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_17-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_17-1-sol .collapse .multi-collapse}
+
+Definimos las propiedades termofísicas del agua y el aire,
+
+```{python}
+%%render params sci_not
+cp_agua = PropsSI('C', 'P', 1e5, 'T', 310, 'water') * J / kg / K
+mu_aire = PropsSI('viscosity', 'P', 1e5, 'T', 450, 'air')
+```
+
+```{python}
+%%render params
+F_ic = 6 * kg / s
+A_ic = 0.6*0.8 * m**2 # Área frontal ICC
+L_ic = 0.6 * m # Largo ICC
+
+L_t = 0.8 * m # Largo tubos
+F_t = 10 * kg / s
+```
+
+Para calcular  Reynolds, necesitamos el diámetro equivalente del ICC. Para el modelo cf-8.72(c), 
+
+```{python}
+%%render
+sigma = 0.494
+beta = 446 
+D_h = 0.443*1e-2* m
+mu_aire = mu_aire * Pa * s
+G_ic = F_ic / A_ic
+Re = G_ic * D_h /mu_aire
+A_fr = A_ic
+G_max = F_ic/(sigma*A_fr)
+Re_nax = G_max * D_h /mu_aire
+```
+
+Notar que el número de Reynolds relevante para cálculos de pérdida de carga y transferencia de calor es $Re_{max}$.
+
+Por lo tanto, la alternativa correcta es **c**
+
+:::
+
+## Pregunta 2
+
+El coeficiente de transferencia de calor por convección para el aire ($h_{aire}$) es aproximadamente:
+
+(a) $h_{aire}$ $<$ $200$ $\text{W/m}^2\cdot\text{K}$ \
+(b) $200$ $\leq$ $h_{aire}$ $<$ $500$ $\text{W/m}^2\cdot\text{K}$ \
+(c) $500$ $\leq$ $h_{aire}$ $<$ $1000$ $\text{W/m}^2\cdot\text{K}$ \
+(d) $h_{aire}$ $\geq$ $1000$ $\text{W/m}^2\cdot\text{K}$
+
+Propiedades termo-físicas: $c_{p,~aire} = 1021.105~\text{J/kg}\cdot\text{K}$, $Pr_{aire} = 0.7$.
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_17-2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_17-2-sol .collapse .multi-collapse}
+
+Primero calculamos el Factor de Colburn $j_H$. Desde el gráfico y para la superficie CF-8.72(c), tenemos que
+
+```{python}
+%%render
+j_H = 0.007
+cp_aire = PropsSI('C', 'P', 1e5, 'T', 450, 'air')
+Pr_aire = PropsSI('Prandtl', 'P', 1e5, 'T', 450, 'air')
+cp_aire = cp_aire * J / kg / K
+h_aire = G_max * cp_aire * j_H / Pr_aire**(2/3)
+```
+
+Por lo tanto la alternativa correcta es **b**.
+
+:::
+
+## Pregunta 3
+
+Si $h_{agua} = 200~\text{W/m}^2\cdot\text{K}$ y la eficiencia del arreglo del ICC es de $\eta_o = 0.91$, el valor del coeficiente global de transferencia de calor ($U$) es aproximadamente el siguiente:
+
+(a) $U$ $<$ $200$ $\text{W/m}^2\cdot\text{K}$ \
+(b) $200$ $\leq$ $U$ $<$ $\text{W/m}^2\cdot\text{K}$ \
+(c) $500$ $\leq$ $U$ $<$ $1000$ $\text{W/m}^2\cdot\text{K}$ \
+(d) $U$ $\geq$ $1000$ $\text{W/m}^2\cdot\text{K}$ 
+
+Considere que $\beta_{lateral} = 59.2~\text{m}^2\text{/m}^3$, en que $\beta_{lateral}$ corresponde a la cara del ICC a través de la cual ingresa (y sale) agua. Para reflexión posterior. ¿Cómo haría para estimar hagua a partir de los datos?
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_17-3-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_17-3-sol .collapse .multi-collapse}
+
+Calcularemos el coeficiente global de transferencia de calor despreciando el ensuciamiento. CF-8.72 es un arreglo de tubos con aletas.
+
+La razón entre el área de flujo externo del aire y el área de flujo interno del agua es simplemente la razón de las áreas superficiales por unidad de volumen,
+
+$$ \frac{A_o}{A_i} = \frac{V \beta}{V \beta_{lat}} = \frac{\beta}{\beta_{lat}}$$
+
+Esto se debe a que la configuración de intercambiadores de calor compactos es a flujo cruzado.
+
+```{python}
+%%render
+eta_0 = 0.91
+beta_lat = 59.2
+h_agua = 200 * W / m**2 / K
+Af_a = 0.876
+# Aproximación al área de los tubos
+A_b = 1 - Af_a
+U = ( 1/(eta_0 * h_aire) * (beta_lat/beta) + 1 / h_agua)**(-1)
+```
+
+Por lo tanto la alternativa correcta es **a**.
+
+:::
+
+## Pregunta 4
+
+La temperatura del agua a la salida del ICC ($T_{agua,~o}$) es aproximadamente la siguiente:
+
+(a) $T_{agua,~o}$ $<$ $328$ $\text{K}$ \
+(b) $328$ $\leq$ $T_{agua,~o}$ $<$ $340$ $\text{K}$ \
+(c) $340$ $\leq$ $T_{agua,~o}$ $<$ $350$ $\text{K}$ \
+(d) $T_{agua,~o}$ $\geq$ $350$ $\text{K}$
+
+Propiedades termo-físicas: $c_{p,~agua} = 4178.2~\text{J/kg}\cdot\text{K}$.
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_17-4-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_17-4-sol .collapse .multi-collapse}
+
+Para calcular la temperatura de salida del ICC, podemos buscar el factor de corrección para un flujo perfectamente mezclado y el otro fluido sin mezclar.
+
+Utilizaremos el método de efectividad NTU, utilizando las fórmulas de la clase 20. Para un IC de flujo cruzado, con un fluido mezclado y el otro sin mezclar, tenemos que.
+
+```{python}
+%%render
+C_c = F_t * cp_agua
+C_h = F_ic * cp_aire
+```
+
+El agua tiene una mayor capacidad, por lo tanto
+
+```{python}
+%%render
+C_r = C_h/C_c
+```
+
+Notemos que calculamos el coeficiente global de transferencia de calor basado en área interna. Por lo tanto, para el calculo de NTU utilizaremos esa área.
+
+```{python}
+%%render
+A_i = beta_lat * (A_ic * L_ic) / m
+NTU = (U*A_i)/C_h
+epsilon = 1 - np.exp( (np.exp(-C_r*NTU)-1) / C_r)
+```
+
+Primero calculamos la temperatura del aire a la salida
+
+```{python}
+%%render
+T_hi = 450 * K
+T_ci = 310 * K
+T_ho = T_hi - epsilon * (T_hi-T_ci)
+```
+
+Ahora pudemos calcular la temperatura del fluido frío mediante balance de energía
+
+```{python}
+%%render
+T_co = (T_hi-T_ho) * C_r + T_ci
+```
+
+El agua tan solo cambia levemente su temperatura. Nótese que en estricto rigor deberíamos re-evaluar las propiedades termofísicas de ambas corrientes a la temperatura promedio.
+
+### Método 2: $F_t$ 
+
+Notar que ya calculamos la efectividad. Ah
+
+En este caso, el fluido que se calienta (agua) tiene mayor capacidad que el fluido que se enfría. Por lo tanto, la razón entre el cambio de temperatura del fluido que se enfría y el que se calienta es igual a $1/C_r$.
+
+```{python}
+%%render
+Z = 1/C_r
+P = (T_co - T_ci)/(T_hi-T_ci)
+```
+
+Para estas condiciones, $F_T \approx 0.99 $
+
+```{python}
+%%render
+dT_ml = ((T_hi-T_co) - (T_ho-T_ci)) / np.log((T_hi-T_co)/(T_ho-T_ci))
+```
+
+### Chequeo
+
+```{python}
+%%render
+F_t = 0.99
+Q = U*A_i * dT_ml * F_t
+```
+
+```{python}
+%%render
+T_co2 = T_ci + Q/C_c
+```
+
+Por lo tanto, el método efectividad-NTU entregó excelentes resultados que son consistentes con el método $\Delta T_{ml}$
+
+:::
