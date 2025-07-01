@@ -79,3 +79,5 @@ Aquí podrán encontrar ejercicios sobre la mayoría de los tópicos del curso. 
 * [Clase 15](./e_clase/IIQ2013_C15.qmd)
 * [Clase 16](./e_clase/IIQ2013_C16.qmd)
 * [Clase 17](./e_clase/IIQ2013_C17.qmd)
+* [Clase 18](./e_clase/IIQ2013_C18.qmd)
+* [Clase 19](./e_clase/IIQ2013_C19.qmd)

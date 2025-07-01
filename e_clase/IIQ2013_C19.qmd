@@ -1,0 +1,184 @@
+---
+title: 'Ejercicio clase 19'
+format:
+    html: 
+      code-copy: true
+      code-fold: false
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_clase/jupyter/IIQ2013_C19.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+
+Se desea concentrar 30 ton/h de una solución acuosa con 5% (w/w) de hidróxido de sodio (NaOH) y a 100 °C
+usando un evaporador de tubos cortos verticales. Las figuras adjuntas representan la elevación del punto de
+ebullición (izquierda) y la entalpia (derecha) de las soluciones acuosas de NaOH.
+
+```{python}
+import handcalcs.render
+import forallpeople
+import numpy as np
+import forallpeople as si
+from CoolProp.CoolProp import PropsSI
+```
+
+```{python}
+si.environment('default', top_level=True)
+```
+
+## Pregunta 1
+
+Si el evaporador concentra la hasta $40~\%$ (w/w) de NaOH, éste produce aproximadamente:
+
+(a) $P$ $>$ $5$ $\text{ton/h}$ de solución concentrada de NaOH\
+(b) $4$ $<$ $P$ $\leq$ $5$ $\text{ton/h}$ de solución concentrada de NaOH\
+(c) $3$ $<$ $P$ $\leq$ $4$ $\text{ton/h}$ de solución concentrada de NaOH\
+(d) $P$ $\leq$ $3$ $\text{ton/h}$ de solución concentrada de NaOH
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_19-1-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_19-1-sol .collapse .multi-collapse}
+
+El flujo másico de producto se puede calcular directamente del balance de masa de soluto.
+
+```{python}
+%%render
+F = 30 * 1000 / 3600 * kg / s
+w_F = 0.05
+w_L = 0.4
+L = F*(w_F/w_L)
+```
+
+Escribimos esta cantidad en toneladas por hora multiplicando por 3600/1000
+
+```{python}
+P = L.value * 3600 / 1000
+print('El flujo de producto es P = %.3f ton/h' % P)
+```
+
+Por lo tanto, la alternativa correcta es **c**.
+
+:::
+
+## Pregunta 2
+
+Si el evaporador opera a $p = 0.135~\text{bar}$ $\left[~T_v(p) = 52~\text{°C};~\lambda_{lv}(p) = 567.9~\text{kcal/kg}~\right]$, la temperatura de operación del mismo es aproximadamente la siguiente:
+
+(a) $T$ $>$ $75$ $\text{°C}$\
+(b) $65$ $<$ $T$ $\leq$ $75$ $\text{°C}$\
+(c) $55$ $<$ $T$ $\leq$ $65$ $\text{°C}$\
+(d) $T$ $\leq$ $55$ $\text{°C}$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_19-2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_19-2-sol .collapse .multi-collapse}
+
+Del gráfico obtenemos la elevación del punto de ebullición en el evaporador. Para esto, utilizamos la curva de elevación de la temperatura de ebullición de la solución para una concentración de 40%. Considerando una temperatura de ebullición del agua pura igual a 52°C, $\Delta T_e$ es aproximadamente 27.5°C.
+
+```{python}
+%%render
+p = 0.135
+T_v = 52 * K
+lambda_lvT = 567.9 * J / kg 
+T = T_v + 27.5 * K
+```
+
+Por lo tanto la temperatura de operación del evaporador es 79.5°C **(alternativa a)**.
+
+:::
+
+## Pregunta 3
+
+Si el evaporador usa vapor saturado a $9.32~\text{bar}$ $\left(~T_S = 177~\text{°C}; \lambda_S = 483.4~\text{kcal/kg}~\right)$ como medio calefactor, el requerimiento de vapor de este es aproximadamente la siguiente:
+
+(a) $S$ $>$ $30$ $\text{ton/h}$ de vapor\
+(b) $25$ $<$ $S$ $\leq$ $30$ $\text{ton/h}$ de vapor\
+(c) $20$ $<$ $S$ $\leq$ $25$ $\text{ton/h}$ de vapor\
+(d) $S$ $\leq$ $20$ $\text{ton/h}$ de vapor
+
+*Hint: Para el cálculo de la entalpía de la corriente de vapor sobrecalentado que se desprende del evaporador, note que se usa $T_{ref} = 0~\text{°C}$ (agua en fase líquida) como estado de referencia en la construcción del diagrama entalpía−composición para las soluciones acuosas de NaOH, y use los siguientes valores para las capacidades caloríficas: $c_{p,l} = 1~\text{kcal/kg}\cdot\text{°C}$ para agua en fase líquida, y $c_{p,g} = 0.45~\text{kcal/kg}\cdot\text{°C}$ para vapor de agua.*
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_19-3-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_19-3-sol .collapse .multi-collapse}
+
+Realizando un balance de energía en el evaporador, tenemos que
+
+$$ S \Delta H_{s} = V H_V + L H_L - F H_F $$
+
+Para este ejercicio, resolveremos el balance de energía completo considerando el sobrecalentaimiento del vapour que se desprende del evaporador.
+
+```{python}
+%%render params
+T_F = 100 * K
+T_s = 177  * K
+p_s = 9.32 # Pa
+lambda_s = 483.4 * J/kg 
+cp_l = 1 * J / kg / K # agua
+cp_g = 0.45 * J / kg / K  # vapor
+
+# H_L cp_l * (T)
+# H_F = cp_l * (T_F)
+```
+
+Primero calculamos el flujo de vapor utilizando un balance de masa, y encontramos las entalpías de entrada y salida de la solución acuosa utilizando el gráfico de la derecha del enunciado. 
+
+```{python}
+%%render
+V = F*(1-w_F/w_L) 
+H_V = cp_l * (T_v) + lambda_lvT + cp_g*(T-T_v)
+H_F = 96 * J/ kg 
+H_L = 88  * J / kg 
+S = (V*H_V + L*H_L - F*H_F)/lambda_s
+```
+
+```{python}
+print("S = %.3f ton/h" % (S.value*3600/1000))
+```
+
+Por lo tanto la alternativa correcta es **a**
+
+:::
+
+## Pregunta 4
+
+Si el equipo está constituido de un haz de $N_t = 1200$ tubos de $L = 1~\text{m}$ de alto y $D_o = 2.5~\text{cm}$ de diámetro, el coeficiente global de transferencia de calor es aproximadamente el siguiente:
+
+(a) $U$ $>$ $1500$ $\text{kcal/h}\cdot\text{m}^2\cdot\text{°C}$\
+(b) $1250$ $<$ $U$ $\leq$ $1500$ $\text{kcal/h}\cdot\text{m}^2\cdot\text{°C}$\
+(c) $1000$ $<$ $U$ $\leq$ $1250$ $\text{kcal/h}\cdot\text{m}^2\cdot\text{°C}$\
+(d) $U$ $\leq$ $1000$ $\text{kcal/h}\cdot\text{m}^2\cdot\text{°C}$
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#ec_19-4-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#ec_19-4-sol .collapse .multi-collapse}
+
+En esta pregunta recordamos que el calor total cedido por el vapor es aproximadamente $Q = S \lambda_s$. Considerando que la transferencia de calor ocurre de manera isotérmica entre los tubos y el licor, la diferencia de temperatura relevante es constante e igual a $T_s - T$. Finalmente, podemos obtener el coeficiente global de transferencia de calor con la fórmula $ U = \frac{Q}{A(T_s-T)} $
+
+```{python}
+from math import pi
+```
+
+```{python}
+%%render
+N_t = 1200
+L_t = 1 * m
+D_o = 0.025 * m
+A = N_t * pi * D_o * L_t 
+U = (S*lambda_s)/(A*(T_s-T))
+```
+
+```{python}
+U_kcal_h = U.value * 3600
+print("U = %.3f kcal h^-1 m^-2 °C^-1" % U_kcal_h)
+```
+
+Por lo tanto, la alternativa correcta es **a**
+
+:::
