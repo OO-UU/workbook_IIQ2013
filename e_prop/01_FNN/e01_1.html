@@ -509,6 +509,18 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 17</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_clase/IIQ2013_C18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 18</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../e_clase/IIQ2013_C19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 19</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -638,7 +650,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="e01_1-sol" class="collapse multi-collapse">
-<div id="92608f0a" class="cell" data-execution_count="1">
+<div id="d5baad3f" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquetes utilizados</span></span>
@@ -678,7 +690,7 @@ v = \left(\frac{\tau_w}{k}\right)^{\frac{1}{n}}\frac{nR}{1+n}\left(1-\left(\frac
 \]</span></p>
 <p>Donde <span class="math inline">\(R\)</span> representa el radio de la tubería y <span class="math inline">\(r\)</span> el radio para un punto específico. Notar que <span class="math inline">\(R=r\)</span> en la pared.</p>
 <p>Ya que contamos con datos experimentales, podemos realizar una curva de ajuste que encuentre los parámetros de <span class="math inline">\(n\)</span> y de <span class="math inline">\(k\)</span> que mejor representan al fluido.</p>
-<div id="53337c23" class="cell" data-execution_count="2">
+<div id="57a3f49a" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definimos nuestra función</span></span>
@@ -750,7 +762,7 @@ Re' = \frac{\rho\bar{V}D}{\mu_a}
 <p><span class="math display">\[
 \bar{V} = \frac{nR}{3n+1}\left(\frac{\tau_w}{k}\right)^{\frac{1}{n}}
 \]</span></p>
-<div id="2ca017c7" class="cell" data-execution_count="3">
+<div id="da9d28be" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -781,7 +793,7 @@ v_{prom} &amp;= \frac{ n_{ajus} \cdot R }{ 3 \cdot n_{ajus} + 1 } \cdot \left( \
 </div>
 <p>Para fluidos no Newtonianos, el flujo es turbulento si se cumple <span class="math inline">\(Re'&gt;2100+875(1-n)\)</span>. De lo contrario el flujo es laminar.</p>
 <p>Calculamos el límite del intervalo y comparamos.</p>
-<div id="11790c4b" class="cell" data-execution_count="4">
+<div id="a6536189" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> Re <span class="op">&gt;</span> <span class="dv">2100</span><span class="op">+</span><span class="dv">875</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>n_ajus):</span>

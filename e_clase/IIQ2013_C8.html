@@ -509,6 +509,18 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 17</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_clase/IIQ2013_C18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 18</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_clase/IIQ2013_C19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 19</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -554,7 +566,7 @@ window.Quarto = {
 
 <p>Se efectúa un experimento en un estanque de laboratorio con configuración estándar de <span class="math inline">\(10 \mathrm{~L}\)</span> de capacidad <span class="math inline">\((H / D_T=1)\)</span> y equipado con una turbina de seis palas. Experimentalmente se determina que el tiempo de mezclado para alcanzar una uniformidad superior a <span class="math inline">\(99.99 \%\)</span> en una solución <span class="math inline">\(\left[\rho=1000 \mathrm{~kg} / \mathrm{m}^3, \mu=60 \mathrm{~cp}\right]\)</span> es aproximadamente <span class="math inline">\(t_{\mathrm{m}}=1 \mathrm{~min}\)</span> al operar a <span class="math inline">\(500 \mathrm{~rpm}\)</span>. Interesa usar dichos datos para dimensionar un estanque industrial para mezclar <span class="math inline">\(100 \mathrm{~m}^3\)</span> de solución.</p>
 <p>En primer lugar se deben cargar las librerias que vamos a utilizar</p>
-<div id="1352194b" class="cell" data-execution_count="1">
+<div id="6a1adfa7" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt, pi</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
@@ -579,7 +591,7 @@ Mostrar solución
 <p><span class="math display">\[
 D_t = \sqrt[3]{\frac{4V}{\pi}}
 \]</span></p>
-<div id="4718b701" class="cell" data-execution_count="2">
+<div id="ce502a74" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Para volumen laboratorio</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="fl">0.01</span> <span class="co">#m$^3$</span></span>
@@ -601,7 +613,7 @@ D_{am} &amp;= D_{Tm} \cdot S_{1} \\&amp;= 0.234 \cdot 0.250 \\&amp;= 0.058 \; \;
 </div>
 </div>
 <p>luego para el agitador de industrial.</p>
-<div id="f086e848" class="cell" data-execution_count="3">
+<div id="af651650" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Para volumen laboratorio</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">100</span> <span class="co">#m$^3$</span></span>
@@ -642,7 +654,7 @@ Mostrar solución
 <p><span class="math display">\[
 N_m D_{d, m}=N_p D_{a, p} \Rightarrow N_p=N_m \frac{D_{T, m}}{D_{T, p}}
 \]</span></p>
-<div id="2d1c7785" class="cell" data-execution_count="4">
+<div id="a8488dd2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Nm <span class="op">=</span> <span class="dv">500</span> <span class="co">#RPM</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Np <span class="op">=</span> Nm<span class="op">*</span>D_Tm<span class="op">/</span>D_Tp <span class="co">#RPM</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -676,7 +688,7 @@ Mostrar solución
 <p><span class="math display">\[
 Re=\frac{\rho_p N_p D_{a, p}^2}{\mu_p}
 \]</span></p>
-<div id="fc8863e0" class="cell" data-execution_count="5">
+<div id="370b6c58" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="dv">1000</span> <span class="co">#kg/m$^3$</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="fl">0.06</span> <span class="co">#Pa$\cdot$s</span></span>
@@ -709,7 +721,7 @@ Re=\frac{\rho_p N_p D_{a, p}^2}{\mu_p}
 Mostrar solución
 </button>
 <div id="ec_8-4-sol" class="collapse multi-collapse">
-<div id="cd7dd523" class="cell" data-execution_count="6">
+<div id="31ac440a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>K_T <span class="op">=</span> <span class="fl">5.75</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> K_T<span class="op">*</span>rho<span class="op">*</span>(Np<span class="op">/</span><span class="dv">60</span>)<span class="op">**</span><span class="dv">3</span><span class="op">*</span>D_ap<span class="op">**</span><span class="dv">5</span><span class="op">/</span><span class="dv">1000</span> <span class="co">#kW</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>

@@ -509,6 +509,18 @@ window.Quarto = {
  <span class="menu-text">Ejercicio clase 17</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_clase/IIQ2013_C18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 18</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_clase/IIQ2013_C19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio clase 19</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -552,7 +564,7 @@ window.Quarto = {
 
 
 <p>Se usa un intercambiador de calor de tubos y carcasa (ICTC) tipo 1-2n para enfriar <span class="math inline">\(F_h = 20~\text{ton/h}\)</span> de agua (flujo por lado de carcasa) a <span class="math inline">\(T_{h,i} = 81~\text{°C}\)</span> con <span class="math inline">\(F_c = 120~\text{ton/h}\)</span> de agua de enfriamiento a <span class="math inline">\(T_{c,i} = 17~\text{°C}\)</span> (flujo por el lado de los tubos). El ICTC dispone de <span class="math inline">\(N_t = 60\)</span> tubos de <span class="math inline">\(1~\text{in}\)</span> de diámetro nominal (<span class="math inline">\(D_o = 2.54~\text{cm}\)</span>; <span class="math inline">\(D_i = 2.21 ~\text{cm}\)</span>) y <span class="math inline">\(L = 2.44~\text{m}\)</span> de largo (<span class="math inline">\(A = 11.7~\text{m}^2\)</span>) ordenados según un arreglo cuadrado de <span class="math inline">\(P_T = 1.25~\text{in}\)</span> de paso. La carcasa tiene <span class="math inline">\(D_c =31.9~\text{cm}\)</span> de diámetro, y está equipada con <span class="math inline">\(N_B = 30\)</span> deflectores segmentales igualmente espaciados.</p>
-<div id="8553f51e" class="cell" data-execution_count="1">
+<div id="7cc2548b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
@@ -560,7 +572,7 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople <span class="im">as</span> si</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="985ee631" class="cell" data-execution_count="2">
+<div id="42da3e91" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>si.environment(<span class="st">'default'</span>, top_level<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
@@ -580,7 +592,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="ec_15-1-sol" class="collapse multi-collapse">
-<div id="08cbc7b7" class="cell" data-execution_count="3">
+<div id="e666fb97" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="fl">2.44</span> <span class="op">*</span> m</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>D_o <span class="op">=</span> <span class="fl">0.0254</span> <span class="op">*</span> m</span>
@@ -609,7 +621,7 @@ a_{c} &amp;= D_{c} \cdot B \cdot \frac{ P_{t} - D_{o} }{ P_{t} }  = 319.000\ \ma
 \]</span></p>
 </div>
 </div>
-<div id="2b6be7ff" class="cell" data-execution_count="4">
+<div id="20d755d2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>F_h <span class="op">=</span> <span class="dv">20</span><span class="op">*</span><span class="fl">1e3</span><span class="op">/</span><span class="dv">3600</span> <span class="op">*</span> kg <span class="op">/</span> s</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="fl">4.89e-4</span> <span class="op">*</span> Pa <span class="op">*</span>s</span>
@@ -636,7 +648,7 @@ D_{e} &amp;= \frac{ 4 \cdot \left( P_{t} \right) ^{ 2 } - \pi \cdot \left( D_{o}
 </div>
 </div>
 <p>Por lo tanto el flujo por el lado de la carcasa es turbulento.</p>
-<div id="7264299b" class="cell" data-execution_count="5">
+<div id="5c8658a8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>j_h <span class="op">=</span> <span class="fl">0.36</span> <span class="op">*</span> Re_c<span class="op">**</span><span class="fl">0.55</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Pr <span class="op">=</span> <span class="fl">3.15</span></span>
@@ -679,7 +691,7 @@ h_{c} &amp;= \mathrm{Nusselt}_{c} \cdot \frac{ k }{ D_{e} }  = 217.541 \cdot \fr
 Mostrar solución
 </button>
 <div id="ec_15-2-sol" class="collapse multi-collapse">
-<div id="ff984428" class="cell" data-execution_count="6">
+<div id="501db81f" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">60</span> <span class="co"># Número de tubos</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">2</span> <span class="co"># Número de pasadas</span></span>
@@ -706,7 +718,7 @@ G_{t} &amp;= \frac{ F_{c} }{ a_{t} }  = \frac{ 33.333\ \mathrm{kg} \cdot \mathrm
 </div>
 </div>
 <p>Con el flux másico por el lado de los tubos, podemos calcular el número de Reynolds en el lado de los tubos.</p>
-<div id="81829a65" class="cell" data-execution_count="7">
+<div id="77802c0e" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mu_t <span class="op">=</span> <span class="fl">9.59e-4</span> <span class="op">*</span> Pa <span class="op">*</span> s</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Re_t <span class="op">=</span> (G_t <span class="op">*</span> D_i) <span class="op">/</span> mu_t</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -721,7 +733,7 @@ G_{t} &amp;= \frac{ F_{c} }{ a_{t} }  = \frac{ 33.333\ \mathrm{kg} \cdot \mathrm
 </div>
 </div>
 <p>Por lo tanto el flujo es turbulento. Asumiendo paredes lisas, podemos utilizar la ecuación de Dittus Boelman.</p>
-<div id="0a1576f9" class="cell" data-execution_count="8">
+<div id="5a002866" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="fl">0.4</span> <span class="co">#(Para calentamiento)</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Pr_t <span class="op">=</span> <span class="fl">6.62</span></span>
@@ -764,7 +776,7 @@ Mostrar solución
 </button>
 <div id="ec_15-3-sol" class="collapse multi-collapse">
 <p>Primero, calculamos las NTU basadas en el fluido con menor capacidad calórica. En este caso, es el fluido por la carcasa.</p>
-<div id="d3245aa4" class="cell" data-execution_count="9">
+<div id="895ad410" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>c_pc <span class="op">=</span> <span class="dv">4184</span> <span class="op">*</span> J <span class="op">/</span> kg <span class="op">/</span> K</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>c_ph <span class="op">=</span> <span class="dv">4181</span> <span class="op">*</span> J <span class="op">/</span> kg <span class="op">/</span> K</span>
@@ -795,10 +807,10 @@ A &amp;= 11.7 \cdot \left( m \right) ^{ 2 }  = 11.7 \cdot \left( m \right) ^{ 2 
 </div>
 </div>
 <p>Calcularemos la efectividad del ICTC de manera analítica</p>
-<div id="73ea10b9" class="cell" data-execution_count="10">
+<div id="06a5c324" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt, exp</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="b0c64aae" class="cell" data-execution_count="11">
+<div id="352fe2c8" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>C_r <span class="op">=</span> C_h<span class="op">/</span>C_c</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="dv">2</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> C_r <span class="op">+</span> sqrt(<span class="dv">1</span><span class="op">+</span>C_r<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> (<span class="dv">1</span><span class="op">+</span>exp(<span class="op">-</span>NTU<span class="op">*</span>sqrt(<span class="dv">1</span><span class="op">+</span>C_r<span class="op">**</span><span class="dv">2</span>)))<span class="op">/</span>(<span class="dv">1</span><span class="op">-</span>exp(<span class="op">-</span>NTU<span class="op">*</span>sqrt(<span class="dv">1</span><span class="op">+</span>C_r<span class="op">**</span><span class="dv">2</span>))))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -813,7 +825,7 @@ C_{r} &amp;= \frac{ C_{h} }{ C_{c} }  = \frac{ 23227.778\ \mathrm{kg} \cdot \mat
 </div>
 </div>
 <p>Con la eficiencia, podemos calcular la temperatura de salida del fluido por la carcasa</p>
-<div id="f3c0351a" class="cell" data-execution_count="12">
+<div id="8cba7a52" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>T_hi <span class="op">=</span> <span class="dv">81</span> <span class="op">*</span> C</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>T_ci <span class="op">=</span> <span class="dv">17</span> <span class="op">*</span> C</span>
