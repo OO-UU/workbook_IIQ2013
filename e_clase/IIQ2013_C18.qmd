@@ -19,6 +19,8 @@ jupyter: python3
 
 ```{python}
 import handcalcs.render
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
 import forallpeople
 import numpy as np
 import forallpeople as si

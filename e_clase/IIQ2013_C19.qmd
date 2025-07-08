@@ -22,6 +22,8 @@ ebullición (izquierda) y la entalpia (derecha) de las soluciones acuosas de NaO
 
 ```{python}
 import handcalcs.render
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
 import forallpeople
 import numpy as np
 import forallpeople as si
@@ -131,8 +133,8 @@ Primero calculamos el flujo de vapor utilizando un balance de masa, y encontramo
 
 ```{python}
 %%render
-V = F*(1-w_F/w_L) 
-H_V = cp_l * (T_v) + lambda_lvT + cp_g*(T-T_v)
+V = F*(1-w_F/w_L)
+H_V = cp_l * (T_v-T) + lambda_lvT + cp_g*(T-T_v)
 H_F = 96 * J/ kg 
 H_L = 88  * J / kg 
 S = (V*H_V + L*H_L - F*H_F)/lambda_s
