@@ -569,7 +569,7 @@ window.Quarto = {
 
 
 <p>Librerias a utilizar:</p>
-<div id="9f2c2cef" class="cell" data-execution_count="1">
+<div id="36610c0c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
@@ -580,10 +580,10 @@ window.Quarto = {
 <section id="cuantificar-el-efecto-de-aumentar-el-número-de-pasos-por-los-tubos-de-2-a-4" class="level2">
 <h2 class="anchored" data-anchor-id="cuantificar-el-efecto-de-aumentar-el-número-de-pasos-por-los-tubos-de-2-a-4">1. Cuantificar el efecto de aumentar el número de pasos por los tubos de 2 a 4</h2>
 <p>La caída de presión por el lado de la carcasa es menor que la caída de presión por los tubos. Se pretende realizar modificaciones al diseño para disminuir la diferencia de caídas de presión.</p>
-<div id="75199888" class="cell" data-execution_count="2">
+<div id="eec7b696" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>si.environment(<span class="st">'default'</span>, top_level<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="2fa8cb8a" class="cell" data-execution_count="3">
+<div id="8b348c4e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>F_h <span class="op">=</span> <span class="dv">20</span><span class="op">*</span><span class="fl">1e3</span><span class="op">/</span><span class="dv">3600</span> <span class="op">*</span> kg <span class="op">/</span> s</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>F_c <span class="op">=</span> <span class="dv">120</span><span class="op">*</span><span class="fl">1e3</span><span class="op">/</span><span class="dv">3600</span> <span class="op">*</span> kg <span class="op">/</span> s</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -598,7 +598,7 @@ F_{c} &amp;= 120 \cdot \frac{ 1 \times 10 ^ {3} }{ 3600 } \cdot \frac{ \mathrm{k
 </div>
 </div>
 <p>Definiendo <span class="math inline">\(N\)</span> como el número de tubos multiplicado por el número de pasadas por los tubos, <span class="math inline">\(N = N_t \times N_{p,t}\)</span>, la caída de presión inicial es</p>
-<div id="660ba915" class="cell" data-execution_count="4">
+<div id="c2d19e27" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="fl">7.04e-3</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>G_t <span class="op">=</span> <span class="fl">689.8</span> <span class="op">*</span> kg <span class="op">/</span> m<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> s</span>
@@ -632,7 +632,7 @@ L &amp;= 5.000\ \mathrm{m} \;
 \]</span></p>
 </div>
 </div>
-<div id="d0535238" class="cell" data-execution_count="5">
+<div id="eb301062" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>a_t <span class="op">=</span> N<span class="op">/</span><span class="dv">2</span> <span class="op">*</span> pi<span class="op">*</span>D_i<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">4</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>G_tc <span class="op">=</span> F_c<span class="op">/</span>a_t</span>
@@ -653,7 +653,7 @@ G_{tc} &amp;= \frac{ F_{c} }{ a_{t} }  = \frac{ 33.333\ \mathrm{kg} \cdot \mathr
 </div>
 </div>
 <p>El 4 proviene de las pérdidas por singularidad mediante inversión de flujo, entrada y salida. Ahora repetiremos el cálculo de caída de presión con dos pasadas.</p>
-<div id="81cf5812" class="cell" data-execution_count="6">
+<div id="2d5bf2a7" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>N_p <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Delta_p_t_2 <span class="op">=</span> (<span class="dv">4</span> <span class="op">*</span> f <span class="op">*</span> ((L<span class="op">*</span>N_p)<span class="op">/</span>D_i) <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> N_p) <span class="op">*</span> (G_t<span class="op">**</span><span class="dv">2</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>rho)) <span class="op">*</span> (mu_s<span class="op">/</span>mu)<span class="op">**</span><span class="fl">0.14</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -668,7 +668,7 @@ N_{p} &amp;= 4 \;
 </div>
 </div>
 <p>La caída de presión por el lado de los tubos al aumentar el número de pasadas aumenta linealmente con el número de pasadas. No hay ningún otro parámetro que influya esta caída de presión asociado al número de pasadas. El flujo másico dentro del ICTC se mantiene constante.</p>
-<div id="1e97f3ce" class="cell" data-execution_count="7">
+<div id="7e881c37" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>per <span class="op">=</span> Delta_p_t_2 <span class="op">/</span> Delta_p_t_1 <span class="op">-</span> <span class="dv">1</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -687,7 +687,7 @@ N_{p} &amp;= 4 \;
 <p><span class="math display">\[U_1 A_1 (F_T \Delta T_{ml})_1 = U_2 A_2 (F_T \Delta T_{ml})_2 \]</span></p>
 <p>Asumiendo que las variaciones de <span class="math inline">\(F_T \Delta T_{ml}\)</span> serán despreciables,</p>
 <p><span class="math display">\[ \frac{U_2}{U_1} = \frac{A_1}{A_2} = \frac{1 \times N_t \times \pi \times D_e \times L}{2 \times N_t \times \pi \times D_e \times L} = 1/2 \]</span></p>
-<div id="82d5994b" class="cell" data-execution_count="8">
+<div id="ba72b10f" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> F_c<span class="op">/</span>F_h</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -721,7 +721,7 @@ T_{ho} &amp;= 32.8 \cdot C  = 32.8 \cdot C &amp;= 32.800\ \mathrm{C}
 <section id="duplicar-el-espaciamiento-de-deflectores-de-b0.2-a-b0.4" class="level2">
 <h2 class="anchored" data-anchor-id="duplicar-el-espaciamiento-de-deflectores-de-b0.2-a-b0.4">2. Duplicar el espaciamiento de deflectores de <span class="math inline">\(B=0.2\)</span> a <span class="math inline">\(B=0.4\)</span></h2>
 <p>Caso inicial</p>
-<div id="0e8c05e0" class="cell" data-execution_count="9">
+<div id="8c7c8c31" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>D_c <span class="op">=</span> <span class="fl">0.625</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>B_1 <span class="op">=</span> <span class="fl">0.125</span></span>
@@ -749,7 +749,7 @@ a_{c2} &amp;= D_{c} \cdot B_{2} \cdot \frac{ P_{t} - D_{e} }{ P_{t} }  = 0.625 \
 </div>
 </div>
 <p>Al duplicar el espaciamiento entre deflectores, el área de flujo por la carcasa se duplica.</p>
-<div id="b36c6ea6" class="cell" data-execution_count="10">
+<div id="1ee93b50" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>G_c1 <span class="op">=</span> F_h<span class="op">/</span>a_c1</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>G_c2 <span class="op">=</span> F_h<span class="op">/</span>a_c2</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -766,7 +766,7 @@ G_{c2} &amp;= \frac{ F_{h} }{ a_{c2} }  = \frac{ 5.556\ \mathrm{kg} \cdot \mathr
 <p>Como los diámetros equivalentes son los mismos ya que no se modifica ningún elemento del arreglo de tubos, tenemos que</p>
 <p><span class="math inline">\(Re_1\)</span> es conocido</p>
 <p><span class="math display">\[ (\frac{G_c D}{\mu})_1 = 18273 \]</span> <span class="math display">\[ \frac{Re_2}{Re_1} = \frac{G_{c2}}{G_{c1}}\]</span></p>
-<div id="0547a153" class="cell" data-execution_count="11">
+<div id="f82714ec" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>Re_c1 <span class="op">=</span> <span class="dv">18273</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>Re_c2 <span class="op">=</span> Re_c1 <span class="op">*</span> G_c2<span class="op">/</span>G_c1</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -781,7 +781,7 @@ G_{c2} &amp;= \frac{ F_{h} }{ a_{c2} }  = \frac{ 5.556\ \mathrm{kg} \cdot \mathr
 </div>
 </div>
 <p>Con esto podemos calcular el coeficiente de Colburn</p>
-<div id="e96e0213" class="cell" data-execution_count="12">
+<div id="edc49dfc" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>j_hc2 <span class="op">=</span> <span class="fl">0.36</span> <span class="op">*</span> Re_c2<span class="op">**</span><span class="fl">0.55</span> </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -794,7 +794,7 @@ j_{hc2} &amp;= 0.36 \cdot \left( \mathrm{Re}_{c2} \right) ^{ 0.55 }  = 0.36 \cdo
 </div>
 <p>ya que <span class="math inline">\(Pr\)</span> y <span class="math inline">\(\mu\)</span> son los mismos en ambos casos, tenemos que</p>
 <p><span class="math display">\[ \frac{Nu_2}{Nu_1} = \frac{j_{hc2}}{j_{hc1}}\]</span></p>
-<div id="7a1ccf28" class="cell" data-execution_count="13">
+<div id="2fae4a8f" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>j_hc1 <span class="op">=</span> <span class="fl">79.5</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>Nusselt_1 <span class="op">=</span> <span class="fl">116.5</span></span>
@@ -812,7 +812,7 @@ j_{hc1} &amp;= 79.500 \;
 </div>
 </div>
 <p>Calculamos el diámetro equivalente de la carcasa</p>
-<div id="e86a6daa" class="cell" data-execution_count="14">
+<div id="2a762a39" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mu_c1 <span class="op">=</span> <span class="fl">4.89e-4</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>D_e <span class="op">=</span> Re_c1<span class="op">*</span>mu<span class="op">/</span>G_c1</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -827,7 +827,7 @@ D_{e} &amp;= \mathrm{Re}_{c1} \cdot \frac{ \mu }{ G_{c1} }  = 18273 \cdot \frac{
 </div>
 </div>
 <p><span class="math display">\[ \frac{h_c2}{h_c1} = \frac{Nu_2 D_{e2}}{k_2} \frac{k_1}{Nu_1 D_{e1}} = Nu_2/Nu_1 \]</span></p>
-<div id="7e673d93" class="cell" data-execution_count="15">
+<div id="813f4150" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>h_c1 <span class="op">=</span> <span class="dv">3013</span> <span class="op">*</span> W <span class="op">/</span> m<span class="op">**</span><span class="dv">2</span><span class="op">/</span>K</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>h_c2 <span class="op">=</span> Nusselt_2<span class="op">/</span>Nusselt_1 <span class="op">*</span> h_c1</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -841,7 +841,7 @@ h_{c2} &amp;= \frac{ \mathrm{Nusselt}_{2} }{ \mathrm{Nusselt}_{1} } \cdot h_{c1}
 \]</span></p>
 </div>
 </div>
-<div id="48c2b28b" class="cell" data-execution_count="16">
+<div id="cc30f78b" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>h_t <span class="op">=</span> <span class="dv">3192</span> <span class="op">*</span> W <span class="op">/</span> (m<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> K)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>A_o <span class="op">=</span> <span class="fl">100.5</span> <span class="op">*</span> m<span class="op">**</span><span class="dv">2</span></span>
@@ -869,7 +869,7 @@ U_{2} &amp;= \left( \frac{ 1 }{ h_{c2} } + \frac{ A_{o} }{ A_{i} } \cdot \frac{ 
 </div>
 <p>Por lo tanto el coeficiente globala de transferencia de calor disminuirá en un 18.22%. Ahora procederemos al cálculo de caída de presión. Notando que ahora el espaciamiento de la carcasa se duplico, asumiremos que <span class="math inline">\(N_b = 20\)</span>. Asumiendo que no hay gran variación en los factores de fricción para la disminuicón del número de Reynolds, <span class="math inline">\(f_1 = f_2\)</span>, tenemos que</p>
 <p><span class="math display">\[ \frac{\Delta p_2}{\Delta p_1} = \frac{(N_{b1} + 1)(G_{c1}^2)}{(N_{b2} + 1)(G_{c2}^2)} \]</span></p>
-<div id="ffc14b9a" class="cell" data-execution_count="17">
+<div id="8a77355c" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>N_b1 <span class="op">=</span> <span class="dv">39</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>N_b2 <span class="op">=</span> <span class="dv">19</span></span>
@@ -902,7 +902,7 @@ f_{2} &amp;= 0.300 \;
 <section id="recomienda-alguna-de-las-modificaciones-anteriores" class="level3">
 <h3 class="anchored" data-anchor-id="recomienda-alguna-de-las-modificaciones-anteriores">3. ¿Recomienda alguna de las modificaciones anteriores?</h3>
 <p>El cambio anterior se recomienda, sin embargo una solución óptima se puede encontrar con un mayor número de deflectores,</p>
-<div id="e42d6b9e" class="cell" data-execution_count="18">
+<div id="3f55b59d" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> L<span class="op">/</span>(N_b1<span class="op">+</span><span class="dv">1</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>N_b1 <span class="op">=</span> L<span class="op">/</span>B<span class="op">-</span><span class="dv">1</span></span>
@@ -932,7 +932,7 @@ G_{c3} &amp;= G_{c1} \cdot \frac{ B }{ \mathrm{B3} }  = 355.556\ \mathrm{kg} \cd
 </div>
 </div>
 <p>Calculamos el nuevo coeficiente de transferencia de calor tomando la razón de los caudales elevado a 0.55,</p>
-<div id="17962808" class="cell" data-execution_count="19">
+<div id="1e91a639" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>h_c3 <span class="op">=</span> (G_c3<span class="op">/</span>G_c1)<span class="op">**</span><span class="fl">0.55</span> <span class="op">*</span> h_c1</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -944,7 +944,7 @@ h_{c3} &amp;= \left( \frac{ G_{c3} }{ G_{c1} } \right) ^{ 0.55 } \cdot h_{c1} \\
 </div>
 </div>
 <p>Finalmente, calculamos el cambio en el coeficiente global de transferencia de calor para la nueva configuración.</p>
-<div id="0b71f615" class="cell" data-execution_count="20">
+<div id="77b714b1" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>h_t <span class="op">=</span> <span class="dv">3192</span> <span class="op">*</span> W<span class="op">/</span>(m<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> K)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>A_o <span class="op">=</span> <span class="fl">100.5</span> <span class="op">*</span> m<span class="op">**</span><span class="dv">2</span></span>
@@ -960,7 +960,7 @@ h_{t} &amp;= 3192.000\ \mathrm{kg} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1} \
 \]</span></p>
 </div>
 </div>
-<div id="3a6a7794" class="cell" data-execution_count="21">
+<div id="0ffa33c6" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>U_1 <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>h_c1 <span class="op">+</span> A_o<span class="op">/</span>A_i <span class="op">*</span> <span class="dv">1</span><span class="op">/</span>h_t)<span class="op">**-</span><span class="dv">1</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>U_2 <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>h_c3 <span class="op">+</span> A_o<span class="op">/</span>A_i <span class="op">*</span> <span class="dv">1</span><span class="op">/</span>h_t)<span class="op">**-</span><span class="dv">1</span></span>

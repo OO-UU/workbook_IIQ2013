@@ -562,14 +562,16 @@ window.Quarto = {
 </header>
 
 
-<div id="2c146088" class="cell" data-execution_count="1">
+<div id="84cf7028" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople <span class="im">as</span> si</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> CoolProp.CoolProp <span class="im">import</span> PropsSI</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople <span class="im">as</span> si</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> CoolProp.CoolProp <span class="im">import</span> PropsSI</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="03ad6b01" class="cell" data-execution_count="2">
+<div id="fc54c3d2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>si.environment(<span class="st">'default'</span>, top_level<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
@@ -600,24 +602,40 @@ Mostrar solución
 <div id="ec_18-1-sol" class="collapse multi-collapse">
 <p>Dado que no tenemos un valor exacto de <span class="math inline">\(h\)</span> para el agua, procedemos a testear el límite superior de la ebullición de convección libre.</p>
 <p>Del gráfico, asumiremos <span class="math inline">\(q = 1.6 \times 10^4~\text{W/m}^2\)</span>. Esto correspodne a una diferencia de temperatura aproximadamente de 5°C. Luego,</p>
-<div id="0b3503c9" class="cell" data-execution_count="3">
+<div id="ba238ed2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">1</span> <span class="co"># atm</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="dv">1043</span> <span class="op">*</span> dT<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>) <span class="op">*</span> p <span class="op">**</span>(<span class="fl">0.4</span>) <span class="co">#W/m$^2\cdot$K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{dT} &amp;= 5 \;
+\\[10pt]
+p &amp;= 1 \; \;\textrm{(atm)}
+\\[10pt]
+h &amp;= 1043 \cdot \left( \mathrm{dT} \right) ^{ \left( \frac{ 1 }{ 3 } \right) } \cdot \left( p \right) ^{ 0.4 }  = 1043 \cdot \left( 5 \right) ^{ \left( \frac{ 1 }{ 3 } \right) } \cdot \left( 1 \right) ^{ 0.4 } &amp;= 1783.505 \; \;\textrm{(W/m$^2\cdot$K)}
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Este coeficiente de convección es muy bajo, por lo tanto descartamos nucleación por convección natural. Ahora procedemos a testear el segundo límite de flux entre ebullición nucleada y ebullición de transición.</p>
 <p>Del gráfico, asumiremos <span class="math inline">\(q = 2.4 \times 10^5~\text{W/m}^2\)</span>. Esto corresponde a una diferencia de temperatura aproximadamente de 15°C. Luego,</p>
-<div id="2a908e46" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">15</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">1</span> <span class="co"># atm</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fl">5.56</span> <span class="op">*</span> dT<span class="op">**</span>(<span class="dv">3</span>) <span class="op">*</span> p <span class="op">**</span>(<span class="fl">0.4</span>) <span class="co">#W/m$^2\cdot$K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="7fda6c0e" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">1</span> <span class="co"># atm</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fl">5.56</span> <span class="op">*</span> dT<span class="op">**</span>(<span class="dv">3</span>) <span class="op">*</span> p <span class="op">**</span>(<span class="fl">0.4</span>) <span class="co">#W/m$^2\cdot$K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{dT} &amp;= 15 \;
+\\[10pt]
+p &amp;= 1 \; \;\textrm{(atm)}
+\\[10pt]
+h &amp;= 5.56 \cdot \left( \mathrm{dT} \right) ^{ 3 } \cdot \left( p \right) ^{ 0.4 }  = 5.56 \cdot \left( 15 \right) ^{ 3 } \cdot \left( 1 \right) ^{ 0.4 } &amp;= 18765.000 \; \;\textrm{(W/m$^2\cdot$K)}
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Que es mayor a <span class="math inline">\(10^4\)</span>. Este valor está en un punto medio en la región de ebullición nucleada, por lo tanto el régimen de ebullición es probablemente ebullición nucleada. Esto corresponde a la alternativa <strong>b</strong>.</p>
@@ -664,25 +682,45 @@ Mostrar solución
 </button>
 <div id="ec_18-3-sol" class="collapse multi-collapse">
 <p>Primero calculamos el coeficiente de convección para ebullición nucleada en una superficie vertical. En primer lugar iteramos el primer tramo de la ecuación:</p>
-<div id="d62a088c" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">15</span> <span class="co"># C</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">4</span> <span class="co"># bar</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="dv">537</span> <span class="op">*</span> dT<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">7</span>) <span class="op">*</span> p <span class="op">**</span><span class="fl">0.4</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> h<span class="op">*</span>dT</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="b5a41395" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">15</span> <span class="co"># C</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">4</span> <span class="co"># bar</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="dv">537</span> <span class="op">*</span> dT<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">7</span>) <span class="op">*</span> p <span class="op">**</span><span class="fl">0.4</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> h<span class="op">*</span>dT</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{dT} &amp;= 15 \; \;\textrm{(C)}
+\\[10pt]
+p &amp;= 4 \; \;\textrm{(bar)}
+\\[10pt]
+h &amp;= 537 \cdot \left( \mathrm{dT} \right) ^{ \left( \frac{ 1 }{ 7 } \right) } \cdot \left( p \right) ^{ 0.4 }  = 537 \cdot \left( 15 \right) ^{ \left( \frac{ 1 }{ 7 } \right) } \cdot \left( 4 \right) ^{ 0.4 } &amp;= 1376.611  
+\\[10pt]
+q &amp;= h \cdot \mathrm{dT}  = 1376.611 \cdot 15 &amp;= 20649.169  
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Sin embargo, esto muestra que estamos fuera del rango de validez del coeficiente de convección para flujo bajo, ya que <span class="math inline">\(q = 20,6 kW m^{-2} &gt; 3 kW m^{-2}\)</span>. Repetimos el cálculo con la otra ecuación.</p>
-<div id="06de1ea6" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">15</span> <span class="co"># C</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">4</span> <span class="co"># bar</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fl">7.95</span> <span class="op">*</span> dT<span class="op">**</span>(<span class="dv">3</span>) <span class="op">*</span> p <span class="op">**</span><span class="fl">0.4</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> h<span class="op">*</span>dT</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="94dc1c8a" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">15</span> <span class="co"># C</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">4</span> <span class="co"># bar</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fl">7.95</span> <span class="op">*</span> dT<span class="op">**</span>(<span class="dv">3</span>) <span class="op">*</span> p <span class="op">**</span><span class="fl">0.4</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> h<span class="op">*</span>dT</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{dT} &amp;= 15 \; \;\textrm{(C)}
+\\[10pt]
+p &amp;= 4 \; \;\textrm{(bar)}
+\\[10pt]
+h &amp;= 7.95 \cdot \left( \mathrm{dT} \right) ^{ 3 } \cdot \left( p \right) ^{ 0.4 }  = 7.95 \cdot \left( 15 \right) ^{ 3 } \cdot \left( 4 \right) ^{ 0.4 } &amp;= 46715.920  
+\\[10pt]
+q &amp;= h \cdot \mathrm{dT}  = 46715.920 \cdot 15 &amp;= 700738.794  
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Con lo que concluimos que <span class="math inline">\(q = 700 kW m^{-2}\)</span>, por ende la alternativa <strong>b es la correcta</strong>.</p>

@@ -564,14 +564,16 @@ window.Quarto = {
 
 
 <p>Se desea concentrar 30 ton/h de una solución acuosa con 5% (w/w) de hidróxido de sodio (NaOH) y a 100 °C usando un evaporador de tubos cortos verticales. Las figuras adjuntas representan la elevación del punto de ebullición (izquierda) y la entalpia (derecha) de las soluciones acuosas de NaOH.</p>
-<div id="680c3a9d" class="cell" data-execution_count="1">
+<div id="baa3436c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople <span class="im">as</span> si</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> CoolProp.CoolProp <span class="im">import</span> PropsSI</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople <span class="im">as</span> si</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> CoolProp.CoolProp <span class="im">import</span> PropsSI</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="78d7f5b3" class="cell" data-execution_count="2">
+<div id="2c8e1d1b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>si.environment(<span class="st">'default'</span>, top_level<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
@@ -591,20 +593,30 @@ Mostrar solución
 </button>
 <div id="ec_19-1-sol" class="collapse multi-collapse">
 <p>El flujo másico de producto se puede calcular directamente del balance de masa de soluto.</p>
-<div id="863f326e" class="cell" data-execution_count="3">
+<div id="062bcd1e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>F <span class="op">=</span> <span class="dv">30</span> <span class="op">*</span> <span class="dv">1000</span> <span class="op">/</span> <span class="dv">3600</span> <span class="op">*</span> kg <span class="op">/</span> s</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>w_F <span class="op">=</span> <span class="fl">0.05</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>w_L <span class="op">=</span> <span class="fl">0.4</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> F<span class="op">*</span>(w_F<span class="op">/</span>w_L)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+F &amp;= 30 \cdot \frac{ 1000 }{ 3600 } \cdot \frac{ \mathrm{kg} }{ s }  = 30 \cdot \frac{ 1000 }{ 3600 } \cdot \frac{ kg }{ s } &amp;= 8.333\ \mathrm{kg} \cdot \mathrm{s}^{-1}  
+\\[10pt]
+w_{F} &amp;= 0.050 \;
+\\[10pt]
+w_{L} &amp;= 0.400 \;
+\\[10pt]
+L &amp;= F \cdot \left( \frac{ w_{F} }{ w_{L} } \right)  = 8.333\ \mathrm{kg} \cdot \mathrm{s}^{-1} \cdot \left( \frac{ 0.050 }{ 0.400 } \right) &amp;= 1.042\ \mathrm{kg} \cdot \mathrm{s}^{-1}  
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Escribimos esta cantidad en toneladas por hora multiplicando por 3600/1000</p>
-<div id="85e3ea6d" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> L.value <span class="op">*</span> <span class="dv">3600</span> <span class="op">/</span> <span class="dv">1000</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'El flujo de producto es P = </span><span class="sc">%.3f</span><span class="st"> ton/h'</span> <span class="op">%</span> P)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cf69dc72" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> L.value <span class="op">*</span> <span class="dv">3600</span> <span class="op">/</span> <span class="dv">1000</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'El flujo de producto es P = </span><span class="sc">%.3f</span><span class="st"> ton/h'</span> <span class="op">%</span> P)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>El flujo de producto es P = 3.750 ton/h</code></pre>
 </div>
@@ -629,14 +641,24 @@ Mostrar solución
 </button>
 <div id="ec_19-2-sol" class="collapse multi-collapse">
 <p>Del gráfico obtenemos la elevación del punto de ebullición en el evaporador. Para esto, utilizamos la curva de elevación de la temperatura de ebullición de la solución para una concentración de 40%. Considerando una temperatura de ebullición del agua pura igual a 52°C, <span class="math inline">\(\Delta T_e\)</span> es aproximadamente 27.5°C.</p>
-<div id="3db91bc6" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.135</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>T_v <span class="op">=</span> <span class="dv">52</span> <span class="op">*</span> K</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>lambda_lvT <span class="op">=</span> <span class="fl">567.9</span> <span class="op">*</span> J <span class="op">/</span> kg </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> T_v <span class="op">+</span> <span class="fl">27.5</span> <span class="op">*</span> K</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="f1960bbd" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.135</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>T_v <span class="op">=</span> <span class="dv">52</span> <span class="op">*</span> K</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>lambda_lvT <span class="op">=</span> <span class="fl">567.9</span> <span class="op">*</span> J <span class="op">/</span> kg </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> T_v <span class="op">+</span> <span class="fl">27.5</span> <span class="op">*</span> K</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+p &amp;= 0.135 \;
+\\[10pt]
+T_{v} &amp;= 52 \cdot K  = 52 \cdot K &amp;= 52.000\ \mathrm{°C}  
+\\[10pt]
+\mathrm{lambda}_{lvT} &amp;= 567.9 \cdot \frac{ J }{ \mathrm{kg} }  = 567.9 \cdot \frac{ J }{ kg } &amp;= 567.900\ \mathrm{Gy}  
+\\[10pt]
+T &amp;= T_{v} + 27.5 \cdot K  = 52.000\ \mathrm{°C} + 27.5 \cdot K &amp;= 79.500\ \mathrm{°C}  
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Por lo tanto la temperatura de operación del evaporador es 79.5°C <strong>(alternativa a)</strong>.</p>
@@ -662,37 +684,60 @@ Mostrar solución
 <p>Realizando un balance de energía en el evaporador, tenemos que</p>
 <p><span class="math display">\[ S \Delta H_{s} = V H_V + L H_L - F H_F \]</span></p>
 <p>Para este ejercicio, resolveremos el balance de energía completo considerando el sobrecalentaimiento del vapour que se desprende del evaporador.</p>
-<div id="1e234cdf" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>T_F <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> K</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>T_s <span class="op">=</span> <span class="dv">177</span>  <span class="op">*</span> K</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>p_s <span class="op">=</span> <span class="fl">9.32</span> <span class="co"># Pa</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>lambda_s <span class="op">=</span> <span class="fl">483.4</span> <span class="op">*</span> J<span class="op">/</span>kg </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>cp_l <span class="op">=</span> <span class="dv">1</span> <span class="op">*</span> J <span class="op">/</span> kg <span class="op">/</span> K <span class="co"># agua</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>cp_g <span class="op">=</span> <span class="fl">0.45</span> <span class="op">*</span> J <span class="op">/</span> kg <span class="op">/</span> K  <span class="co"># vapor</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># H_L cp_l * (T)</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># H_F = cp_l * (T_F)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="2936b4ea" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>T_F <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> K</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>T_s <span class="op">=</span> <span class="dv">177</span>  <span class="op">*</span> K</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>p_s <span class="op">=</span> <span class="fl">9.32</span> <span class="co"># Pa</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>lambda_s <span class="op">=</span> <span class="fl">483.4</span> <span class="op">*</span> J<span class="op">/</span>kg </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>cp_l <span class="op">=</span> <span class="dv">1</span> <span class="op">*</span> J <span class="op">/</span> kg <span class="op">/</span> K <span class="co"># agua</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>cp_g <span class="op">=</span> <span class="fl">0.45</span> <span class="op">*</span> J <span class="op">/</span> kg <span class="op">/</span> K  <span class="co"># vapor</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># H_L cp_l * (T)</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># H_F = cp_l * (T_F)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+T_{F} &amp;= 100.000\ \mathrm{°C} \;
+&amp;T_{s} &amp;= 177.000\ \mathrm{°C} \;
+&amp;p_{s} &amp;= 9.320 \; \;\textrm{(Pa)}
+\\[10pt]
+\mathrm{lambda}_{s} &amp;= 483.400\ \mathrm{Gy} \;
+&amp;\mathrm{cp}_{l} &amp;= 1.000\ \mathrm{m}^{2} \cdot \mathrm{s}^{-2} \cdot \mathrm{K}^{-1} \; \;\textrm{(agua)}
+&amp;\mathrm{cp}_{g} &amp;= 0.450\ \mathrm{m}^{2} \cdot \mathrm{s}^{-2} \cdot \mathrm{K}^{-1} \; \;\textrm{(vapor)}
+\\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <p>Primero calculamos el flujo de vapor utilizando un balance de masa, y encontramos las entalpías de entrada y salida de la solución acuosa utilizando el gráfico de la derecha del enunciado.</p>
-<div id="61c004c0" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> F<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>w_F<span class="op">/</span>w_L) </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>H_V <span class="op">=</span> cp_l <span class="op">*</span> (T_v) <span class="op">+</span> lambda_lvT <span class="op">+</span> cp_g<span class="op">*</span>(T<span class="op">-</span>T_v)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>H_F <span class="op">=</span> <span class="dv">96</span> <span class="op">*</span> J<span class="op">/</span> kg </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>H_L <span class="op">=</span> <span class="dv">88</span>  <span class="op">*</span> J <span class="op">/</span> kg </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> (V<span class="op">*</span>H_V <span class="op">+</span> L<span class="op">*</span>H_L <span class="op">-</span> F<span class="op">*</span>H_F)<span class="op">/</span>lambda_s</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="1f5d6d51" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> F<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>w_F<span class="op">/</span>w_L)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>H_V <span class="op">=</span> cp_l <span class="op">*</span> (T_v<span class="op">-</span>T) <span class="op">+</span> lambda_lvT <span class="op">+</span> cp_g<span class="op">*</span>(T<span class="op">-</span>T_v)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>H_F <span class="op">=</span> <span class="dv">96</span> <span class="op">*</span> J<span class="op">/</span> kg </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>H_L <span class="op">=</span> <span class="dv">88</span>  <span class="op">*</span> J <span class="op">/</span> kg </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> (V<span class="op">*</span>H_V <span class="op">+</span> L<span class="op">*</span>H_L <span class="op">-</span> F<span class="op">*</span>H_F)<span class="op">/</span>lambda_s</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+V &amp;= F \cdot \left( 1 - \frac{ w_{F} }{ w_{L} } \right)  = 8.333\ \mathrm{kg} \cdot \mathrm{s}^{-1} \cdot \left( 1 - \frac{ 0.050 }{ 0.400 } \right) &amp;= 7.292\ \mathrm{kg} \cdot \mathrm{s}^{-1}  
+\\[10pt]
+H_{V} &amp;= \mathrm{cp}_{l} \cdot \left( T_{v} - T \right) + \mathrm{lambda}_{lvT} + \mathrm{cp}_{g} \cdot \left( T - T_{v} \right) \\&amp;= 1.000\ \mathrm{m}^{2} \cdot \mathrm{s}^{-2} \cdot \mathrm{K}^{-1} \cdot \left( 52.000\ \mathrm{°C} - 79.500\ \mathrm{°C} \right) + 567.900\ \mathrm{Gy} + 0.450\ \mathrm{m}^{2} \cdot \mathrm{s}^{-2} \cdot \mathrm{K}^{-1} \cdot \left( 79.500\ \mathrm{°C} - 52.000\ \mathrm{°C} \right) \\&amp;= 552.775\ \mathrm{Gy}  \\[10pt]
+\\[10pt]
+H_{F} &amp;= 96 \cdot \frac{ J }{ \mathrm{kg} }  = 96 \cdot \frac{ J }{ kg } &amp;= 96.000\ \mathrm{Gy}  
+\\[10pt]
+H_{L} &amp;= 88 \cdot \frac{ J }{ \mathrm{kg} }  = 88 \cdot \frac{ J }{ kg } &amp;= 88.000\ \mathrm{Gy}  
+\\[10pt]
+S &amp;= \frac{ V \cdot H_{V} + L \cdot H_{L} - F \cdot H_{F} }{ \mathrm{lambda}_{s} }  = \frac{ 7.292\ \mathrm{kg} \cdot \mathrm{s}^{-1} \cdot 552.775\ \mathrm{Gy} + 1.042\ \mathrm{kg} \cdot \mathrm{s}^{-1} \cdot 88.000\ \mathrm{Gy} - 8.333\ \mathrm{kg} \cdot \mathrm{s}^{-1} \cdot 96.000\ \mathrm{Gy} }{ 483.400\ \mathrm{Gy} } &amp;= 6.873\ \mathrm{kg} \cdot \mathrm{s}^{-1}  
+\end{aligned}
+\]</span></p>
 </div>
 </div>
-<div id="cbda7183" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"S = </span><span class="sc">%.3f</span><span class="st"> ton/h"</span> <span class="op">%</span> (S.value<span class="op">*</span><span class="dv">3600</span><span class="op">/</span><span class="dv">1000</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="68992d03" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"S = </span><span class="sc">%.3f</span><span class="st"> ton/h"</span> <span class="op">%</span> (S.value<span class="op">*</span><span class="dv">3600</span><span class="op">/</span><span class="dv">1000</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>S = 29.059 ton/h</code></pre>
+<pre><code>S = 24.742 ton/h</code></pre>
 </div>
 </div>
 <p>Por lo tanto la alternativa correcta es <strong>a</strong></p>
@@ -715,25 +760,37 @@ Mostrar solución
 </button>
 <div id="ec_19-4-sol" class="collapse multi-collapse">
 <p>En esta pregunta recordamos que el calor total cedido por el vapor es aproximadamente <span class="math inline">\(Q = S \lambda_s\)</span>. Considerando que la transferencia de calor ocurre de manera isotérmica entre los tubos y el licor, la diferencia de temperatura relevante es constante e igual a <span class="math inline">\(T_s - T\)</span>. Finalmente, podemos obtener el coeficiente global de transferencia de calor con la fórmula $ U = $</p>
-<div id="0d325e7f" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8be19878" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8217acff" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>N_t <span class="op">=</span> <span class="dv">1200</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>L_t <span class="op">=</span> <span class="dv">1</span> <span class="op">*</span> m</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>D_o <span class="op">=</span> <span class="fl">0.025</span> <span class="op">*</span> m</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> N_t <span class="op">*</span> pi <span class="op">*</span> D_o <span class="op">*</span> L_t </span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> (S<span class="op">*</span>lambda_s)<span class="op">/</span>(A<span class="op">*</span>(T_s<span class="op">-</span>T))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
+<div id="90bbdb34" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>N_t <span class="op">=</span> <span class="dv">1200</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>L_t <span class="op">=</span> <span class="dv">1</span> <span class="op">*</span> m</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>D_o <span class="op">=</span> <span class="fl">0.025</span> <span class="op">*</span> m</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> N_t <span class="op">*</span> pi <span class="op">*</span> D_o <span class="op">*</span> L_t </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> (S<span class="op">*</span>lambda_s)<span class="op">/</span>(A<span class="op">*</span>(T_s<span class="op">-</span>T))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+\begin{aligned}
+N_{t} &amp;= 1200 \;
+\\[10pt]
+L_{t} &amp;= 1 \cdot m  = 1 \cdot m &amp;= 1.000\ \mathrm{m}  
+\\[10pt]
+D_{o} &amp;= 0.025 \cdot m  = 0.025 \cdot m &amp;= 25.000\ \mathrm{mm}  
+\\[10pt]
+A &amp;= N_{t} \cdot \pi \cdot D_{o} \cdot L_{t}  = 1200 \cdot 3.142 \cdot 25.000\ \mathrm{mm} \cdot 1.000\ \mathrm{m} &amp;= 94.248\ \mathrm{m}^{2}  
+\\[10pt]
+U &amp;= \frac{ S \cdot \mathrm{lambda}_{s} }{ A \cdot \left( T_{s} - T \right) } \\&amp;= \frac{ 6.873\ \mathrm{kg} \cdot \mathrm{s}^{-1} \cdot 483.400\ \mathrm{Gy} }{ 94.248\ \mathrm{m}^{2} \cdot \left( 177.000\ \mathrm{°C} - 79.500\ \mathrm{°C} \right) } \\&amp;= 0.362\ \mathrm{kg} \cdot \mathrm{s}^{-3} \cdot \mathrm{K}^{-1}  \\[10pt]
+\end{aligned}
+\]</span></p>
 </div>
 </div>
-<div id="d0f52885" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>U_kcal_h <span class="op">=</span> U.value <span class="op">*</span> <span class="dv">3600</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"U = </span><span class="sc">%.3f</span><span class="st"> kcal h^-1 m^-2 °C^-1"</span> <span class="op">%</span> U_kcal_h)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0f2a2bf9" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>U_kcal_h <span class="op">=</span> U.value <span class="op">*</span> <span class="dv">3600</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"U = </span><span class="sc">%.3f</span><span class="st"> kcal h^-1 m^-2 °C^-1"</span> <span class="op">%</span> U_kcal_h)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>U = 1528.673 kcal h^-1 m^-2 °C^-1</code></pre>
+<pre><code>U = 1301.571 kcal h^-1 m^-2 °C^-1</code></pre>
 </div>
 </div>
 <p>Por lo tanto, la alternativa correcta es <strong>a</strong></p>
