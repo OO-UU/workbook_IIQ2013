@@ -34,7 +34,7 @@ Considere para sus cálculos:
 
 ```{python}
 import handcalcs.render
-handcalcs.set_option("custom_symbols",{"dT": "\Delta T", "lambda": "\lambda", "Tebs": "T^eb"})
+handcalcs.set_option("custom_symbols",{"dT": "\\Delta T", "lambda": "\\lambda", "Tebs": "T^eb"})
 handcalcs.set_option("latex_block_start", "$$")
 handcalcs.set_option("latex_block_end", "$$")
 ```

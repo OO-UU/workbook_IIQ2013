@@ -50,7 +50,7 @@ Encuentre:
 ```{python}
 import handcalcs
 import handcalcs.render
-handcalcs.set_option("custom_symbols",{"dT": "\Delta T", "dEPE": "\Delta EPE", "dotm": "\dot{m", "lambda": "\lambda"})
+handcalcs.set_option("custom_symbols",{"dT": "\\Delta T", "dEPE": "\\Delta EPE", "dotm": "\\dot{m", "lambda": "\\lambda"})
 handcalcs.set_option("latex_block_start", "$$")
 handcalcs.set_option("latex_block_end", "$$")
 from sympy import *
@@ -132,7 +132,7 @@ Los balances de calor entonces serán:
 ```{python}
 m_1 = P
 m_F = F
-m_s, m_2 = symbols('\dot{m}_s, \dot{m}_2')
+m_s, m_2 = symbols('\\dot{m}_s, \\dot{m}_2')
 ```
 
 Para el primer efecto.
@@ -220,7 +220,7 @@ El sistema de ecuaciones es el mismo, pero ahora cambian las temperaturas.
 ```{python}
 m_1 = P
 m_F = F
-m_s, m_2 = symbols('\dot{m}_s, \dot{m}_2')
+m_s, m_2 = symbols('\\dot{m}_s, \\dot{m}_2')
 E1 = Eq(m_s*lambda_s, (m_2-m_1)*lambda_1+m_2*c_p(T_1,T_2)*(T_1-T_2))
 E1
 ```

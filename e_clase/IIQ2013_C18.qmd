@@ -33,7 +33,7 @@ si.environment('default', top_level=True)
 
 ## Pregunta 1
 
-Considerando la curva típica de ebullición para agua a $1~\text{atm}$ que se adjunta, si $h > 104~\text{W/m}^2\cdot\text{K}$, el régimen de ebullición probablemente sea el siguiente:
+Considerando la curva típica de ebullición para agua a $1~\text{atm}$ que se adjunta, si $h > 5000~\text{W/m}^2\cdot\text{K}$, el régimen de ebullición probablemente sea el siguiente:
 
 ![Régimenes de ebullición](./images/img_EC-21.png){#fig-EC7-1 fig-align="center"}
 
@@ -48,7 +48,7 @@ Considerando la curva típica de ebullición para agua a $1~\text{atm}$ que se a
 
 Dado que no tenemos un valor exacto de $h$ para el agua, procedemos a testear el límite superior de la ebullición de convección libre.
 
-Del gráfico, asumiremos $q = 1.6 \times 10^4~\text{W/m}^2$. Esto correspodne a una diferencia de temperatura aproximadamente de 5°C. Luego,
+Del gráfico, asumiremos $q = 8.5 \times 10^3~\text{W/m}^2$. Esto corresponde a una diferencia de temperatura aproximadamente de 5°C. Luego,
 
 ```{python}
 %%render
@@ -59,16 +59,16 @@ h = 1043 * dT**(1/3) * p **(0.4) #W/m$^2\cdot$K
 
 Este coeficiente de convección es muy bajo, por lo tanto descartamos nucleación por convección natural. Ahora procedemos a testear el segundo límite de flux entre ebullición nucleada y ebullición de transición. 
 
-Del gráfico, asumiremos $q = 2.4 \times 10^5~\text{W/m}^2$. Esto corresponde a una diferencia de temperatura aproximadamente de 15°C. Luego,
+Del gráfico, asumiremos $q = 10^5~\text{W/m}^2$. Esto corresponde a una diferencia de temperatura aproximadamente de 10°C. Luego,
 
 ```{python}
 %%render
-dT = 15
+dT = 10
 p = 1 # atm
 h = 5.56 * dT**(3) * p **(0.4) #W/m$^2\cdot$K
 ```
 
-Que es mayor a $10^4$. Este valor está en un punto medio en la región de ebullición nucleada, por lo tanto el régimen de ebullición es probablemente ebullición nucleada. Esto corresponde a la alternativa **b**.
+Ya que $q$ es mayor a $10^4$. Este valor está en un punto medio en la región de ebullición nucleada, por lo tanto el régimen de ebullición es probablemente ebullición nucleada. Esto corresponde a la alternativa **b**.
 
 :::
 
