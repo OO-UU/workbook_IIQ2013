@@ -1,0 +1,233 @@
+---
+title: 'Ejercicio 2: Serpentines dispuestos como deflectores'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/05_tc-agitacion/jupyter/e05_2.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+tbl-cap-location: bottom
+---
+
+## Enunciado
+
+Un proceso industrial genera una corriente residual a $92~^\circ\mathrm{C}$ compuesta por tolueno ($22.3\%$ en fracción molar) y agua. Con el fin de aprovechar esta corriente, se plantea someterla a un proceso de separación que opera de forma óptima a $20~^\circ\mathrm{C}$, por lo que es necesario enfriarla previamente.
+
+Muy a su pesar, su jefe insiste en utilizar un estanque agitado con serpentines dispuestos como deflectores para realizar el enfriamiento. Se propone entonces un estanque de $30~\mathrm{m}^3$, con proporciones geométricas $S_1=S_5=1/4$ y $S_6=6/5$, similar al esquema mostrado en la figura 1.a), operando con una agitación de $N=150~\mathrm{RPM}$.
+
+Respecto al diseño de los deflectores, la figura 1.b) ilustra un arreglo de 8 pasadas de tubo por deflector, con una separación de $J_n=15~\mathrm{cm}$. Los tubos están fabricados en acero ($k = 50.2~\mathrm{W}\cdot\mathrm{m}^{-1}\cdot\mathrm{K}^{-1}$) y presentan un espesor de pared de $m = 2.413~\mathrm{mm}$. Por estos tubos circula etilenglicol como refrigerante, a un caudal volumétrico de $\dot{V} = 12~\mathrm{m}^3\cdot\mathrm{h}^{-1}$ y una temperatura de entrada de $5~^\circ\mathrm{C}$. Cabe destacar que el serpentín corresponde a un único tubo que forma todos los deflectores.
+
+Las propiedades termofísicas promedio de los compuestos involucrados son las siguientes:
+
+| Compuesto    | MW (g/mol) | Densidad (kg/m$^3$) | c$_P$ (J/kg$\cdot$K) | k (W/m$\cdot$K)  | mu (Pa$\cdot$s) |
+|--------------|------------|-------------|--------|-------|-------|
+| Tolueno      | 92.14      | 802.9       | 1921.3 | 0.114 | 3.02$\times10^{-4}$  |
+| Agua         | 18.02      | 997.3       | 4199.1 | 0.607 | 9.01$\times10^{-4}$  |
+| Etilenglicol | 62.07      | 1104.0      | 812.03 | 0.251 | 64.02$\times10^{-4}$ |
+
+Para estimar cualquier propiedad termofísica $\bar{M}$ de la mezcla, puede utilizar la siguiente expresión:
+$$
+\bar{M} = w_1\cdot\bar{M}_1+w_2\cdot\bar{M}_2
+$$
+donde $w_i$ representa la fracción másica del componente $i$.
+
+1. Si se desea enfriar la corriente con agitación durante un período de 13 horas, ¿cuántos deflectores se requieren en el estanque?
+Considere que para el refrigerante en los serpentines (dispuestos como deflectores), puede utilizar la ecuación de Dittus-Boelter para estimar el número de Nusselt. Para el fluido agitado en el estanque, utilice la ecuación de Havas:
+$$
+Nu = 0.208Re_D^{0.65}Pr^{0.33}\left(\frac{\mu}{\mu_w}\right)^{0.4}
+$$
+2. Itere los cálculos anteriores hasta encontrar el tiempo necesario para que el número de deflectores sea $n_b = 3$. Compare ese tiempo con el obtenido usando la ecuación de Dunlap y Rushton (disponible en el formulario) para $n_b = 3$:
+$$
+Nu = 0.09Re_D^{0.65}Pr^{0.33}\left(\frac{D_a}{D_t}\right)^{0.33}\left(\frac{2}{n_b}\right)^{0.2}\left(\frac{\mu}{\mu_w}\right)^{0.4}
+$$
+En caso de obtener resultados distintos, responda: ¿A qué se debe esta diferencia? ¿Cuál de los métodos considera más adecuado utilizar y por qué?
+
+Librerías utilizadas
+
+```{python}
+from numpy import pi, log, exp
+from scipy.optimize import fsolve, least_squares
+import handcalcs.render
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+handcalcs.set_option("custom_symbols",{"Nu": "\\mathrm{Nu}"})
+```
+
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e05_2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e05_2-sol .collapse .multi-collapse}
+
+### Inciso 1
+
+Primero se calculan las dimensiones del sistema en base a lo dado. Se despeja eñ diámetro de externo de la tubería a partir de las figuras. Luego:
+
+$$
+D_e\left(n_{tb}-2\right) = J_n\left(n_{tb}-1\right)-J
+$$
+
+```{python}
+%%render short 3
+V = 30 # m$^3$
+S_6 = 6/5
+D_t = ((4*V)/(pi*S_6))**(1/3) #m
+H = S_6 * D_t #m
+S_1 = 1/4
+D_a = S_1 * D_t #m
+
+## Cálculo de diámetro de tubo del serpentín
+J = D_a #m
+J_n = 0.15 #m
+n_tb = 8
+D_e = (J_n*(n_tb-1) - J)/(n_tb-2) #m
+m = 0.002413 #m
+D_i = D_e - 2*m #m
+```
+
+Luego se calculan las propiedades termofísicas de los fluidos del sistema. Para el fluido caliente:
+
+```{python}
+%%render long 4
+x_tol = 0.223
+MW_tol = 92.14 #g$\cdot$mol$^{-1}$
+MW_w = 18.02 #g$\cdot$mol$^{-1}$
+MW_h = x_tol*MW_tol + (1 - x_tol)*MW_w
+w_tol = (x_tol*MW_tol)/MW_h
+w_w = 1 - w_tol
+rho_h = w_tol*802.9 + w_w*997.3 #kg$\cdot$m$^{-3}$
+mu_h = (w_tol*3.02 + w_w*9.01)*10**(-4) #Pa$\cdot$s
+k_h = w_tol*0.114 + w_w*0.607 #W$\cdot$m$^{-1}\cdot$K$^{-1}$ 
+cp_h = w_tol*1921.3 + w_w*4199.1 #J$\cdot$kg$^{-1}\cdot$K$^{-1}$
+```
+
+Mientras que el fluido frio que pasa por el serpentín es el compuesto puro.
+
+```{python}
+%%render params 4
+rho_c = 1104.0 #kg$\cdot$m$^{-3}$
+mu_c = 64.02e-4 #Pa$\cdot$s
+k_c = 0.251 #W$\cdot$m$^{-1}\cdot$K$^{-1}$ 
+cp_c = 812.03 #J$\cdot$kg$^{-1}\cdot$K$^{-1}$
+```
+
+#### Cálculo de U
+
+A partir de los resultados anteriores, se puede calcular $U$ a partir de los números a dimensionales y las correlaciones para el número de Nusselt descritas en el enunciado.
+
+```{python}
+%%render long 4
+## Lado del estanque (Fluido caliente)
+N = 150/60 #RPS
+Re_h = (rho_h*N*D_a**2)/mu_h
+Pr_h = (mu_h*cp_h)/k_h
+Nu_h = 0.208 * Re_h**0.65 * Pr_h**0.33
+h_h = Nu_h*k_h/D_t #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+## Lado del serpentín (Fluido frio)
+v_c = 12/3600 #m$^2\cdot$s$^{-1}$
+Re_c = (4*rho_c*v_c)/(pi*D_i*mu_c)
+Pr_c = (mu_c*cp_c)/k_c
+Nu_c = 0.023 * Re_c**0.8 * Pr_c**0.4
+h_c = Nu_c*k_c/D_i #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+## Cálculo de U
+k_p = 50.2 #W$\cdot$m$^{-1}\cdot$K$^{-1}$
+U = (D_e/(D_i*h_c) + D_e/(2*k_p)*log(D_e/D_i) + 1/h_h)**(-1) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+```
+
+#### Cálculo del área de transferencia y temperatura de salida del fluido refrigerante
+
+Se puede armar un sistema de ecuaciones a partir de la ecuación de diseño y el tiempo de mezclado.
+$$
+F\cdot c_{P,\mathrm{ME}}\cdot(T_{\mathrm{ME},~o}-T_{\mathrm{ME},~i}) = A\cdot U\cdot\Delta T_{ml}
+$$
+
+$$
+13\times3600 = \frac{M\frac{c_P}{c_{P,\mathrm{ME}}}}{F(1-K_\mathrm{ME})}\ln\left(\frac{T_i-T_{\mathrm{ME},~i}}{T_o-T_{\mathrm{ME},~i}}\right)
+$$
+
+```{python}
+#| code-fold: false
+
+Ti_h = 92 + 273.15
+To_h = 20 + 273.15
+Ti_c = 5 + 273.15
+M = V*rho_h
+F = v_c*rho_c
+
+def log_pos(x):
+    return log(x) if x > 0 else np.nan
+
+def solve_Q(values):
+    To_c, A = values
+    # Igualar los q
+    q_1 = F*cp_c*(To_c - Ti_c)
+    DTml = (To_c-Ti_c)/log_pos( (To_h-Ti_c)/(To_h-To_c) )
+    q_2 = U*A*DTml
+    eq1 = q_1 - q_2
+    # Tiempo de mezclado debe ser 14 horas
+    K_ME = exp( -(U*A)/(F*cp_c) )
+    eq2 = 13*3600 - ( (M*cp_h/cp_c)/(F*(1-K_ME))*log_pos( (Ti_h-Ti_c)/(To_h-Ti_c) ) )
+
+    return [eq1, eq2]
+
+sol_ini = [10+273.15, 20.0]
+bounds = ([Ti_c + 1e-3, 0.1], [To_h - 1e-3, 1000.0])  # To_c entre Ti_c y To_h, A > 0
+sol = least_squares(solve_Q, x0=sol_ini, bounds=bounds)
+
+To_c = sol.x[0]
+A = sol.x[1]
+
+from IPython.display import display, Markdown
+display(Markdown(f'Área de transferencia de calor requerida: {A:0.2f} m2'))
+display(Markdown(f'Fluido frio (serpentines) --- Tin: {Ti_c-273.15:0.2f} °C | Tout: {To_c-273.15:0.2f} °C'))
+display(Markdown(f'Fluido caliente (agitado) --- Tin: {Ti_h-273.15:0.2f} °C | Tout: {To_h-273.15:0.2f} °C'))
+```
+
+#### Cálculo del número de deflectores
+
+```{python}
+%%render long 1
+L = A/(pi*D_e) #m
+n_b = L/(8*H)
+```
+
+Por lo tanto se necesitan 6 deflectores para que el proceso de calentamiento agitado se demore 13 horas.
+
+### Inciso 2
+
+Iterando los cálculos del inciso anterior utilizando el mismo `solver`, se llega a que $t_M\approx16$ horas. Ahora utilizando la correlación para el enunciado recalculamos $U$.
+
+#### Calcular U utilizando Dunlap y Rushton
+
+```{python}
+%%render long
+n_b = 3
+L = (8*H)*n_b #m
+A = pi*D_e*L #m$^2$
+
+## Nuevo coeficiente local de transferencia de calor
+Nu_h = 0.09 * Re_h**0.65 * Pr_h**0.33 * (D_a/D_t)**0.33 * (2/n_b)**0.2
+h_h = Nu_h*k_h/D_t #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+U = (D_e/(D_i*h_c) + D_e/(2*k_p)*log(D_e/D_i) + 1/h_h)**(-1) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+```
+
+#### Calcular el tiempo de mezclado
+
+```{python}
+%%render long
+K_ME = exp( -(U*A)/(F*cp_c) )
+t_M = (M*cp_h/cp_c)/(F*(1-K_ME))*log_pos( (Ti_h-Ti_c)/(To_h-Ti_c) ) #s
+
+R = t_M/3600 #h
+```
+
+El tiempo de mezclado es de 32 horas, mientras que con la correlación anterior es de 16 horas simplemente.
+
+:::

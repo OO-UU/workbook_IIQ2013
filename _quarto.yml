@@ -51,6 +51,7 @@ website:
       - section: "Transferencia de calor en estanques agitados"
         contents:
           - ./e_prop/05_tc-agitacion/e05_1.qmd
+          - ./e_prop/05_tc-agitacion/e05_2.qmd
       - section: "ICTC"
         contents: 
           - ./e_prop/06_ICTC/e06_1.qmd
@@ -60,6 +61,7 @@ website:
           - ./e_prop/07_ICC/e07_1.qmd
           - ./e_prop/07_ICC/e07_2.qmd
           - ./e_prop/07_ICC/e07_3.qmd
+          - ./e_prop/07_ICC/e07_4.qmd
       - section: "Evaporadores"
         contents: 
           - ./e_prop/08_evaporadores/e08_1.qmd

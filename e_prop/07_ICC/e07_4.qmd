@@ -1,0 +1,226 @@
+---
+title: 'Ejercicio 4: Intercambiadores de placas compactas'
+format:
+    html: 
+      code-copy: true
+      code-fold: true
+      code-links: 
+        - text: "Descargar Jupyter (.ipynb)"
+          icon: github
+          href: https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/07_ICC/jupyter/e07_4.ipynb
+
+execute: 
+  echo: true
+
+jupyter: python3
+---
+
+## Enunciado
+
+Se desechan $150$ kg/s de agua residual $(R_{f}=6\times10^{-5}~\mathrm{m}^2~\mathrm{K}/W)$ a $90~^\circ$C luego de pasar por el sistema de alcantarillado de la ciudad. Para disminuir la temperatura de salida, se opta por utilizar un intercambiador de placas. Cada placa del intercambiador tiene una distancia vertical entre puertos de $1.60$ metros y un ancho de $50$ centímetros, con una separación de $6$ milímetros entre placas. Según el fabricante, el rendimiento térmico se ve mejorado por un factor de amplaición superficial de $1.17$, y las placas Chevrón disponen de un ángulo de $50~^\circ$. Las placas son de Cuproníquel 90/10 y tienen un espesor de $0.8$ milímetros. El diámetro de los puertos está especificado como $0.15$ metros.
+
+Con tal de reducir la temperatura del agua residual hasta los $60~^\circ$C, se busca utilizar agua de río que se encuentra naturalmente a $15~^\circ$C con un caudal másico de $200$ kg/s. Considere un arreglo de paso único para ambas corrientes (fría y caliente) a contra-corriente y un factor de seguridad de $1.5$.
+
+1. Encuentre el número de platos requeridos (y totales) en el intercambiador, y determine el área de transferencia de calor efectiva para dicho número de platos.
+2. A partir de sus resultados en el inciso anterior, calcule las péridas de carga totales para el fluido caliente y frio.
+
+## Solución
+
+Librerías utilizadas:
+```{python}
+import numpy as np
+from numpy import log, pi
+import handcalcs.render
+handcalcs.set_option("latex_block_start", "$$")
+handcalcs.set_option("latex_block_end", "$$")
+handcalcs.set_option("custom_symbols",{"Nu": "\\mathrm{Nu}", "DTml": "\\Delta T_{ml", "Dpp_h": "\\Delta p_{ph", "Dpc_h": "\\Delta p_{ch", "Dp_h": "\\Delta p_{h", "Dpp_c": "\\Delta p_{pc", "Dpc_c": "\\Delta p_{cc", "Dp_c": "\\Delta p_{c"})
+```
+
+### Inciso 1
+
+```{python}
+%%render params
+Ti_h = 90 + 273.15 #K
+To_h = 60 + 273.15 #K
+Ti_c = 15 +273.15 #K
+m_h = 150 #kg$\cdot$s$^{-1}$
+m_c = 200 #kg$\cdot$s$^{-1}$
+Rf_c = 0.000086 #m$^2\cdot$K$\cdot$W$^{-1}$
+Rf_h = 0.00006 #m$^2\cdot$K$\cdot$W$^{-1}$
+k_w = 35 #W$\cdot$m$^{-1}\cdot$K$^{-1}$
+L_v = 1.6 #m
+L_w = 0.5 #m
+b = 6e-3 #m
+phi = 1.17
+t = 8e-4 #m
+D_p = 0.15 #m
+C_s = 1.5
+F = 1 #Supuesto
+```
+
+```{python}
+%%render params
+## Propiedades termofísicas, fluido frio
+rho_c = 996 #kg$\cdot$m$^{-3}$
+mu_c = 8.15e-4 #Pa$\cdot$s
+cp_c = 4179 #J$\cdot$kg$^{-1}\cdot$K$^{-1}$
+Pr_c = 5.58
+k_c = 0.612 #W$\cdot$m$^{-1}\cdot$K$^{-1}$ 
+## Propiedades termofísicas, fluido caliente
+rho_h = 965 #kg$\cdot$m$^{-3}$
+mu_h = 3.16e-4 #Pa$\cdot$s
+cp_h = 4205 #J$\cdot$kg$^{-1}\cdot$K$^{-1}$
+Pr_h = 1.96
+k_h = 0.675 #W$\cdot$m$^{-1}\cdot$K$^{-1}$ 
+```
+
+Definimos auxliarmente una función que calcule el número de Nusselt para el ángulo de la placa asumiendo que el número de Reynolds será un número muy grande.
+
+```{python}
+#| code-fold: false
+def calc_h(N_t, m, b, L_w, D_e, mu, Pr, k):
+    N_p = 1
+    N_cp = (N_t - 1)/(2*N_p)
+    mch = m/N_cp
+    Gch = mch/(b*L_w)
+    Re = Gch*D_e/mu
+    Nu = 0.13*Re**0.732*Pr**(1/3)
+    return Nu*k/D_e
+```
+
+#### Encontrar $q$ y $\Delta T_{ml}$
+
+```{python}
+%%render long 2
+Q_r = m_h*cp_h*(Ti_h - To_h)
+To_c = Q_r/(m_c*cp_c) + Ti_c
+DTml = ( (To_h-Ti_c) - (Ti_h-To_c) )/log( (To_h-Ti_c)/(Ti_h-To_c) )
+```
+
+#### Número de placas a partir de un $U_f$ de diseño
+
+Ya que los intercambiadores tienen un $U$ entre los 3000 y 7000 W$\cdot$m$^{-2}\cdot$K$^{-1}$; se utiliza el promedio entre ambos como punto de partida.
+
+```{python}
+%%render long
+U_f = 5000 #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+Q_f = C_s * Q_r
+A_e = Q_f/(U_f*F*DTml) #m$^2$
+A_1p = (L_v - D_p) * L_w #m$^2$
+A_1 = A_1p * phi #m$^2$
+N_e = np.ceil(A_e/A_1) + 1 # Debe ser impar
+N_t = N_e + 2
+```
+
+Con este nuevo número de placas y, en consecuencia, nueva área efectiva de transferencia se puede recalcular $U$ y verificar si coincide con la estimación inicial de 5000 W$\cdot$m$^{-2}\cdot$K$^{-1}$.
+
+```{python}
+%%render long
+A_ch = b*L_w #m$^2$
+D_e = 2*b/phi #m
+N_p = 1
+h_h = calc_h(N_t, m_h, b, L_w, D_e, mu_h, Pr_h, k_h) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+h_c = calc_h(N_t, m_c, b, L_w, D_e, mu_c, Pr_c, k_c) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+U_c = 1/( 1/h_c + 1/h_h + t/k_w ) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+U_f = 1/( 1/U_c + Rf_c + Rf_h ) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+```
+
+Ya que 5000 $\neq$ 3294.22, se itera. Recalculamos utilizando este resultado.
+
+#### Primera iteración del cálculo de $U_f$
+
+```{python}
+%%render long
+A_e = Q_f/(U_f*F*DTml) #m$^2$
+N_e = np.ceil(A_e/A_1) + 1 # Debe ser impar
+N_t = N_e + 2
+```
+
+Nuevamente, se verifica si con este nuevo número de placas se cumple que U es la misma.
+
+```{python}
+%%render long
+h_h = calc_h(N_t, m_h, b, L_w, D_e, mu_h, Pr_h, k_h) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+h_c = calc_h(N_t, m_c, b, L_w, D_e, mu_c, Pr_c, k_c) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+U_c = 1/( 1/h_c + 1/h_h + t/k_w ) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+U_f = 1/( 1/U_c + Rf_c + Rf_h ) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+```
+
+Ya que 3294.22 $\neq$ 2845.99, se itera.
+
+#### Segunda iteración del cálculo de $U_f$
+
+```{python}
+%%render long
+A_e = Q_f/(U_f*F*DTml) #m$^2$
+N_e = np.ceil(A_e/A_1) + 1 # Debe ser impar
+N_t = N_e + 2
+```
+
+#### Verificar
+
+```{python}
+%%render long
+h_h = calc_h(N_t, m_h, b, L_w, D_e, mu_h, Pr_h, k_h) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+h_c = calc_h(N_t, m_c, b, L_w, D_e, mu_c, Pr_c, k_c) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+U_c = 1/( 1/h_c + 1/h_h + t/k_w ) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+U_f = 1/( 1/U_c + Rf_c + Rf_h ) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+```
+
+Ya que 2845.99 $\neq$ 2694.30, se itera.
+
+#### Tercera iteración del cálculo de $U_f$
+
+```{python}
+%%render long
+A_e = Q_f/(U_f*F*DTml) #m$^2$
+N_e = np.ceil(A_e/A_1) + 1 # Debe ser impar
+N_t = N_e + 2
+```
+
+#### Verificar
+
+```{python}
+%%render long
+h_h = calc_h(N_t, m_h, b, L_w, D_e, mu_h, Pr_h, k_h) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+h_c = calc_h(N_t, m_c, b, L_w, D_e, mu_c, Pr_c, k_c) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+U_c = 1/( 1/h_c + 1/h_h + t/k_w ) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+U_f = 1/( 1/U_c + Rf_c + Rf_h ) #W$\cdot$m$^{-2}\cdot$K$^{-1}$
+```
+
+Ya que 2694.30 $\approx$ 2634.45, se tiene la verdadera área efectiva final.
+
+```{python}
+%%render long
+A_e = N_e*A_1 #m$^2$
+```
+
+### Inciso 2
+
+Al igual que el inciso anterior, definimos auxliarmente una función que calcule el factor de fricción para el ángulo de la placa asumiendo que el número de Reynolds será un número muy grande.
+
+```{python}
+#| code-fold: false
+def calc_Dpc(N_t, m, b, L_w, D_e, mu, rho):
+    N_p = 1
+    N_cp = (N_t - 1)/(2*N_p)
+    mch = m/N_cp
+    Gch = mch/(b*L_w)
+    Re = Gch*D_e/mu
+    f = 0.772/Re**0.161
+    return 4*f * L_v*N_p/D_e * Gch**2/(2*rho)
+```
+
+```{python}
+%%render long
+## Pérdidas de carga por los canales
+Dpc_h = calc_Dpc(N_t, m_h, b, L_w, D_e, mu_h, rho_h)
+Dpc_c = calc_Dpc(N_t, m_c, b, L_w, D_e, mu_c, rho_c)
+## Pérdidas de carga por los puertos
+Gp_h = m_h/(pi/4 * D_p**2)
+Gp_c = m_c/(pi/4 * D_p**2) #kg$\cdot$m$^{-2}\cdot$s$^{-1}$
+Dpp_h = 1.4*1 * Gp_h**2/(2*rho_h) #Pa
+Dpp_c = 1.4*1 * Gp_c**2/(2*rho_c) #Pa
+Dp_h = Dpc_h + Dpp_h #Pa
+Dp_c = Dpc_c + Dpp_c #Pa
+```

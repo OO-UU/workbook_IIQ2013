@@ -40,6 +40,7 @@ Aquí podrán encontrar ejercicios sobre la mayoría de los tópicos del curso. 
 ::: {.column width="20%"}
 ##### Transferencia de calor para agitación
 * [Ejercicio 1](./e_prop/05_tc-agitacion/e05_1.qmd)
+* [Ejercicio 2](./e_prop/05_tc-agitacion/e05_2.qmd)
 :::
 ::: {.column width="20%"}
 ##### IC: Tubo y carcasa
@@ -51,6 +52,7 @@ Aquí podrán encontrar ejercicios sobre la mayoría de los tópicos del curso. 
 * [Ejercicio 1](./e_prop/07_ICC/e07_1.qmd)
 * [Ejercicio 2](./e_prop/07_ICC/e07_2.qmd)
 * [Ejercicio 3](./e_prop/07_ICC/e07_3.qmd)
+* [Ejercicio 4](./e_prop/07_ICC/e07_4.qmd)
 :::
 ::: {.column width="20%"}
 ##### Evaporadores
