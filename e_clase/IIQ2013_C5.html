@@ -578,7 +578,7 @@ window.Quarto = {
 
 <p>Sea un compresor reciprocante compuesto de cuatro pistones conectados a un eje de vielas que opera a <span class="math inline">\(125~\text{RPM}\)</span>. En cada pistón (<span class="math inline">\(D = 20~\text{cm}\)</span>, <span class="math inline">\(L = 13~\text{cm}\)</span>) se comprime aire STP (at Standard Temperature and Pressure conditions) isoentrópicamente usando una razón de compresión <span class="math inline">\(rc = 6\)</span>. Responda las siguientes preguntas asumiendo que se puede despreciar el volumen de holgura de cada pistón (pistones ideales):</p>
 <p>Librerias a utilizar:</p>
-<div id="6644b115" class="cell" data-execution_count="1">
+<div id="c69d9f1c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> handcalcs <span class="im">import</span> handcalc</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span>
@@ -602,7 +602,7 @@ Mostrar solución
 </button>
 <div id="ec_5-1-sol" class="collapse multi-collapse">
 <p>El aire esta compuesto por: <span class="math inline">\(N_2\)</span> en un <span class="math inline">\(78\%\)</span> y <span class="math inline">\(O_2\)</span> en un <span class="math inline">\(22\%\)</span>. Con <span class="math inline">\(MW_{N_2} = 28~\text{g/mol}\)</span> y <span class="math inline">\(MW_{O_2} = 32~\text{g/mol}\)</span></p>
-<div id="7efe2e97" class="cell" data-execution_count="2">
+<div id="a1e545ef" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>MW_N2 <span class="op">=</span> <span class="dv">28</span> <span class="co">#g/mol</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>MW_O2 <span class="op">=</span> <span class="dv">32</span> <span class="co">#g/mol</span></span>
@@ -643,7 +643,7 @@ Mostrar solución
 <p><span class="math display">\[
 V_{total} = 4V_{c+l} = 4\frac{\pi(D)^2}{4}L
 \]</span></p>
-<div id="397d0a48" class="cell" data-execution_count="3">
+<div id="594c232e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fl">0.2</span> <span class="co">#m</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="fl">0.13</span> <span class="co">#L</span></span>
@@ -664,7 +664,7 @@ V &amp;= 4 \cdot \left( \frac{ \pi \cdot \left( D \right) ^{ 2 } }{ 4 } \right) 
 <p><span class="math display">\[
 Pv = \frac{RT}{MW} \Rightarrow PV = \frac{mRT}{MW}
 \]</span></p>
-<div id="ab4936ae" class="cell" data-execution_count="4">
+<div id="3c9166ea" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">8.314</span> <span class="co">#J/mol$\cdot$K</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="fl">273.15</span> <span class="co">#K</span></span>
@@ -685,7 +685,7 @@ m_{cic} &amp;= \frac{ P \cdot V \cdot \frac{ \mathrm{MW} }{ 1000 } }{ R \cdot T 
 </div>
 </div>
 <p>Como nos indica el <em>Hint</em>, podemos calcular el flujo másico a partir de las revoluciones por minuto.</p>
-<div id="0d28f356" class="cell" data-execution_count="5">
+<div id="d353058c" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>RPM <span class="op">=</span> <span class="dv">125</span> <span class="co">#rpm</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>f_m <span class="op">=</span> m_cic<span class="op">*</span>RPM <span class="co">#kg/min</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -731,7 +731,7 @@ pv = RT
 \left(\frac{p_2}{p_1}\right)^{\frac{1}{\gamma}} = \frac{RT_1P_2}{RT_2P_1} \Rightarrow \frac{T_2}{T_1} = \left(\frac{p_2}{p_1}\right)^{\frac{\gamma-1}{\gamma}}
 \]</span></p>
 <p>Sabemos que <span class="math inline">\(p_2/p_1\)</span> es el factor de compresión e igual a <span class="math inline">\(6\)</span>. Despejamos <span class="math inline">\(T_2\)</span>.</p>
-<div id="f8b0a70b" class="cell" data-execution_count="6">
+<div id="23508853" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>rc <span class="op">=</span> <span class="dv">6</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.4</span></span>
@@ -772,7 +772,7 @@ Mostrar solución
 \dot{W}_{rev} = \frac{\gamma}{\gamma-1}p_1\dot{V}_1\left(\left(\frac{p_2}{p_1}\right)^{\frac{\gamma-1}{\gamma}}-1\right)
 \]</span></p>
 <p>Asumiendo que <span class="math inline">\(\rho\approx1~\text{kg/m}^3\)</span>:</p>
-<div id="d71ad453" class="cell" data-execution_count="7">
+<div id="2387f806" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>V_1dot <span class="op">=</span> f_m<span class="op">/</span><span class="dv">60</span> <span class="co">#m$^3$/s</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>W_dot <span class="op">=</span> gamma<span class="op">/</span>(gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>P<span class="op">*</span>V_1dot<span class="op">*</span>(rc<span class="op">**</span>((gamma<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span>gamma)<span class="op">-</span><span class="dv">1</span>) <span class="co">#W</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>

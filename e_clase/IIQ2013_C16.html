@@ -712,7 +712,7 @@ window.Quarto = {
 </tbody>
 </table>
 <p>Paquetes utilizados:</p>
-<div id="2c419ec3" class="cell" data-execution_count="1">
+<div id="15115e43" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
@@ -727,7 +727,7 @@ Mostrar solución
 </button>
 <div id="ec_16-1-sol" class="collapse multi-collapse">
 <p>El factor de ampliación será la razón entre el área de transferencia de calor efectiva de una única placa <span class="math inline">\(A_1\)</span> y su área proyectada <span class="math inline">\(A_{1p}\)</span>.</p>
-<div id="896ce4de" class="cell" data-execution_count="2">
+<div id="10891336" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D_p <span class="op">=</span> <span class="fl">0.2</span> <span class="co">#m, Diámetro del puerto</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>L_w <span class="op">=</span> <span class="fl">0.63</span> <span class="co">#m, Ancho del canal</span></span>
@@ -747,7 +747,7 @@ N_{t} &amp;= 105 \; \;\textrm{(Número de placas)}
 \]</span></p>
 </div>
 </div>
-<div id="65e9a21f" class="cell" data-execution_count="3">
+<div id="3042fae3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Área proyectada, A$_{1p}$</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>A_1p <span class="op">=</span> (L_v <span class="op">-</span> D_p)<span class="op">*</span>L_w <span class="co">#m$^2$</span></span>
@@ -793,7 +793,7 @@ Mostrar solución
 </button>
 <div id="ec_16-2-sol" class="collapse multi-collapse">
 <p>Primero se deben encontrar los flux másicos de los canales a partir de los parámetros de diseño del itnercambiador calculados en el inciso anterior.</p>
-<div id="647f4815" class="cell" data-execution_count="4">
+<div id="ced741b3" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">0.6</span><span class="op">/</span><span class="dv">1000</span> <span class="co">#m, Espesor de una placa</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>L_c <span class="op">=</span> <span class="fl">0.38</span> <span class="co">#m, Longitud del paquete comprimido</span></span>
@@ -816,7 +816,7 @@ m &amp;= 140 \; \;\textrm{(kg/s, Flujo másico igual para ambos flujos)}
 \]</span></p>
 </div>
 </div>
-<div id="58ff4a5c" class="cell" data-execution_count="5">
+<div id="35199159" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> L_c<span class="op">/</span>N_t <span class="co">#m</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> p <span class="op">-</span> t <span class="co">#m</span></span>
@@ -868,7 +868,7 @@ Mostrar solución
 </button>
 <div id="ec_16-3-sol" class="collapse multi-collapse">
 <p>Se debe comparar el coeficiente global de transferencia de calor sucio respecto al limpio. Para <span class="math inline">\(\beta=\)</span> 45<span class="math inline">\(^\circ\)</span> y número de Reynolds sobre 100, tenemos que <span class="math inline">\(C_h=0.3\)</span> y <span class="math inline">\(n=0.663\)</span>.</p>
-<div id="30873f4c" class="cell" data-execution_count="6">
+<div id="1ce3e5de" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>k_h <span class="op">=</span> <span class="fl">0.645</span> <span class="co">#W/m$\cdot$K, Conductividad térmica fluido caliente</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>k_c <span class="op">=</span> <span class="fl">0.617</span> <span class="co">#W/m$\cdot$K, Conductividad térmica fluido frio</span></span>
@@ -891,7 +891,7 @@ k_{h} &amp;= 0.645 \; \;\textrm{(W/m$\cdot$K, Conductividad térmica fluido cali
 \]</span></p>
 </div>
 </div>
-<div id="a3ae04b5" class="cell" data-execution_count="7">
+<div id="79638290" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Nus_h <span class="op">=</span> <span class="fl">0.3</span><span class="op">*</span>Re_h<span class="op">**</span><span class="fl">0.663</span><span class="op">*</span>Pr_h<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Nus_c <span class="op">=</span> <span class="fl">0.3</span><span class="op">*</span>Re_c<span class="op">**</span><span class="fl">0.663</span><span class="op">*</span>Pr_c<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
@@ -911,7 +911,7 @@ h_{c} &amp;= \mathrm{Nus}_{c} \cdot \frac{ k_{c} }{ D_{h} } \\&amp;= 215.527 \cd
 \]</span></p>
 </div>
 </div>
-<div id="71dff73b" class="cell" data-execution_count="8">
+<div id="1776c149" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>U_c <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>h_h <span class="op">+</span> <span class="dv">1</span><span class="op">/</span>h_c <span class="op">+</span> t<span class="op">/</span>k_w)<span class="op">**</span>(<span class="op">-</span><span class="dv">1</span>) <span class="co">#W/m$^2\cdot$K</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>U_f <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>U_c <span class="op">+</span> R_f)<span class="op">**</span>(<span class="op">-</span><span class="dv">1</span>) <span class="co">#W/m$^2\cdot$K</span></span>
@@ -948,7 +948,7 @@ Mostrar solución
 </button>
 <div id="ec_16-4-sol" class="collapse multi-collapse">
 <p>El factor de fricción para el mismo ángulo Chevrón y Reynolds sobre 100 será, <span class="math inline">\(K_p=1.441\)</span> y <span class="math inline">\(m=0.206\)</span>.</p>
-<div id="ed54ae6e" class="cell" data-execution_count="9">
+<div id="c5e5747b" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>rho_c <span class="op">=</span> <span class="dv">995</span> <span class="co">#kg/m$^3$</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -959,7 +959,7 @@ Mostrar solución
 \]</span></p>
 </div>
 </div>
-<div id="56f96beb" class="cell" data-execution_count="10">
+<div id="449637b9" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Pérdidas en las placas</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="fl">1.441</span><span class="op">/</span>Re_c<span class="op">**</span><span class="fl">0.206</span></span>

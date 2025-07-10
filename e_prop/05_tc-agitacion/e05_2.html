@@ -579,6 +579,41 @@ window.Quarto = {
 <p>Un proceso industrial genera una corriente residual a <span class="math inline">\(92~^\circ\mathrm{C}\)</span> compuesta por tolueno (<span class="math inline">\(22.3\%\)</span> en fracción molar) y agua. Con el fin de aprovechar esta corriente, se plantea someterla a un proceso de separación que opera de forma óptima a <span class="math inline">\(20~^\circ\mathrm{C}\)</span>, por lo que es necesario enfriarla previamente.</p>
 <p>Muy a su pesar, su jefe insiste en utilizar un estanque agitado con serpentines dispuestos como deflectores para realizar el enfriamiento. Se propone entonces un estanque de <span class="math inline">\(30~\mathrm{m}^3\)</span>, con proporciones geométricas <span class="math inline">\(S_1=S_5=1/4\)</span> y <span class="math inline">\(S_6=6/5\)</span>, similar al esquema mostrado en la figura 1.a), operando con una agitación de <span class="math inline">\(N=150~\mathrm{RPM}\)</span>.</p>
 <p>Respecto al diseño de los deflectores, la figura 1.b) ilustra un arreglo de 8 pasadas de tubo por deflector, con una separación de <span class="math inline">\(J_n=15~\mathrm{cm}\)</span>. Los tubos están fabricados en acero (<span class="math inline">\(k = 50.2~\mathrm{W}\cdot\mathrm{m}^{-1}\cdot\mathrm{K}^{-1}\)</span>) y presentan un espesor de pared de <span class="math inline">\(m = 2.413~\mathrm{mm}\)</span>. Por estos tubos circula etilenglicol como refrigerante, a un caudal volumétrico de <span class="math inline">\(\dot{V} = 12~\mathrm{m}^3\cdot\mathrm{h}^{-1}\)</span> y una temperatura de entrada de <span class="math inline">\(5~^\circ\mathrm{C}\)</span>. Cabe destacar que el serpentín corresponde a un único tubo que forma todos los deflectores.</p>
+<div id="fig-img05_2" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-img05_2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-img05_2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/img05_2-1.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-img05_2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Esquema general del estanque
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-img05_2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/img05_2-2.png" class="img-fluid figure-img" style="width:75.0%" data-ref-parent="fig-img05_2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Diseño de los serpentines deflectores
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-img05_2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Estanque agitado con serpentines dispuestos como deflectores
+</figcaption>
+</figure>
+</div>
 <p>Las propiedades termofísicas promedio de los compuestos involucrados son las siguientes:</p>
 <table class="table">
 <colgroup>
@@ -637,8 +672,15 @@ Nu = 0.208Re_D^{0.65}Pr^{0.33}\left(\frac{\mu}{\mu_w}\right)^{0.4}
 Nu = 0.09Re_D^{0.65}Pr^{0.33}\left(\frac{D_a}{D_t}\right)^{0.33}\left(\frac{2}{n_b}\right)^{0.2}\left(\frac{\mu}{\mu_w}\right)^{0.4}
 \]</span> En caso de obtener resultados distintos, responda: ¿A qué se debe esta diferencia? ¿Cuál de los métodos considera más adecuado utilizar y por qué?</li>
 </ol>
+</section>
+<section id="solución" class="level2">
+<h2 class="anchored" data-anchor-id="solución">Solución</h2>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e05_2-sol" aria-expanded="false">
+Mostrar solución
+</button>
+<div id="e05_2-sol" class="collapse multi-collapse">
 <p>Librerías utilizadas</p>
-<div id="e4771ddd" class="cell" data-execution_count="1">
+<div id="593905a4" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi, log, exp</span>
@@ -649,20 +691,13 @@ Nu = 0.09Re_D^{0.65}Pr^{0.33}\left(\frac{D_a}{D_t}\right)^{0.33}\left(\frac{2}{n
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"custom_symbols"</span>,{<span class="st">"Nu"</span>: <span class="st">"</span><span class="ch">\\</span><span class="st">mathrm</span><span class="sc">{Nu}</span><span class="st">"</span>})</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-<section id="solución" class="level2">
-<h2 class="anchored" data-anchor-id="solución">Solución</h2>
-<button class="btn btn-success" data-bs-toggle="collapse" href="#e05_2-sol" aria-expanded="false">
-Mostrar solución
-</button>
-<div id="e05_2-sol" class="collapse multi-collapse">
 <section id="inciso-1" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
 <p>Primero se calculan las dimensiones del sistema en base a lo dado. Se despeja eñ diámetro de externo de la tubería a partir de las figuras. Luego:</p>
 <p><span class="math display">\[
 D_e\left(n_{tb}-2\right) = J_n\left(n_{tb}-1\right)-J
 \]</span></p>
-<div id="5dc7452e" class="cell" data-execution_count="2">
+<div id="02761ed8" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short <span class="dv">3</span></span>
@@ -713,7 +748,7 @@ D_{i} &amp;= D_{e} - 2 \cdot m  = 0.043 - 2 \cdot 0.002 &amp;= 0.038 \; \;\textr
 </div>
 </div>
 <p>Luego se calculan las propiedades termofísicas de los fluidos del sistema. Para el fluido caliente:</p>
-<div id="ed1967db" class="cell" data-execution_count="3">
+<div id="aeef001d" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> <span class="dv">4</span></span>
@@ -755,7 +790,7 @@ k_{h} &amp;= w_{tol} \cdot 0.114 + w_{w} \cdot 0.607 \\&amp;= 0.5947 \cdot 0.114
 </div>
 </div>
 <p>Mientras que el fluido frio que pasa por el serpentín es el compuesto puro.</p>
-<div id="0f8ba33d" class="cell" data-execution_count="4">
+<div id="34436dfc" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params <span class="dv">4</span></span>
@@ -779,7 +814,7 @@ k_{h} &amp;= w_{tol} \cdot 0.114 + w_{w} \cdot 0.607 \\&amp;= 0.5947 \cdot 0.114
 <section id="cálculo-de-u" class="level4">
 <h4 class="anchored" data-anchor-id="cálculo-de-u">Cálculo de U</h4>
 <p>A partir de los resultados anteriores, se puede calcular <span class="math inline">\(U\)</span> a partir de los números a dimensionales y las correlaciones para el número de Nusselt descritas en el enunciado.</p>
-<div id="3efec2a8" class="cell" data-execution_count="5">
+<div id="ad828961" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> <span class="dv">4</span></span>
@@ -841,7 +876,7 @@ F\cdot c_{P,\mathrm{ME}}\cdot(T_{\mathrm{ME},~o}-T_{\mathrm{ME},~i}) = A\cdot U\
 <p><span class="math display">\[
 13\times3600 = \frac{M\frac{c_P}{c_{P,\mathrm{ME}}}}{F(1-K_\mathrm{ME})}\ln\left(\frac{T_i-T_{\mathrm{ME},~i}}{T_o-T_{\mathrm{ME},~i}}\right)
 \]</span></p>
-<div id="4d80a0e6" class="cell" data-execution_count="6">
+<div id="93df4206" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Ti_h <span class="op">=</span> <span class="dv">92</span> <span class="op">+</span> <span class="fl">273.15</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>To_h <span class="op">=</span> <span class="dv">20</span> <span class="op">+</span> <span class="fl">273.15</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Ti_c <span class="op">=</span> <span class="dv">5</span> <span class="op">+</span> <span class="fl">273.15</span></span>
@@ -888,7 +923,7 @@ F\cdot c_{P,\mathrm{ME}}\cdot(T_{\mathrm{ME},~o}-T_{\mathrm{ME},~i}) = A\cdot U\
 </section>
 <section id="cálculo-del-número-de-deflectores" class="level4">
 <h4 class="anchored" data-anchor-id="cálculo-del-número-de-deflectores">Cálculo del número de deflectores</h4>
-<div id="a3be5ee3" class="cell" data-execution_count="7">
+<div id="98cd77d3" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> <span class="dv">1</span></span>
@@ -913,7 +948,7 @@ n_{b} &amp;= \frac{ L }{ 8 \cdot H } \\&amp;= \frac{ 183.8 }{ 8 \cdot 3.8 } \\&a
 <p>Iterando los cálculos del inciso anterior utilizando el mismo <code>solver</code>, se llega a que <span class="math inline">\(t_M\approx16\)</span> horas. Ahora utilizando la correlación para el enunciado recalculamos <span class="math inline">\(U\)</span>.</p>
 <section id="calcular-u-utilizando-dunlap-y-rushton" class="level4">
 <h4 class="anchored" data-anchor-id="calcular-u-utilizando-dunlap-y-rushton">Calcular U utilizando Dunlap y Rushton</h4>
-<div id="54945a0f" class="cell" data-execution_count="8">
+<div id="0bc986ed" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -948,7 +983,7 @@ U &amp;= \left( \frac{ D_{e} }{ D_{i} \cdot h_{c} } + \frac{ D_{e} }{ 2 \cdot k_
 </section>
 <section id="calcular-el-tiempo-de-mezclado" class="level4">
 <h4 class="anchored" data-anchor-id="calcular-el-tiempo-de-mezclado">Calcular el tiempo de mezclado</h4>
-<div id="bdcef575" class="cell" data-execution_count="9">
+<div id="c501f174" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>

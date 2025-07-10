@@ -574,7 +574,7 @@ window.Quarto = {
 </header>
 
 
-<div id="943decd2" class="cell" data-execution_count="1">
+<div id="a7843bca" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
@@ -583,7 +583,7 @@ window.Quarto = {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople <span class="im">as</span> si</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> CoolProp.CoolProp <span class="im">import</span> PropsSI</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="09ab193e" class="cell" data-execution_count="2">
+<div id="abfb8d3b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>si.environment(<span class="st">'default'</span>, top_level<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
@@ -614,7 +614,7 @@ Mostrar solución
 <div id="ec_18-1-sol" class="collapse multi-collapse">
 <p>Dado que no tenemos un valor exacto de <span class="math inline">\(h\)</span> para el agua, procedemos a testear el límite superior de la ebullición de convección libre.</p>
 <p>Del gráfico, asumiremos <span class="math inline">\(q = 8.5 \times 10^3~\text{W/m}^2\)</span>. Esto corresponde a una diferencia de temperatura aproximadamente de 5°C. Luego,</p>
-<div id="35f1ff52" class="cell" data-execution_count="3">
+<div id="27b65b39" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">1</span> <span class="co"># atm</span></span>
@@ -633,7 +633,7 @@ h &amp;= 1043 \cdot \left( \mathrm{dT} \right) ^{ \left( \frac{ 1 }{ 3 } \right)
 </div>
 <p>Este coeficiente de convección es muy bajo, por lo tanto descartamos nucleación por convección natural. Ahora procedemos a testear el segundo límite de flux entre ebullición nucleada y ebullición de transición.</p>
 <p>Del gráfico, asumiremos <span class="math inline">\(q = 10^5~\text{W/m}^2\)</span>. Esto corresponde a una diferencia de temperatura aproximadamente de 10°C. Luego,</p>
-<div id="d18c6c98" class="cell" data-execution_count="4">
+<div id="8d5546d4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">1</span> <span class="co"># atm</span></span>
@@ -694,7 +694,7 @@ Mostrar solución
 </button>
 <div id="ec_18-3-sol" class="collapse multi-collapse">
 <p>Primero calculamos el coeficiente de convección para ebullición nucleada en una superficie vertical. En primer lugar iteramos el primer tramo de la ecuación:</p>
-<div id="e1d55509" class="cell" data-execution_count="5">
+<div id="0bb96a3c" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">15</span> <span class="co"># C</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">4</span> <span class="co"># bar</span></span>
@@ -715,7 +715,7 @@ q &amp;= h \cdot \mathrm{dT}  = 1376.611 \cdot 15 &amp;= 20649.169
 </div>
 </div>
 <p>Sin embargo, esto muestra que estamos fuera del rango de validez del coeficiente de convección para flujo bajo, ya que <span class="math inline">\(q = 20,6 kW m^{-2} &gt; 3 kW m^{-2}\)</span>. Repetimos el cálculo con la otra ecuación.</p>
-<div id="39040558" class="cell" data-execution_count="6">
+<div id="3128614c" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">15</span> <span class="co"># C</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">4</span> <span class="co"># bar</span></span>

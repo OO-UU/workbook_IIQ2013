@@ -548,11 +548,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#enunciado" id="toc-enunciado" class="nav-link active" data-scroll-target="#enunciado">Enunciado</a></li>
-  <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a>
-  <ul class="collapse">
-  <li><a href="#inciso-1" id="toc-inciso-1" class="nav-link" data-scroll-target="#inciso-1">Inciso 1</a></li>
-  <li><a href="#inciso-2" id="toc-inciso-2" class="nav-link" data-scroll-target="#inciso-2">Inciso 2</a></li>
-  </ul></li>
+  <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
   </ul>
 <div class="quarto-code-links"><h2>Enlaces de código</h2><ul><li><a href="https://github.com/OO-UU/workbook_IIQ2013/blob/main/e_prop/07_ICC/jupyter/e07_4.ipynb"><i class="bi bi-github"></i>Descargar Jupyter (.ipynb)</a></li></ul></div></nav>
     </div>
@@ -589,8 +585,12 @@ window.Quarto = {
 </section>
 <section id="solución" class="level2">
 <h2 class="anchored" data-anchor-id="solución">Solución</h2>
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e07_4-sol" aria-expanded="false">
+Mostrar solución
+</button>
+<div id="e07_4-sol" class="collapse multi-collapse">
 <p>Librerías utilizadas:</p>
-<div id="2b822631" class="cell" data-execution_count="1">
+<div id="f0b74166" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -603,7 +603,7 @@ window.Quarto = {
 </div>
 <section id="inciso-1" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-1">Inciso 1</h3>
-<div id="e08669b7" class="cell" data-execution_count="2">
+<div id="01ae4126" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -652,7 +652,7 @@ F &amp;= 1 \; \;\textrm{(Supuesto)}
 \]</span></p>
 </div>
 </div>
-<div id="b8fe12bd" class="cell" data-execution_count="3">
+<div id="a408c277" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
@@ -691,7 +691,7 @@ F &amp;= 1 \; \;\textrm{(Supuesto)}
 </div>
 </div>
 <p>Definimos auxliarmente una función que calcule el número de Nusselt para el ángulo de la placa asumiendo que el número de Reynolds será un número muy grande.</p>
-<div id="cb65e003" class="cell" data-execution_count="4">
+<div id="5391f001" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_h(N_t, m, b, L_w, D_e, mu, Pr, k):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    N_p <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    N_cp <span class="op">=</span> (N_t <span class="op">-</span> <span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>N_p)</span>
@@ -703,7 +703,7 @@ F &amp;= 1 \; \;\textrm{(Supuesto)}
 </div>
 <section id="encontrar-q-y-delta-t_ml" class="level4">
 <h4 class="anchored" data-anchor-id="encontrar-q-y-delta-t_ml">Encontrar <span class="math inline">\(q\)</span> y <span class="math inline">\(\Delta T_{ml}\)</span></h4>
-<div id="14850b0f" class="cell" data-execution_count="5">
+<div id="66d2f0fd" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> <span class="dv">2</span></span>
@@ -727,7 +727,7 @@ Q_{r} &amp;= m_{h} \cdot \mathrm{cp}_{h} \cdot \left( \mathrm{Ti}_{h} - \mathrm{
 <section id="número-de-placas-a-partir-de-un-u_f-de-diseño" class="level4">
 <h4 class="anchored" data-anchor-id="número-de-placas-a-partir-de-un-u_f-de-diseño">Número de placas a partir de un <span class="math inline">\(U_f\)</span> de diseño</h4>
 <p>Ya que los intercambiadores tienen un <span class="math inline">\(U\)</span> entre los 3000 y 7000 W<span class="math inline">\(\cdot\)</span>m<span class="math inline">\(^{-2}\cdot\)</span>K<span class="math inline">\(^{-1}\)</span>; se utiliza el promedio entre ambos como punto de partida.</p>
-<div id="9a09643e" class="cell" data-execution_count="6">
+<div id="b5b2a506" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -760,7 +760,7 @@ N_{t} &amp;= N_{e} + 2 \\&amp;= 139.000 + 2 \\&amp;= 141.000  \\[10pt]
 </div>
 </div>
 <p>Con este nuevo número de placas y, en consecuencia, nueva área efectiva de transferencia se puede recalcular <span class="math inline">\(U\)</span> y verificar si coincide con la estimación inicial de 5000 W<span class="math inline">\(\cdot\)</span>m<span class="math inline">\(^{-2}\cdot\)</span>K<span class="math inline">\(^{-1}\)</span>.</p>
-<div id="5012b0a0" class="cell" data-execution_count="7">
+<div id="b5d95b1d" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -796,7 +796,7 @@ U_{f} &amp;= \frac{ 1 }{ \frac{ 1 }{ U_{c} } + \mathrm{Rf}_{c} + \mathrm{Rf}_{h}
 </section>
 <section id="primera-iteración-del-cálculo-de-u_f" class="level4">
 <h4 class="anchored" data-anchor-id="primera-iteración-del-cálculo-de-u_f">Primera iteración del cálculo de <span class="math inline">\(U_f\)</span></h4>
-<div id="e4918a1e" class="cell" data-execution_count="8">
+<div id="83aea0a4" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -817,7 +817,7 @@ N_{t} &amp;= N_{e} + 2 \\&amp;= 211.000 + 2 \\&amp;= 213.000  \\[10pt]
 </div>
 </div>
 <p>Nuevamente, se verifica si con este nuevo número de placas se cumple que U es la misma.</p>
-<div id="a0ed3f61" class="cell" data-execution_count="9">
+<div id="b6abd932" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -844,7 +844,7 @@ U_{f} &amp;= \frac{ 1 }{ \frac{ 1 }{ U_{c} } + \mathrm{Rf}_{c} + \mathrm{Rf}_{h}
 </section>
 <section id="segunda-iteración-del-cálculo-de-u_f" class="level4">
 <h4 class="anchored" data-anchor-id="segunda-iteración-del-cálculo-de-u_f">Segunda iteración del cálculo de <span class="math inline">\(U_f\)</span></h4>
-<div id="9547e78a" class="cell" data-execution_count="10">
+<div id="539253f6" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -867,7 +867,7 @@ N_{t} &amp;= N_{e} + 2 \\&amp;= 243.000 + 2 \\&amp;= 245.000  \\[10pt]
 </section>
 <section id="verificar" class="level4">
 <h4 class="anchored" data-anchor-id="verificar">Verificar</h4>
-<div id="67898c3a" class="cell" data-execution_count="11">
+<div id="49cf24b5" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -894,7 +894,7 @@ U_{f} &amp;= \frac{ 1 }{ \frac{ 1 }{ U_{c} } + \mathrm{Rf}_{c} + \mathrm{Rf}_{h}
 </section>
 <section id="tercera-iteración-del-cálculo-de-u_f" class="level4">
 <h4 class="anchored" data-anchor-id="tercera-iteración-del-cálculo-de-u_f">Tercera iteración del cálculo de <span class="math inline">\(U_f\)</span></h4>
-<div id="9f3a3257" class="cell" data-execution_count="12">
+<div id="e4423fca" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -917,7 +917,7 @@ N_{t} &amp;= N_{e} + 2 \\&amp;= 257.000 + 2 \\&amp;= 259.000  \\[10pt]
 </section>
 <section id="verificar-1" class="level4">
 <h4 class="anchored" data-anchor-id="verificar-1">Verificar</h4>
-<div id="9fc6bd5c" class="cell" data-execution_count="13">
+<div id="dcc55777" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -941,7 +941,7 @@ U_{f} &amp;= \frac{ 1 }{ \frac{ 1 }{ U_{c} } + \mathrm{Rf}_{c} + \mathrm{Rf}_{h}
 </div>
 </div>
 <p>Ya que 2694.30 <span class="math inline">\(\approx\)</span> 2634.45, se tiene la verdadera área efectiva final.</p>
-<div id="6d8e854a" class="cell" data-execution_count="14">
+<div id="fb189923" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -960,7 +960,7 @@ A_{e} &amp;= N_{e} \cdot A_{1} \\&amp;= 257.000 \cdot 0.848 \\&amp;= 218.000 \; 
 <section id="inciso-2" class="level3">
 <h3 class="anchored" data-anchor-id="inciso-2">Inciso 2</h3>
 <p>Al igual que el inciso anterior, definimos auxliarmente una función que calcule el factor de fricción para el ángulo de la placa asumiendo que el número de Reynolds será un número muy grande.</p>
-<div id="07321d31" class="cell" data-execution_count="15">
+<div id="d4028929" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_Dpc(N_t, m, b, L_w, D_e, mu, rho):</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    N_p <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    N_cp <span class="op">=</span> (N_t <span class="op">-</span> <span class="dv">1</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>N_p)</span>
@@ -970,7 +970,7 @@ A_{e} &amp;= N_{e} \cdot A_{1} \\&amp;= 257.000 \cdot 0.848 \\&amp;= 218.000 \; 
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> <span class="fl">0.772</span><span class="op">/</span>Re<span class="op">**</span><span class="fl">0.161</span></span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">4</span><span class="op">*</span>f <span class="op">*</span> L_v<span class="op">*</span>N_p<span class="op">/</span>D_e <span class="op">*</span> Gch<span class="op">**</span><span class="dv">2</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>rho)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="62d1f586" class="cell" data-execution_count="16">
+<div id="23e79f04" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
@@ -1009,9 +1009,10 @@ A_{e} &amp;= N_{e} \cdot A_{1} \\&amp;= 257.000 \cdot 0.848 \\&amp;= 218.000 \; 
 \]</span></p>
 </div>
 </div>
-
-
 </section>
+</div>
+
+
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Volver arriba</a></main> <!-- /main -->
