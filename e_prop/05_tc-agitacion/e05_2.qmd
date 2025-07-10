@@ -24,6 +24,16 @@ Muy a su pesar, su jefe insiste en utilizar un estanque agitado con serpentines 
 
 Respecto al diseño de los deflectores, la figura 1.b) ilustra un arreglo de 8 pasadas de tubo por deflector, con una separación de $J_n=15~\mathrm{cm}$. Los tubos están fabricados en acero ($k = 50.2~\mathrm{W}\cdot\mathrm{m}^{-1}\cdot\mathrm{K}^{-1}$) y presentan un espesor de pared de $m = 2.413~\mathrm{mm}$. Por estos tubos circula etilenglicol como refrigerante, a un caudal volumétrico de $\dot{V} = 12~\mathrm{m}^3\cdot\mathrm{h}^{-1}$ y una temperatura de entrada de $5~^\circ\mathrm{C}$. Cabe destacar que el serpentín corresponde a un único tubo que forma todos los deflectores.
 
+
+::: {#fig-img05_2 layout-ncol=2}
+
+![Esquema general del estanque](images/img05_2-1.png){#fig-a width=100%}
+
+![Diseño de los serpentines deflectores](images/img05_2-2.png){#fig-b width=75%}
+
+Estanque agitado con serpentines dispuestos como deflectores
+:::
+
 Las propiedades termofísicas promedio de los compuestos involucrados son las siguientes:
 
 | Compuesto    | MW (g/mol) | Densidad (kg/m$^3$) | c$_P$ (J/kg$\cdot$K) | k (W/m$\cdot$K)  | mu (Pa$\cdot$s) |
@@ -49,6 +59,12 @@ Nu = 0.09Re_D^{0.65}Pr^{0.33}\left(\frac{D_a}{D_t}\right)^{0.33}\left(\frac{2}{n
 $$
 En caso de obtener resultados distintos, responda: ¿A qué se debe esta diferencia? ¿Cuál de los métodos considera más adecuado utilizar y por qué?
 
+## Solución
+
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e05_2-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e05_2-sol .collapse .multi-collapse}
+
 Librerías utilizadas
 
 ```{python}
@@ -59,12 +75,6 @@ handcalcs.set_option("latex_block_start", "$$")
 handcalcs.set_option("latex_block_end", "$$")
 handcalcs.set_option("custom_symbols",{"Nu": "\\mathrm{Nu}"})
 ```
-
-## Solución
-
-<button class="btn btn-success" data-bs-toggle="collapse" href="#e05_2-sol" aria-expanded="false">Mostrar solución</button>
-
-::: {#e05_2-sol .collapse .multi-collapse}
 
 ### Inciso 1
 

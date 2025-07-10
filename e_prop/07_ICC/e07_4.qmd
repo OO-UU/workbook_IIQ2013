@@ -26,6 +26,10 @@ Con tal de reducir la temperatura del agua residual hasta los $60~^\circ$C, se b
 
 ## Solución
 
+<button class="btn btn-success" data-bs-toggle="collapse" href="#e07_4-sol" aria-expanded="false">Mostrar solución</button>
+
+::: {#e07_4-sol .collapse .multi-collapse}
+
 Librerías utilizadas:
 ```{python}
 import numpy as np
@@ -224,3 +228,5 @@ Dpp_c = 1.4*1 * Gp_c**2/(2*rho_c) #Pa
 Dp_h = Dpc_h + Dpp_h #Pa
 Dp_c = Dpc_c + Dpp_c #Pa
 ```
+
+:::
