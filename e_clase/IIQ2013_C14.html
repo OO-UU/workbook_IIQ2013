@@ -314,6 +314,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio 1: Agitador con serpentín</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_prop/05_tc-agitacion/e05_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio 2: Serpentines dispuestos como deflectores</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -364,6 +370,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../e_prop/07_ICC/e07_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 3: Arreglos de aletas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_prop/07_ICC/e07_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio 4: Intercambiadores de placas compactas</span></a>
   </div>
 </li>
       </ul>
@@ -565,7 +577,7 @@ window.Quarto = {
 
 <p>Interesa evaluar el tiempo que demora calentar <span class="math inline">\(V = 10~\text{m}^3\)</span> de glicerina de <span class="math inline">\(T_i = 25~\text{°C}\)</span> a <span class="math inline">\(T_f = 35~\text{°C}\)</span> en un estanque agitado de configuración estándar (<span class="math inline">\(D_a/D_t = 1/3\)</span>, <span class="math inline">\(H/D_t = 1\)</span>) equipado con un impulsor de ancla que opera a <span class="math inline">\(N = 32~\text{RPM}\)</span>, y una camisa con deflectores (ancho, <span class="math inline">\(w = 10~\text{cm}\)</span>) por la que circulan <span class="math inline">\(F = 12000~\text{kg/h}\)</span> de vapor de agua a <span class="math inline">\(T_{hi} = 100~\text{°C}\)</span>.</p>
 <p>Librerias a utilizar</p>
-<div id="1eec5eb8" class="cell" data-execution_count="1">
+<div id="f59ae3d0" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
@@ -590,7 +602,7 @@ window.Quarto = {
 Mostrar solución
 </button>
 <div id="ec_14-1-sol" class="collapse multi-collapse">
-<div id="507545ee" class="cell" data-execution_count="2">
+<div id="61c7a021" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="dv">1260</span> <span class="op">*</span> kg<span class="op">/</span>m<span class="op">**</span><span class="dv">3</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">32</span><span class="op">/</span><span class="dv">60</span> <span class="op">*</span> <span class="dv">1</span><span class="op">/</span>s</span>
@@ -608,7 +620,7 @@ Mostrar solución
 \]</span></p>
 </div>
 </div>
-<div id="6e09c386" class="cell" data-execution_count="3">
+<div id="8b85694b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Re <span class="op">=</span> rho<span class="op">*</span>N<span class="op">*</span>D_a<span class="op">**</span><span class="dv">2</span><span class="op">/</span>mu</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -620,7 +632,7 @@ Mostrar solución
 </div>
 </div>
 <p>Ahora calculamos el diámetro del estanque y del agitador</p>
-<div id="5bce78a3" class="cell" data-execution_count="4">
+<div id="34d34f28" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>V_t <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> m <span class="op">**</span><span class="dv">3</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>pi <span class="op">=</span> np.pi</span>
@@ -641,7 +653,7 @@ D_{a} &amp;= \frac{ D_{t} }{ 3 } \\&amp;= \frac{ 2.335\ \mathrm{m} }{ 3 } \\&amp
 </div>
 </div>
 <p>Ahora calculamos el coeficiente de convección por el lado del fluido agitado</p>
-<div id="45fffde5" class="cell" data-execution_count="5">
+<div id="d0d267a4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Pr <span class="op">=</span> <span class="dv">5590</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Nusselt_t <span class="op">=</span> <span class="fl">0.36</span> <span class="op">*</span> (Re)<span class="op">**</span><span class="fl">0.67</span> <span class="op">*</span> Pr<span class="op">**</span>(<span class="fl">0.33</span>)</span>
@@ -681,7 +693,7 @@ h_{o} &amp;= \mathrm{Nusselt}_{t} \cdot \frac{ k }{ D_{t} } \\&amp;= 461.183 \cd
 Mostrar solución
 </button>
 <div id="ec_14-2-sol" class="collapse multi-collapse">
-<div id="a4f0dd74" class="cell" data-execution_count="6">
+<div id="bc090251" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>D_ci <span class="op">=</span> D_t</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>D_ce <span class="op">=</span> D_t <span class="op">+</span> <span class="fl">0.1</span><span class="op">*</span>m</span>
@@ -705,10 +717,10 @@ a_{c} &amp;= Z \cdot \left( D_{ce} - D_{ci} \right) \\&amp;= 2.335\ \mathrm{m} \
 </div>
 </div>
 <p>Ahora calculamos la velocidad del fluido en la chaqueta,</p>
-<div id="d139986f" class="cell" data-execution_count="7">
+<div id="fdb9f562" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>si.environment(<span class="st">'default'</span>, top_level<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="0ca05248" class="cell" data-execution_count="8">
+<div id="2910872b" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span> <span class="dv">5</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>rho_v <span class="op">=</span> <span class="fl">0.59</span> <span class="op">*</span> kg <span class="op">/</span> m<span class="op">**</span><span class="dv">3</span> <span class="co"># Densidad del fluido de servicio</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>mu_v <span class="op">=</span> <span class="fl">0.01</span><span class="op">*</span><span class="fl">1e-3</span><span class="op">*</span>Pa<span class="op">*</span>s</span>
@@ -759,7 +771,7 @@ h_{c} &amp;= \mathrm{Nusselt}_{chaqueta} \cdot \frac{ k_{v} }{ D_{et} } \\&amp;=
 Mostrar solución
 </button>
 <div id="ec_14-3-sol" class="collapse multi-collapse">
-<div id="00f6cb97" class="cell" data-execution_count="9">
+<div id="7ab27813" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> V_t <span class="op">*</span> rho</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>c_p <span class="op">=</span> <span class="dv">2437</span> <span class="op">*</span> J<span class="op">/</span>kg<span class="op">/</span>K</span>
@@ -777,7 +789,7 @@ U &amp;= \left( \frac{ 1 }{ h_{o} } + \frac{ 1 }{ h_{c} } \right) ^{ -1 } \\&amp
 </div>
 </div>
 <p>Asumiendo que la chaqueta comienza en el diámetro externo del tanque, el área de transferencia de calor viene dada por</p>
-<div id="d3be58ed" class="cell" data-execution_count="10">
+<div id="568e81cc" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> pi <span class="op">*</span> D_t <span class="op">*</span> Z</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -789,7 +801,7 @@ A &amp;= \pi \cdot D_{t} \cdot Z \\&amp;= 3.142 \cdot 2.335\ \mathrm{m} \cdot 2.
 </div>
 </div>
 <p>La diferencia de temperatura media logarítmica asumiendo que el vapor condensa por el lado de la chaqueta es</p>
-<div id="8ddeb24f" class="cell" data-execution_count="11">
+<div id="c8613807" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render short</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>T_i <span class="op">=</span> <span class="dv">25</span> <span class="op">*</span> Celsius</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>T_f <span class="op">=</span> <span class="dv">35</span> <span class="op">*</span> Celsius</span>
@@ -810,7 +822,7 @@ T_{s} &amp;= 100 \cdot \mathrm{Celsius}  = 100 \cdot Celsius &amp;= 100.000\ \ma
 </div>
 </div>
 <p>Finalmente, el tiempo de calentamiento es</p>
-<div id="ab8132c2" class="cell" data-execution_count="12">
+<div id="0e64d621" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render <span class="bu">long</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>t_s <span class="op">=</span> M<span class="op">*</span>c_p <span class="op">/</span> (U<span class="op">*</span>A) <span class="op">*</span> np.log((T_s<span class="op">-</span>T_i)<span class="op">/</span>(T_s<span class="op">-</span>T_f))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">

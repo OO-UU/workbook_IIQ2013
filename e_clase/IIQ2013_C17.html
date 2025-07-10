@@ -314,6 +314,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio 1: Agitador con serpentín</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_prop/05_tc-agitacion/e05_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio 2: Serpentines dispuestos como deflectores</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -364,6 +370,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../e_prop/07_ICC/e07_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 3: Arreglos de aletas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_prop/07_ICC/e07_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio 4: Intercambiadores de placas compactas</span></a>
   </div>
 </li>
       </ul>
@@ -565,7 +577,7 @@ window.Quarto = {
 
 
 <p>Se hacen circular <span class="math inline">\(6~\text{kg/s}\)</span> de aire a <span class="math inline">\(1~\text{atm}\)</span> y <span class="math inline">\(450~\text{K}\)</span> a través de un intercambiador de calor compacto (ICC) modelo CF-8.72(c) de <span class="math inline">\(0.6\times0.8~\text{m}^2\)</span> de área frontal y <span class="math inline">\(0.6~\text{m}\)</span> de largo. Por el lado de los tubos (<span class="math inline">\(L = 0.8~\text{m}\)</span>) circulan <span class="math inline">\(10~\text{kg/s}\)</span> de agua a <span class="math inline">\(310~\text{K}\)</span>.</p>
-<div id="fb626c37" class="cell" data-execution_count="1">
+<div id="536cb42d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
@@ -574,7 +586,7 @@ window.Quarto = {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople <span class="im">as</span> si</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> CoolProp.CoolProp <span class="im">import</span> PropsSI</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="c0ce0850" class="cell" data-execution_count="2">
+<div id="2162ecbe" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>si.environment(<span class="st">'default'</span>, top_level<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
@@ -595,7 +607,7 @@ Mostrar solución
 </button>
 <div id="ec_17-1-sol" class="collapse multi-collapse">
 <p>Definimos las propiedades termofísicas del agua y el aire,</p>
-<div id="26c9816a" class="cell" data-execution_count="3">
+<div id="3589357f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params sci_not</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>cp_agua <span class="op">=</span> PropsSI(<span class="st">'C'</span>, <span class="st">'P'</span>, <span class="fl">1e5</span>, <span class="st">'T'</span>, <span class="dv">310</span>, <span class="st">'water'</span>) <span class="op">*</span> J <span class="op">/</span> kg <span class="op">/</span> K</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mu_aire <span class="op">=</span> PropsSI(<span class="st">'viscosity'</span>, <span class="st">'P'</span>, <span class="fl">1e5</span>, <span class="st">'T'</span>, <span class="dv">450</span>, <span class="st">'air'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -608,7 +620,7 @@ Mostrar solución
 \]</span></p>
 </div>
 </div>
-<div id="739e9602" class="cell" data-execution_count="4">
+<div id="f68bfa3b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>F_ic <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> kg <span class="op">/</span> s</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>A_ic <span class="op">=</span> <span class="fl">0.6</span><span class="op">*</span><span class="fl">0.8</span> <span class="op">*</span> m<span class="op">**</span><span class="dv">2</span> <span class="co"># Área frontal ICC</span></span>
@@ -630,7 +642,7 @@ L_{t} &amp;= 800.000\ \mathrm{mm} \; \;\textrm{(Largo tubos)}
 </div>
 </div>
 <p>Para calcular Reynolds, necesitamos el diámetro equivalente del ICC. Para el modelo cf-8.72(c),</p>
-<div id="c0179e9d" class="cell" data-execution_count="5">
+<div id="07313e72" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="fl">0.494</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>beta <span class="op">=</span> <span class="dv">446</span> </span>
@@ -687,7 +699,7 @@ Mostrar solución
 </button>
 <div id="ec_17-2-sol" class="collapse multi-collapse">
 <p>Primero calculamos el Factor de Colburn <span class="math inline">\(j_H\)</span>. Desde el gráfico y para la superficie CF-8.72(c), tenemos que</p>
-<div id="cff6155f" class="cell" data-execution_count="6">
+<div id="0fa00eaf" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>j_H <span class="op">=</span> <span class="fl">0.007</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>cp_aire <span class="op">=</span> PropsSI(<span class="st">'C'</span>, <span class="st">'P'</span>, <span class="fl">1e5</span>, <span class="st">'T'</span>, <span class="dv">450</span>, <span class="st">'air'</span>)</span>
@@ -734,7 +746,7 @@ Mostrar solución
 <p>La razón entre el área de flujo externo del aire y el área de flujo interno del agua es simplemente la razón de las áreas superficiales por unidad de volumen,</p>
 <p><span class="math display">\[ \frac{A_o}{A_i} = \frac{V \beta}{V \beta_{lat}} = \frac{\beta}{\beta_{lat}}\]</span></p>
 <p>Esto se debe a que la configuración de intercambiadores de calor compactos es a flujo cruzado.</p>
-<div id="94ecb2c5" class="cell" data-execution_count="7">
+<div id="27ff503f" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>eta_0 <span class="op">=</span> <span class="fl">0.91</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>beta_lat <span class="op">=</span> <span class="fl">59.2</span></span>
@@ -783,7 +795,7 @@ Mostrar solución
 <div id="ec_17-4-sol" class="collapse multi-collapse">
 <p>Para calcular la temperatura de salida del ICC, podemos buscar el factor de corrección para un flujo perfectamente mezclado y el otro fluido sin mezclar.</p>
 <p>Utilizaremos el método de efectividad NTU, utilizando las fórmulas de la clase 20. Para un IC de flujo cruzado, con un fluido mezclado y el otro sin mezclar, tenemos que.</p>
-<div id="223d716f" class="cell" data-execution_count="8">
+<div id="caa9e55b" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>C_c <span class="op">=</span> F_t <span class="op">*</span> cp_agua</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>C_h <span class="op">=</span> F_ic <span class="op">*</span> cp_aire</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -798,7 +810,7 @@ C_{h} &amp;= F_{ic} \cdot \mathrm{cp}_{aire} \\&amp;= 6.000\ \mathrm{kg} \cdot \
 </div>
 </div>
 <p>El agua tiene una mayor capacidad, por lo tanto</p>
-<div id="d19b976d" class="cell" data-execution_count="9">
+<div id="a742fccf" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>C_r <span class="op">=</span> C_h<span class="op">/</span>C_c</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -810,7 +822,7 @@ C_{r} &amp;= \frac{ C_{h} }{ C_{c} }  = \frac{ 6126.629\ \mathrm{kg} \cdot \math
 </div>
 </div>
 <p>Notemos que calculamos el coeficiente global de transferencia de calor basado en área interna. Por lo tanto, para el calculo de NTU utilizaremos esa área.</p>
-<div id="a3485a20" class="cell" data-execution_count="10">
+<div id="a741d279" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>A_i <span class="op">=</span> beta_lat <span class="op">*</span> (A_ic <span class="op">*</span> L_ic) <span class="op">/</span> m</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>NTU <span class="op">=</span> (U<span class="op">*</span>A_i)<span class="op">/</span>C_h</span>
@@ -828,7 +840,7 @@ A_{i} &amp;= \beta_{lat} \cdot \frac{ A_{ic} \cdot L_{ic} }{ m }  = 59.200 \cdot
 </div>
 </div>
 <p>Primero calculamos la temperatura del aire a la salida</p>
-<div id="5bec76de" class="cell" data-execution_count="11">
+<div id="fb54d7db" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>T_hi <span class="op">=</span> <span class="dv">450</span> <span class="op">*</span> K</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>T_ci <span class="op">=</span> <span class="dv">310</span> <span class="op">*</span> K</span>
@@ -846,7 +858,7 @@ T_{ho} &amp;= T_{hi} - \epsilon \cdot \left( T_{hi} - T_{ci} \right)  = 450.000\
 </div>
 </div>
 <p>Ahora pudemos calcular la temperatura del fluido frío mediante balance de energía</p>
-<div id="eda3d7f1" class="cell" data-execution_count="12">
+<div id="860fa10c" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>T_co <span class="op">=</span> (T_hi<span class="op">-</span>T_ho) <span class="op">*</span> C_r <span class="op">+</span> T_ci</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -862,7 +874,7 @@ T_{co} &amp;= \left( T_{hi} - T_{ho} \right) \cdot C_{r} + T_{ci}  = \left( 450.
 <h3 class="anchored" data-anchor-id="método-2-f_t">Método 2: <span class="math inline">\(F_t\)</span></h3>
 <p>Notar que ya calculamos la efectividad. Ah</p>
 <p>En este caso, el fluido que se calienta (agua) tiene mayor capacidad que el fluido que se enfría. Por lo tanto, la razón entre el cambio de temperatura del fluido que se enfría y el que se calienta es igual a <span class="math inline">\(1/C_r\)</span>.</p>
-<div id="f201f835" class="cell" data-execution_count="13">
+<div id="3aef3323" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>C_r</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> (T_co <span class="op">-</span> T_ci)<span class="op">/</span>(T_hi<span class="op">-</span>T_ci)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -877,7 +889,7 @@ P &amp;= \frac{ T_{co} - T_{ci} }{ T_{hi} - T_{ci} }  = \frac{ 317.779\ \mathrm{
 </div>
 </div>
 <p>Para estas condiciones, $F_T $</p>
-<div id="4c65d46c" class="cell" data-execution_count="14">
+<div id="c6f935ca" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>dT_ml <span class="op">=</span> ((T_hi<span class="op">-</span>T_co) <span class="op">-</span> (T_ho<span class="op">-</span>T_ci)) <span class="op">/</span> np.log((T_hi<span class="op">-</span>T_co)<span class="op">/</span>(T_ho<span class="op">-</span>T_ci))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -891,7 +903,7 @@ P &amp;= \frac{ T_{co} - T_{ci} }{ T_{hi} - T_{ci} }  = \frac{ 317.779\ \mathrm{
 </section>
 <section id="chequeo" class="level3">
 <h3 class="anchored" data-anchor-id="chequeo">Chequeo</h3>
-<div id="966699ef" class="cell" data-execution_count="15">
+<div id="e4dbe107" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>F_t <span class="op">=</span> <span class="fl">0.99</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> U<span class="op">*</span>A_i <span class="op">*</span> dT_ml <span class="op">*</span> F_t</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -905,7 +917,7 @@ Q &amp;= U \cdot A_{i} \cdot \mathrm{dT}_{ml} \cdot F_{t} \\&amp;= 177.477\ \mat
 \]</span></p>
 </div>
 </div>
-<div id="2d8cf211" class="cell" data-execution_count="16">
+<div id="67245d58" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>T_co2 <span class="op">=</span> T_ci <span class="op">+</span> Q<span class="op">/</span>C_c</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">

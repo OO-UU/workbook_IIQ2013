@@ -314,6 +314,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio 1: Agitador con serpentín</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_prop/05_tc-agitacion/e05_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio 2: Serpentines dispuestos como deflectores</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -364,6 +370,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../e_prop/07_ICC/e07_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 3: Arreglos de aletas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_prop/07_ICC/e07_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio 4: Intercambiadores de placas compactas</span></a>
   </div>
 </li>
       </ul>
@@ -566,7 +578,7 @@ window.Quarto = {
 
 <p>Se usa un intercambiador de calor de tubos y carcasa (<strong>ICTC</strong>) tipo 1-2 para enfriar <span class="math inline">\(20~\text{ton/h}\)</span> de agua (flujo por el lado de la carcasa) de <span class="math inline">\(81\)</span> a <span class="math inline">\(33\text{°C}\)</span> usando <span class="math inline">\(120~\text{ton/h}\)</span> de agua de enfriamiento a <span class="math inline">\(17~\text{°C}\)</span> (flujo por el lado de los tubos). El ICTC dispone de <span class="math inline">\(Nt = 60\)</span> tubos de <span class="math inline">\(1~\text{in}\)</span> de diámetro nominal (<span class="math inline">\(D_0 = 2.54~\text{cm}\)</span>; <span class="math inline">\(D_i = 2.21~\text{cm}\)</span>) y <span class="math inline">\(L = 2.44~\text{m}\)</span> de largo ordenados según un arreglo cuadrado de <span class="math inline">\(1.25~\text{in}\)</span> de paso dentro de una carcasa de <span class="math inline">\(D_c = 31.9~\text{cm}\)</span> de diámetro.</p>
 <p>Paquetes utilizados:</p>
-<div id="c08171dd" class="cell" data-execution_count="1">
+<div id="428bcb88" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
@@ -574,7 +586,7 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople <span class="im">as</span> si</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi, log</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a3bb8034" class="cell" data-execution_count="2">
+<div id="129ea400" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>si.environment(<span class="st">'default'</span>, top_level<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
@@ -593,7 +605,7 @@ Mostrar solución
 </button>
 <div id="ec_12-1-sol" class="collapse multi-collapse">
 <p>Primero anotamos todos los datos disponibles</p>
-<div id="27206c6f" class="cell" data-execution_count="3">
+<div id="117aef5b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>F_h <span class="op">=</span> <span class="dv">20</span> <span class="op">*</span> <span class="fl">1e3</span> <span class="op">/</span> <span class="dv">3600</span> <span class="op">*</span> kg <span class="op">/</span> s</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>T_hi <span class="op">=</span> <span class="dv">81</span> <span class="op">*</span> K</span>
@@ -628,7 +640,7 @@ d_{o} &amp;= 25.400\ \mathrm{mm} \;
 </div>
 <p>El área de intercambio de calor puede calcularse directamente a partir de la geometría del tubo y del número de tubos del arreglo</p>
 <p><span class="math display">\[ A = N_t \pi d_o L \]</span></p>
-<div id="35bc6569" class="cell" data-execution_count="4">
+<div id="bf0da536" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> N_t <span class="op">*</span> pi <span class="op">*</span> d_o <span class="op">*</span> L</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -659,7 +671,7 @@ Mostrar solución
 </button>
 <div id="ec_12-2-sol" class="collapse multi-collapse">
 <p>Ahora tenemos que calcular la diferencia de temperatura relevante para el diseño del intercambiador de calor de tubo y carcasa. Para ello, calculamos los factores <span class="math inline">\(Z\)</span> y <span class="math inline">\(F_h\)</span> con el propósito de estimar el factor de corrección <span class="math inline">\(F_T\)</span>.</p>
-<div id="8e05645a" class="cell" data-execution_count="5">
+<div id="d2427d79" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> F_c<span class="op">/</span>F_h</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -670,7 +682,7 @@ Z &amp;= \frac{ F_{c} }{ F_{h} }  = \frac{ 33.333\ \mathrm{kg} \cdot \mathrm{s}^
 \]</span></p>
 </div>
 </div>
-<div id="daa169cd" class="cell" data-execution_count="6">
+<div id="751ad641" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>T_co <span class="op">=</span> (T_hi <span class="op">-</span> T_ho)<span class="op">/</span>Z <span class="op">+</span> T_ci</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -681,7 +693,7 @@ T_{co} &amp;= \frac{ T_{hi} - T_{ho} }{ Z } + T_{ci}  = \frac{ 81.000\ \mathrm{�
 \]</span></p>
 </div>
 </div>
-<div id="f5d03bb7" class="cell" data-execution_count="7">
+<div id="06551a54" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>eta_H <span class="op">=</span> (T_co <span class="op">-</span> T_ci) <span class="op">/</span> (T_hi <span class="op">-</span> T_ci)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -693,7 +705,7 @@ T_{co} &amp;= \frac{ T_{hi} - T_{ho} }{ Z } + T_{ci}  = \frac{ 81.000\ \mathrm{�
 </div>
 </div>
 <p>Utilizando la fórmula para el <span class="math inline">\(F_T\)</span> de un ICTC 1-2,</p>
-<div id="a3792075" class="cell" data-execution_count="8">
+<div id="6d77f962" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Ft_12(Z, eta):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    num <span class="op">=</span> np.sqrt(Z<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> np.log( (<span class="dv">1</span><span class="op">-</span>eta) <span class="op">/</span> (<span class="dv">1</span><span class="op">-</span>eta<span class="op">*</span>Z))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    den <span class="op">=</span> (Z<span class="op">-</span><span class="dv">1</span>) <span class="op">*</span> np.log ( (<span class="dv">2</span><span class="op">-</span>eta<span class="op">*</span>(Z<span class="op">+</span><span class="dv">1</span> <span class="op">-</span> np.sqrt(Z<span class="op">**</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span>)))</span>
@@ -701,10 +713,10 @@ T_{co} &amp;= \frac{ T_{hi} - T_{ho} }{ Z } + T_{ci}  = \frac{ 81.000\ \mathrm{�
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    F_t <span class="op">=</span> num<span class="op">/</span>den</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> F_t</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="2fb606ac" class="cell" data-execution_count="9">
+<div id="5f006116" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>F_t <span class="op">=</span> Ft_12(Z, eta_H)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="bed7c51f" class="cell" data-execution_count="10">
+<div id="6a4b7c9e" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>F_t <span class="op">=</span> F_t</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -716,7 +728,7 @@ F_{t} &amp;= 0.928 \;
 </div>
 </div>
 <p>Ahora calculamos <span class="math inline">\(\Delta T_{ml}\)</span></p>
-<div id="d5af72de" class="cell" data-execution_count="11">
+<div id="d6f8e0f9" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dT_h <span class="op">=</span> T_hi <span class="op">-</span> T_co</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dT_c <span class="op">=</span> T_ho <span class="op">-</span> T_ci</span>
@@ -760,7 +772,7 @@ Mostrar solución
 </button>
 <div id="ec_12-3-sol" class="collapse multi-collapse">
 <p>Parámetros geométricos y físicos,</p>
-<div id="6d84555b" class="cell" data-execution_count="12">
+<div id="34b85761" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render params</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>N_b <span class="op">=</span> <span class="dv">30</span> <span class="co"># número de deflectores</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> L<span class="op">/</span>N_b <span class="co"># espaciamiento entre deflectores</span></span>
@@ -784,7 +796,7 @@ c_{p} &amp;= 4184.000\ \mathrm{m}^{2} \cdot \mathrm{s}^{-2} \cdot \mathrm{K}^{-1
 </div>
 </div>
 <p>Cálculo del número de Reynolds</p>
-<div id="b7c03846" class="cell" data-execution_count="13">
+<div id="6d03d06d" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>S_T <span class="op">=</span> <span class="fl">1.25</span> <span class="op">*</span> <span class="fl">0.0254</span> <span class="op">*</span> m <span class="co"># Paso del arreglo</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>D_e <span class="op">=</span> (<span class="dv">4</span><span class="op">*</span>S_T<span class="op">**</span><span class="dv">2</span><span class="op">-</span> np.pi <span class="op">*</span> d_o<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(np.pi <span class="op">*</span> d_o) <span class="co"># Diámetro equivalente</span></span>
@@ -813,7 +825,7 @@ G &amp;= \frac{ F_{h} }{ a_{c} }  = \frac{ 5.556\ \mathrm{kg} \cdot \mathrm{s}^{
 </div>
 </div>
 <p>Cálculos de transferencia de calor. Asumiremos que <span class="math inline">\(\mu_s/\mu \sim 1\)</span></p>
-<div id="2d8bcb13" class="cell" data-execution_count="14">
+<div id="4f3991c3" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>j_h <span class="op">=</span> <span class="fl">0.36</span> <span class="op">*</span> Re<span class="op">**</span><span class="fl">0.55</span> </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>Nusselt <span class="op">=</span> j_h <span class="op">*</span> Pr<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
@@ -850,7 +862,7 @@ Mostrar solución
 <div id="ec_12-4-sol" class="collapse multi-collapse">
 <p>Desde la ecuación de diseño.</p>
 <p><span class="math display">\[ q = UA F_t \Delta T_{ml}\]</span></p>
-<div id="f6c13e90" class="cell" data-execution_count="15">
+<div id="82d81dc5" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render sci_not</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>h_t <span class="op">=</span> <span class="dv">10000</span> <span class="op">*</span> W <span class="op">/</span> m<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> K</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> F_h <span class="op">*</span> c_p <span class="op">*</span> (T_hi <span class="op">-</span> T_ho)</span>

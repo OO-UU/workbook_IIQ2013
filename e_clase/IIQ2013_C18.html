@@ -314,6 +314,12 @@ window.Quarto = {
  <span class="menu-text">Ejercicio 1: Agitador con serpentín</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_prop/05_tc-agitacion/e05_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio 2: Serpentines dispuestos como deflectores</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -364,6 +370,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../e_prop/07_ICC/e07_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ejercicio 3: Arreglos de aletas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_prop/07_ICC/e07_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ejercicio 4: Intercambiadores de placas compactas</span></a>
   </div>
 </li>
       </ul>
@@ -562,7 +574,7 @@ window.Quarto = {
 </header>
 
 
-<div id="84cf7028" class="cell" data-execution_count="1">
+<div id="943decd2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> handcalcs.render</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_start"</span>, <span class="st">"$$"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>handcalcs.set_option(<span class="st">"latex_block_end"</span>, <span class="st">"$$"</span>)</span>
@@ -571,12 +583,12 @@ window.Quarto = {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> forallpeople <span class="im">as</span> si</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> CoolProp.CoolProp <span class="im">import</span> PropsSI</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="fc54c3d2" class="cell" data-execution_count="2">
+<div id="09ab193e" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>si.environment(<span class="st">'default'</span>, top_level<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pregunta-1" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
-<p>Considerando la curva típica de ebullición para agua a <span class="math inline">\(1~\text{atm}\)</span> que se adjunta, si <span class="math inline">\(h &gt; 104~\text{W/m}^2\cdot\text{K}\)</span>, el régimen de ebullición probablemente sea el siguiente:</p>
+<p>Considerando la curva típica de ebullición para agua a <span class="math inline">\(1~\text{atm}\)</span> que se adjunta, si <span class="math inline">\(h &gt; 5000~\text{W/m}^2\cdot\text{K}\)</span>, el régimen de ebullición probablemente sea el siguiente:</p>
 <div id="fig-EC7-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-EC7-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -601,8 +613,8 @@ Mostrar solución
 </button>
 <div id="ec_18-1-sol" class="collapse multi-collapse">
 <p>Dado que no tenemos un valor exacto de <span class="math inline">\(h\)</span> para el agua, procedemos a testear el límite superior de la ebullición de convección libre.</p>
-<p>Del gráfico, asumiremos <span class="math inline">\(q = 1.6 \times 10^4~\text{W/m}^2\)</span>. Esto correspodne a una diferencia de temperatura aproximadamente de 5°C. Luego,</p>
-<div id="ba238ed2" class="cell" data-execution_count="3">
+<p>Del gráfico, asumiremos <span class="math inline">\(q = 8.5 \times 10^3~\text{W/m}^2\)</span>. Esto corresponde a una diferencia de temperatura aproximadamente de 5°C. Luego,</p>
+<div id="35f1ff52" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">1</span> <span class="co"># atm</span></span>
@@ -620,25 +632,25 @@ h &amp;= 1043 \cdot \left( \mathrm{dT} \right) ^{ \left( \frac{ 1 }{ 3 } \right)
 </div>
 </div>
 <p>Este coeficiente de convección es muy bajo, por lo tanto descartamos nucleación por convección natural. Ahora procedemos a testear el segundo límite de flux entre ebullición nucleada y ebullición de transición.</p>
-<p>Del gráfico, asumiremos <span class="math inline">\(q = 2.4 \times 10^5~\text{W/m}^2\)</span>. Esto corresponde a una diferencia de temperatura aproximadamente de 15°C. Luego,</p>
-<div id="7fda6c0e" class="cell" data-execution_count="4">
+<p>Del gráfico, asumiremos <span class="math inline">\(q = 10^5~\text{W/m}^2\)</span>. Esto corresponde a una diferencia de temperatura aproximadamente de 10°C. Luego,</p>
+<div id="d18c6c98" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">1</span> <span class="co"># atm</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fl">5.56</span> <span class="op">*</span> dT<span class="op">**</span>(<span class="dv">3</span>) <span class="op">*</span> p <span class="op">**</span>(<span class="fl">0.4</span>) <span class="co">#W/m$^2\cdot$K</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 \begin{aligned}
-\mathrm{dT} &amp;= 15 \;
+\mathrm{dT} &amp;= 10 \;
 \\[10pt]
 p &amp;= 1 \; \;\textrm{(atm)}
 \\[10pt]
-h &amp;= 5.56 \cdot \left( \mathrm{dT} \right) ^{ 3 } \cdot \left( p \right) ^{ 0.4 }  = 5.56 \cdot \left( 15 \right) ^{ 3 } \cdot \left( 1 \right) ^{ 0.4 } &amp;= 18765.000 \; \;\textrm{(W/m$^2\cdot$K)}
+h &amp;= 5.56 \cdot \left( \mathrm{dT} \right) ^{ 3 } \cdot \left( p \right) ^{ 0.4 }  = 5.56 \cdot \left( 10 \right) ^{ 3 } \cdot \left( 1 \right) ^{ 0.4 } &amp;= 5560.000 \; \;\textrm{(W/m$^2\cdot$K)}
 \end{aligned}
 \]</span></p>
 </div>
 </div>
-<p>Que es mayor a <span class="math inline">\(10^4\)</span>. Este valor está en un punto medio en la región de ebullición nucleada, por lo tanto el régimen de ebullición es probablemente ebullición nucleada. Esto corresponde a la alternativa <strong>b</strong>.</p>
+<p>Ya que <span class="math inline">\(q\)</span> es mayor a <span class="math inline">\(10^4\)</span>. Este valor está en un punto medio en la región de ebullición nucleada, por lo tanto el régimen de ebullición es probablemente ebullición nucleada. Esto corresponde a la alternativa <strong>b</strong>.</p>
 </div>
 </section>
 <section id="pregunta-2" class="level2">
@@ -682,7 +694,7 @@ Mostrar solución
 </button>
 <div id="ec_18-3-sol" class="collapse multi-collapse">
 <p>Primero calculamos el coeficiente de convección para ebullición nucleada en una superficie vertical. En primer lugar iteramos el primer tramo de la ecuación:</p>
-<div id="b5a41395" class="cell" data-execution_count="5">
+<div id="e1d55509" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">15</span> <span class="co"># C</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">4</span> <span class="co"># bar</span></span>
@@ -703,7 +715,7 @@ q &amp;= h \cdot \mathrm{dT}  = 1376.611 \cdot 15 &amp;= 20649.169
 </div>
 </div>
 <p>Sin embargo, esto muestra que estamos fuera del rango de validez del coeficiente de convección para flujo bajo, ya que <span class="math inline">\(q = 20,6 kW m^{-2} &gt; 3 kW m^{-2}\)</span>. Repetimos el cálculo con la otra ecuación.</p>
-<div id="94dc1c8a" class="cell" data-execution_count="6">
+<div id="39040558" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>render</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span> <span class="dv">15</span> <span class="co"># C</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">4</span> <span class="co"># bar</span></span>
